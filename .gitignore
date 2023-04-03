@@ -364,3 +364,8 @@ FodyWeavers.xsd
 
 # Visual Studio vcxproj
 *.vcxproj.*
+SistemaDeGestionParaClientes/SistemaDeGestionParaClientes.vcxproj
+SistemaDeGestionParaClientes/SistemaDeGestionParaClientes.vcxproj.filters
+SistemaDeGestionParaClientes/SistemaDeGestionParaClientes.vcxproj.*
+# Visual Studio Code
+SistemaDeGestionParaClientes/.vscode/*
