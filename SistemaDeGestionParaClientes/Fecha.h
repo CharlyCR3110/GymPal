@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <sstream>
+#include "FechaInvalidaException.h"
 using namespace std;
 
 class Fecha
