@@ -1,8 +1,14 @@
 #include "Fecha.h"
 
 Fecha::Fecha(int dia_, int mes_, int anio_)
-    :dia(dia_), mes(mes_), anio(anio_)
 {
+    if (!esValida(dia_, mes_, anio_))
+    {
+		throw FechaInvalidaException("Fecha invalida");
+	}
+    this->dia = dia_;
+    this->mes = mes_;
+    this->anio = anio_;
 }
 
 Fecha::~Fecha()
