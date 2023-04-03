@@ -45,3 +45,27 @@ string Fecha::toString()
 	s << this->dia << "/" << this->mes << "/" << this->anio;
 	return s.str();
 }
+
+bool Fecha::esValida(int dia_, int mes_, int anio_)
+{
+    if (mes_ < 1 || mes_ > 12)
+    {
+        return false;
+    }
+
+    // lista con la cantidad de dias que tiene cada mes
+    int diasPorMes[12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
+    int numDias = diasPorMes[mes_ - 1];
+
+    if (mes_ == 2 && (anio_ % 400 == 0 || (anio_ % 4 == 0 && anio_ % 100 != 0)))
+    {
+        numDias++;
+	}
+
+    if (dia_ < 1 || dia_ > numDias)
+    {
+        return false;
+    }
+    return true;
+}

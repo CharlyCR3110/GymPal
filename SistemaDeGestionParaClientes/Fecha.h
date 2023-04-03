@@ -22,5 +22,8 @@ public:
 	int getAnio();
 	//metodos
 	string toString();
+	// excepciones
+	//IGNORA SI EL ANIO NO ES VALIDO
+	bool esValida(int dia_, int mes_, int anio_);
 };
 
