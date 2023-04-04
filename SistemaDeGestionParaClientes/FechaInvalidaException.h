@@ -10,6 +10,5 @@ private:
 	string mensaje;
 public:
 	FechaInvalidaException(string mensaje_);
-	virtual const char* what();
+	virtual const char* what() const noexcept;
 };
-

@@ -5,7 +5,7 @@ FechaInvalidaException::FechaInvalidaException(string mensaje_)
 {
 }
 
-const char* FechaInvalidaException::what()
+const char* FechaInvalidaException::what() const noexcept
 {
     return this->mensaje.c_str();
 }
