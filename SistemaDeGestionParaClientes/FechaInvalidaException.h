@@ -3,7 +3,8 @@
 #include <exception>
 
 using namespace std;
-class FechaInvalidaException
+class FechaInvalidaException 
+	: public exception
 {
 private:
 	string mensaje;
