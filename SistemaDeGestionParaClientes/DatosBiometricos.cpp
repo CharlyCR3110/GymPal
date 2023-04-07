@@ -63,27 +63,27 @@ void DatosBiometricos::setFechaMedicion(Fecha* fechaMedicion_)
 	this->fechaMedicion = fechaMedicion_;
 }
 
-float DatosBiometricos::getEstatura()
+const float DatosBiometricos::getEstatura() const
 {
 	return this->estatura;
 }
 
-float DatosBiometricos::getPeso()
+const float DatosBiometricos::getPeso() const
 {
 	return this->peso;
 }
 
-float DatosBiometricos::getPorcentajeGrasaCorporal()
+const float DatosBiometricos::getPorcentajeGrasaCorporal() const
 {
 	return this->porcentajeGrasaCorporal;
 }
 
-float DatosBiometricos::getPorcentajeMasaMuscular()
+const float DatosBiometricos::getPorcentajeMasaMuscular() const
 {
 	return this->porcentajeMasaMuscular;
 }
 
-Fecha* DatosBiometricos::getFechaMedicion()
+const Fecha* DatosBiometricos::getFechaMedicion() const
 {
 	return this->fechaMedicion;
 }

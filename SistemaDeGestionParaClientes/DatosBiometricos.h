@@ -20,11 +20,11 @@ public:
 	void setPorcentajeMasaMuscular(float porcentajeMasaMuscular_);
 	void setFechaMedicion(Fecha* fechaMedicion_);
 	//getters
-	float getEstatura();
-	float getPeso();
-	float getPorcentajeGrasaCorporal();
-	float getPorcentajeMasaMuscular();
-	Fecha* getFechaMedicion();
+	const float getEstatura() const;
+	const float getPeso() const;
+	const float getPorcentajeGrasaCorporal() const;
+	const float getPorcentajeMasaMuscular() const;
+	const Fecha* getFechaMedicion() const;
 	//metodos
 	string toString();
 };
