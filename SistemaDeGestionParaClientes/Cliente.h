@@ -28,9 +28,9 @@ public:
 	const string getCedula() const;
 	const string getNombre() const;
 	const string getTelefono() const;
-	const Fecha* getFechaNacimiento() const;
+	Fecha* getFechaNacimiento();
 	const string getSexo() const;
-	const DatosBiometricos* getDatosBiometricos() const;
+	DatosBiometricos* getDatosBiometricos();
 	//metodos
 	string toString() const;
 };

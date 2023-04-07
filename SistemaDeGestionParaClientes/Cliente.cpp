@@ -89,7 +89,7 @@ const string Cliente::getTelefono() const
     return this->telefono;
 }
 
-const Fecha* Cliente::getFechaNacimiento() const
+Fecha* Cliente::getFechaNacimiento()
 {
     return this->fechaNacimiento;
 }
@@ -99,7 +99,7 @@ const string Cliente::getSexo() const
     return this->sexo;
 }
 
-const DatosBiometricos* Cliente::getDatosBiometricos() const
+DatosBiometricos* Cliente::getDatosBiometricos()
 {
     return this->datosBiometricos;
 }
