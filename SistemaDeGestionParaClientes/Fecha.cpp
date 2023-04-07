@@ -45,7 +45,7 @@ const int Fecha::getAnio() const
     return this->anio;
 }
 
-string Fecha::toString()
+const string Fecha::toString() const
 {
     stringstream s;
 	s << this->dia << "/" << this->mes << "/" << this->anio;

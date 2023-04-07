@@ -22,7 +22,7 @@ public:
 	const int getMes() const;
 	const int getAnio() const;
 	//metodos
-	string toString();
+	const string toString() const;
 	// excepciones
 	//IGNORA SI EL ANIO NO ES VALIDO
 	bool esValida(int dia_, int mes_, int anio_);
