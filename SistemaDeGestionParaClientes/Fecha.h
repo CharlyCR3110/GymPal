@@ -18,13 +18,12 @@ public:
 	void setMes(int mes_);
 	void setAnio(int anio_);
 	//getters
-	int getDia();
-	int getMes();
-	int getAnio();
+	const int getDia() const;
+	const int getMes() const;
+	const int getAnio() const;
 	//metodos
 	string toString();
 	// excepciones
 	//IGNORA SI EL ANIO NO ES VALIDO
 	bool esValida(int dia_, int mes_, int anio_);
 };
-

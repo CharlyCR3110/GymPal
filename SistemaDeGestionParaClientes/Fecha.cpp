@@ -30,17 +30,17 @@ void Fecha::setAnio(int anio_)
     this->anio = anio_;
 }
 
-int Fecha::getDia()
+const int Fecha::getDia() const
 {
     return this->dia;
 }
 
-int Fecha::getMes()
+const int Fecha::getMes() const
 {
     return this->mes;
 }
 
-int Fecha::getAnio()
+const int Fecha::getAnio() const
 {
     return this->anio;
 }
