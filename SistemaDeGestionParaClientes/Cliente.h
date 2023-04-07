@@ -31,4 +31,6 @@ public:
 	const Fecha* getFechaNacimiento() const;
 	const string getSexo() const;
 	const DatosBiometricos* getDatosBiometricos() const;
+	//metodos
+	string toString() const;
 };

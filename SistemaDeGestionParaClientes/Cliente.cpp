@@ -103,3 +103,14 @@ const DatosBiometricos* Cliente::getDatosBiometricos() const
 {
     return this->datosBiometricos;
 }
+
+string Cliente::toString() const
+{
+    stringstream ss;
+    ss << "Cedula: " << this->cedula << endl;
+    ss << "Nombre: " << this->nombre << endl;    ss << "Telefono: " << this->telefono << endl;
+    ss << "Fecha de nacimiento: " << this->fechaNacimiento->toString() << endl;
+    ss << "Sexo: " << this->sexo << endl;
+    ss << this->datosBiometricos->toString() << endl;
+    return ss.str();
+}
