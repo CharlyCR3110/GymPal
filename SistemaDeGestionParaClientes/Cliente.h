@@ -32,5 +32,5 @@ public:
 	const string getSexo() const;
 	DatosBiometricos* getDatosBiometricos();
 	//metodos
-	string toString() const;
+	const string toString() const;
 };
