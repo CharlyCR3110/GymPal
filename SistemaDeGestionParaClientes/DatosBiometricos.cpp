@@ -83,7 +83,7 @@ const float DatosBiometricos::getPorcentajeMasaMuscular() const
 	return this->porcentajeMasaMuscular;
 }
 
-const Fecha* DatosBiometricos::getFechaMedicion() const
+Fecha* DatosBiometricos::getFechaMedicion()
 {
 	return this->fechaMedicion;
 }

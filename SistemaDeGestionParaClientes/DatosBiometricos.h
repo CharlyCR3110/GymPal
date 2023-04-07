@@ -24,7 +24,7 @@ public:
 	const float getPeso() const;
 	const float getPorcentajeGrasaCorporal() const;
 	const float getPorcentajeMasaMuscular() const;
-	const Fecha* getFechaMedicion() const;
+	Fecha* getFechaMedicion();
 	//metodos
 	string toString();
 };
