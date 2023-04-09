@@ -1,6 +1,6 @@
 #include "Cliente.h"
 
-Cliente::Cliente(string cedula_, string nombre_, string telefono_, Fecha* fechaNacimiento_, string sexo_, DatosBiometricos* datosBiometricos_)
+Cliente::Cliente(string cedula_, string nombre_, string telefono_, Fecha* fechaNacimiento_, string sexo_, char estado, DatosBiometricos* datosBiometricos_)
 {
     try 
     {
@@ -24,6 +24,7 @@ Cliente::Cliente(string cedula_, string nombre_, string telefono_, Fecha* fechaN
 	this->nombre = nombre_;
 	this->telefono = telefono_;
 	this->sexo = sexo_;
+    this->estado = estado;
 }
 
 Cliente::~Cliente()
@@ -74,6 +75,11 @@ void Cliente::setDatosBiometricos(DatosBiometricos* datosBiometricos_)
     }
 }
 
+void Cliente::setEstado(char estado)
+{
+    this->estado = estado;
+}
+
 const string Cliente::getCedula() const
 {
     return this->cedula;
@@ -104,6 +110,11 @@ DatosBiometricos* Cliente::getDatosBiometricos()
     return this->datosBiometricos;
 }
 
+const char Cliente::getEstado() const
+{
+    return this->estado;
+}
+
 const string Cliente::toString() const
 {
     stringstream ss;
@@ -111,6 +122,7 @@ const string Cliente::toString() const
     ss << "Nombre: " << this->nombre << endl;    ss << "Telefono: " << this->telefono << endl;
     ss << "Fecha de nacimiento: " << this->fechaNacimiento->toString() << endl;
     ss << "Sexo: " << this->sexo << endl;
+    ss << "Estado: " << this->estado << endl;
     ss << this->datosBiometricos->toString() << endl;
     return ss.str();
 }

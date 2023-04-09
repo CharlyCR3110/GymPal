@@ -13,9 +13,11 @@ private:
 	string telefono;
 	Fecha* fechaNacimiento;
 	string sexo;
+	char estado; // Activo = 'A', Inactivo = 'I', Con Cuentas Pendientes = 'P'
 	DatosBiometricos* datosBiometricos;
 public:
-	Cliente(string cedula_ = "", string nombre_ = "", string telefono_ = "", Fecha* fechaNacimiento_ = nullptr, string sexo_ = "", DatosBiometricos* datosBiometricos_ = nullptr);
+	Cliente(string cedula_ = "", string nombre_ = "", string telefono_ = "", Fecha* fechaNacimiento_ = nullptr, string sexo_ = "", char estado = ' ', DatosBiometricos* datosBiometricos_ = nullptr);
+	//Cliente(string cedula_ = "", string nombre_ = "", string telefono_ = "", Fecha* fechaNacimiento_ = nullptr, string sexo_ = "", DatosBiometricos* datosBiometricos_ = nullptr);
 	~Cliente();
 	//setters
 	void setCedula(string cedula_);
@@ -24,6 +26,7 @@ public:
 	void setFechaNacimiento(Fecha* fechaNacimiento_);
 	void setSexo(string sexo_);
 	void setDatosBiometricos(DatosBiometricos* datosBiometricos_);
+	void setEstado(char estado);
 	//getters
 	const string getCedula() const;
 	const string getNombre() const;
@@ -31,6 +34,7 @@ public:
 	Fecha* getFechaNacimiento();
 	const string getSexo() const;
 	DatosBiometricos* getDatosBiometricos();
+	const char getEstado() const;
 	//metodos
 	const string toString() const;
 };
