@@ -101,3 +101,21 @@ string ListaClienteUtils::mostrarClientesConCuentasPendientes(ListaEnlazada<Clie
 
 	return ss.str();
 }
+
+string ListaClienteUtils::mostrarSoloNombreClientes(ListaEnlazada<Cliente>* lista)
+{
+	if (lista->estaVacia())
+	{
+		return "La lista esta vacia";
+	}
+	int i = 1;
+	stringstream ss;
+	Nodo<Cliente>* actual = lista->getPrimero();
+	while (actual != nullptr)
+	{
+		ss << i << ". " << actual->getDato()->getNombre() << endl;
+		actual = actual->getSiguiente();
+		i++;
+	}
+	return ss.str();
+}
