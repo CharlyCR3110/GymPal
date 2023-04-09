@@ -122,7 +122,7 @@ inline void ListaEnlazada<T>::insertarAlInicio(T* dato_)
 template<class T>
 inline void ListaEnlazada<T>::eliminar(int posicion_)
 {
-	if (posicion_ <= 0 || posicion_ >= this->cantidad)
+	if (posicion_ <= 0 || posicion_ > this->cantidad)
 	{
 		throw exception("Posicion invalida");
 	}
@@ -130,14 +130,14 @@ inline void ListaEnlazada<T>::eliminar(int posicion_)
 	{
 		eliminarPrimero();
 	}
-	else if (posicion_ == this->cantidad - 1)
+	else if (posicion_ == this->cantidad)
 	{
 		eliminarUltimo();
 	}
 	else
 	{
 		Nodo<T>* actual = this->primero;
-		for (int i = 0; i <= posicion_ - 1; i++)
+		for (int i = 1; i < posicion_ - 1; i++)
 		{
 			actual = actual->getSiguiente();
 		}
