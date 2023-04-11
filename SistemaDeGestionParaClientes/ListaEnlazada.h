@@ -192,28 +192,41 @@ inline void ListaEnlazada<T>::eliminarUltimo()
 	this->cantidad--;
 }
 
+//to-do si no lo encuentra
 template<class T>
 inline void ListaEnlazada<T>::eliminarDato(T* dato_)
 {
 	if (this->cantidad == 0)
 	{
-		throw exception("Lista vacia");
+		throw ListaEnlazadasExceptions("Lista vacia");
+	}
+	Nodo<T>* actual = this->primero;
+	Nodo<T>* anterior = nullptr;
+
+	while (actual != nullptr && actual->getDato() != dato_)
+	{
+		anterior = actual;
+		actual = actual->getSiguiente();
 	}
 
-	if (this->primero->getDato() == dato_)
+	if (actual == nullptr)
+	{
+		throw ListaEnlazadasExceptions("Dato no encontrado");
+	}
+
+	if (actual == this->primero)
 	{
 		eliminarPrimero();
 	}
-	else if (this->ultimo->getDato() == dato_)
+	else if (actual == this->ultimo)
 	{
 		eliminarUltimo();
 	}
-	else  // si el dato esta en algun otro lado, busca el nodo que lo contiene
+
+	else
 	{
-		Nodo<T>* actual = buscarNodo(dato_);
-		Nodo<T>* eliminar = actual->getSiguiente();
-        actual->setSiguiente(eliminar->getSiguiente());
-		delete eliminar;
+		anterior->setSiguiente(actual->getSiguiente());
+		delete actual;
 		this->cantidad--;
 	}
 }
