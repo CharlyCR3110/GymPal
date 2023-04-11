@@ -129,6 +129,8 @@
   <ItemGroup>
     <ClInclude Include="Cliente.h" />
     <ClInclude Include="ClienteInvalidoException.h" />
+    <ClInclude Include="CupoMaximoExcedido.h" />
+    <ClInclude Include="Curso.h" />
     <ClInclude Include="DatosBiometricos.h" />
     <ClInclude Include="DatosBiometricosInvalidosException.h" />
     <ClInclude Include="Fecha.h" />
@@ -142,6 +144,8 @@
   <ItemGroup>
     <ClCompile Include="Cliente.cpp" />
     <ClCompile Include="ClienteInvalidoException.cpp" />
+    <ClCompile Include="CupoMaximoExcedido.cpp" />
+    <ClCompile Include="Curso.cpp" />
     <ClCompile Include="DatosBiometricos.cpp" />
     <ClCompile Include="DatosBiometricosInvalidosException.cpp" />
     <ClCompile Include="Fecha.cpp" />

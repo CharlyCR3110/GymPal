@@ -48,6 +48,15 @@
     <ClCompile Include="ListaEnlazadasException.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ListaClienteUtils.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Curso.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CupoMaximoExcedido.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cliente.h">
@@ -78,6 +87,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ListaEnlazadasException.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ListaClienteUtils.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Curso.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CupoMaximoExcedido.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
