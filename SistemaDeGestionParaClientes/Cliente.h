@@ -37,4 +37,6 @@ public:
 	const char getEstado() const;
 	//metodos
 	const string toString() const;
+	//sobrecarga de operadores
+	friend ostream & operator<<(ostream& out, Cliente& cliente_);
 };

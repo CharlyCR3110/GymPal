@@ -126,3 +126,9 @@ const string Cliente::toString() const
     ss << this->datosBiometricos->toString() << endl;
     return ss.str();
 }
+
+ostream& operator<<(ostream& out, Cliente& cliente_)
+{   
+    out << cliente_.toString();
+    return out;
+}
