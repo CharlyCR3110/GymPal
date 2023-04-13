@@ -17,6 +17,7 @@ private:
 	//lista de clientes inscriptos
 	ListaEnlazada<Cliente>* listaClientesInscritos;	
 public:
+	Curso(const Curso& curso_);	//constructor copia
 	Curso(string descripcion_ = "", string nivel_ = "", int cupoMaximo_ = 0, Fecha* fechaInicio_ = new Fecha(), Fecha* fechaFin_ = new Fecha(), string horario_ = "");
 	~Curso();
 	// setters

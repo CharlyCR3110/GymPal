@@ -1,5 +1,17 @@
 #include "Curso.h"
 
+Curso::Curso(const Curso& curso_)
+{
+    this->descripcion = curso_.descripcion;
+	this->nivel = curso_.nivel;
+	this->cupoMaximo = curso_.cupoMaximo;
+	this->fechaInicio = new Fecha(*curso_.fechaInicio);
+	this->fechaFin = new Fecha(*curso_.fechaFin);
+	this->horario = curso_.horario;
+	this->cantidadClientes = curso_.cantidadClientes;
+	this->listaClientesInscritos = new ListaEnlazada<Cliente>(*curso_.listaClientesInscritos);
+}
+
 Curso::Curso(string descripcion_, string nivel_, int cupoMaximo_, Fecha* fechaInicio_, Fecha* fechaFin_, string horario_)
     : descripcion(descripcion_), nivel(nivel_), cupoMaximo(cupoMaximo_), fechaInicio(fechaInicio_), fechaFin(fechaFin_), horario(horario_)
 {
