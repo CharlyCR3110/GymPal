@@ -27,6 +27,9 @@ public:
 	void eliminarDato(T* dato_);	// elimina el dato
 	void vaciar();	// elimina todos los datos
 	T* buscar(T* dato_);
+	// sobrecarga de operador para mostrar los datos
+	template <class U>
+	friend ostream& operator <<(ostream& out, ListaEnlazada<U>& lista_);
 };
 
 template<class T>
