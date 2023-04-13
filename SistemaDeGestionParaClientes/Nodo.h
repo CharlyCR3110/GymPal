@@ -11,12 +11,20 @@ private:
 	T* dato;
 	Nodo<T>* siguiente;
 public:
+	Nodo(const T& dato_);
 	Nodo(T* dato_);
 	~Nodo();
 	void setSiguiente(Nodo<T>* siguiente_);
 	Nodo<T>* getSiguiente();
 	T* getDato();
 };
+
+template<class T>
+inline Nodo<T>::Nodo(const T& dato_)
+{
+	dato = new T(dato_);
+	siguiente = nullptr;
+}
 
 template<class T>
 inline Nodo<T>::Nodo(T* dato_)
