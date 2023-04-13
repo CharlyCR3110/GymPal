@@ -1,5 +1,15 @@
 #include "DatosBiometricos.h"
 
+DatosBiometricos::DatosBiometricos(const DatosBiometricos& datosBiometricos_)
+{
+	// no se valida porque se asume que los datos biometricos son validos
+	estatura = datosBiometricos_.estatura;
+	peso = datosBiometricos_.peso;
+	porcentajeGrasaCorporal = datosBiometricos_.porcentajeGrasaCorporal;
+	porcentajeMasaMuscular = datosBiometricos_.porcentajeMasaMuscular;
+	fechaMedicion = new Fecha(*datosBiometricos_.fechaMedicion);
+}
+
 DatosBiometricos::DatosBiometricos(float estatura_, float peso_, float porcentajeGrasaCorporal_, float porcentajeMasaMuscular_, Fecha* fechaMedicion_)
 {
 	if (estatura_ < 0)

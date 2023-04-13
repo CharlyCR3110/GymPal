@@ -11,6 +11,7 @@ private:
 	float porcentajeMasaMuscular;
 	Fecha* fechaMedicion;
 public:
+	DatosBiometricos(const DatosBiometricos& datosBiometricos_);	//constructor copia
 	DatosBiometricos(float estatura_ = 0, float peso_ = 0, float porcentajeGrasaCorporal_ = 0, float porcentajeMasaMuscular_ = 0, Fecha* fechaMedicion_ = new Fecha());
 	~DatosBiometricos();
 	//setters
