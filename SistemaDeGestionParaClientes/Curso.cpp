@@ -129,3 +129,9 @@ void Curso::agregarListaClientes(ListaEnlazada<Cliente>* listaClientes_)
     this->listaClientesInscritos = listaClientes_;
     this->cantidadClientes = listaClientes_->getCantidad();
 }
+
+ostream& operator<<(ostream& out, Curso& curso_)
+{
+    out << curso_.toString();
+    return out;
+}

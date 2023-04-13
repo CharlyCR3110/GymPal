@@ -43,4 +43,6 @@ public:
 	const string toString() const;
 	//metodo experimental para agregar una lista directamente. | es un set de listaClientesInscritos
 	void agregarListaClientes(ListaEnlazada<Cliente>* listaClientes_);
+	// sobrecarga de operador para mostrar los datos
+	friend ostream& operator<<(ostream &out, Curso &curso_);
 };
