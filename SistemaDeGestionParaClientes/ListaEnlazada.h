@@ -10,6 +10,7 @@ private:
 	Nodo<T>* ultimo;
 	int cantidad;
 public:
+	ListaEnlazada(const ListaEnlazada<T>& lista_);	// constructor copia
 	ListaEnlazada();
 	~ListaEnlazada();
 	//getters
@@ -31,6 +32,20 @@ public:
 	template <class U>
 	friend ostream& operator <<(ostream& out, ListaEnlazada<U>& lista_);
 };
+
+template<class T>
+inline ListaEnlazada<T>::ListaEnlazada(const ListaEnlazada<T>& lista_)
+{
+	this->primero = nullptr;
+	this->ultimo = nullptr;
+	this->cantidad = 0;
+	Nodo<T>* actual = lista_.primero;
+	while (actual != nullptr)
+	{
+		insertar(actual->getDato());
+		actual = actual->getSiguiente();
+	}
+}
 
 template<class T>
 inline ListaEnlazada<T>::ListaEnlazada()
