@@ -17,6 +17,8 @@ public:
 	void setSiguiente(Nodo<T>* siguiente_);
 	Nodo<T>* getSiguiente();
 	T* getDato();
+	//sobrecarga de metodos
+	friend ostream& operator<<(ostream& out, Nodo<T>& nodo_);
 };
 
 template<class T>
