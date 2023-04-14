@@ -109,3 +109,9 @@ string DatosBiometricos::toString()
 	ss << "Fecha de medicion: " << fechaMedicion->toString() << endl;
 	return ss.str();
 }
+
+ostream& operator<<(ostream& out, DatosBiometricos& datosBiometricos_)
+{
+	out << datosBiometricos_.toString();
+	return out;
+}
