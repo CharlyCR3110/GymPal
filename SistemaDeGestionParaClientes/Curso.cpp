@@ -142,6 +142,19 @@ void Curso::agregarListaClientes(ListaEnlazada<Cliente>* listaClientes_)
     this->cantidadClientes = listaClientes_->getCantidad();
 }
 
+Curso& Curso::operator=(const Curso& curso_)
+{
+    this->descripcion = curso_.descripcion;
+	this->nivel = curso_.nivel;
+	this->cupoMaximo = curso_.cupoMaximo;
+	this->fechaInicio = new Fecha(*curso_.fechaInicio);
+	this->fechaFin = new Fecha(*curso_.fechaFin);
+	this->horario = curso_.horario;
+	this->cantidadClientes = curso_.cantidadClientes;
+	this->listaClientesInscritos = new ListaEnlazada<Cliente>(*curso_.listaClientesInscritos);
+	return *this;
+}
+
 ostream& operator<<(ostream& out, Curso& curso_)
 {
     out << curso_.toString();
