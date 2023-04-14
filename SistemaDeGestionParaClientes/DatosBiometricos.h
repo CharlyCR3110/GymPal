@@ -30,4 +30,5 @@ public:
 	string toString();
 	//sobrecarga de operadores
 	friend ostream & operator<<(ostream& out, DatosBiometricos& datosBiometricos_);	// operador de salida
+	DatosBiometricos& operator=(const DatosBiometricos& datosBiometricos_);	// operador de asignacion
 };

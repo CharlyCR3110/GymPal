@@ -110,6 +110,16 @@ string DatosBiometricos::toString()
 	return ss.str();
 }
 
+DatosBiometricos& DatosBiometricos::operator=(const DatosBiometricos& datosBiometricos_)
+{
+	estatura = datosBiometricos_.estatura;
+	peso = datosBiometricos_.peso;
+	porcentajeGrasaCorporal = datosBiometricos_.porcentajeGrasaCorporal;
+	porcentajeMasaMuscular = datosBiometricos_.porcentajeMasaMuscular;
+	fechaMedicion = new Fecha(*datosBiometricos_.fechaMedicion);
+	return *this;
+}
+
 ostream& operator<<(ostream& out, DatosBiometricos& datosBiometricos_)
 {
 	out << datosBiometricos_.toString();
