@@ -257,6 +257,8 @@ inline void ListaEnlazada<T>::vaciar()
 	{
 		eliminarPrimero();
 	}
+	// aunque el metodo eliminarPrimero reduce el valor de cantidad en cada llamada, lo pongo aca por las dudas
+	this->cantidad = 0;
 }
 
 template<class T>
