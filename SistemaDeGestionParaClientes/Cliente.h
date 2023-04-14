@@ -38,5 +38,6 @@ public:
 	//metodos
 	const string toString() const;
 	//sobrecarga de operadores
-	friend ostream & operator<<(ostream& out, Cliente& cliente_);
+	friend ostream & operator<<(ostream& out, Cliente& cliente_);	// operador de salida
+	Cliente& operator=(const Cliente& cliente_);	// operador de asignacion
 };

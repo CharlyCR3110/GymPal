@@ -152,6 +152,32 @@ const string Cliente::toString() const
     return ss.str();
 }
 
+Cliente& Cliente::operator=(const Cliente& cliente_)
+{
+    try
+    {
+		this->fechaNacimiento = new Fecha(*cliente_.fechaNacimiento);
+	}
+    catch (FechaInvalidaException& e)
+    {
+		throw ClienteInvalidoException("Fecha de nacimiento invalida");
+	}
+    try
+    {
+		this->datosBiometricos = new DatosBiometricos(*cliente_.datosBiometricos);
+	}
+    catch (DatosBiometricosInvalidosException& e)
+    {
+		throw ClienteInvalidoException("Datos biometricos invalidos");
+	}
+	this->cedula = cliente_.cedula;
+	this->nombre = cliente_.nombre;
+	this->telefono = cliente_.telefono;
+	this->sexo = cliente_.sexo;
+	this->estado = cliente_.estado;
+	return *this;
+}
+
 ostream& operator<<(ostream& out, Cliente& cliente_)
 {   
     out << cliente_.toString();
