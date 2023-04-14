@@ -30,7 +30,8 @@ public:
 	T* buscar(T* dato_);
 	// sobrecarga de operador para mostrar los datos
 	template <class U>
-	friend ostream& operator <<(ostream& out, ListaEnlazada<U>& lista_);
+	friend ostream& operator <<(ostream& out, ListaEnlazada<U>& lista_);	// operador de salida
+	ListaEnlazada<T>& operator=(const ListaEnlazada<T>& lista_);	//operador de asignacion
 };
 
 template<class T>
@@ -269,4 +270,20 @@ inline T* ListaEnlazada<T>::buscar(T* dato_)
 		actual = actual->getSiguiente();
 	}
 	return nullptr;
+}
+
+template<class T>
+inline ListaEnlazada<T>& ListaEnlazada<T>::operator=(const ListaEnlazada<T>& lista_)
+{
+	if (this != &lista_)
+	{
+		this->vaciar();	//el metodo vaciar pone el contador en 0
+		Nodo<T>* actual = lista_.getPrimero();
+		while (actual != nullptr)
+		{
+			this->insertar(actual->getDato());
+			actual = actual->getSiguiente();
+		}
+	}
+	return *this;
 }
