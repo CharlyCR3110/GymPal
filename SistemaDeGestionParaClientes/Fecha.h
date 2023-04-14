@@ -11,6 +11,7 @@ private:
 	int mes;
 	int anio;
 public:
+	Fecha(const Fecha& fecha_);	//constructor copia
 	Fecha(int dia_ = 0, int mes_ = 0, int anio_ = 0);
 	virtual ~Fecha();
 	//setters

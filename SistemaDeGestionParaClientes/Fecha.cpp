@@ -1,5 +1,13 @@
 #include "Fecha.h"
 
+Fecha::Fecha(const Fecha& fecha_)
+{
+    // no se valida la fecha porque se asume que es valida
+    this->dia = fecha_.dia;
+	this->mes = fecha_.mes;
+	this->anio = fecha_.anio;
+}
+
 Fecha::Fecha(int dia_, int mes_, int anio_)
 {
     if (!esValida(dia_, mes_, anio_))

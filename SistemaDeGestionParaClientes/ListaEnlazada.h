@@ -10,6 +10,7 @@ private:
 	Nodo<T>* ultimo;
 	int cantidad;
 public:
+	ListaEnlazada(const ListaEnlazada<T>& lista_);	// constructor copia
 	ListaEnlazada();
 	~ListaEnlazada();
 	//getters
@@ -27,7 +28,25 @@ public:
 	void eliminarDato(T* dato_);	// elimina el dato
 	void vaciar();	// elimina todos los datos
 	T* buscar(T* dato_);
+	// sobrecarga de operador para mostrar los datos
+	template <class U>
+	friend ostream& operator <<(ostream& out, ListaEnlazada<U>& lista_);	// operador de salida
+	ListaEnlazada<T>& operator=(const ListaEnlazada<T>& lista_);	//operador de asignacion
 };
+
+template<class T>
+inline ListaEnlazada<T>::ListaEnlazada(const ListaEnlazada<T>& lista_)
+{
+	this->primero = nullptr;
+	this->ultimo = nullptr;
+	this->cantidad = 0;
+	Nodo<T>* actual = lista_.primero;
+	while (actual != nullptr)
+	{
+		insertar(actual->getDato());
+		actual = actual->getSiguiente();
+	}
+}
 
 template<class T>
 inline ListaEnlazada<T>::ListaEnlazada()
@@ -238,6 +257,8 @@ inline void ListaEnlazada<T>::vaciar()
 	{
 		eliminarPrimero();
 	}
+	// aunque el metodo eliminarPrimero reduce el valor de cantidad en cada llamada, lo pongo aca por las dudas
+	this->cantidad = 0;
 }
 
 template<class T>
@@ -251,4 +272,20 @@ inline T* ListaEnlazada<T>::buscar(T* dato_)
 		actual = actual->getSiguiente();
 	}
 	return nullptr;
+}
+
+template<class T>
+inline ListaEnlazada<T>& ListaEnlazada<T>::operator=(const ListaEnlazada<T>& lista_)
+{
+	if (this != &lista_)
+	{
+		this->vaciar();	//el metodo vaciar pone el contador en 0
+		Nodo<T>* actual = lista_.getPrimero();
+		while (actual != nullptr)
+		{
+			this->insertar(actual->getDato());
+			actual = actual->getSiguiente();
+		}
+	}
+	return *this;
 }
