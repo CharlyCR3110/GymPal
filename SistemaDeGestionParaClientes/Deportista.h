@@ -1,11 +1,11 @@
 #pragma once
-#include "ClienteInvalidoException.h"
+#include "DeportistaInvalidoException.h"
 #include "DatosBiometricos.h"
 #include "DatosBiometricosInvalidosException.h"
 #include "Fecha.h"
 #include "FechaInvalidaException.h"
 
-class Cliente
+class Deportista
 {
 private:
 	string cedula;
@@ -16,9 +16,9 @@ private:
 	char estado; // Activo = 'A', Inactivo = 'I', Con Cuentas Pendientes = 'P'
 	DatosBiometricos* datosBiometricos;
 public:
-	Cliente(const Cliente& cliente_);	//constructor copia
-	Cliente(string cedula_ = "", string nombre_ = "", string telefono_ = "", Fecha* fechaNacimiento_ = nullptr, string sexo_ = "", char estado = ' ', DatosBiometricos* datosBiometricos_ = nullptr);
-	~Cliente();
+	Deportista(const Deportista& deportista_);	//constructor copia
+	Deportista(string cedula_ = "", string nombre_ = "", string telefono_ = "", Fecha* fechaNacimiento_ = nullptr, string sexo_ = "", char estado = ' ', DatosBiometricos* datosBiometricos_ = nullptr);
+	~Deportista();
 	//setters
 	void setCedula(string cedula_);
 	void setNombre(string nombre_);
@@ -38,6 +38,6 @@ public:
 	//metodos
 	const string toString() const;
 	//sobrecarga de operadores
-	friend ostream& operator<<(ostream& out, Cliente& cliente_);	// operador de salida
-	Cliente& operator=(const Cliente& cliente_);	// operador de asignacion
+	friend ostream& operator<<(ostream& out, Deportista& deportista_);	// operador de salida
+	Deportista& operator=(const Deportista& deportista_);	// operador de asignacion
 };

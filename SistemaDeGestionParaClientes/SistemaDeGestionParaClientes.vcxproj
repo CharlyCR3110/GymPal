@@ -127,30 +127,30 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Cliente.h" />
-    <ClInclude Include="ClienteInvalidoException.h" />
+    <ClInclude Include="Deportista.h" />
+    <ClInclude Include="DeportistaInvalidoException.h" />
     <ClInclude Include="CupoMaximoExcedido.h" />
     <ClInclude Include="Curso.h" />
     <ClInclude Include="DatosBiometricos.h" />
     <ClInclude Include="DatosBiometricosInvalidosException.h" />
     <ClInclude Include="Fecha.h" />
     <ClInclude Include="FechaInvalidaException.h" />
-    <ClInclude Include="ListaClienteUtils.h" />
+    <ClInclude Include="ListaDeportistaUtils.h" />
     <ClInclude Include="ListaEnlazada.h" />
     <ClInclude Include="ListaEnlazadasException.h" />
     <ClInclude Include="ManejoFechas.h" />
     <ClInclude Include="Nodo.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Cliente.cpp" />
-    <ClCompile Include="ClienteInvalidoException.cpp" />
+    <ClCompile Include="Deportista.cpp" />
+    <ClCompile Include="DeportistaInvalidoException.cpp" />
     <ClCompile Include="CupoMaximoExcedido.cpp" />
     <ClCompile Include="Curso.cpp" />
     <ClCompile Include="DatosBiometricos.cpp" />
     <ClCompile Include="DatosBiometricosInvalidosException.cpp" />
     <ClCompile Include="Fecha.cpp" />
     <ClCompile Include="FechaInvalidaException.cpp" />
-    <ClCompile Include="ListaClienteUtils.cpp" />
+    <ClCompile Include="ListaDeportistaUtils.cpp" />
     <ClCompile Include="ListaEnlazada.cpp" />
     <ClCompile Include="ListaEnlazadasException.cpp" />
     <ClCompile Include="main.cpp" />

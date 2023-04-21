@@ -1,13 +1,13 @@
-#include "ListaClienteUtils.h"
+#include "ListaDeportistaUtils.h"
 //linked list of clients
-string ListaClienteUtils::MostrarClientes(ListaEnlazada<Cliente>* lista)
+string ListaDeportistaUtils::MostrarDeportistas(ListaEnlazada<Deportista>* lista)
 {
 	if (lista->estaVacia())
 	{
 		return "La lista esta vacia";
 	}
 	stringstream ss;
-	Nodo<Cliente>* actual = lista->getPrimero();
+	Nodo<Deportista>* actual = lista->getPrimero();
 	while (actual != nullptr)
 	{
 		ss << actual->getDato()->toString() << endl;
@@ -16,7 +16,7 @@ string ListaClienteUtils::MostrarClientes(ListaEnlazada<Cliente>* lista)
 	return ss.str();
 }
 
-string ListaClienteUtils::MostrarClientesActivos(ListaEnlazada<Cliente>* lista)	//activos = 'A'
+string ListaDeportistaUtils::MostrarDeportistasActivos(ListaEnlazada<Deportista>* lista)	//activos = 'A'
 {
 	if (lista->estaVacia())
 	{
@@ -24,8 +24,8 @@ string ListaClienteUtils::MostrarClientesActivos(ListaEnlazada<Cliente>* lista)	
 	}
 	bool hayActivos = false;
 	stringstream ss;
-	ss << "Clientes activos: " << endl;
-	Nodo<Cliente>* actual = lista->getPrimero();
+	ss << "Deportistas activos: " << endl;
+	Nodo<Deportista>* actual = lista->getPrimero();
 	while (actual != nullptr)
 	{
 		if (actual->getDato()->getEstado() == 'A')
@@ -44,7 +44,7 @@ string ListaClienteUtils::MostrarClientesActivos(ListaEnlazada<Cliente>* lista)	
 	return ss.str();
 }
 
-string ListaClienteUtils::MostrarClientesInactivos(ListaEnlazada<Cliente>* lista) //inactivos = 'I'
+string ListaDeportistaUtils::MostrarDeportistasInactivos(ListaEnlazada<Deportista>* lista) //inactivos = 'I'
 {
 	if (lista->estaVacia())
 	{
@@ -53,8 +53,8 @@ string ListaClienteUtils::MostrarClientesInactivos(ListaEnlazada<Cliente>* lista
 
 	bool hayInactivos = false;
 	stringstream ss;
-	ss << "Clientes inactivos: " << endl;
-	Nodo<Cliente>* actual = lista->getPrimero();
+	ss << "Deportistas inactivos: " << endl;
+	Nodo<Deportista>* actual = lista->getPrimero();
 	while (actual != nullptr)
 	{
 		if (actual->getDato()->getEstado() == 'I')
@@ -73,7 +73,7 @@ string ListaClienteUtils::MostrarClientesInactivos(ListaEnlazada<Cliente>* lista
 	return ss.str();
 }
 
-string ListaClienteUtils::mostrarClientesConCuentasPendientes(ListaEnlazada<Cliente>* lista) //pendientes = 'P'
+string ListaDeportistaUtils::mostrarDeportistasConCuentasPendientes(ListaEnlazada<Deportista>* lista) //pendientes = 'P'
 {
 	if (lista->estaVacia())
 	{
@@ -82,8 +82,8 @@ string ListaClienteUtils::mostrarClientesConCuentasPendientes(ListaEnlazada<Clie
 
 	bool hayPendientes = false;
 	stringstream ss;
-	ss << "Clientes con cuentas pendientes: " << endl;
-	Nodo<Cliente>* actual = lista->getPrimero();
+	ss << "Deportistas con cuentas pendientes: " << endl;
+	Nodo<Deportista>* actual = lista->getPrimero();
 	while (actual != nullptr)
 	{
 		if (actual->getDato()->getEstado() == 'P')
@@ -102,7 +102,7 @@ string ListaClienteUtils::mostrarClientesConCuentasPendientes(ListaEnlazada<Clie
 	return ss.str();
 }
 
-string ListaClienteUtils::mostrarSoloNombreClientes(ListaEnlazada<Cliente>* lista)
+string ListaDeportistaUtils::mostrarSoloNombreDeportistas(ListaEnlazada<Deportista>* lista)
 {
 	if (lista->estaVacia())
 	{
@@ -110,7 +110,7 @@ string ListaClienteUtils::mostrarSoloNombreClientes(ListaEnlazada<Cliente>* list
 	}
 	int i = 1;
 	stringstream ss;
-	Nodo<Cliente>* actual = lista->getPrimero();
+	Nodo<Deportista>* actual = lista->getPrimero();
 	while (actual != nullptr)
 	{
 		ss << i << ". " << actual->getDato()->getNombre() << endl;

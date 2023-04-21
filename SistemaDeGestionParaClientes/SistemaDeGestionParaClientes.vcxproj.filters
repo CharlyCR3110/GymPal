@@ -15,10 +15,10 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Cliente.cpp">
+    <ClCompile Include="Deportista.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ClienteInvalidoException.cpp">
+    <ClCompile Include="DeportistaInvalidoException.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="DatosBiometricos.cpp">
@@ -48,7 +48,7 @@
     <ClCompile Include="ListaEnlazadasException.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ListaClienteUtils.cpp">
+    <ClCompile Include="ListaDeportistaUtils.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Curso.cpp">
@@ -59,10 +59,10 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Cliente.h">
+    <ClInclude Include="Deportista.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ClienteInvalidoException.h">
+    <ClInclude Include="DeportistaInvalidoException.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="DatosBiometricos.h">
@@ -89,7 +89,7 @@
     <ClInclude Include="ListaEnlazadasException.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ListaClienteUtils.h">
+    <ClInclude Include="ListaDeportistaUtils.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Curso.h">

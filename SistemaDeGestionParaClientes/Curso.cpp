@@ -8,15 +8,15 @@ Curso::Curso(const Curso& curso_)
 	this->fechaInicio = new Fecha(*curso_.fechaInicio);
 	this->fechaFin = new Fecha(*curso_.fechaFin);
 	this->horario = curso_.horario;
-	this->cantidadClientes = curso_.cantidadClientes;
-	this->listaClientesInscritos = new ListaEnlazada<Cliente>(*curso_.listaClientesInscritos);
+	this->cantidadDeportistas = curso_.cantidadDeportistas;
+	this->listaDeportistasInscritos = new ListaEnlazada<Deportista>(*curso_.listaDeportistasInscritos);
 }
 
 Curso::Curso(string descripcion_, string nivel_, int cupoMaximo_, Fecha* fechaInicio_, Fecha* fechaFin_, string horario_)
     : descripcion(descripcion_), nivel(nivel_), cupoMaximo(cupoMaximo_), fechaInicio(fechaInicio_), fechaFin(fechaFin_), horario(horario_)
 {
-    this->cantidadClientes = 0;
-    this->listaClientesInscritos = new ListaEnlazada<Cliente>();
+    this->cantidadDeportistas = 0;
+    this->listaDeportistasInscritos = new ListaEnlazada<Deportista>();
 }
 
 Curso::~Curso()
@@ -83,42 +83,42 @@ const string Curso::getHorario() const
     return this->horario;
 }
 
-const int Curso::getCantidadClientes() const
+const int Curso::getCantidadDeportistas() const
 {
-    return this->cantidadClientes;
+    return this->cantidadDeportistas;
 }
 
-ListaEnlazada<Cliente>* Curso::getListaClientesInscritos()
+ListaEnlazada<Deportista>* Curso::getListaDeportistasInscritos()
 {
-    return this->listaClientesInscritos;
+    return this->listaDeportistasInscritos;
 }
 
-void Curso::agregarCliente(Cliente* cliente_)
+void Curso::agregarDeportista(Deportista* deportista_)
 {
     //verificar que haya cupo disponible
     if (this->tieneCupoDisponible())
     {
-		listaClientesInscritos->insertar(cliente_);
-		this->cantidadClientes++;
+		listaDeportistasInscritos->insertar(deportista_);
+		this->cantidadDeportistas++;
     }
     else {
         throw CupoMaximoExcedido("No hay cupo disponible para este curso.");
     }
 }
 
-void Curso::eliminarCliente(Cliente* cliente_)
+void Curso::eliminarDeportista(Deportista* deportista_)
 {
-    listaClientesInscritos->eliminarDato(cliente_);
+    listaDeportistasInscritos->eliminarDato(deportista_);
 }
 
-void Curso::mostrarClientes()
+void Curso::mostrarDeportistas()
 {
-    ListaClienteUtils::MostrarClientes(listaClientesInscritos);
+    ListaDeportistaUtils::MostrarDeportistas(listaDeportistasInscritos);
 }
 
 bool Curso::tieneCupoDisponible()
 {
-    return this->cantidadClientes < cupoMaximo;
+    return this->cantidadDeportistas < cupoMaximo;
 }
 
 const string Curso::toString() const
@@ -130,16 +130,16 @@ const string Curso::toString() const
         << "Fecha inicio: " << this->fechaInicio->toString() << endl
         << "Fecha fin: " << this->fechaFin->toString() << endl
         << "Horario: " << this->horario << endl
-        << "Cantidad de clientes inscritos: " << this->cantidadClientes << endl
+        << "Cantidad de deportistas inscritos: " << this->cantidadDeportistas << endl
         << "Lista de clientes inscritos: " << endl
-        << ListaClienteUtils::MostrarClientes(this->listaClientesInscritos);
+        << ListaDeportistaUtils::MostrarDeportistas(this->listaDeportistasInscritos);
     return ss.str();
 }
 
-void Curso::agregarListaClientes(ListaEnlazada<Cliente>* listaClientes_)
+void Curso::agregarListaDeportistas(ListaEnlazada<Deportista>* listaDeportistas_)
 {
-    this->listaClientesInscritos = listaClientes_;
-    this->cantidadClientes = listaClientes_->getCantidad();
+    this->listaDeportistasInscritos = listaDeportistas_;
+    this->cantidadDeportistas = listaDeportistas_->getCantidad();
 }
 
 Curso& Curso::operator=(const Curso& curso_)
@@ -150,8 +150,8 @@ Curso& Curso::operator=(const Curso& curso_)
 	this->fechaInicio = new Fecha(*curso_.fechaInicio);
 	this->fechaFin = new Fecha(*curso_.fechaFin);
 	this->horario = curso_.horario;
-	this->cantidadClientes = curso_.cantidadClientes;
-	this->listaClientesInscritos = new ListaEnlazada<Cliente>(*curso_.listaClientesInscritos);
+	this->cantidadDeportistas = curso_.cantidadDeportistas;
+	this->listaDeportistasInscritos = new ListaEnlazada<Deportista>(*curso_.listaDeportistasInscritos);
 	return *this;
 }
 
