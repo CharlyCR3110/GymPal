@@ -3,11 +3,12 @@
 #include <iostream>
 using namespace std;
 
-class ClienteInvalidoException
+class DeportistaInvalidoException :
+	public exception
 {
 private:
 	string mensaje;
 public:
-	ClienteInvalidoException(string mensaje_);
+	DeportistaInvalidoException(string mensaje_);
 	const char* what() const noexcept;
 };
