@@ -121,3 +121,9 @@ bool operator>(const Fecha& fecha1_, const Fecha& fecha2_)
     }
     return false;
 }
+
+ostream& operator<<(ostream& out, const Fecha& fecha_)
+{
+    out << fecha_.toString();
+    return out;
+}
