@@ -34,5 +34,6 @@ public:
 	virtual const string toString() const = 0;
 	//sobrecarga de operadores
 	Deportista& operator=(const Deportista& deportista_);	// operador de asignacion
+	bool operator != (const Deportista& deportista_) const; // operador de desigualdad
 	friend ostream& operator<<(ostream& out, Deportista& deportista_);	// operador de salida
 };

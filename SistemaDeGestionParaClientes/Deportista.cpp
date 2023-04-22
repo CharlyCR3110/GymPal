@@ -101,7 +101,10 @@ Deportista& Deportista::operator=(const Deportista& deportista_)
     return *this;
 }
 
-
+bool Deportista::operator!=(const Deportista& deportista_) const
+{
+    return this->cedula != deportista_.cedula;  // unicamente depende de la cedula porque lo demas puede coincidir
+}
 
 ostream& operator<<(ostream& out, Deportista& deportista_)
 {
