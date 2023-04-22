@@ -29,4 +29,6 @@ public:
 	bool esValida(int dia_, int mes_, int anio_);
 	//sobrecarga de operadores
 	Fecha& operator=(const Fecha& fecha_);	// operador de asignacion
+	friend bool operator>(const Fecha& fecha1_, const Fecha& fecha2_);
+
 };
