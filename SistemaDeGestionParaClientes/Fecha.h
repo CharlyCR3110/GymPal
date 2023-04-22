@@ -27,4 +27,6 @@ public:
 	// excepciones
 	//IGNORA SI EL ANIO NO ES VALIDO
 	bool esValida(int dia_, int mes_, int anio_);
+	//sobrecarga de operadores
+	Fecha& operator=(const Fecha& fecha_);	// operador de asignacion
 };

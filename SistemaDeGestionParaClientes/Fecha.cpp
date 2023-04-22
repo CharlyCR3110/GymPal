@@ -83,3 +83,18 @@ bool Fecha::esValida(int dia_, int mes_, int anio_)
     }
     return true;
 }
+
+Fecha& Fecha::operator=(const Fecha& fecha_)
+{
+    if (this != &fecha_)
+    {
+        if (&fecha_ == nullptr)
+        {
+            throw FechaInvalidaException("La fecha proporcionada es nula");
+        }
+        this->dia = fecha_.dia;
+        this->mes = fecha_.mes;
+        this->anio = fecha_.anio;
+    }
+    return *this;
+}
