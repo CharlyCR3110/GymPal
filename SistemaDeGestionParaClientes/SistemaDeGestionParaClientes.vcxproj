@@ -137,6 +137,7 @@
     <ClInclude Include="DatosBiometricosInvalidosException.h" />
     <ClInclude Include="Fecha.h" />
     <ClInclude Include="FechaInvalidaException.h" />
+    <ClInclude Include="Instructor.h" />
     <ClInclude Include="ListaDeportistaUtils.h" />
     <ClInclude Include="ListaEnlazada.h" />
     <ClInclude Include="ListaEnlazadasException.h" />
@@ -156,6 +157,7 @@
     <ClCompile Include="DatosBiometricosInvalidosException.cpp" />
     <ClCompile Include="Fecha.cpp" />
     <ClCompile Include="FechaInvalidaException.cpp" />
+    <ClCompile Include="Instructor.cpp" />
     <ClCompile Include="ListaDeportistaUtils.cpp" />
     <ClCompile Include="ListaEnlazada.cpp" />
     <ClCompile Include="ListaEnlazadasException.cpp" />
