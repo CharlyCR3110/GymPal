@@ -57,6 +57,12 @@
     <ClCompile Include="CupoMaximoExcedido.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Ciclista.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Nadador.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Deportista.h">
@@ -96,6 +102,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CupoMaximoExcedido.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Ciclista.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Nadador.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
