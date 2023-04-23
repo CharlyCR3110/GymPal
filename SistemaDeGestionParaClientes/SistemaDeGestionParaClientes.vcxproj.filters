@@ -72,6 +72,12 @@
     <ClCompile Include="Instructor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Grupo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Hora.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Deportista.h">
@@ -126,6 +132,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Instructor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Grupo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Hora.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
