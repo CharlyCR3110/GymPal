@@ -81,7 +81,7 @@ void Nadador::actualizarPorcentajeGrasaCorporal(double porcentajeGrasaCorporal_,
     }
 }
 
-void Nadador::setFechaDeRegistro(Fecha* fechaDeRegistro_)
+void Nadador::setFechaUltimaActualizacion(Fecha* fechaDeRegistro_)
 {
     try
     {
@@ -108,7 +108,7 @@ const double Nadador::getPorcentajeGrasaCorporal() const
     return this->porcentajeGrasaCorporal;
 }
 
-Fecha* Nadador::getFechaDeRegistro()
+Fecha* Nadador::getFechaUltimaActualizacion()
 {
     return this->fechaUltimaActualizacion;
 }

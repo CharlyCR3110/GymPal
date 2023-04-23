@@ -19,12 +19,12 @@ public:
 	virtual void actualizarPeso(double peso_, Fecha* fechaActualizacion_);
 	virtual void setPorcentajeGrasaCorporal(double porcentajeGrasaCorporal_);
 	virtual void actualizarPorcentajeGrasaCorporal(double porcentajeGrasaCorporal_, Fecha* fechaActualizacion_);
-	virtual void setFechaDeRegistro(Fecha* fechaDeRegistro_);
+	virtual void setFechaUltimaActualizacion(Fecha* fechaDeRegistro_);
 	//Getters
 	virtual const double getMasaMuscular() const;
 	virtual const double getPeso() const;
 	virtual const double getPorcentajeGrasaCorporal() const;
-	virtual Fecha* getFechaDeRegistro();
+	virtual Fecha* getFechaUltimaActualizacion();
 	// Metodos
 	virtual const string toString() const;
 	// Sobrecarga de operadores
