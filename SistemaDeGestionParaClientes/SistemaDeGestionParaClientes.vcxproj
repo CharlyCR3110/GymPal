@@ -127,6 +127,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Ciclista.h" />
+    <ClInclude Include="Corredor.h" />
     <ClInclude Include="Deportista.h" />
     <ClInclude Include="DeportistaInvalidoException.h" />
     <ClInclude Include="CupoMaximoExcedido.h" />
@@ -139,9 +141,13 @@
     <ClInclude Include="ListaEnlazada.h" />
     <ClInclude Include="ListaEnlazadasException.h" />
     <ClInclude Include="ManejoFechas.h" />
+    <ClInclude Include="Nadador.h" />
     <ClInclude Include="Nodo.h" />
+    <ClInclude Include="Triatlonista.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Ciclista.cpp" />
+    <ClCompile Include="Corredor.cpp" />
     <ClCompile Include="Deportista.cpp" />
     <ClCompile Include="DeportistaInvalidoException.cpp" />
     <ClCompile Include="CupoMaximoExcedido.cpp" />
@@ -155,7 +161,9 @@
     <ClCompile Include="ListaEnlazadasException.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="ManejoFechas.cpp" />
+    <ClCompile Include="Nadador.cpp" />
     <ClCompile Include="Nodo.cpp" />
+    <ClCompile Include="Triatlonista.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

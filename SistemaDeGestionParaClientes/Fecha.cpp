@@ -83,3 +83,47 @@ bool Fecha::esValida(int dia_, int mes_, int anio_)
     }
     return true;
 }
+
+Fecha& Fecha::operator=(const Fecha& fecha_)
+{
+    if (this != &fecha_)
+    {
+        if (&fecha_ == nullptr)
+        {
+            throw FechaInvalidaException("La fecha proporcionada es nula");
+        }
+        this->dia = fecha_.dia;
+        this->mes = fecha_.mes;
+        this->anio = fecha_.anio;
+    }
+    return *this;
+}
+
+bool operator>(const Fecha& fecha1_, const Fecha& fecha2_)
+{
+    if (fecha1_.anio > fecha2_.anio)
+    {
+        return true;
+    }
+    else if (fecha1_.anio == fecha2_.anio)
+    {
+        if (fecha1_.mes > fecha2_.mes)
+        {
+            return true;
+        }
+        else if (fecha1_.mes == fecha2_.mes)
+        {
+            if (fecha1_.dia > fecha2_.dia)
+            {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
+ostream& operator<<(ostream& out, const Fecha& fecha_)
+{
+    out << fecha_.toString();
+    return out;
+}
