@@ -1,7 +1,5 @@
 #pragma once
 #include "DeportistaInvalidoException.h"
-#include "DatosBiometricos.h"
-#include "DatosBiometricosInvalidosException.h"
 #include "Fecha.h"
 #include "FechaInvalidaException.h"
 
