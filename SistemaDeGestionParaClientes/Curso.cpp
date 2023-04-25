@@ -140,6 +140,21 @@ const string Curso::toString() const
     ss << "Cantidad maxima de grupos: " << this->cantidadMaximaDeGrupos << endl;
     ss << "Cantidad de grupos actuales: " << this->cantidadDeGruposActuales << endl;
     ss << "Lista de grupos: " << endl;
+    //ss << *this->listaGrupos << endl; // esto me da errores (desconozco el motivo)
+
+    if (this->listaGrupos != nullptr)
+    {
+        Nodo<Grupo>* nodoActual = this->listaGrupos->getPrimero();
+        while (nodoActual != nullptr)
+        {
+            ss << *nodoActual->getDato() << endl;
+            nodoActual = nodoActual->getSiguiente();
+        }
+    }
+    else
+    {
+		ss << "No hay grupos" << endl;
+    }
     return ss.str();
 }
 
