@@ -1,31 +1,56 @@
 #include "Curso.h"
 
-Curso::Curso(const Curso& curso_)
+Curso::Curso(const Curso& curso_) :
+    codigo(curso_.codigo), 
+    nombreDelCurso(curso_.nombreDelCurso), 
+    nivel(curso_.nivel), 
+    descripcion(curso_.descripcion), 
+    cantidadMaximaDeGrupos(curso_.cantidadMaximaDeGrupos), 
+    cantidadDeGruposActuales(curso_.cantidadDeGruposActuales)
 {
-    this->descripcion = curso_.descripcion;
-	this->nivel = curso_.nivel;
-	this->cupoMaximo = curso_.cupoMaximo;
-	this->fechaInicio = new Fecha(*curso_.fechaInicio);
-	this->fechaFin = new Fecha(*curso_.fechaFin);
-	this->horario = curso_.horario;
-	this->cantidadDeportistas = curso_.cantidadDeportistas;
-	this->listaDeportistasInscritos = new ListaEnlazada<Deportista>(*curso_.listaDeportistasInscritos);
+    if (curso_.listaGrupos != nullptr)
+    {
+        this->listaGrupos = new ListaEnlazada<Grupo>;
+        Nodo<Grupo>* nodoActual = curso_.listaGrupos->getPrimero();
+        while (nodoActual != nullptr)
+        {
+			this->listaGrupos->insertar(nodoActual->getDato());
+			nodoActual = nodoActual->getSiguiente();
+		}
+    } 
+    else
+    {
+        this->listaGrupos = nullptr;
+    }
 }
 
-Curso::Curso(string descripcion_, string nivel_, int cupoMaximo_, Fecha* fechaInicio_, Fecha* fechaFin_, string horario_)
-    : descripcion(descripcion_), nivel(nivel_), cupoMaximo(cupoMaximo_), fechaInicio(fechaInicio_), fechaFin(fechaFin_), horario(horario_)
+Curso::Curso(string codigo_, string nombreDelCurso_, string nivel_, string descripcion_, int cantidadMaximaDeGrupos):
+    codigo(codigo_),
+    nombreDelCurso(nombreDelCurso_),
+    nivel(nivel_),
+    descripcion(descripcion_),
+    cantidadMaximaDeGrupos(cantidadMaximaDeGrupos),
+    cantidadDeGruposActuales(0),    // se inicializa en 0
+    listaGrupos(new ListaEnlazada<Grupo>)   // se crea una lista vacia
 {
-    this->cantidadDeportistas = 0;
-    this->listaDeportistasInscritos = new ListaEnlazada<Deportista>();
 }
 
 Curso::~Curso()
 {
+    if (this->listaGrupos != nullptr)
+    {
+		delete this->listaGrupos;
+	}
 }
 
-void Curso::setDescripcion(string descripcion_)
+void Curso::setCodigo(string codigo_)
 {
-    this->descripcion = descripcion_;
+    this->codigo = codigo_;
+}
+
+void Curso::setNombreDelCurso(string nombreDelCurso_)
+{
+    this->nombreDelCurso = nombreDelCurso_;
 }
 
 void Curso::setNivel(string nivel_)
@@ -33,126 +58,131 @@ void Curso::setNivel(string nivel_)
     this->nivel = nivel_;
 }
 
-void Curso::setCupoMaximo(int cupoMaximo_)
+void Curso::setDescripcion(string descripcion_)
 {
-    this->cupoMaximo = cupoMaximo_;
+    this->descripcion = descripcion_;
 }
 
-void Curso::setFechaInicio(Fecha* fechaInicio_)
+void Curso::setCantidadMaximaDeGrupos(int cantidadMaximaDeGrupos_)
 {
-    this->fechaInicio = fechaInicio_;
+    this->cantidadMaximaDeGrupos = cantidadMaximaDeGrupos_;
 }
 
-void Curso::setFechaFin(Fecha* fechaFin_)
+void Curso::setCantidadDeGruposActuales(int cantidadDeGruposActuales_)
 {
-    this->fechaFin = fechaFin_;
+    this->cantidadDeGruposActuales = cantidadDeGruposActuales_;
 }
 
-void Curso::setHorario(string horario_)
+void Curso::setListaGrupos(ListaEnlazada<Grupo>* listaGrupos_)
 {
-    this->horario = horario_;
+    if (listaGrupos_ != nullptr)
+    {
+        if (this->listaGrupos == nullptr)
+        { 
+            this->listaGrupos = new ListaEnlazada<Grupo>;
+        }
+        else
+        {
+            this->listaGrupos->vaciar();
+        }
+        Nodo<Grupo>* nodoActual = listaGrupos_->getPrimero();
+        while (nodoActual != nullptr)
+        {
+			this->listaGrupos->insertar(nodoActual->getDato());
+			nodoActual = nodoActual->getSiguiente();
+		}
+    }
+    else
+    {
+        delete this->listaGrupos;
+        this->listaGrupos = nullptr;
+    }
 }
+
+const string Curso::getCodigo() const
+{
+    return this->codigo;
+}
+
+const string Curso::getNombreDelCurso() const
+{
+    return this->nombreDelCurso;
+}
+
 
 const string Curso::getDescripcion() const
 {
     return this->descripcion;
 }
 
-const string Curso::getNivel() const
+const int Curso::getCantidadMaximaDeGrupos() const
 {
-    return this->nivel;
+    return this->cantidadMaximaDeGrupos;
 }
 
-const int Curso::getCupoMaximo() const
+const int Curso::getCantidadDeGruposActuales() const
 {
-    return this->cupoMaximo;
+    return this->cantidadDeGruposActuales;
 }
 
-Fecha* Curso::getFechaInicio()
+ListaEnlazada<Grupo>* Curso::getListaGrupos()
 {
-    return this->fechaInicio;
-}
-
-Fecha* Curso::getFechaFin()
-{
-    return this->fechaFin;
-}
-
-const string Curso::getHorario() const
-{
-    return this->horario;
-}
-
-const int Curso::getCantidadDeportistas() const
-{
-    return this->cantidadDeportistas;
-}
-
-ListaEnlazada<Deportista>* Curso::getListaDeportistasInscritos()
-{
-    return this->listaDeportistasInscritos;
-}
-
-void Curso::agregarDeportista(Deportista* deportista_)
-{
-    //verificar que haya cupo disponible
-    if (this->tieneCupoDisponible())
-    {
-		listaDeportistasInscritos->insertar(deportista_);
-		this->cantidadDeportistas++;
-    }
-    else {
-        throw CupoMaximoExcedido("No hay cupo disponible para este curso.");
-    }
-}
-
-void Curso::eliminarDeportista(Deportista* deportista_)
-{
-    listaDeportistasInscritos->eliminarDato(deportista_);
-}
-
-void Curso::mostrarDeportistas()
-{
-    ListaDeportistaUtils::MostrarDeportistas(listaDeportistasInscritos);
-}
-
-bool Curso::tieneCupoDisponible()
-{
-    return this->cantidadDeportistas < cupoMaximo;
+    return this->listaGrupos;
 }
 
 const string Curso::toString() const
 {
     stringstream ss;
-    ss << "Descripcion del curso: " << this->descripcion << endl
-        << "Nivel: " << this->nivel << endl
-        << "Cupo maximo: " << this->cupoMaximo << endl
-        << "Fecha inicio: " << this->fechaInicio->toString() << endl
-        << "Fecha fin: " << this->fechaFin->toString() << endl
-        << "Horario: " << this->horario << endl
-        << "Cantidad de deportistas inscritos: " << this->cantidadDeportistas << endl
-        << "Lista de clientes inscritos: " << endl
-        << ListaDeportistaUtils::MostrarDeportistas(this->listaDeportistasInscritos);
+    ss << "Codigo: " << this->codigo << endl;
+    ss << "Nombre del curso: " << this->nombreDelCurso << endl;
+    ss << "Nivel: " << this->nivel << endl;
+    ss << "Descripcion: " << this->descripcion << endl;
+    ss << "Cantidad maxima de grupos: " << this->cantidadMaximaDeGrupos << endl;
+    ss << "Cantidad de grupos actuales: " << this->cantidadDeGruposActuales << endl;
+    ss << "Lista de grupos: " << endl;
     return ss.str();
-}
-
-void Curso::agregarListaDeportistas(ListaEnlazada<Deportista>* listaDeportistas_)
-{
-    this->listaDeportistasInscritos = listaDeportistas_;
-    this->cantidadDeportistas = listaDeportistas_->getCantidad();
 }
 
 Curso& Curso::operator=(const Curso& curso_)
 {
-    this->descripcion = curso_.descripcion;
-	this->nivel = curso_.nivel;
-	this->cupoMaximo = curso_.cupoMaximo;
-	this->fechaInicio = new Fecha(*curso_.fechaInicio);
-	this->fechaFin = new Fecha(*curso_.fechaFin);
-	this->horario = curso_.horario;
-	this->cantidadDeportistas = curso_.cantidadDeportistas;
-	this->listaDeportistasInscritos = new ListaEnlazada<Deportista>(*curso_.listaDeportistasInscritos);
-	return *this;
+    if (this != &curso_)
+    {
+		this->codigo = curso_.codigo;
+		this->nombreDelCurso = curso_.nombreDelCurso;
+		this->nivel = curso_.nivel;
+		this->descripcion = curso_.descripcion;
+		this->cantidadMaximaDeGrupos = curso_.cantidadMaximaDeGrupos;
+		this->cantidadDeGruposActuales = curso_.cantidadDeGruposActuales;
+
+        if (curso_.listaGrupos != nullptr)
+        {
+            if (this->listaGrupos == nullptr)
+            {
+				this->listaGrupos = new ListaEnlazada<Grupo>;
+			}
+            else
+            {
+				this->listaGrupos->vaciar();
+			}
+			Nodo<Grupo>* nodoActual = curso_.listaGrupos->getPrimero();
+            while (nodoActual != nullptr)
+            {
+			    this->listaGrupos->insertar(nodoActual->getDato());
+			    nodoActual = nodoActual->getSiguiente();
+		    }
+		}
+        else
+        {
+			delete this->listaGrupos;
+			this->listaGrupos = nullptr;
+		}
+	}
+    return *this;
+}
+
+const string Curso::getNivel() const
+{
+    return this->nivel;
 }
 
 ostream& operator<<(ostream& out, Curso& curso_)
