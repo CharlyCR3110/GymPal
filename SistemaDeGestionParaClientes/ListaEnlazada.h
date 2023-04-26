@@ -52,7 +52,7 @@ inline ListaEnlazada<T>::ListaEnlazada(const ListaEnlazada<T>& lista_)
 {
 	if (&lista_ == nullptr)
 	{
-		throw ListaEnlazadasException("La lista pasada por parametro es nula");
+		throw ListaEnlazadasExceptions("La lista pasada por parametro es nula");
 	}
 
 	this->primero = nullptr;
