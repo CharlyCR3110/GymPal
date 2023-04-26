@@ -37,6 +37,8 @@ public:
 	ListaEnlazada<T>* filtrarPorEstado(char estado_);	// lo filtro. luego en otro metodo lo muestro con 'X
 	//metodos para mostrar lista con base en el estado;
 	string mostrarPorEstado(char estado_);	// muestra los datos de la lista filtrada //2.3.2-4
+	// mostrar elemento especifico por codigo
+	string mostrarPorCodigo(string codigo_);	// muestra los datos de un elemento especifico //2.4
 	//metodos para mostrar datos
 	const string toString() const;	// muestra los datos	//2.3.1 listado general
 	// sobrecarga de operador para mostrar los datos
@@ -340,6 +342,17 @@ inline string ListaEnlazada<T>::mostrarPorEstado(char estado_)
 	}
 	catch (ElementoNoEncontradoException<T>) {
 		return "No se encontraron elementos con ese estado.";	//esto debe debe de ser una excepcion
+	}
+}
+
+template<class T>
+inline string ListaEnlazada<T>::mostrarPorCodigo(string codigo_)
+{
+	try {
+		return buscarPorCodigo(codigo_)->toString();
+	}
+	catch (ElementoNoEncontradoException<T>) {
+		return "No se encontro el elemento con ese codigo.";	//esto debe debe de ser una excepcion
 	}
 }
 
