@@ -88,6 +88,11 @@ const char Deportista::getEstado() const
     return this->estado;
 }
 
+const string Deportista::getCodigo() const
+{
+    return this->cedula;
+}
+
 Deportista& Deportista::operator=(const Deportista& deportista_)
 {
     if (this != &deportista_)

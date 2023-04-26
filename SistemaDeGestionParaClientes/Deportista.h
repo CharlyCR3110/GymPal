@@ -28,8 +28,10 @@ public:
 	virtual const string getTelefono() const;
 	virtual Fecha* getFechaNacimiento();
 	virtual const char getEstado() const;
+	//metodo para poder utilizar el template de buscar por codigo
+	const string getCodigo() const; //devuelve la cedula
 	//metodos
-	virtual const string toString() const = 0;
+	virtual const string toString() const = 0;	//MVP - metodo virtual puro
 	//sobrecarga de operadores
 	Deportista& operator=(const Deportista& deportista_);	// operador de asignacion
 	bool operator != (const Deportista& deportista_) const; // operador de desigualdad
