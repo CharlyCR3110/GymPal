@@ -35,6 +35,8 @@ public:
 	T* buscarPorCodigo(string codigo_);
 	//metodos para filtrar Deportistas por estado
 	ListaEnlazada<T>* filtrarPorEstado(char estado_);	// lo filtro. luego en otro metodo lo muestro con 'X
+	//metodos para mostrar lista con base en el estado;
+	string mostrarPorEstado(char estado_);	// muestra los datos de la lista filtrada //2.3.2-4
 	//metodos para mostrar datos
 	const string toString() const;	// muestra los datos	//2.3.1 listado general
 	// sobrecarga de operador para mostrar los datos
@@ -328,6 +330,17 @@ inline ListaEnlazada<T>* ListaEnlazada<T>::filtrarPorEstado(char estado_)
 	}
 
 	return filtrada;
+}
+
+template<class T>
+inline string ListaEnlazada<T>::mostrarPorEstado(char estado_)
+{
+	try {
+		return filtrarPorEstado(estado_)->toString();
+	}
+	catch (ElementoNoEncontradoException<T>) {
+		return "No se encontraron elementos con ese estado.";	//esto debe debe de ser una excepcion
+	}
 }
 
 template<class T>
