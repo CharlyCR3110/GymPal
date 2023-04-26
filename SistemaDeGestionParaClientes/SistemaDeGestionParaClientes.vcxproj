@@ -135,6 +135,7 @@
     <ClInclude Include="Curso.h" />
     <ClInclude Include="DatosBiometricos.h" />
     <ClInclude Include="DatosBiometricosInvalidosException.h" />
+    <ClInclude Include="ElementoNoEncontradoException.h" />
     <ClInclude Include="Fecha.h" />
     <ClInclude Include="FechaInvalidaException.h" />
     <ClInclude Include="Grupo.h" />
@@ -157,6 +158,7 @@
     <ClCompile Include="Curso.cpp" />
     <ClCompile Include="DatosBiometricos.cpp" />
     <ClCompile Include="DatosBiometricosInvalidosException.cpp" />
+    <ClCompile Include="ElementoNoEncontradoException.cpp" />
     <ClCompile Include="Fecha.cpp" />
     <ClCompile Include="FechaInvalidaException.cpp" />
     <ClCompile Include="Grupo.cpp" />
