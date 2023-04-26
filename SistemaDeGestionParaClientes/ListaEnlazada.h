@@ -1,6 +1,8 @@
 #pragma once
 #include "Nodo.h"
 #include "ListaEnlazadasException.h"
+#include "ElementoNoEncontradoException.h"
+#include "ListaVaciaException.h"
 
 template <class T>
 class ListaEnlazada
@@ -12,14 +14,14 @@ private:
 public:
 	ListaEnlazada(const ListaEnlazada<T>& lista_);	// constructor copia
 	ListaEnlazada();
-	~ListaEnlazada();
+	virtual ~ListaEnlazada();
 	//getters
 	Nodo<T>* getPrimero();
 	Nodo<T>* getUltimo();
 	int getCantidad();
-	//metodos
-	bool estaVacia();
-	Nodo<T>* buscarNodo(T* dato_);	// busca el nodo que contiene el dato
+	// utils
+	const bool estaVacia() const;
+	//metodos para insertar y eliminar
 	void insertar(T* dato_);	// inserta al final
 	void insertarAlInicio(T* dato_);	// inserta al inicio
 	void eliminar(int posicion_);	// elimina por posicion
@@ -28,6 +30,17 @@ public:
 	void eliminarDato(T* dato_);	// elimina el dato
 	void vaciar();	// elimina todos los datos
 	T* buscar(T* dato_);
+	//metodos para buscar cositas
+	Nodo<T>* buscarNodo(T* dato_);	// busca el nodo que contiene el dato --- poco util
+	T* buscarPorCodigo(string codigo_);	// me devuelve el dato que contiene el codigo (o sea un deportista, un curso, etc)
+	//metodos para filtrar Deportistas por estado
+	ListaEnlazada<T>* filtrarPorEstado(char estado_);	// lo filtro. luego en otro metodo lo muestro con 'X
+	//metodos para mostrar lista con base en el estado;
+	string mostrarPorEstado(char estado_);	// muestra los datos de la lista filtrada //2.3.2-4
+	// mostrar elemento especifico por codigo
+	string mostrarPorCodigo(string codigo_);	// muestra los datos de un elemento especifico //2.4
+	//metodos para mostrar datos
+	const string toString() const;	// muestra los datos	//2.3.1 listado general
 	// sobrecarga de operador para mostrar los datos
 	template <class U>
 	friend ostream& operator <<(ostream& out, ListaEnlazada<U>& lista_);	// operador de salida
@@ -37,6 +50,11 @@ public:
 template<class T>
 inline ListaEnlazada<T>::ListaEnlazada(const ListaEnlazada<T>& lista_)
 {
+	if (&lista_ == nullptr)
+	{
+		throw ListaEnlazadasException("La lista pasada por parametro es nula");
+	}
+
 	this->primero = nullptr;
 	this->ultimo = nullptr;
 	this->cantidad = 0;
@@ -81,33 +99,21 @@ inline int ListaEnlazada<T>::getCantidad()
 }
 
 template<class T>
-inline bool ListaEnlazada<T>::estaVacia()
+inline const bool ListaEnlazada<T>::estaVacia() const
 {
-	return this->primero == nullptr;
-}
 
-template<class T>
-inline Nodo<T>* ListaEnlazada<T>::buscarNodo(T* dato_)
-{
-	if (estaVacia())
-	{
-		throw ListaEnlazadasExceptions("Lista vacia");
-	}
-	Nodo<T>* actual = this->primero;
-	while (actual != nullptr && actual->getDato() != dato_)	// recorre la lista hasta encontrar el dato o llegar al final
-	{
-		actual = actual->getSiguiente();
-	}
-	if (actual == nullptr)	// si no encontr[o el dato lanza una excepcion
-	{
-		throw ListaEnlazadasExceptions("Dato no encontrado");
-	}
-	return actual;
+	return this->primero == nullptr;
 }
 
 template<class T>
 inline void ListaEnlazada<T>::insertar(T* dato_)
 {
+	if (dato_ == nullptr)
+	{
+		throw ListaEnlazadasExceptions("El dato no puede ser nulo");
+	}
+
+
 	Nodo<T>* nuevo = new Nodo<T>(dato_);
 	if (estaVacia())
 	{
@@ -124,6 +130,12 @@ inline void ListaEnlazada<T>::insertar(T* dato_)
 template<class T>
 inline void ListaEnlazada<T>::insertarAlInicio(T* dato_)
 {
+	if (dato_ == nullptr)
+	{
+		throw ListaEnlazadasExceptions("El dato no puede ser nulo");
+	}
+
+
 	Nodo<T>* nuevo = new Nodo<T>(dato_);
 	if (estaVacia())
 	{
@@ -143,7 +155,7 @@ inline void ListaEnlazada<T>::eliminar(int posicion_)
 {
 	if (posicion_ <= 0 || posicion_ > this->cantidad)
 	{
-		throw exception("Posicion invalida");
+		throw ListaEnlazadasExceptions("Posicion invalida");
 	}
 	if (posicion_ == 1)
 	{
@@ -170,9 +182,9 @@ inline void ListaEnlazada<T>::eliminar(int posicion_)
 template<class T>
 inline void ListaEnlazada<T>::eliminarPrimero()
 {
-	if (this->cantidad == 0)
+	if (estaVacia())
 	{
-		throw exception("Lista vacia");
+		throw ListaVaciaException();
 	}
 	Nodo<T>* eliminar = this->primero;
 	this->primero = primero->getSiguiente();
@@ -187,9 +199,9 @@ inline void ListaEnlazada<T>::eliminarPrimero()
 template<class T>
 inline void ListaEnlazada<T>::eliminarUltimo()
 {
-	if (this->cantidad == 0)
+	if (estaVacia())
 	{
-		throw exception("Lista vacia");
+		throw ListaVaciaException();
 	} 
 	
 	if (this->cantidad == 1)
@@ -215,9 +227,15 @@ inline void ListaEnlazada<T>::eliminarUltimo()
 template<class T>
 inline void ListaEnlazada<T>::eliminarDato(T* dato_)
 {
-	if (this->cantidad == 0)
+	if (dato_ == nullptr)
 	{
-		throw ListaEnlazadasExceptions("Lista vacia");
+		throw ListaEnlazadasExceptions("El dato no puede ser nulo");
+	}
+
+
+	if (estaVacia())
+	{
+		throw ListaVaciaException();
 	}
 	Nodo<T>* actual = this->primero;
 	Nodo<T>* anterior = nullptr;
@@ -230,7 +248,7 @@ inline void ListaEnlazada<T>::eliminarDato(T* dato_)
 
 	if (actual == nullptr)
 	{
-		throw ListaEnlazadasExceptions("Dato no encontrado");
+		throw ElementoNoEncontradoException<T>();
 	}
 
 	if (actual == this->primero)
@@ -264,6 +282,17 @@ inline void ListaEnlazada<T>::vaciar()
 template<class T>
 inline T* ListaEnlazada<T>::buscar(T* dato_)
 {
+	if (dato_ == nullptr)
+	{
+		throw ListaEnlazadasExceptions("El dato no puede ser nulo");
+	}
+
+
+	if (estaVacia())
+	{
+		throw ListaVaciaException();
+	}
+
 	Nodo<T>* actual = primero;
 	while (actual != nullptr) {
 		if ((actual->getDato()) == dato_) {
@@ -271,7 +300,121 @@ inline T* ListaEnlazada<T>::buscar(T* dato_)
 		}
 		actual = actual->getSiguiente();
 	}
-	return nullptr;
+
+	if (actual == nullptr)
+	{
+		throw ElementoNoEncontradoException<T>();
+	}
+}
+
+template<class T>
+inline Nodo<T>* ListaEnlazada<T>::buscarNodo(T* dato_)
+{
+	if (dato_ == nullptr)
+	{
+		throw ListaEnlazadasExceptions("El dato no puede ser nulo");
+	}
+
+	if (estaVacia())
+	{
+		throw ListaVaciaException();
+	}
+	Nodo<T>* actual = this->primero;
+	while (actual != nullptr && actual->getDato() != dato_)	// recorre la lista hasta encontrar el dato o llegar al final
+	{
+		actual = actual->getSiguiente();
+	}
+	if (actual == nullptr)	// si no encontr[o el dato lanza una excepcion
+	{
+		throw ElementoNoEncontradoException<T>;
+	}
+	return actual;
+}
+
+template<class T>
+inline T* ListaEnlazada<T>::buscarPorCodigo(string codigo_)
+{
+	if (estaVacia()) 
+	{
+		throw ListaVaciaException();
+	}
+
+	Nodo<T>* actual = primero;
+	while (actual != nullptr) {
+		if ((actual->getDato())->getCodigo() == codigo_) {
+			return actual->getDato();
+		}
+		actual = actual->getSiguiente();
+	}
+	// si no lo encuentra lanza una excepcion
+	throw ElementoNoEncontradoException<T>();
+}
+
+template<class T>
+inline ListaEnlazada<T>* ListaEnlazada<T>::filtrarPorEstado(char estado_)
+{
+	if (estaVacia())
+	{
+		throw ListaVaciaException();
+	}
+
+	ListaEnlazada<T>* filtrada = new ListaEnlazada<T>();
+	Nodo<T>* actual = this->primero;
+	while (actual != nullptr)
+	{
+		if ((actual->getDato())->getEstado() == estado_)
+		{
+			filtrada->insertar(actual->getDato());
+		}
+		actual = actual->getSiguiente();
+	}
+
+	if (filtrada->estaVacia())
+	{
+		throw ElementoNoEncontradoException<T>();
+	}
+
+	return filtrada;
+}
+
+template<class T>
+inline string ListaEnlazada<T>::mostrarPorEstado(char estado_)
+{
+	try {
+		return filtrarPorEstado(estado_)->toString();
+	}
+	catch (ElementoNoEncontradoException<T>) {
+		return "No se encontraron elementos con ese estado.";	//esto debe debe de ser una excepcion
+	}
+}
+
+template<class T>
+inline string ListaEnlazada<T>::mostrarPorCodigo(string codigo_)
+{
+	try {
+		return buscarPorCodigo(codigo_)->toString();
+	}
+	catch (ElementoNoEncontradoException<T>) {
+		return "No se encontro el elemento con ese codigo.";	//esto debe debe de ser una excepcion
+	}
+}
+
+template<class T>
+inline const string ListaEnlazada<T>::toString() const
+{
+	if (estaVacia())
+	{
+		return "Actualmente la lista se encuentra vacia.";
+	}
+	stringstream ss;
+	Nodo<T>* actual = this->primero;
+	while (actual != nullptr)
+	{
+		ss << actual->getDato()->toString() << endl;
+		actual = actual->getSiguiente();
+	}
+
+	return ss.str();
 }
 
 template<class T>

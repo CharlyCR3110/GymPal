@@ -135,6 +135,7 @@
     <ClInclude Include="Curso.h" />
     <ClInclude Include="DatosBiometricos.h" />
     <ClInclude Include="DatosBiometricosInvalidosException.h" />
+    <ClInclude Include="ElementoNoEncontradoException.h" />
     <ClInclude Include="Fecha.h" />
     <ClInclude Include="FechaInvalidaException.h" />
     <ClInclude Include="Grupo.h" />
@@ -143,6 +144,7 @@
     <ClInclude Include="ListaDeportistaUtils.h" />
     <ClInclude Include="ListaEnlazada.h" />
     <ClInclude Include="ListaEnlazadasException.h" />
+    <ClInclude Include="ListaVaciaException.h" />
     <ClInclude Include="ManejoFechas.h" />
     <ClInclude Include="Nadador.h" />
     <ClInclude Include="Nodo.h" />
@@ -157,6 +159,7 @@
     <ClCompile Include="Curso.cpp" />
     <ClCompile Include="DatosBiometricos.cpp" />
     <ClCompile Include="DatosBiometricosInvalidosException.cpp" />
+    <ClCompile Include="ElementoNoEncontradoException.cpp" />
     <ClCompile Include="Fecha.cpp" />
     <ClCompile Include="FechaInvalidaException.cpp" />
     <ClCompile Include="Grupo.cpp" />
@@ -165,6 +168,7 @@
     <ClCompile Include="ListaDeportistaUtils.cpp" />
     <ClCompile Include="ListaEnlazada.cpp" />
     <ClCompile Include="ListaEnlazadasException.cpp" />
+    <ClCompile Include="ListaVaciaException.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="ManejoFechas.cpp" />
     <ClCompile Include="Nadador.cpp" />
