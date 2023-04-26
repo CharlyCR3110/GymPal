@@ -19,9 +19,9 @@ public:
 	Nodo<T>* getPrimero();
 	Nodo<T>* getUltimo();
 	int getCantidad();
-	//metodos
+	// utils
 	const bool estaVacia() const;
-	Nodo<T>* buscarNodo(T* dato_);	// busca el nodo que contiene el dato
+	//metodos para insertar y eliminar
 	void insertar(T* dato_);	// inserta al final
 	void insertarAlInicio(T* dato_);	// inserta al inicio
 	void eliminar(int posicion_);	// elimina por posicion
@@ -31,8 +31,8 @@ public:
 	void vaciar();	// elimina todos los datos
 	T* buscar(T* dato_);
 	//metodos para buscar cositas
+	Nodo<T>* buscarNodo(T* dato_);	// busca el nodo que contiene el dato --- poco util
 	T* buscarPorCodigo(string codigo_);
-	
 	// sobrecarga de operador para mostrar los datos
 	template <class U>
 	friend ostream& operator <<(ostream& out, ListaEnlazada<U>& lista_);	// operador de salida
@@ -90,25 +90,6 @@ inline const bool ListaEnlazada<T>::estaVacia() const
 {
 
 	return this->primero == nullptr;
-}
-
-template<class T>
-inline Nodo<T>* ListaEnlazada<T>::buscarNodo(T* dato_)
-{
-	if (estaVacia())
-	{
-		throw ListaVaciaException();
-	}
-	Nodo<T>* actual = this->primero;
-	while (actual != nullptr && actual->getDato() != dato_)	// recorre la lista hasta encontrar el dato o llegar al final
-	{
-		actual = actual->getSiguiente();
-	}
-	if (actual == nullptr)	// si no encontr[o el dato lanza una excepcion
-	{
-		throw ElementoNoEncontradoException<T>;
-	}
-	return actual;
 }
 
 template<class T>
@@ -278,6 +259,25 @@ inline T* ListaEnlazada<T>::buscar(T* dato_)
 		actual = actual->getSiguiente();
 	}
 	return nullptr;
+}
+
+template<class T>
+inline Nodo<T>* ListaEnlazada<T>::buscarNodo(T* dato_)
+{
+	if (estaVacia())
+	{
+		throw ListaVaciaException();
+	}
+	Nodo<T>* actual = this->primero;
+	while (actual != nullptr && actual->getDato() != dato_)	// recorre la lista hasta encontrar el dato o llegar al final
+	{
+		actual = actual->getSiguiente();
+	}
+	if (actual == nullptr)	// si no encontr[o el dato lanza una excepcion
+	{
+		throw ElementoNoEncontradoException<T>;
+	}
+	return actual;
 }
 
 template<class T>
