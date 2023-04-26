@@ -2,6 +2,8 @@
 #include "DeportistaInvalidoException.h"
 #include "Fecha.h"
 #include "FechaInvalidaException.h"
+#include "ListaEnlazada.h"
+#include "Pago.h"
 
 class Deportista
 {
@@ -12,6 +14,8 @@ protected:
 	Fecha* fechaNacimiento;
 	char estado; // Activo = 'A', Inactivo = 'I', Con Cuentas Pendientes = 'P'
 	// agregar lista de pagos
+	ListaEnlazada<Pago>* listaPagos;
+	// agregar lista de cursos??
 public:
 	Deportista(string cedula_ = "", string nombre_ = "", string telefono_ = "", Fecha* fechaNacimiento_ = nullptr, char estado_ = ' ');
 	Deportista(const Deportista& deportista_);	//constructor copia
@@ -28,6 +32,7 @@ public:
 	virtual const string getTelefono() const;
 	virtual Fecha* getFechaNacimiento();
 	virtual const char getEstado() const;
+	ListaEnlazada<Pago>* getPagos();	// devuelve la lista de pagos
 	//metodo para poder utilizar el template de buscar por codigo
 	const string getCodigo() const; //devuelve la cedula
 	//metodos

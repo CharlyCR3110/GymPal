@@ -14,13 +14,16 @@ Deportista::Deportista(string cedula_, string nombre_, string telefono_, Fecha* 
     {
 		throw DeportistaInvalidoException("Fecha de nacimiento invalida");
     }
+
+    this->listaPagos = new ListaEnlazada<Pago>();
 }
 
 Deportista::Deportista(const Deportista& deportista_): 
     cedula(deportista_.cedula),
     nombre(deportista_.nombre),
     telefono(deportista_.telefono),
-    estado(deportista_.estado)
+    estado(deportista_.estado),
+    listaPagos(deportista_.listaPagos)
 {
     try {
 		this->fechaNacimiento = new Fecha(*deportista_.fechaNacimiento);
@@ -86,6 +89,11 @@ Fecha* Deportista::getFechaNacimiento()
 const char Deportista::getEstado() const
 {
     return this->estado;
+}
+
+ListaEnlazada<Pago>* Deportista::getPagos()
+{
+    return this->listaPagos;
 }
 
 const string Deportista::getCodigo() const

@@ -128,6 +128,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Ciclista.h" />
+    <ClInclude Include="ControlPagos.h" />
+    <ClInclude Include="ControlPagosInvalidoException.h" />
     <ClInclude Include="Corredor.h" />
     <ClInclude Include="Deportista.h" />
     <ClInclude Include="DeportistaInvalidoException.h" />
@@ -135,6 +137,7 @@
     <ClInclude Include="Curso.h" />
     <ClInclude Include="DatosBiometricos.h" />
     <ClInclude Include="DatosBiometricosInvalidosException.h" />
+    <ClInclude Include="DeportistaNoEncontradoException.h" />
     <ClInclude Include="ElementoNoEncontradoException.h" />
     <ClInclude Include="Fecha.h" />
     <ClInclude Include="FechaInvalidaException.h" />
@@ -148,10 +151,14 @@
     <ClInclude Include="ManejoFechas.h" />
     <ClInclude Include="Nadador.h" />
     <ClInclude Include="Nodo.h" />
+    <ClInclude Include="Pago.h" />
+    <ClInclude Include="PagoInvalidoException.h" />
     <ClInclude Include="Triatlonista.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Ciclista.cpp" />
+    <ClCompile Include="ControlPagos.cpp" />
+    <ClCompile Include="ControlPagosInvalidoException.cpp" />
     <ClCompile Include="Corredor.cpp" />
     <ClCompile Include="Deportista.cpp" />
     <ClCompile Include="DeportistaInvalidoException.cpp" />
@@ -159,6 +166,7 @@
     <ClCompile Include="Curso.cpp" />
     <ClCompile Include="DatosBiometricos.cpp" />
     <ClCompile Include="DatosBiometricosInvalidosException.cpp" />
+    <ClCompile Include="DeportistaNoEncontradoException.cpp" />
     <ClCompile Include="ElementoNoEncontradoException.cpp" />
     <ClCompile Include="Fecha.cpp" />
     <ClCompile Include="FechaInvalidaException.cpp" />
@@ -173,6 +181,8 @@
     <ClCompile Include="ManejoFechas.cpp" />
     <ClCompile Include="Nadador.cpp" />
     <ClCompile Include="Nodo.cpp" />
+    <ClCompile Include="Pago.cpp" />
+    <ClCompile Include="PagoInvalidoException.cpp" />
     <ClCompile Include="Triatlonista.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
