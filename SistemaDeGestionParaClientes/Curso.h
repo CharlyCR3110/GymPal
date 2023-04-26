@@ -38,6 +38,9 @@ public:
 	ListaEnlazada<Grupo>* getListaGrupos();
 	// metodos
 	const string toString() const;
+	bool hayGrupos();
+	void agregarGrupo(Grupo* grupo_);
+	void eliminarGrupo(Grupo* grupo_);
 	// sobrecarga de operador para mostrar los datos
 	friend ostream& operator<<(ostream &out, Curso &curso_);
 	Curso& operator=(const Curso& curso_);	// operador de asignacion

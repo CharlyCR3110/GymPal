@@ -158,6 +158,40 @@ const string Curso::toString() const
     return ss.str();
 }
 
+bool Curso::hayGrupos()
+{
+    return this->cantidadDeGruposActuales > 0;
+}
+
+void Curso::agregarGrupo(Grupo* grupo_)
+{
+    if (this->cantidadDeGruposActuales < this->cantidadMaximaDeGrupos)
+    {
+        this->listaGrupos->insertar(grupo_);
+	    this->cantidadDeGruposActuales++;
+	}
+    else
+    {
+		throw exception("No se pueden agregar mas grupos");
+    }
+}
+
+void Curso::eliminarGrupo(Grupo* grupo_)
+{
+    if (!hayGrupos())
+    {
+		throw exception("No hay grupos en el curso");
+	}
+
+    try {
+        this->listaGrupos->eliminarDato(grupo_);
+        this->cantidadDeGruposActuales--;
+    }
+    catch (ListaEnlazadasExceptions& e) {
+        cerr << "Error desde Curso::eliminarGrupo: " << e.what() << endl;
+	}
+}
+
 Curso& Curso::operator=(const Curso& curso_)
 {
     if (this != &curso_)
