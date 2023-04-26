@@ -20,7 +20,7 @@ public:
 	Nodo<T>* getUltimo();
 	int getCantidad();
 	//metodos
-	bool estaVacia();
+	const bool estaVacia() const;
 	Nodo<T>* buscarNodo(T* dato_);	// busca el nodo que contiene el dato
 	void insertar(T* dato_);	// inserta al final
 	void insertarAlInicio(T* dato_);	// inserta al inicio
@@ -86,8 +86,9 @@ inline int ListaEnlazada<T>::getCantidad()
 }
 
 template<class T>
-inline bool ListaEnlazada<T>::estaVacia()
+inline const bool ListaEnlazada<T>::estaVacia() const
 {
+
 	return this->primero == nullptr;
 }
 
