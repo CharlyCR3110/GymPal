@@ -96,7 +96,7 @@ inline Nodo<T>* ListaEnlazada<T>::buscarNodo(T* dato_)
 {
 	if (estaVacia())
 	{
-		throw ListaEnlazadasExceptions("Lista vacia");
+		throw ListaVaciaException();
 	}
 	Nodo<T>* actual = this->primero;
 	while (actual != nullptr && actual->getDato() != dato_)	// recorre la lista hasta encontrar el dato o llegar al final
@@ -105,7 +105,7 @@ inline Nodo<T>* ListaEnlazada<T>::buscarNodo(T* dato_)
 	}
 	if (actual == nullptr)	// si no encontr[o el dato lanza una excepcion
 	{
-		throw ListaEnlazadasExceptions("Dato no encontrado");
+		throw ElementoNoEncontradoException<T>;
 	}
 	return actual;
 }
@@ -148,7 +148,7 @@ inline void ListaEnlazada<T>::eliminar(int posicion_)
 {
 	if (posicion_ <= 0 || posicion_ > this->cantidad)
 	{
-		throw exception("Posicion invalida");
+		throw ListaEnlazadasExceptions("Posicion invalida");
 	}
 	if (posicion_ == 1)
 	{
@@ -175,9 +175,9 @@ inline void ListaEnlazada<T>::eliminar(int posicion_)
 template<class T>
 inline void ListaEnlazada<T>::eliminarPrimero()
 {
-	if (this->cantidad == 0)
+	if (estaVacia())
 	{
-		throw exception("Lista vacia");
+		throw ListaVaciaException();
 	}
 	Nodo<T>* eliminar = this->primero;
 	this->primero = primero->getSiguiente();
@@ -192,9 +192,9 @@ inline void ListaEnlazada<T>::eliminarPrimero()
 template<class T>
 inline void ListaEnlazada<T>::eliminarUltimo()
 {
-	if (this->cantidad == 0)
+	if (estaVacia())
 	{
-		throw exception("Lista vacia");
+		throw ListaVaciaException();
 	} 
 	
 	if (this->cantidad == 1)
@@ -220,9 +220,9 @@ inline void ListaEnlazada<T>::eliminarUltimo()
 template<class T>
 inline void ListaEnlazada<T>::eliminarDato(T* dato_)
 {
-	if (this->cantidad == 0)
+	if (estaVacia())
 	{
-		throw ListaEnlazadasExceptions("Lista vacia");
+		throw ListaVaciaException();
 	}
 	Nodo<T>* actual = this->primero;
 	Nodo<T>* anterior = nullptr;
@@ -235,7 +235,7 @@ inline void ListaEnlazada<T>::eliminarDato(T* dato_)
 
 	if (actual == nullptr)
 	{
-		throw ListaEnlazadasExceptions("Dato no encontrado");
+		throw ElementoNoEncontradoException<T>();
 	}
 
 	if (actual == this->primero)
