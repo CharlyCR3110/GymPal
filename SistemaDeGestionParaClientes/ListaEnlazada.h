@@ -32,7 +32,7 @@ public:
 	T* buscar(T* dato_);
 	//metodos para buscar cositas
 	Nodo<T>* buscarNodo(T* dato_);	// busca el nodo que contiene el dato --- poco util
-	T* buscarPorCodigo(string codigo_);
+	T* buscarPorCodigo(string codigo_);	// me devuelve el dato que contiene el codigo (o sea un deportista, un curso, etc)
 	//metodos para filtrar Deportistas por estado
 	ListaEnlazada<T>* filtrarPorEstado(char estado_);	// lo filtro. luego en otro metodo lo muestro con 'X
 	//metodos para mostrar lista con base en el estado;
@@ -103,6 +103,12 @@ inline const bool ListaEnlazada<T>::estaVacia() const
 template<class T>
 inline void ListaEnlazada<T>::insertar(T* dato_)
 {
+	if (dato_ == nullptr)
+	{
+		throw ListaEnlazadasExceptions("El dato no puede ser nulo");
+	}
+
+
 	Nodo<T>* nuevo = new Nodo<T>(dato_);
 	if (estaVacia())
 	{
@@ -119,6 +125,12 @@ inline void ListaEnlazada<T>::insertar(T* dato_)
 template<class T>
 inline void ListaEnlazada<T>::insertarAlInicio(T* dato_)
 {
+	if (dato_ == nullptr)
+	{
+		throw ListaEnlazadasExceptions("El dato no puede ser nulo");
+	}
+
+
 	Nodo<T>* nuevo = new Nodo<T>(dato_);
 	if (estaVacia())
 	{
@@ -210,6 +222,12 @@ inline void ListaEnlazada<T>::eliminarUltimo()
 template<class T>
 inline void ListaEnlazada<T>::eliminarDato(T* dato_)
 {
+	if (dato_ == nullptr)
+	{
+		throw ListaEnlazadasExceptions("El dato no puede ser nulo");
+	}
+
+
 	if (estaVacia())
 	{
 		throw ListaVaciaException();
@@ -259,6 +277,17 @@ inline void ListaEnlazada<T>::vaciar()
 template<class T>
 inline T* ListaEnlazada<T>::buscar(T* dato_)
 {
+	if (dato_ == nullptr)
+	{
+		throw ListaEnlazadasExceptions("El dato no puede ser nulo");
+	}
+
+
+	if (estaVacia())
+	{
+		throw ListaVaciaException();
+	}
+
 	Nodo<T>* actual = primero;
 	while (actual != nullptr) {
 		if ((actual->getDato()) == dato_) {
@@ -272,6 +301,11 @@ inline T* ListaEnlazada<T>::buscar(T* dato_)
 template<class T>
 inline Nodo<T>* ListaEnlazada<T>::buscarNodo(T* dato_)
 {
+	if (dato_ == nullptr)
+	{
+		throw ListaEnlazadasExceptions("El dato no puede ser nulo");
+	}
+
 	if (estaVacia())
 	{
 		throw ListaVaciaException();
