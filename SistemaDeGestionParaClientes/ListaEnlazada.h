@@ -33,8 +33,10 @@ public:
 	//metodos para buscar cositas
 	Nodo<T>* buscarNodo(T* dato_);	// busca el nodo que contiene el dato --- poco util
 	T* buscarPorCodigo(string codigo_);
+	//metodos para filtrar Deportistas por estado
+	ListaEnlazada<T>* filtrarPorEstado(char estado_);	// lo filtro. luego en otro metodo lo muestro con 'X
 	//metodos para mostrar datos
-	const string toString() const;	// muestra los datos
+	const string toString() const;	// muestra los datos	//2.3.1 listado general
 	// sobrecarga de operador para mostrar los datos
 	template <class U>
 	friend ostream& operator <<(ostream& out, ListaEnlazada<U>& lista_);	// operador de salida
@@ -299,6 +301,33 @@ inline T* ListaEnlazada<T>::buscarPorCodigo(string codigo_)
 	}
 	// si no lo encuentra lanza una excepcion
 	throw ElementoNoEncontradoException<T>();
+}
+
+template<class T>
+inline ListaEnlazada<T>* ListaEnlazada<T>::filtrarPorEstado(char estado_)
+{
+	if (estaVacia())
+	{
+		throw ListaVaciaException();
+	}
+
+	ListaEnlazada<T>* filtrada = new ListaEnlazada<T>();
+	Nodo<T>* actual = this->primero;
+	while (actual != nullptr)
+	{
+		if ((actual->getDato())->getEstado() == estado_)
+		{
+			filtrada->insertar(actual->getDato());
+		}
+		actual = actual->getSiguiente();
+	}
+
+	if (filtrada->estaVacia())
+	{
+		throw ElementoNoEncontradoException<T>();
+	}
+
+	return filtrada;
 }
 
 template<class T>
