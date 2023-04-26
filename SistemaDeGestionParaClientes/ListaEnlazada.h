@@ -14,7 +14,7 @@ private:
 public:
 	ListaEnlazada(const ListaEnlazada<T>& lista_);	// constructor copia
 	ListaEnlazada();
-	~ListaEnlazada();
+	virtual ~ListaEnlazada();
 	//getters
 	Nodo<T>* getPrimero();
 	Nodo<T>* getUltimo();
@@ -295,7 +295,11 @@ inline T* ListaEnlazada<T>::buscar(T* dato_)
 		}
 		actual = actual->getSiguiente();
 	}
-	return nullptr;
+
+	if (actual == nullptr)
+	{
+		throw ElementoNoEncontradoException<T>();
+	}
 }
 
 template<class T>
