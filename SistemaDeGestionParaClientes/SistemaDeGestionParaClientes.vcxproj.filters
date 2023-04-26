@@ -78,6 +78,30 @@
     <ClCompile Include="Hora.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ControlPagos.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ElementoNoEncontradoException.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ListaVaciaException.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Pago.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ControlPagosInvalidoException.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DeportistaNoEncontradoException.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PagoInvalidoException.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PagosNoRegistradosException.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Deportista.h">
@@ -138,6 +162,30 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Hora.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ControlPagos.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ElementoNoEncontradoException.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ListaVaciaException.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Pago.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ControlPagosInvalidoException.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DeportistaNoEncontradoException.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PagoInvalidoException.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PagosNoRegistradosException.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

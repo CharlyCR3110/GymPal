@@ -153,6 +153,7 @@
     <ClInclude Include="Nodo.h" />
     <ClInclude Include="Pago.h" />
     <ClInclude Include="PagoInvalidoException.h" />
+    <ClInclude Include="PagosNoRegistradosException.h" />
     <ClInclude Include="Triatlonista.h" />
   </ItemGroup>
   <ItemGroup>
@@ -183,6 +184,7 @@
     <ClCompile Include="Nodo.cpp" />
     <ClCompile Include="Pago.cpp" />
     <ClCompile Include="PagoInvalidoException.cpp" />
+    <ClCompile Include="PagosNoRegistradosException.cpp" />
     <ClCompile Include="Triatlonista.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
