@@ -2,6 +2,7 @@
 #include "Nodo.h"
 #include "ListaEnlazadasException.h"
 #include "ElementoNoEncontradoException.h"
+#include "ListaVaciaException.h"
 
 template <class T>
 class ListaEnlazada
@@ -283,7 +284,7 @@ inline T* ListaEnlazada<T>::buscarPorCodigo(string codigo_)
 {
 	if (estaVacia()) 
 	{
-		throw ListaEnlazadasExceptions("Lista vacia");
+		throw ListaVaciaException();
 	}
 
 	Nodo<T>* actual = primero;
