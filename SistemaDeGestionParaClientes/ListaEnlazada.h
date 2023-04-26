@@ -33,6 +33,8 @@ public:
 	//metodos para buscar cositas
 	Nodo<T>* buscarNodo(T* dato_);	// busca el nodo que contiene el dato --- poco util
 	T* buscarPorCodigo(string codigo_);
+	//metodos para mostrar datos
+	const string toString() const;	// muestra los datos
 	// sobrecarga de operador para mostrar los datos
 	template <class U>
 	friend ostream& operator <<(ostream& out, ListaEnlazada<U>& lista_);	// operador de salida
@@ -297,6 +299,24 @@ inline T* ListaEnlazada<T>::buscarPorCodigo(string codigo_)
 	}
 	// si no lo encuentra lanza una excepcion
 	throw ElementoNoEncontradoException<T>();
+}
+
+template<class T>
+inline const string ListaEnlazada<T>::toString() const
+{
+	if (estaVacia())
+	{
+		return "Actualmente la lista se encuentra vacia.";
+	}
+	stringstream ss;
+	Nodo<T>* actual = this->primero;
+	while (actual != nullptr)
+	{
+		ss << actual->getDato()->toString() << endl;
+		actual = actual->getSiguiente();
+	}
+
+	return ss.str();
 }
 
 template<class T>
