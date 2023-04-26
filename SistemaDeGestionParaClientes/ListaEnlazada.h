@@ -50,6 +50,11 @@ public:
 template<class T>
 inline ListaEnlazada<T>::ListaEnlazada(const ListaEnlazada<T>& lista_)
 {
+	if (&lista_ == nullptr)
+	{
+		throw ListaEnlazadasException("La lista pasada por parametro es nula");
+	}
+
 	this->primero = nullptr;
 	this->ultimo = nullptr;
 	this->cantidad = 0;
