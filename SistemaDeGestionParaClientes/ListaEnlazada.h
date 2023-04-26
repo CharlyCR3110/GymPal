@@ -1,6 +1,7 @@
 #pragma once
 #include "Nodo.h"
 #include "ListaEnlazadasException.h"
+#include "ElementoNoEncontradoException.h"
 
 template <class T>
 class ListaEnlazada
@@ -28,6 +29,9 @@ public:
 	void eliminarDato(T* dato_);	// elimina el dato
 	void vaciar();	// elimina todos los datos
 	T* buscar(T* dato_);
+	//metodos para buscar cositas
+	T* buscarPorCodigo(string codigo_);
+	
 	// sobrecarga de operador para mostrar los datos
 	template <class U>
 	friend ostream& operator <<(ostream& out, ListaEnlazada<U>& lista_);	// operador de salida
@@ -272,6 +276,20 @@ inline T* ListaEnlazada<T>::buscar(T* dato_)
 		actual = actual->getSiguiente();
 	}
 	return nullptr;
+}
+
+template<class T>
+inline T* ListaEnlazada<T>::buscarPorCodigo(string codigo_)
+{
+	Nodo<T>* actual = primero;
+	while (actual != nullptr) {
+		if ((actual->getDato())->getCodigo() == codigo_) {
+			return actual->getDato();
+		}
+		actual = actual->getSiguiente();
+	}
+	// si no lo encuentra lanza una excepcion
+	throw ElementoNoEncontradoException<T>();
 }
 
 template<class T>
