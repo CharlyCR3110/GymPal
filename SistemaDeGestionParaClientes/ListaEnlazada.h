@@ -281,6 +281,11 @@ inline T* ListaEnlazada<T>::buscar(T* dato_)
 template<class T>
 inline T* ListaEnlazada<T>::buscarPorCodigo(string codigo_)
 {
+	if (estaVacia()) 
+	{
+		throw ListaEnlazadasExceptions("Lista vacia");
+	}
+
 	Nodo<T>* actual = primero;
 	while (actual != nullptr) {
 		if ((actual->getDato())->getCodigo() == codigo_) {
