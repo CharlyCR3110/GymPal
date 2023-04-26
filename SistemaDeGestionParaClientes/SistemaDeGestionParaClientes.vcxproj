@@ -144,6 +144,7 @@
     <ClInclude Include="ListaDeportistaUtils.h" />
     <ClInclude Include="ListaEnlazada.h" />
     <ClInclude Include="ListaEnlazadasException.h" />
+    <ClInclude Include="ListaVaciaException.h" />
     <ClInclude Include="ManejoFechas.h" />
     <ClInclude Include="Nadador.h" />
     <ClInclude Include="Nodo.h" />
@@ -167,6 +168,7 @@
     <ClCompile Include="ListaDeportistaUtils.cpp" />
     <ClCompile Include="ListaEnlazada.cpp" />
     <ClCompile Include="ListaEnlazadasException.cpp" />
+    <ClCompile Include="ListaVaciaException.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="ManejoFechas.cpp" />
     <ClCompile Include="Nadador.cpp" />
