@@ -135,8 +135,6 @@
     <ClInclude Include="DeportistaInvalidoException.h" />
     <ClInclude Include="CupoMaximoExcedido.h" />
     <ClInclude Include="Curso.h" />
-    <ClInclude Include="DatosBiometricos.h" />
-    <ClInclude Include="DatosBiometricosInvalidosException.h" />
     <ClInclude Include="DeportistaNoEncontradoException.h" />
     <ClInclude Include="ElementoNoEncontradoException.h" />
     <ClInclude Include="Fecha.h" />
@@ -144,7 +142,6 @@
     <ClInclude Include="Grupo.h" />
     <ClInclude Include="Hora.h" />
     <ClInclude Include="Instructor.h" />
-    <ClInclude Include="ListaDeportistaUtils.h" />
     <ClInclude Include="ListaEnlazada.h" />
     <ClInclude Include="ListaEnlazadasException.h" />
     <ClInclude Include="ListaVaciaException.h" />
@@ -165,8 +162,6 @@
     <ClCompile Include="DeportistaInvalidoException.cpp" />
     <ClCompile Include="CupoMaximoExcedido.cpp" />
     <ClCompile Include="Curso.cpp" />
-    <ClCompile Include="DatosBiometricos.cpp" />
-    <ClCompile Include="DatosBiometricosInvalidosException.cpp" />
     <ClCompile Include="DeportistaNoEncontradoException.cpp" />
     <ClCompile Include="ElementoNoEncontradoException.cpp" />
     <ClCompile Include="Fecha.cpp" />
@@ -174,7 +169,6 @@
     <ClCompile Include="Grupo.cpp" />
     <ClCompile Include="Hora.cpp" />
     <ClCompile Include="Instructor.cpp" />
-    <ClCompile Include="ListaDeportistaUtils.cpp" />
     <ClCompile Include="ListaEnlazada.cpp" />
     <ClCompile Include="ListaEnlazadasException.cpp" />
     <ClCompile Include="ListaVaciaException.cpp" />
