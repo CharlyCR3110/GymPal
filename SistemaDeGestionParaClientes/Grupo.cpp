@@ -234,6 +234,11 @@ bool Grupo::estaInscrito(Deportista* deportista_)
 	return false;
 }
 
+bool Grupo::estaLleno()
+{
+	return this->cantidadDeInscritos == this->cupoMaximo;
+}
+
 Grupo& Grupo::operator=(const Grupo& grupo_)
 {
 	if (this == &grupo_)

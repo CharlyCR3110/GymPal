@@ -51,7 +51,7 @@ public:
 	const string reporteGrupoGuiaMatricula() const;	// 5.3
 	// revisar que el deportista no este inscrito en este grupo (no pueden haber duplicados
 	bool estaInscrito(Deportista* deportista_);
-
+	bool estaLleno();
 	//sobrecarga
 	Grupo& operator=(const Grupo& grupo_);
 	friend ostream& operator<<(ostream& out, const Grupo& grupo_);
