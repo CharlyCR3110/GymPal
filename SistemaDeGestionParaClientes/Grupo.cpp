@@ -1,10 +1,12 @@
 #include "Grupo.h"
 
-Grupo::Grupo(Instructor* instructor_, int cupoMaximo_, Fecha* fechaDeInicio_, int semanasDeDuracion_, char diaDeLaSemana_, Hora* horaDeInicio_, Hora* horaDeFin_) :
+
+Grupo::Grupo(Instructor* instructor_, int cupoMaximo_, Fecha* fechaDeInicio_, int semanasDeDuracion_, int numeroGrupo_, char diaDeLaSemana_, Hora* horaDeInicio_, Hora* horaDeFin_) :
 	instructor(new Instructor(*instructor_)),
 	cupoMaximo(cupoMaximo_),
 	fechaDeInicio(new Fecha(*fechaDeInicio_)),
 	semanasDeDuracion(semanasDeDuracion_),
+	numeroGrupo(numeroGrupo_),
 	diaDeLaSemana(diaDeLaSemana_),
 	horaDeInicio(new Hora(*horaDeInicio_)),
 	horaDeFin(new Hora(*horaDeFin_)),
@@ -18,6 +20,7 @@ Grupo::Grupo(const Grupo& grupo_):
 	cupoMaximo(grupo_.cupoMaximo),
 	fechaDeInicio(new Fecha(*grupo_.fechaDeInicio)),
 	semanasDeDuracion(grupo_.semanasDeDuracion),
+	numeroGrupo(grupo_.numeroGrupo),
 	diaDeLaSemana(grupo_.diaDeLaSemana),
 	horaDeInicio(new Hora(*grupo_.horaDeInicio)),
 	horaDeFin(new Hora(*grupo_.horaDeFin)),

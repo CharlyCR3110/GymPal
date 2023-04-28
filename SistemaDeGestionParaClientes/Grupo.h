@@ -12,13 +12,15 @@ private:
 	int cantidadDeInscritos;
 	Fecha* fechaDeInicio;
 	int semanasDeDuracion;
+	int numeroGrupo;	// cuando se agrega un grupo a un curso, se le asigna un numero de grupo
 	//horario
 	char diaDeLaSemana; //Lunes, Martes, Miercoles, Jueves, Viernes, Sabado, Domingo (L, K, M, J, V, S, D)
 	Hora* horaDeInicio;
 	Hora* horaDeFin;
 	ListaEnlazada<Deportista>* deportistasInscritos;
 public:
-	Grupo(Instructor* instructor_, int cupoMaximo_, Fecha* fechaDeInicio_, int semanasDeDuracion_, char diaDeLaSemana_, Hora* horaDeInicio_, Hora* horaDeFin_);
+
+	Grupo(Instructor* instructor_, int cupoMaximo_, Fecha* fechaDeInicio_, int semanasDeDuracion_, int numeroGrupo_, char diaDeLaSemana_, Hora* horaDeInicio_, Hora* horaDeFin_);
 	Grupo (const Grupo& grupo_);
 	~Grupo();
 	//setters
