@@ -19,7 +19,7 @@ private:
 	Hora* horaDeFin;
 	ListaEnlazada<Deportista>* deportistasInscritos;
 public:
-
+	Grupo();
 	Grupo(Instructor* instructor_, int cupoMaximo_, Fecha* fechaDeInicio_, int semanasDeDuracion_, int numeroGrupo_, char diaDeLaSemana_, Hora* horaDeInicio_, Hora* horaDeFin_);
 	Grupo (const Grupo& grupo_);
 	~Grupo();

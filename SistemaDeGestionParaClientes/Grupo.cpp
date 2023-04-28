@@ -1,5 +1,18 @@
 #include "Grupo.h"
 
+Grupo::Grupo()
+{
+	instructor = new Instructor();
+	fechaDeInicio = new Fecha();
+	horaDeInicio = new Hora();
+	horaDeFin = new Hora();
+	deportistasInscritos = new ListaEnlazada<Deportista>();
+	cupoMaximo = 0;
+	semanasDeDuracion = 0;
+	numeroGrupo = 0;
+	diaDeLaSemana = ' ';
+	cantidadDeInscritos = 0;
+}
 
 Grupo::Grupo(Instructor* instructor_, int cupoMaximo_, Fecha* fechaDeInicio_, int semanasDeDuracion_, int numeroGrupo_, char diaDeLaSemana_, Hora* horaDeInicio_, Hora* horaDeFin_) :
 	instructor(new Instructor(*instructor_)),
