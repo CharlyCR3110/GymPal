@@ -158,6 +158,34 @@ const string Curso::toString() const
     return ss.str();
 }
 
+const string Curso::generarReporte() const
+{
+    stringstream ss;
+    ss << "Codigo: " << this->codigo << endl;
+    ss << "Nombre del curso: " << this->nombreDelCurso << endl;
+    ss << "Nivel: " << this->nivel << endl;
+    ss << "Cantidad maxima de grupos: " << this->cantidadMaximaDeGrupos << endl;
+    ss << "Detalle de grupos abiertos para el curso: " << endl;
+    if (!this->listaGrupos->estaVacia())
+    {
+        int i = 1;
+        ss << "Grupo" << "\t" << "Cupo" << "\t" << "Cantidad" << endl;
+        Nodo<Grupo>* nodoActual = this->listaGrupos->getPrimero();
+        while (nodoActual != nullptr)
+        {
+            ss << i << '\t' << nodoActual->getDato()->generarReporte() << endl;
+            nodoActual = nodoActual->getSiguiente();
+            i++;
+        }
+    }
+    else
+    {
+		ss << "No hay grupos" << endl;
+    }
+
+    return ss.str();
+}
+
 bool Curso::hayGrupos()
 {
     return this->cantidadDeGruposActuales > 0;

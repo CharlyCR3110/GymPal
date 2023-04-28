@@ -37,6 +37,7 @@ public:
 	ListaEnlazada<Grupo>* getListaGrupos();
 	// metodos
 	const string toString() const;
+	const string generarReporte() const;
 	bool hayGrupos();
 	void agregarGrupo(Grupo* grupo_);
 	void eliminarGrupo(Grupo* grupo_);
