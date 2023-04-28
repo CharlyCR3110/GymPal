@@ -165,6 +165,24 @@ const string Grupo::mostrarDeportistasInscritos() const
 	return ss.str();
 }
 
+void Grupo::agregarDeportista(Deportista* deportista_)
+{
+	if (deportista_ == nullptr)
+		throw std::invalid_argument("El deportista no puede ser nulo");	//crear excepcion
+
+	if (this->cantidadDeInscritos == this->cupoMaximo)
+		throw std::invalid_argument("El grupo ya esta lleno");	//crear excepcion
+
+	try {
+		this->deportistasInscritos->insertar(deportista_);
+		this->cantidadDeInscritos++;
+	}
+	catch (std::invalid_argument& e)
+	{
+		throw e;
+	}
+}
+
 Grupo& Grupo::operator=(const Grupo& grupo_)
 {
 	if (this == &grupo_)

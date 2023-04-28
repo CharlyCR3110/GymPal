@@ -43,6 +43,7 @@ public:
 	const string generarReporte() const;
 	const string toString() const;	
 	const string mostrarDeportistasInscritos() const;
+	void agregarDeportista(Deportista* deportista_);
 	//sobrecarga
 	Grupo& operator=(const Grupo& grupo_);
 	friend ostream& operator<<(ostream& out, const Grupo& grupo_);
