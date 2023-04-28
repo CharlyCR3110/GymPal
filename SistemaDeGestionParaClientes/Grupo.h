@@ -28,6 +28,7 @@ public:
 	void setCupoMaximo(int cupoMaximo_);
 	void setFechaDeInicio(Fecha* fechaDeInicio_);
 	void setSemanasDeDuracion(int semanasDeDuracion_);
+	void setNumeroGrupo(int numeroGrupo_);
 	void setDiaDeLaSemana(char diaDeLaSemana_);
 	void setHoraDeInicio(Hora* horaDeInicio_);
 	void setHoraDeFin(Hora* horaDeFin_);
@@ -37,6 +38,7 @@ public:
 	const int getCupoMaximo() const;
 	Fecha* getFechaDeInicio();
 	const int getSemanasDeDuracion() const;
+	const int getNumeroGrupo() const;
 	const char getDiaDeLaSemana() const;
 	Hora* getHoraDeInicio();
 	Hora* getHoraDeFin();

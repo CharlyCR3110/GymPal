@@ -71,6 +71,11 @@ void Grupo::setSemanasDeDuracion(int semanasDeDuracion_)
 	this->semanasDeDuracion = semanasDeDuracion_;
 }
 
+void Grupo::setNumeroGrupo(int numeroGrupo_)
+{
+	this->numeroGrupo = numeroGrupo_;
+}
+
 void Grupo::setDiaDeLaSemana(char diaDeLaSemana_)
 {
 	this->diaDeLaSemana = diaDeLaSemana_;
@@ -120,6 +125,11 @@ Fecha* Grupo::getFechaDeInicio()
 const int Grupo::getSemanasDeDuracion() const
 {
 	return this->semanasDeDuracion;
+}
+
+const int Grupo::getNumeroGrupo() const
+{
+	return this->numeroGrupo;
 }
 
 const char Grupo::getDiaDeLaSemana() const
