@@ -130,6 +130,6 @@ string ControlCursos::reporteGuiaMatriculaCurso(string codigo_)
     }
     else
     {
-        return "No se encontro el curso";
+        return "No se encontro el curso.";
     }
 }
