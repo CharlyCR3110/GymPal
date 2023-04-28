@@ -184,6 +184,28 @@ const string Curso::generarReporte() const
     return ss.str();
 }
 
+const string Curso::reporteCursoGuiaMatricula() const
+{
+    stringstream ss;
+    ss << "Grupo" << '\t' << "Dia" << '\t' << "    Horario" << '\t'  << "  Cupo" << '\t' << "Cantidad" << endl;
+    // mostrar los grupos usando el metodo reporteGrupoGuiaMatricula de la clase Grupo
+    if (!this->listaGrupos->estaVacia())
+    {
+		Nodo<Grupo>* nodoActual = this->listaGrupos->getPrimero();
+        while (nodoActual != nullptr)
+        {
+			ss << nodoActual->getDato()->reporteGrupoGuiaMatricula() << endl;
+			nodoActual = nodoActual->getSiguiente();
+		}
+	}
+    else
+    {
+        ss << "Actualmente no hay grupos disponibles" << endl;
+    }
+
+    return ss.str();
+}
+
 bool Curso::hayGrupos()
 {
     return this->cantidadDeGruposActuales > 0;

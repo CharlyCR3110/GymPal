@@ -38,6 +38,7 @@ public:
 	// metodos
 	const string toString() const;
 	const string generarReporte() const;
+	const string reporteCursoGuiaMatricula() const;
 	bool hayGrupos();
 	void agregarGrupo(Grupo* grupo_);
 	void eliminarGrupo(Grupo* grupo_);
