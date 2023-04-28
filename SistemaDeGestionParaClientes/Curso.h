@@ -42,7 +42,8 @@ public:
 	bool hayGrupos();
 	void agregarGrupo(Grupo* grupo_);
 	void eliminarGrupo(Grupo* grupo_);
-	//
+	// revisar que el Deportista no este matriculado en ningun grupo del curso
+	bool estaMatriculado(Deportista* deportista_);
 	void matricularEnGrupo(int numeroGrupo, Deportista* deportista);
 	// sobrecarga de operador para mostrar los datos
 	friend ostream& operator<<(ostream &out, Curso &curso_);

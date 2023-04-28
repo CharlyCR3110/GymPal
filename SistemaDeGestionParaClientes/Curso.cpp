@@ -240,6 +240,29 @@ void Curso::eliminarGrupo(Grupo* grupo_)
 	}
 }
 
+bool Curso::estaMatriculado(Deportista* deportista_)
+{
+    if (!hayGrupos())
+    {
+        throw exception("No hay grupos en el curso Curso::estaMatriculado");
+    }
+    if (deportista_ == nullptr)
+    {
+        throw exception("El deportista es nulo desde Curso::estaMatriculado");
+    }
+    Nodo<Grupo>* nodoActual = this->listaGrupos->getPrimero();
+    while (nodoActual != nullptr)
+    {
+		if (nodoActual->getDato()->estaInscrito(deportista_))
+		{
+			return true;
+		}
+		nodoActual = nodoActual->getSiguiente();
+    }
+
+    return false;
+}
+
 void Curso::matricularEnGrupo(int numeroGrupo, Deportista* deportista)
 {
     if (!hayGrupos())
