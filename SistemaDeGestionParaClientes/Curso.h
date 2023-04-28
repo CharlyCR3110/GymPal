@@ -41,6 +41,8 @@ public:
 	bool hayGrupos();
 	void agregarGrupo(Grupo* grupo_);
 	void eliminarGrupo(Grupo* grupo_);
+	//
+	void matricularEnGrupo(int numeroGrupo, Deportista* deportista);
 	// sobrecarga de operador para mostrar los datos
 	friend ostream& operator<<(ostream &out, Curso &curso_);
 	Curso& operator=(const Curso& curso_);	// operador de asignacion

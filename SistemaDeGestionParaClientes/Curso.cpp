@@ -168,14 +168,12 @@ const string Curso::generarReporte() const
     ss << "Detalle de grupos abiertos para el curso: " << endl;
     if (!this->listaGrupos->estaVacia())
     {
-        int i = 1;
         ss << "Grupo" << "\t" << "Cupo" << "\t" << "Cantidad" << endl;
         Nodo<Grupo>* nodoActual = this->listaGrupos->getPrimero();
         while (nodoActual != nullptr)
         {
-            ss << i << '\t' << nodoActual->getDato()->generarReporte() << endl;
+            ss << nodoActual->getDato()->getNumeroGrupo() << '\t' << nodoActual->getDato()->generarReporte() << endl;
             nodoActual = nodoActual->getSiguiente();
-            i++;
         }
     }
     else
@@ -218,6 +216,26 @@ void Curso::eliminarGrupo(Grupo* grupo_)
     catch (ListaEnlazadasExceptions& e) {
         cerr << "Error desde Curso::eliminarGrupo: " << e.what() << endl;
 	}
+}
+
+void Curso::matricularEnGrupo(int numeroGrupo, Deportista* deportista)
+{
+    if (!hayGrupos())
+    {
+		throw exception("No hay grupos en el curso");
+	}
+	Nodo<Grupo>* nodoActual = this->listaGrupos->getPrimero();
+    while (nodoActual != nullptr)
+    {
+        // el numero de grupo es conforme a la posicion en la lista
+        if (nodoActual->getDato()->getNumeroGrupo() == numeroGrupo)
+        {
+			nodoActual->getDato()->agregarDeportista(deportista);
+			return;
+		}
+		nodoActual = nodoActual->getSiguiente();
+	}
+	throw exception("No se encontro el grupo");
 }
 
 Curso& Curso::operator=(const Curso& curso_)
