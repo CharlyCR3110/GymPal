@@ -217,6 +217,23 @@ const string Grupo::reporteGrupoGuiaMatricula() const
 	return ss.str();
 }
 
+bool Grupo::estaInscrito(Deportista* deportista_)
+{
+	if (deportista_ == nullptr)
+		throw std::invalid_argument("El deportista no puede ser nulo");	//crear excepcion
+
+	Nodo<Deportista>* nodoActual = this->deportistasInscritos->getPrimero();
+	while (nodoActual != nullptr)
+	{
+		if (nodoActual->getDato()->getCodigo() == deportista_->getCodigo())
+		{
+			return true;
+		}
+		nodoActual = nodoActual->getSiguiente();
+	}
+	return false;
+}
+
 Grupo& Grupo::operator=(const Grupo& grupo_)
 {
 	if (this == &grupo_)
