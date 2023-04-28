@@ -16,6 +16,7 @@ protected:
 	// agregar lista de pagos
 	ListaEnlazada<Pago>* listaPagos;
 	// agregar lista de cursos??
+	int cantidadDeCursosMatriculados;
 public:
 	Deportista(string cedula_ = "", string nombre_ = "", string telefono_ = "", Fecha* fechaNacimiento_ = nullptr, char estado_ = ' ');
 	Deportista(const Deportista& deportista_);	//constructor copia
