@@ -1,13 +1,29 @@
 #include "Grupo.h"
 
-Grupo::Grupo(Instructor* instructor_, int cupoMaximo_, Fecha* fechaDeInicio_, int semanasDeDuracion_, char diaDeLaSemana_, Hora* horaDeInicio_, Hora* horaDeFin_) :
+Grupo::Grupo()
+{
+	instructor = new Instructor();
+	fechaDeInicio = new Fecha();
+	horaDeInicio = new Hora();
+	horaDeFin = new Hora();
+	deportistasInscritos = new ListaEnlazada<Deportista>();
+	cupoMaximo = 0;
+	semanasDeDuracion = 0;
+	numeroGrupo = 0;
+	diaDeLaSemana = ' ';
+	cantidadDeInscritos = 0;
+}
+
+Grupo::Grupo(Instructor* instructor_, int cupoMaximo_, Fecha* fechaDeInicio_, int semanasDeDuracion_, int numeroGrupo_, char diaDeLaSemana_, Hora* horaDeInicio_, Hora* horaDeFin_) :
 	instructor(new Instructor(*instructor_)),
 	cupoMaximo(cupoMaximo_),
 	fechaDeInicio(new Fecha(*fechaDeInicio_)),
 	semanasDeDuracion(semanasDeDuracion_),
+	numeroGrupo(numeroGrupo_),
 	diaDeLaSemana(diaDeLaSemana_),
 	horaDeInicio(new Hora(*horaDeInicio_)),
-	horaDeFin(new Hora(*horaDeFin_))
+	horaDeFin(new Hora(*horaDeFin_)),
+	cantidadDeInscritos(0)
 {
 	deportistasInscritos = new ListaEnlazada<Deportista>();
 }
@@ -17,10 +33,12 @@ Grupo::Grupo(const Grupo& grupo_):
 	cupoMaximo(grupo_.cupoMaximo),
 	fechaDeInicio(new Fecha(*grupo_.fechaDeInicio)),
 	semanasDeDuracion(grupo_.semanasDeDuracion),
+	numeroGrupo(grupo_.numeroGrupo),
 	diaDeLaSemana(grupo_.diaDeLaSemana),
 	horaDeInicio(new Hora(*grupo_.horaDeInicio)),
 	horaDeFin(new Hora(*grupo_.horaDeFin)),
-	deportistasInscritos(new ListaEnlazada<Deportista>(*grupo_.deportistasInscritos))
+	deportistasInscritos(new ListaEnlazada<Deportista>(*grupo_.deportistasInscritos)),
+	cantidadDeInscritos(grupo_.cantidadDeInscritos)
 {
 }
 
@@ -51,6 +69,11 @@ void Grupo::setFechaDeInicio(Fecha* fechaDeInicio_)
 void Grupo::setSemanasDeDuracion(int semanasDeDuracion_)
 {
 	this->semanasDeDuracion = semanasDeDuracion_;
+}
+
+void Grupo::setNumeroGrupo(int numeroGrupo_)
+{
+	this->numeroGrupo = numeroGrupo_;
 }
 
 void Grupo::setDiaDeLaSemana(char diaDeLaSemana_)
@@ -104,6 +127,11 @@ const int Grupo::getSemanasDeDuracion() const
 	return this->semanasDeDuracion;
 }
 
+const int Grupo::getNumeroGrupo() const
+{
+	return this->numeroGrupo;
+}
+
 const char Grupo::getDiaDeLaSemana() const
 {
 	return this->diaDeLaSemana;
@@ -122,6 +150,13 @@ Hora* Grupo::getHoraDeFin()
 ListaEnlazada<Deportista>* Grupo::getDeportistasInscritos()
 {
 	return this->deportistasInscritos;
+}
+
+const string Grupo::generarReporte() const
+{
+	stringstream ss;
+	ss << this->cupoMaximo << '\t' << this->cantidadDeInscritos << endl;
+	return ss.str();
 }
 
 const string Grupo::toString() const
@@ -154,6 +189,54 @@ const string Grupo::mostrarDeportistasInscritos() const
 		nodoActual = nodoActual->getSiguiente();
 	}
 	return ss.str();
+}
+
+void Grupo::agregarDeportista(Deportista* deportista_)
+{
+	if (deportista_ == nullptr)
+		throw std::invalid_argument("El deportista no puede ser nulo");	//crear excepcion
+
+	if (this->cantidadDeInscritos == this->cupoMaximo)
+		throw std::invalid_argument("El grupo ya esta lleno");	//crear excepcion
+
+	try {
+		this->deportistasInscritos->insertar(deportista_);
+		this->cantidadDeInscritos++;
+	}
+	catch (std::invalid_argument& e)
+	{
+		throw e;
+	}
+}
+
+const string Grupo::reporteGrupoGuiaMatricula() const
+{
+	stringstream ss;
+	//ss << "Grupo" << '\t' << "Dia" << '\t' << "Horario" << '\t' << "Cupo" << '\t' << "Cantidad" << endl;
+	ss << this->numeroGrupo << '\t' << " " << this->diaDeLaSemana << '\t' << this->horaDeInicio->toString() << " - " << this->horaDeFin->toString() << '\t' << "   " << this->cupoMaximo << '\t' << "    " << this->cantidadDeInscritos << endl;
+	return ss.str();
+}
+
+bool Grupo::estaInscrito(Deportista* deportista_)
+{
+	if (deportista_ == nullptr)
+		throw std::invalid_argument("El deportista no puede ser nulo");	//crear excepcion
+
+	Nodo<Deportista>* nodoActual = this->deportistasInscritos->getPrimero();
+	while (nodoActual != nullptr)
+	{
+		if (nodoActual->getDato()->getCodigo() == deportista_->getCodigo())
+		{
+			return true;
+		}
+		nodoActual = nodoActual->getSiguiente();
+	}
+	return false;
+}
+
+bool Grupo::estaLleno()
+{
+	return this->cantidadDeInscritos == this->cupoMaximo;
 }
 
 Grupo& Grupo::operator=(const Grupo& grupo_)

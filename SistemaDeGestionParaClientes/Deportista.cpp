@@ -5,7 +5,8 @@ Deportista::Deportista(string cedula_, string nombre_, string telefono_, Fecha* 
     cedula(cedula_),
 	nombre(nombre_),
 	telefono(telefono_),
-	estado(estado_)
+	estado(estado_),
+    cantidadDeCursosMatriculados(0)
 {
     try {
         this->fechaNacimiento = new Fecha(*fechaNacimiento_);
@@ -23,7 +24,8 @@ Deportista::Deportista(const Deportista& deportista_):
     nombre(deportista_.nombre),
     telefono(deportista_.telefono),
     estado(deportista_.estado),
-    listaPagos(deportista_.listaPagos)
+    listaPagos(deportista_.listaPagos),
+    cantidadDeCursosMatriculados(deportista_.cantidadDeCursosMatriculados)
 {
     try {
 		this->fechaNacimiento = new Fecha(*deportista_.fechaNacimiento);
@@ -66,6 +68,11 @@ void Deportista::setEstado(char estado)
     this->estado = estado;
 }
 
+void Deportista::setcantidadDeCursosMatriculados(int cantidadDeCursosMatriculados_)
+{
+    this->cantidadDeCursosMatriculados = cantidadDeCursosMatriculados_;
+}
+
 const string Deportista::getCedula() const
 {
     return this->cedula;
@@ -94,6 +101,11 @@ const char Deportista::getEstado() const
 ListaEnlazada<Pago>* Deportista::getPagos()
 {
     return this->listaPagos;
+}
+
+const int Deportista::getcantidadDeCursosMatriculados() const
+{
+    return this->cantidadDeCursosMatriculados;
 }
 
 const string Deportista::getCodigo() const

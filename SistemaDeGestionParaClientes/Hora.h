@@ -10,6 +10,7 @@ private:
 	int minuto;
 	int segundo;
 public:
+	Hora();
 	Hora(int hora_, int minuto_, int segundo_);
 	Hora(const Hora& hora_);
 	~Hora() = default;

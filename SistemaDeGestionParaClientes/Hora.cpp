@@ -1,5 +1,12 @@
 #include "Hora.h"
 
+Hora::Hora()
+{
+    hora = 0;
+	minuto = 0;
+	segundo = 0;
+}
+
 Hora::Hora(int hora_, int minuto_, int segundo_):
     hora(hora_),
 	minuto(minuto_),

@@ -158,9 +158,101 @@ const string Curso::toString() const
     return ss.str();
 }
 
+const string Curso::generarReporte() const
+{
+    stringstream ss;
+    ss << "Codigo: " << this->codigo << endl;
+    ss << "Nombre del curso: " << this->nombreDelCurso << endl;
+    ss << "Nivel: " << this->nivel << endl;
+    ss << "Cantidad maxima de grupos: " << this->cantidadMaximaDeGrupos << endl;
+    ss << "Detalle de grupos abiertos para el curso: " << endl;
+    if (!this->listaGrupos->estaVacia())
+    {
+        ss << "Grupo" << "\t" << "Cupo" << "\t" << "Cantidad" << endl;
+        Nodo<Grupo>* nodoActual = this->listaGrupos->getPrimero();
+        while (nodoActual != nullptr)
+        {
+            ss << nodoActual->getDato()->getNumeroGrupo() << '\t' << nodoActual->getDato()->generarReporte() << endl;
+            nodoActual = nodoActual->getSiguiente();
+        }
+    }
+    else
+    {
+		ss << "No hay grupos" << endl;
+    }
+
+    return ss.str();
+}
+
+const string Curso::reporteCursoGuiaMatricula() const
+{
+    stringstream ss;
+    ss << "Grupo" << '\t' << "Dia" << '\t' << "    Horario" << '\t'  << "  Cupo" << '\t' << "Cantidad" << endl;
+    // mostrar los grupos usando el metodo reporteGrupoGuiaMatricula de la clase Grupo
+    if (!this->listaGrupos->estaVacia())
+    {
+		Nodo<Grupo>* nodoActual = this->listaGrupos->getPrimero();
+        while (nodoActual != nullptr)
+        {
+			ss << nodoActual->getDato()->reporteGrupoGuiaMatricula() << endl;
+			nodoActual = nodoActual->getSiguiente();
+		}
+	}
+    else
+    {
+        ss << "Actualmente no hay grupos disponibles" << endl;
+    }
+
+    return ss.str();
+}
+
 bool Curso::hayGrupos()
 {
     return this->cantidadDeGruposActuales > 0;
+}
+
+bool Curso::estaLleno()
+{
+    // un Curso esta lleno si todos sus grupos estan llenos
+    if (!this->listaGrupos->estaVacia())
+    {
+		Nodo<Grupo>* nodoActual = this->listaGrupos->getPrimero();
+        while (nodoActual != nullptr)
+        {
+            if (!nodoActual->getDato()->estaLleno())
+            {
+				return false;
+			}
+			nodoActual = nodoActual->getSiguiente();
+		}
+		return true;
+	}
+    else
+    {
+		return false;
+	}
+}
+
+bool Curso::grupoLleno(int numeroGrupo)
+{
+    // un grupo esta lleno si su cantidad de deportistas matriculados es igual a su cupo
+    if (!this->listaGrupos->estaVacia())
+    {
+		Nodo<Grupo>* nodoActual = this->listaGrupos->getPrimero();
+        while (nodoActual != nullptr)
+        {
+            if (nodoActual->getDato()->getNumeroGrupo() == numeroGrupo)
+            {
+				return nodoActual->getDato()->estaLleno();
+			}
+			nodoActual = nodoActual->getSiguiente();
+		}
+		return false;
+	}
+    else
+    {
+		return false;
+	}
 }
 
 void Curso::agregarGrupo(Grupo* grupo_)
@@ -190,6 +282,50 @@ void Curso::eliminarGrupo(Grupo* grupo_)
     catch (ListaEnlazadasExceptions& e) {
         cerr << "Error desde Curso::eliminarGrupo: " << e.what() << endl;
 	}
+}
+
+bool Curso::estaMatriculado(Deportista* deportista_)
+{
+    if (!hayGrupos())
+    {
+        throw exception("No hay grupos en el curso Curso::estaMatriculado");
+    }
+    if (deportista_ == nullptr)
+    {
+        throw exception("El deportista es nulo desde Curso::estaMatriculado");
+    }
+    Nodo<Grupo>* nodoActual = this->listaGrupos->getPrimero();
+    while (nodoActual != nullptr)
+    {
+		if (nodoActual->getDato()->estaInscrito(deportista_))
+		{
+			return true;
+		}
+		nodoActual = nodoActual->getSiguiente();
+    }
+
+    return false;
+}
+
+void Curso::matricularEnGrupo(int numeroGrupo, Deportista* deportista)
+{
+    if (!hayGrupos())
+    {
+		throw exception("No hay grupos en el curso");
+	}
+	Nodo<Grupo>* nodoActual = this->listaGrupos->getPrimero();
+    while (nodoActual != nullptr)
+    {
+        // el numero de grupo es conforme a la posicion en la lista
+        if (nodoActual->getDato()->getNumeroGrupo() == numeroGrupo)
+        {
+			nodoActual->getDato()->agregarDeportista(deportista);
+            deportista->setcantidadDeCursosMatriculados(deportista->getcantidadDeCursosMatriculados() + 1);
+			return;
+		}
+		nodoActual = nodoActual->getSiguiente();
+	}
+	throw exception("No se encontro el grupo");
 }
 
 Curso& Curso::operator=(const Curso& curso_)
