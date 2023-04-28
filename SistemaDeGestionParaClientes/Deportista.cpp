@@ -68,6 +68,11 @@ void Deportista::setEstado(char estado)
     this->estado = estado;
 }
 
+void Deportista::setcantidadDeCursosMatriculados(int cantidadDeCursosMatriculados_)
+{
+    this->cantidadDeCursosMatriculados = cantidadDeCursosMatriculados_;
+}
+
 const string Deportista::getCedula() const
 {
     return this->cedula;
@@ -96,6 +101,11 @@ const char Deportista::getEstado() const
 ListaEnlazada<Pago>* Deportista::getPagos()
 {
     return this->listaPagos;
+}
+
+const int Deportista::getcantidadDeCursosMatriculados() const
+{
+    return this->cantidadDeCursosMatriculados;
 }
 
 const string Deportista::getCodigo() const

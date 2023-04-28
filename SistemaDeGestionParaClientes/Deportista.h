@@ -27,6 +27,7 @@ public:
 	virtual void setTelefono(string telefono_);
 	virtual void setFechaNacimiento(Fecha* fechaNacimiento_);
 	virtual void setEstado(char estado);
+	virtual void setcantidadDeCursosMatriculados(int cantidadDeCursosMatriculados_);
 	//getters
 	virtual const string getCedula() const;
 	virtual const string getNombre() const;
@@ -34,6 +35,7 @@ public:
 	virtual Fecha* getFechaNacimiento();
 	virtual const char getEstado() const;
 	ListaEnlazada<Pago>* getPagos();	// devuelve la lista de pagos
+	virtual const int getcantidadDeCursosMatriculados() const;
 	//metodo para poder utilizar el template de buscar por codigo
 	const string getCodigo() const; //devuelve la cedula
 	//metodos
