@@ -9,6 +9,7 @@ class Grupo
 private:
 	Instructor* instructor;
 	int cupoMaximo;
+	int cantidadDeInscritos;
 	Fecha* fechaDeInicio;
 	int semanasDeDuracion;
 	//horario
@@ -39,6 +40,7 @@ public:
 	Hora* getHoraDeFin();
 	ListaEnlazada<Deportista>* getDeportistasInscritos();
 	//metodos
+	const string generarReporte() const;
 	const string toString() const;	
 	const string mostrarDeportistasInscritos() const;
 	//sobrecarga

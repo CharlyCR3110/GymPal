@@ -7,7 +7,8 @@ Grupo::Grupo(Instructor* instructor_, int cupoMaximo_, Fecha* fechaDeInicio_, in
 	semanasDeDuracion(semanasDeDuracion_),
 	diaDeLaSemana(diaDeLaSemana_),
 	horaDeInicio(new Hora(*horaDeInicio_)),
-	horaDeFin(new Hora(*horaDeFin_))
+	horaDeFin(new Hora(*horaDeFin_)),
+	cantidadDeInscritos(0)
 {
 	deportistasInscritos = new ListaEnlazada<Deportista>();
 }
@@ -20,7 +21,8 @@ Grupo::Grupo(const Grupo& grupo_):
 	diaDeLaSemana(grupo_.diaDeLaSemana),
 	horaDeInicio(new Hora(*grupo_.horaDeInicio)),
 	horaDeFin(new Hora(*grupo_.horaDeFin)),
-	deportistasInscritos(new ListaEnlazada<Deportista>(*grupo_.deportistasInscritos))
+	deportistasInscritos(new ListaEnlazada<Deportista>(*grupo_.deportistasInscritos)),
+	cantidadDeInscritos(grupo_.cantidadDeInscritos)
 {
 }
 
@@ -122,6 +124,13 @@ Hora* Grupo::getHoraDeFin()
 ListaEnlazada<Deportista>* Grupo::getDeportistasInscritos()
 {
 	return this->deportistasInscritos;
+}
+
+const string Grupo::generarReporte() const
+{
+	stringstream ss;
+	ss << this->cupoMaximo << '\t' << this->cantidadDeInscritos << endl;
+	return ss.str();
 }
 
 const string Grupo::toString() const
