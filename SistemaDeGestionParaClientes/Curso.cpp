@@ -211,6 +211,50 @@ bool Curso::hayGrupos()
     return this->cantidadDeGruposActuales > 0;
 }
 
+bool Curso::estaLleno()
+{
+    // un Curso esta lleno si todos sus grupos estan llenos
+    if (!this->listaGrupos->estaVacia())
+    {
+		Nodo<Grupo>* nodoActual = this->listaGrupos->getPrimero();
+        while (nodoActual != nullptr)
+        {
+            if (!nodoActual->getDato()->estaLleno())
+            {
+				return false;
+			}
+			nodoActual = nodoActual->getSiguiente();
+		}
+		return true;
+	}
+    else
+    {
+		return false;
+	}
+}
+
+bool Curso::grupoLleno(int numeroGrupo)
+{
+    // un grupo esta lleno si su cantidad de deportistas matriculados es igual a su cupo
+    if (!this->listaGrupos->estaVacia())
+    {
+		Nodo<Grupo>* nodoActual = this->listaGrupos->getPrimero();
+        while (nodoActual != nullptr)
+        {
+            if (nodoActual->getDato()->getNumeroGrupo() == numeroGrupo)
+            {
+				return nodoActual->getDato()->estaLleno();
+			}
+			nodoActual = nodoActual->getSiguiente();
+		}
+		return false;
+	}
+    else
+    {
+		return false;
+	}
+}
+
 void Curso::agregarGrupo(Grupo* grupo_)
 {
     if (this->cantidadDeGruposActuales < this->cantidadMaximaDeGrupos)

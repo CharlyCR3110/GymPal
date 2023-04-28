@@ -40,6 +40,8 @@ public:
 	const string generarReporte() const;
 	const string reporteCursoGuiaMatricula() const;
 	bool hayGrupos();
+	bool estaLleno();
+	bool grupoLleno(int numeroGrupo);
 	void agregarGrupo(Grupo* grupo_);
 	void eliminarGrupo(Grupo* grupo_);
 	// revisar que el Deportista no este matriculado en ningun grupo del curso
