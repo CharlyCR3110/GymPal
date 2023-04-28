@@ -213,7 +213,7 @@ const string Grupo::reporteGrupoGuiaMatricula() const
 {
 	stringstream ss;
 	//ss << "Grupo" << '\t' << "Dia" << '\t' << "Horario" << '\t' << "Cupo" << '\t' << "Cantidad" << endl;
-	ss << this->numeroGrupo << '\t' << this->diaDeLaSemana << '\t' << this->horaDeInicio->toString() << " - " << this->horaDeFin->toString() << '\t' << this->cupoMaximo << '\t' << this->cantidadDeInscritos << endl;
+	ss << this->numeroGrupo << '\t' << " " << this->diaDeLaSemana << '\t' << this->horaDeInicio->toString() << " - " << this->horaDeFin->toString() << '\t' << "   " << this->cupoMaximo << '\t' << "    " << this->cantidadDeInscritos << endl;
 	return ss.str();
 }
 
