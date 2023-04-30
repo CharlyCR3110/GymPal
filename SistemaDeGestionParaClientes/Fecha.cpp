@@ -1,5 +1,17 @@
 #include "Fecha.h"
 
+Fecha::Fecha()
+{
+    std::time_t now = std::time(nullptr);
+    std::tm tm;
+    localtime_s(&tm, &now);
+
+    // Asignar los componentes de la fecha a los atributos de la clases
+    dia = tm.tm_mday;
+    mes = tm.tm_mon + 1;    // +1 porque enero es 0
+    anio = tm.tm_year + 1900; // año desde 1900
+}
+
 Fecha::Fecha(const Fecha& fecha_)
 {
     // no se valida la fecha porque se asume que es valida
