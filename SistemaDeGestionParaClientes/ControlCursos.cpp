@@ -207,4 +207,6 @@ const string ControlCursos::generarReporteDeportistasMatriculadosPorGrupo(string
     {
 		ss << "No se encontro el curso." << endl;
 	}
+    
+    return ss.str();
 }
