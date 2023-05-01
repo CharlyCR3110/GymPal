@@ -1,7 +1,7 @@
 #include "Triatlonista.h"
 
-Triatlonista::Triatlonista(string cedula_, string nombre_, string telefono_, Fecha* fechaNacimiento_, char estado, int horasEntrenamiento_, double temperaturaPromedio_, int cantidadParticipacionesIronMan_, int cantidadTriatlonesGanados_, char sexo_, double estatura_, double masaMuscular_, double peso_, double porcentajeGrasaCorporal_, Fecha* fechaUltimaActualizacion_):
-    Ciclista(cedula_, nombre_, telefono_, fechaNacimiento_, estado, horasEntrenamiento_, temperaturaPromedio_),
+Triatlonista::Triatlonista(string cedula_, string nombre_, string telefono_, Fecha* fechaNacimiento_, int horasEntrenamiento_, double temperaturaPromedio_, int cantidadParticipacionesIronMan_, int cantidadTriatlonesGanados_, char sexo_, double estatura_, double masaMuscular_, double peso_, double porcentajeGrasaCorporal_, Fecha* fechaUltimaActualizacion_):
+    Ciclista(cedula_, nombre_, telefono_, fechaNacimiento_, horasEntrenamiento_, temperaturaPromedio_),
     cantidadParticipacionesIronMan(cantidadParticipacionesIronMan_),
     cantidadTriatlonesGanados(cantidadTriatlonesGanados_),
     corredor(new Corredor(sexo_, estatura_, fechaUltimaActualizacion_)),

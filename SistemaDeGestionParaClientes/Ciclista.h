@@ -7,7 +7,7 @@ protected:
 	int horasEntrenamiento;
 	double temperaturaPromedio;
 public:
-	Ciclista(string cedula_ = "", string nombre_ = "", string telefono_ = "", Fecha* fechaNacimiento_ = nullptr, char estado = ' ', int horasEntrenamiento_ = 0, double temperaturaPromedio_ = 0.0);
+	Ciclista(string cedula_ = "", string nombre_ = "", string telefono_ = "", Fecha* fechaNacimiento_ = nullptr, int horasEntrenamiento_ = 0, double temperaturaPromedio_ = 0.0);
 	Ciclista(const Ciclista& ciclista_);
 	virtual ~Ciclista() = default;
 	//Setters

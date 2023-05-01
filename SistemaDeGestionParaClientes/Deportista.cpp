@@ -1,11 +1,11 @@
 #include "Deportista.h"
 #include "Curso.h"
 
-Deportista::Deportista(string cedula_, string nombre_, string telefono_, Fecha* fechaNacimiento_, char estado_):
+Deportista::Deportista(string cedula_, string nombre_, string telefono_, Fecha* fechaNacimiento_):
     cedula(cedula_),
 	nombre(nombre_),
 	telefono(telefono_),
-	estado(estado_),
+    estado('A'),
     cantidadDeCursosMatriculados(0)
 {
     try {

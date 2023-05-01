@@ -20,7 +20,7 @@ protected:
 	ListaEnlazada<Curso>* listaCursos;
 	int cantidadDeCursosMatriculados;
 public:
-	Deportista(string cedula_ = "", string nombre_ = "", string telefono_ = "", Fecha* fechaNacimiento_ = nullptr, char estado_ = ' ');
+	Deportista(string cedula_ = "", string nombre_ = "", string telefono_ = "", Fecha* fechaNacimiento_ = nullptr);
 	Deportista(const Deportista& deportista_);	//constructor copia
 	~Deportista() = default;
 	//setters

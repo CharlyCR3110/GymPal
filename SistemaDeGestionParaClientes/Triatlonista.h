@@ -16,7 +16,7 @@ private:
     Fecha* fechaUltimaActualizacion;
 public:
     //Constructores
-    Triatlonista(string cedula_ = "", string nombre_ = "", string telefono_ = "", Fecha* fechaNacimiento_ = nullptr, char estado = ' ', int horasEntrenamiento_ = 0, double temperaturaPromedio_ = 0.0, int cantidadParticipacionesIronMan_ = 0, int cantidadTriatlonesGanados_ = 0.0, char sexo_ = ' ', double estatura_ = 0.0, double masaMuscular_ = 0.0, double peso_ = 0.0, double porcentajeGrasaCorporal_ = 0.0, Fecha* fechaUltimaActualizacion_ = nullptr);
+    Triatlonista(string cedula_ = "", string nombre_ = "", string telefono_ = "", Fecha* fechaNacimiento_ = nullptr, int horasEntrenamiento_ = 0, double temperaturaPromedio_ = 0.0, int cantidadParticipacionesIronMan_ = 0, int cantidadTriatlonesGanados_ = 0.0, char sexo_ = ' ', double estatura_ = 0.0, double masaMuscular_ = 0.0, double peso_ = 0.0, double porcentajeGrasaCorporal_ = 0.0, Fecha* fechaUltimaActualizacion_ = nullptr);
     Triatlonista(const Triatlonista& triatlonista_);
     virtual ~Triatlonista();
     //Setters

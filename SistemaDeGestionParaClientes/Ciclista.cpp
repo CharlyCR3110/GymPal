@@ -1,7 +1,7 @@
 #include "Ciclista.h"
 
-Ciclista::Ciclista(string cedula_, string nombre_, string telefono_, Fecha* fechaNacimiento_, char estado, int horasEntrenamiento_, double temperaturaPromedio_) :
-    Deportista(cedula_, nombre_, telefono_, fechaNacimiento_, estado),
+Ciclista::Ciclista(string cedula_, string nombre_, string telefono_, Fecha* fechaNacimiento_, int horasEntrenamiento_, double temperaturaPromedio_) :
+    Deportista(cedula_, nombre_, telefono_, fechaNacimiento_),
     horasEntrenamiento(horasEntrenamiento_),
     temperaturaPromedio(temperaturaPromedio_)
 {
