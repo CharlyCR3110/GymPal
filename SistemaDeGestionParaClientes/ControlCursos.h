@@ -28,4 +28,6 @@ public:
 	string reporteListadoCursos();
 	// mostrar listado de deportistas en un grupo
 	const string generarReporteDeportistasMatriculadosPorGrupo(string codigoCurso_, int numeroGrupo_) const;
+	// agregar grupo a un curso
+	void agregarGrupo(string codigoCurso_, Grupo* grupo_);
 };

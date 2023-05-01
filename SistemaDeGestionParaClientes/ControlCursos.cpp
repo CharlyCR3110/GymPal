@@ -47,7 +47,6 @@ string ControlCursos::generarReporteCurso(string codigo_)
     Curso* curso = nullptr;
     try
     {
-        cout << "Desde el try" << endl;
         curso = listaCursos->buscarPorCodigo(codigo_);
     }
     catch (exception& e)
@@ -209,4 +208,26 @@ const string ControlCursos::generarReporteDeportistasMatriculadosPorGrupo(string
 	}
     
     return ss.str();
+}
+
+void ControlCursos::agregarGrupo(string codigoCurso_, Grupo* grupo_)
+{
+    Curso* curso = nullptr;
+    try
+    {
+		curso = listaCursos->buscarPorCodigo(codigoCurso_);
+	}
+    catch (exception& e)
+    {
+		throw exception(e.what());
+	}
+	// si es nullptr probablemente nunca llegue a este punto por el catch, pero por si acaso
+    if (curso != nullptr)
+    {
+		curso->agregarGrupo(grupo_);
+	}
+    else
+    {
+		throw exception("No se encontro el curso.");
+	}
 }
