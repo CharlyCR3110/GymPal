@@ -49,6 +49,7 @@ void Interfaz::menuAdministracionGeneralMontoMensual()  // sub menu 2 de menu ad
 }
 //---------------------//
 
+//---------------------//
 int Interfaz::menuControlDeportistas()
 {
     int opcion = 0;
@@ -98,4 +99,27 @@ int Interfaz::menuControlPagos()
 	cout << "Digite una opcion del menu: ";
 	cin >> opcion;
 	return opcion;
+}
+
+Fecha* Interfaz::menuFecha()
+{
+    int dia, mes, anio;
+    Fecha* fecha = nullptr;
+	cout << "Digite el dia: ";
+	cin >> dia;
+	cout << "Digite el mes: ";
+	cin >> mes;
+	cout << "Digite el anio: ";
+	cin >> anio;
+    try
+    {
+	    fecha = new Fecha(dia, mes, anio);
+
+    }
+    catch (exception &e)
+    {
+		cout << "Error: " << e.what() << endl;
+	}
+
+	return fecha;
 }
