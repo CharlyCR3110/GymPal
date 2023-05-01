@@ -123,6 +123,13 @@ const string Deportista::getCodigo() const
 void Deportista::agregarCurso(Curso* curso_)
 {
     this->listaCursos->insertar(curso_);
+    this->cantidadDeCursosMatriculados++;
+}
+
+void Deportista::eliminarCurso(Curso* curso_)
+{
+    this->listaCursos->eliminarDato(curso_);
+	this->cantidadDeCursosMatriculados--;
 }
 
 const string Deportista::mostrarCursosMatriculados() const

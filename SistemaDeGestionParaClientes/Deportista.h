@@ -43,6 +43,7 @@ public:
 	const string getCodigo() const; //devuelve la cedula
 	//metodos
 	virtual void agregarCurso(Curso* curso_);
+	virtual void eliminarCurso(Curso* curso_);
 	virtual const string mostrarCursosMatriculados() const;
 	virtual const string toString() const = 0;	//MVP - metodo virtual puro
 	virtual const string detalleDeportista() const = 0;	//MVP - metodo virtual puro
