@@ -127,11 +127,11 @@ void Gimnasio::registrarCurso(string codigo_, string nombre_, string nivel_, str
 	}
 }
 
-void Gimnasio::registrarDeportista(string cedula_, string nombre_, string telefono_, Fecha* fechaNacimiento_, char estado_, int horasEntremiento_, double temperaturaPromedio_, int cantidadParticipacionesIronMan_, int cantidadTriatlonesGanados_, char sexo_, double estatura_, double masaMuscular_, double peso_, double porcentajeGrasaCorporal_)
+void Gimnasio::registrarDeportista(string cedula_, string nombre_, string telefono_, Fecha* fechaNacimiento_, int horasEntremiento_, double temperaturaPromedio_, int cantidadParticipacionesIronMan_, int cantidadTriatlonesGanados_, char sexo_, double estatura_, double masaMuscular_, double peso_, double porcentajeGrasaCorporal_)
 {
 	try
 	{
-		Deportista* deportista = new Triatlonista(cedula_, nombre_, telefono_, fechaNacimiento_, estado_, horasEntremiento_, temperaturaPromedio_, cantidadParticipacionesIronMan_, cantidadTriatlonesGanados_, sexo_, estatura_, masaMuscular_, peso_, porcentajeGrasaCorporal_, fechaActual);
+		Deportista* deportista = new Triatlonista(cedula_, nombre_, telefono_, fechaNacimiento_, horasEntremiento_, temperaturaPromedio_, cantidadParticipacionesIronMan_, cantidadTriatlonesGanados_, sexo_, estatura_, masaMuscular_, peso_, porcentajeGrasaCorporal_, fechaActual);
 		listaDeportistas->insertar(deportista);
 	}
 	catch (exception& e)
