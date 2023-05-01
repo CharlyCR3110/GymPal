@@ -20,6 +20,8 @@ public:
 	string generarReporteCurso(string codigo_);
 	// matricular en un grupo especifico
 	void matricularEnGrupo(string codigoCurso_, int numeroGrupo_, string cedulaDeportista_);
+	// desmatricular 
+	void desmatricularDeGrupo(string codigoCurso_, int numeroGrupo_, string cedulaDeportista_);
 	// mostrar los grupos de un curso para matricular
 	string reporteGuiaMatriculaCurso(string codigo_);
 	// mostrar los cursos en los que esta matriculado un deportista

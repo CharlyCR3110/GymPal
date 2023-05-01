@@ -110,6 +110,40 @@ void ControlCursos::matricularEnGrupo(string codigoCurso_, int numeroGrupo_, str
 		}
 }
 
+void ControlCursos::desmatricularDeGrupo(string codigoCurso_, int numeroGrupo_, string cedulaDeportista_)
+{
+    Curso* curso = nullptr;
+	Deportista* deportista = nullptr;
+    try
+    {
+		curso = listaCursos->buscarPorCodigo(codigoCurso_);
+		deportista = listaDeportistas->buscarPorCodigo(cedulaDeportista_);
+	}
+    catch (exception& e)
+    {
+		throw exception(e.what());
+	}
+	// si es nullptr probablemente nunca llegue a este punto por el catch, pero por si acaso
+    if (curso == nullptr || deportista == nullptr)
+    {
+		throw exception("No se encontro el curso o el deportista");
+	}
+	// si el deportista no esta matriculado en el curso
+    if (!curso->estaMatriculado(deportista))
+    {
+		throw exception("El deportista no esta matriculado en el curso");
+	}
+	// hacer la desmatricula
+    try
+    {
+		curso->desmatricularDeGrupo(numeroGrupo_, deportista);
+	}
+    catch (exception& e)
+    {
+		throw exception(e.what());
+	}
+}
+
 string ControlCursos::reporteGuiaMatriculaCurso(string codigo_)
 {
     Curso* curso = nullptr;
