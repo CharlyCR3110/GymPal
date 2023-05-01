@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <sstream>
+#include <ctime>
 #include "FechaInvalidaException.h"
 using namespace std;
 
@@ -11,8 +12,9 @@ private:
 	int mes;
 	int anio;
 public:
+	Fecha();	//constructor por defecto
 	Fecha(const Fecha& fecha_);	//constructor copia
-	Fecha(int dia_ = 0, int mes_ = 0, int anio_ = 0);
+	Fecha(int dia_, int mes_, int anio_);
 	virtual ~Fecha();
 	//setters
 	void setDia(int dia_);

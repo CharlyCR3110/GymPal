@@ -159,11 +159,13 @@ const string Grupo::generarReporte() const
 	return ss.str();
 }
 
-const string Grupo::toString() const
+const string Grupo::toString() const	// 5.4
 {
 	stringstream ss;
-	ss << "Instructor: " << this->instructor->toString() << endl;
+	ss << "Instructor: " << this->instructor->toString() << endl;	// nombre-id
+	ss << "Numero de grupo: " << this->numeroGrupo << endl;
 	ss << "Cupo maximo: " << this->cupoMaximo << endl;
+	ss << "Cantidad de inscritos: " << this->cantidadDeInscritos << endl;
 	ss << "Fecha de inicio: " << this->fechaDeInicio->toString() << endl;
 	ss << "Semanas de duracion: " << this->semanasDeDuracion << endl;
 	ss << "Dia de la semana: " << this->diaDeLaSemana << endl;
@@ -188,6 +190,21 @@ const string Grupo::mostrarDeportistasInscritos() const
 		ss << *nodoActual->getDato() << endl;
 		nodoActual = nodoActual->getSiguiente();
 	}
+	return ss.str();
+}
+
+const string Grupo::mostrarCedulaYNombreInscritos() const
+{
+	if (deportistasInscritos->estaVacia())
+		return "No hay triatlonistas inscritos";
+	stringstream ss;
+	Nodo<Deportista>* nodoActual = this->deportistasInscritos->getPrimero();
+	while (nodoActual != nullptr)
+	{
+		ss << nodoActual->getDato()->getCedula() << '\t' << nodoActual->getDato()->getNombre() << endl;
+		nodoActual = nodoActual->getSiguiente();
+	}
+
 	return ss.str();
 }
 
@@ -237,6 +254,22 @@ bool Grupo::estaInscrito(Deportista* deportista_)
 bool Grupo::estaLleno()
 {
 	return this->cantidadDeInscritos == this->cupoMaximo;
+}
+
+void Grupo::eliminarDeportista(Deportista* deportista_)
+{
+	if (deportista_ == nullptr)
+		throw std::invalid_argument("El deportista no puede ser nulo");	//crear excepcion
+	if (this->cantidadDeInscritos == 0)
+		throw std::invalid_argument("El grupo esta vacio");	//crear excepcion
+	try {
+		this->deportistasInscritos->eliminarDato(deportista_);
+		this->cantidadDeInscritos--;
+	}
+	catch (invalid_argument& e)
+	{
+		throw e;
+	}
 }
 
 Grupo& Grupo::operator=(const Grupo& grupo_)

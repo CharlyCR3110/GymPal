@@ -21,12 +21,6 @@
     <ClCompile Include="DeportistaInvalidoException.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="DatosBiometricos.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="DatosBiometricosInvalidosException.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Fecha.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -46,9 +40,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ListaEnlazadasException.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ListaDeportistaUtils.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Curso.cpp">
@@ -102,18 +93,18 @@
     <ClCompile Include="PagosNoRegistradosException.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ControlCursos.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Gimnasio.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Deportista.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="DeportistaInvalidoException.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="DatosBiometricos.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="DatosBiometricosInvalidosException.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Fecha.h">
@@ -132,9 +123,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ListaEnlazadasException.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ListaDeportistaUtils.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Curso.h">
@@ -186,6 +174,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="PagosNoRegistradosException.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ControlCursos.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Gimnasio.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

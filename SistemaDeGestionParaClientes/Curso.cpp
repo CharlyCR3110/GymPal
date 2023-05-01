@@ -206,6 +206,31 @@ const string Curso::reporteCursoGuiaMatricula() const
     return ss.str();
 }
 
+const string Curso::listadoDeCurso() const
+{
+    return this->codigo + "  " + this->nombreDelCurso + '\n';
+}
+
+const string Curso::generarReporteDeportistasMatriculadosPorGrupo(int numeroGrupo) const
+{
+    // muestra los deportistas matriculados en un grupo
+    stringstream ss;
+    ss << "Grupo: " << numeroGrupo << endl;
+    if (!this->listaGrupos->estaVacia())
+    {
+        Nodo<Grupo>* nodoActual = this->listaGrupos->getPrimero();
+        while (nodoActual != nullptr)
+        {
+            if (nodoActual->getDato()->getNumeroGrupo() == numeroGrupo)
+            {
+                ss << nodoActual->getDato()->mostrarCedulaYNombreInscritos();
+				break;
+            }
+        }
+    }
+    return ss.str();
+}
+
 bool Curso::hayGrupos()
 {
     return this->cantidadDeGruposActuales > 0;
@@ -328,6 +353,68 @@ void Curso::matricularEnGrupo(int numeroGrupo, Deportista* deportista)
 	throw exception("No se encontro el grupo");
 }
 
+Grupo* Curso::obtenerGrupo(int numeroGrupo)
+{
+    if (!hayGrupos())
+    {
+        throw exception("No hay grupos en el curso");   // hacer excepcion
+    }
+
+    Nodo<Grupo>* nodoActual = this->listaGrupos->getPrimero();
+    while (nodoActual != nullptr)
+    {
+        if (nodoActual->getDato()->getNumeroGrupo() == numeroGrupo)
+        {
+            return nodoActual->getDato();
+        }
+        nodoActual = nodoActual->getSiguiente();
+    }
+    throw exception("No se encontro el grupo");
+}
+
+string Curso::reporteGrupo(int numeroGrupo)
+{
+    if (listaGrupos->estaVacia())
+    {
+		throw exception("No hay grupos en el curso");
+	}
+
+    stringstream ss;
+    ss << "Nombre del curso: " << this->nombreDelCurso << endl;
+	Nodo<Grupo>* nodoActual = this->listaGrupos->getPrimero();
+    while (nodoActual != nullptr)
+    {
+        if (nodoActual->getDato()->getNumeroGrupo() == numeroGrupo)
+        {
+			ss << nodoActual->getDato()->toString();
+			return ss.str();
+		}
+		nodoActual = nodoActual->getSiguiente();
+	}
+
+    throw exception("No se encontro el grupo");
+}
+
+void Curso::desmatricularDeGrupo(int numeroGrupo, Deportista* deportista)
+{
+    if (!hayGrupos())
+    {
+		throw exception("No hay grupos en el curso");
+	}
+	Nodo<Grupo>* nodoActual = this->listaGrupos->getPrimero();
+    while (nodoActual != nullptr)
+    {
+        if (nodoActual->getDato()->getNumeroGrupo() == numeroGrupo)
+        {
+			nodoActual->getDato()->eliminarDeportista(deportista);
+			deportista->setcantidadDeCursosMatriculados(deportista->getcantidadDeCursosMatriculados() - 1);
+			return;
+		}
+		nodoActual = nodoActual->getSiguiente();
+	}
+	throw exception("No se encontro el grupo");
+}
+
 Curso& Curso::operator=(const Curso& curso_)
 {
     if (this != &curso_)
@@ -370,7 +457,7 @@ const string Curso::getNivel() const
     return this->nivel;
 }
 
-ostream& operator<<(ostream& out, Curso& curso_)
+ostream& operator<<(ostream& out, const Curso& curso_)
 {
     out << curso_.toString();
     return out;

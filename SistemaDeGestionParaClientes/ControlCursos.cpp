@@ -47,7 +47,6 @@ string ControlCursos::generarReporteCurso(string codigo_)
     Curso* curso = nullptr;
     try
     {
-        cout << "Desde el try" << endl;
         curso = listaCursos->buscarPorCodigo(codigo_);
     }
     catch (exception& e)
@@ -111,6 +110,40 @@ void ControlCursos::matricularEnGrupo(string codigoCurso_, int numeroGrupo_, str
 		}
 }
 
+void ControlCursos::desmatricularDeGrupo(string codigoCurso_, int numeroGrupo_, string cedulaDeportista_)
+{
+    Curso* curso = nullptr;
+	Deportista* deportista = nullptr;
+    try
+    {
+		curso = listaCursos->buscarPorCodigo(codigoCurso_);
+		deportista = listaDeportistas->buscarPorCodigo(cedulaDeportista_);
+	}
+    catch (exception& e)
+    {
+		throw exception(e.what());
+	}
+	// si es nullptr probablemente nunca llegue a este punto por el catch, pero por si acaso
+    if (curso == nullptr || deportista == nullptr)
+    {
+		throw exception("No se encontro el curso o el deportista");
+	}
+	// si el deportista no esta matriculado en el curso
+    if (!curso->estaMatriculado(deportista))
+    {
+		throw exception("El deportista no esta matriculado en el curso");
+	}
+	// hacer la desmatricula
+    try
+    {
+		curso->desmatricularDeGrupo(numeroGrupo_, deportista);
+	}
+    catch (exception& e)
+    {
+		throw exception(e.what());
+	}
+}
+
 string ControlCursos::reporteGuiaMatriculaCurso(string codigo_)
 {
     Curso* curso = nullptr;
@@ -132,4 +165,125 @@ string ControlCursos::reporteGuiaMatriculaCurso(string codigo_)
     {
         return "No se encontro el curso.";
     }
+}
+
+//string ControlCursos::reporteCursosMatriculados(string cedula_)
+//{
+//    Deportista* deportista = nullptr;
+//    try
+//    {
+//		deportista = listaDeportistas->buscarPorCodigo(cedula_);
+//	}
+//    catch (exception& e)
+//    {
+//		throw exception(e.what());
+//	}
+//	// si es nullptr probablemente nunca llegue a este punto por el catch, pero por si acaso
+//    if (deportista != nullptr)
+//    {
+//		return deportista->reporteCursosMatriculados(); // TO-DO
+//	}
+//    else
+//    {
+//		return "No se encontro el deportista.";
+//	}
+//}
+
+string ControlCursos::reporteListadoCursos()
+{
+    Nodo<Curso>* cursoActual;
+    try 
+    {
+        cursoActual = listaCursos->getPrimero();
+	}
+    catch (exception& e)
+    {
+        throw exception(e.what());
+    }
+    //recorrer la lista y llamar al metodo listadoDeCurso() de cada curso
+    stringstream ss;
+    ss << "Listado de cursos: " << endl;
+    if (cursoActual != nullptr)
+    {
+        while (cursoActual != nullptr)
+        {
+			ss << cursoActual->getDato()->listadoDeCurso() << endl;
+			cursoActual = cursoActual->getSiguiente();
+		}
+	}
+    else
+    {
+		ss << "No hay cursos registrados." << endl;
+	}
+ 
+    return ss.str();
+}
+
+const string ControlCursos::generarReporteDeportistasMatriculadosPorGrupo(string codigoCurso_, int numeroGrupo_) const
+{
+    stringstream ss;
+    Curso* curso = nullptr;
+    try
+    {
+		curso = listaCursos->buscarPorCodigo(codigoCurso_);
+	}
+    catch (exception& e)
+    {
+		throw exception(e.what());
+	}
+    // si es nullptr probablemente nunca llegue a este punto por el catch, pero por si acaso
+    if (curso != nullptr)
+    {
+		ss << curso->generarReporteDeportistasMatriculadosPorGrupo(numeroGrupo_);
+	}
+    else
+    {
+		ss << "No se encontro el curso." << endl;
+	}
+    
+    return ss.str();
+}
+
+void ControlCursos::agregarGrupo(string codigoCurso_, Grupo* grupo_)
+{
+    Curso* curso = nullptr;
+    try
+    {
+		curso = listaCursos->buscarPorCodigo(codigoCurso_);
+	}
+    catch (exception& e)
+    {
+		throw exception(e.what());
+	}
+	// si es nullptr probablemente nunca llegue a este punto por el catch, pero por si acaso
+    if (curso != nullptr)
+    {
+		curso->agregarGrupo(grupo_);
+	}
+    else
+    {
+		throw exception("No se encontro el curso.");
+	}
+}
+
+string ControlCursos::reporteGrupo(string codigoCurso_, int numeroGrupo_)
+{
+    Curso* curso = nullptr;
+    try
+    {
+		curso = listaCursos->buscarPorCodigo(codigoCurso_);
+	}
+    catch (exception& e)
+    {
+		throw exception(e.what());
+	}
+	// si es nullptr probablemente nunca llegue a este punto por el catch, pero por si acaso
+    if (curso != nullptr)
+    {
+		return curso->reporteGrupo(numeroGrupo_);
+	}
+    else
+    {
+		return "No se encontro el curso.";
+	}
 }

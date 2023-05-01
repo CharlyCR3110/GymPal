@@ -18,6 +18,7 @@ public:
 	virtual const double getTemperaturaPromedio() const;
 	// Metodos
 	virtual const string toString() const override;
+	virtual const string detalleDeportista() const = 0;
 	// Sobrecarga de operadores
 	friend ostream& operator<<(ostream& out, const Ciclista& ciclista_);	// operador de salida
 };

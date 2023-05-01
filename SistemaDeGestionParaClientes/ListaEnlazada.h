@@ -28,6 +28,7 @@ public:
 	void eliminarPrimero();	// elimina el primero
 	void eliminarUltimo();	// elimina el ultimo
 	void eliminarDato(T* dato_);	// elimina el dato
+	void eliminarDatoPorCodigo(string codigo_);	// elimina el dato por codigo
 	void vaciar();	// elimina todos los datos
 	T* buscar(T* dato_);
 	//metodos para buscar cositas
@@ -260,6 +261,40 @@ inline void ListaEnlazada<T>::eliminarDato(T* dato_)
 		eliminarUltimo();
 	}
 
+	else
+	{
+		anterior->setSiguiente(actual->getSiguiente());
+		delete actual;
+		this->cantidad--;
+	}
+}
+
+template<class T>
+inline void ListaEnlazada<T>::eliminarDatoPorCodigo(string codigo_)
+{
+	if (estaVacia())
+	{
+		throw ListaVaciaException();
+	}
+	Nodo<T>* actual = this->primero;
+	Nodo<T>* anterior = nullptr;
+	while (actual != nullptr && actual->getDato()->getCodigo() != codigo_)
+	{
+		anterior = actual;
+		actual = actual->getSiguiente();
+	}
+	if (actual == nullptr)
+	{
+		throw ElementoNoEncontradoException<T>();
+	}
+	if (actual == this->primero)
+	{
+		eliminarPrimero();
+	}
+	else if (actual == this->ultimo)
+	{
+		eliminarUltimo();
+	}
 	else
 	{
 		anterior->setSiguiente(actual->getSiguiente());
