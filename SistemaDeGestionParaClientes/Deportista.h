@@ -30,6 +30,20 @@ public:
 	virtual void setFechaNacimiento(Fecha* fechaNacimiento_);
 	virtual void setEstado(char estado);
 	virtual void setcantidadDeCursosMatriculados(int cantidadDeCursosMatriculados_);
+	// setters que se van pa' abajo
+	virtual void setSexo(char sexo_) = 0;
+	// Corredor
+	virtual void actualizarEstatura(double estatura_, Fecha* fechaActualizacion_) = 0;
+	// Nadador
+	virtual void actualizarMasaMuscular(double masaMuscular_, Fecha* fechaActualizacion_) = 0;
+	virtual void actualizarPorcentajeGrasaCorporal(double porcentajeGrasaCorporal_, Fecha* fechaActualizacion_) = 0;
+	virtual void actualizarPeso(double peso_, Fecha* fechaActualizacion_) = 0;
+	// Ciclista
+	virtual void setHorasEntrenamiento(int horasEntrenamiento_) = 0;
+	virtual void setTemperaturaPromedio(double temperaturaPromedio_) = 0;
+	// triatlonista
+	virtual void setCantidadParticipacionesIronMan(int cantidadParticipacionesIronMan_) = 0;
+	virtual void setCantidadTriatlonesGanados(int cantidadTriatlonesGanados_) = 0;
 	//getters
 	virtual const string getCedula() const;
 	virtual const string getNombre() const;
