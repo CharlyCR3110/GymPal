@@ -138,6 +138,7 @@ void ControlCursos::desmatricularDeGrupo(string codigoCurso_, int numeroGrupo_, 
     try
     {
 		curso->desmatricularDeGrupo(numeroGrupo_, deportista);
+        deportista->eliminarCurso(curso);
 	}
     catch (exception& e)
     {
