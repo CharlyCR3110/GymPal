@@ -52,6 +52,8 @@ public:
 	// para obtener el grupo
 	Grupo* obtenerGrupo(int numeroGrupo);
 	string reporteGrupo(int numeroGrupo);
+	// desmatricular
+	void desmatricularDeGrupo(int numeroGrupo, Deportista* deportista);
 	// sobrecarga de operador para mostrar los datos
 	friend ostream& operator<<(ostream &out, const Curso &curso_);
 	Curso& operator=(const Curso& curso_);	// operador de asignacion

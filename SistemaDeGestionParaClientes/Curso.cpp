@@ -395,6 +395,26 @@ string Curso::reporteGrupo(int numeroGrupo)
     throw exception("No se encontro el grupo");
 }
 
+void Curso::desmatricularDeGrupo(int numeroGrupo, Deportista* deportista)
+{
+    if (!hayGrupos())
+    {
+		throw exception("No hay grupos en el curso");
+	}
+	Nodo<Grupo>* nodoActual = this->listaGrupos->getPrimero();
+    while (nodoActual != nullptr)
+    {
+        if (nodoActual->getDato()->getNumeroGrupo() == numeroGrupo)
+        {
+			nodoActual->getDato()->eliminarDeportista(deportista);
+			deportista->setcantidadDeCursosMatriculados(deportista->getcantidadDeCursosMatriculados() - 1);
+			return;
+		}
+		nodoActual = nodoActual->getSiguiente();
+	}
+	throw exception("No se encontro el grupo");
+}
+
 Curso& Curso::operator=(const Curso& curso_)
 {
     if (this != &curso_)
