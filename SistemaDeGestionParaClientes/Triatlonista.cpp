@@ -282,7 +282,7 @@ const string Triatlonista::detalleDeportista() const
     ss << '\t' << "Cedula: " << this->cedula << endl;
     ss << '\t' << "Nombre: " << this->nombre << endl;
     ss << '\t' << "Estado: " << this->estado << endl;
-    ss << '\t' << "Telefono" << this->telefono << endl;
+    ss << '\t' << "Telefono: " << this->telefono << endl;
     ss << '\t' << "Fecha de nacimiento: " << this->fechaNacimiento->toString() << endl;
     ss << '\t' << "Sexo: " << this->corredor->getSexo() << endl;
     ss << '\t' << "Horas de entrenamiento diarias: " << this->horasEntrenamiento << endl;
