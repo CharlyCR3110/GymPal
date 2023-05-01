@@ -17,6 +17,9 @@ public:
 	static void menuAdministracionGeneralMontoMensual(); // 2
 	//
 	static int menuControlDeportistas();	// 2
+	//submenus de menuControlDeportistas
+	static void menuControlDeportistasIngresoNuevoDeportista(); // 1
+
 	static int menuControlCursos();	// 3
 	static int menuControlGrupos();	// 4
 	static int menuControlPagos();	// 5
