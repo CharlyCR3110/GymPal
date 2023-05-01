@@ -191,6 +191,21 @@ const string Grupo::mostrarDeportistasInscritos() const
 	return ss.str();
 }
 
+const string Grupo::mostrarCedulaYNombreInscritos() const
+{
+	if (deportistasInscritos->estaVacia())
+		return "No hay triatlonistas inscritos";
+	stringstream ss;
+	Nodo<Deportista>* nodoActual = this->deportistasInscritos->getPrimero();
+	while (nodoActual != nullptr)
+	{
+		ss << nodoActual->getDato()->getCedula() << '\t' << nodoActual->getDato()->getNombre() << endl;
+		nodoActual = nodoActual->getSiguiente();
+	}
+
+	return ss.str();
+}
+
 void Grupo::agregarDeportista(Deportista* deportista_)
 {
 	if (deportista_ == nullptr)
