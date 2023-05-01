@@ -299,3 +299,15 @@ const string Gimnasio::generarReporteCursosMatriculados(string cedula_) const
 		throw exception(e.what());
 	}
 }
+
+Deportista* Gimnasio::buscarDeportista(string cedula_)
+{
+	try
+	{
+		this->listaDeportistas->buscarPorCodigo(cedula_);
+	}
+	catch (exception& e)
+	{
+		throw exception(e.what());
+	}
+}
