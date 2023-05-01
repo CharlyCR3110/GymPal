@@ -353,6 +353,25 @@ void Curso::matricularEnGrupo(int numeroGrupo, Deportista* deportista)
 	throw exception("No se encontro el grupo");
 }
 
+Grupo* Curso::obtenerGrupo(int numeroGrupo)
+{
+    if (!hayGrupos())
+    {
+        throw exception("No hay grupos en el curso");   // hacer excepcion
+    }
+
+    Nodo<Grupo>* nodoActual = this->listaGrupos->getPrimero();
+    while (nodoActual != nullptr)
+    {
+        if (nodoActual->getDato()->getNumeroGrupo() == numeroGrupo)
+        {
+            return nodoActual->getDato();
+        }
+        nodoActual = nodoActual->getSiguiente();
+    }
+    throw exception("No se encontro el grupo");
+}
+
 Curso& Curso::operator=(const Curso& curso_)
 {
     if (this != &curso_)
