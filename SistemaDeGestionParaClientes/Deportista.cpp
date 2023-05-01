@@ -139,7 +139,6 @@ const string Deportista::mostrarCursosMatriculados() const
         throw exception("El deportista no esta matriculado en ningun curso");   //crear excepcion personalizada
     }
     stringstream ss;
-    ss << "Cursos matriculados: " << endl;
     Nodo<Curso> *nodoActual = listaCursos->getPrimero();
     while (nodoActual != nullptr)
     {
