@@ -159,11 +159,13 @@ const string Grupo::generarReporte() const
 	return ss.str();
 }
 
-const string Grupo::toString() const
+const string Grupo::toString() const	// 5.4
 {
 	stringstream ss;
-	ss << "Instructor: " << this->instructor->toString() << endl;
+	ss << "Instructor: " << this->instructor->toString() << endl;	// nombre-id
+	ss << "Numero de grupo: " << this->numeroGrupo << endl;
 	ss << "Cupo maximo: " << this->cupoMaximo << endl;
+	ss << "Cantidad de inscritos: " << this->cantidadDeInscritos << endl;
 	ss << "Fecha de inicio: " << this->fechaDeInicio->toString() << endl;
 	ss << "Semanas de duracion: " << this->semanasDeDuracion << endl;
 	ss << "Dia de la semana: " << this->diaDeLaSemana << endl;
