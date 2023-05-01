@@ -39,6 +39,13 @@ ControlPagos::~ControlPagos()
 {
 }
 
+void ControlPagos::setMontoMensual(double montoMensual_)
+{
+	if (montoMensual_ < 0)
+		throw ControlPagosInvalidoException("Monto mensual invalido");	//ControlPagosInvalidoException
+	this->montoMensual = montoMensual_;
+}
+
 void ControlPagos::registrarPago(string cedula_, string mesCancelado_, double monto_)
 {
 	Deportista* deportista;
@@ -131,3 +138,5 @@ void ControlPagos::pagarMeses(string cedula_, int cantidadMeses_)
 			mesActual = 0;
 	}
 }
+
+
