@@ -54,6 +54,8 @@ public:
 	// bs
 	// Reporte deportistas matriculados por grupo
 	const string generarReporteDeportistasMatriculadosPorGrupo(string codigoCurso_, int numeroGrupo_) const;
+	// muestra los cursos que esta matriculado un deportista
+	const string generarReporteCursosMatriculados(string cedula_) const;
 
 
 	void generarReporteDeportistasPorCurso(string codigo_);
