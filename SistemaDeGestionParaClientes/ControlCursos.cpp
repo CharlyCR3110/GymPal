@@ -103,6 +103,7 @@ void ControlCursos::matricularEnGrupo(string codigoCurso_, int numeroGrupo_, str
         try
         {
             curso->matricularEnGrupo(numeroGrupo_, deportista);
+            deportista->agregarCurso(curso);
         }
         catch (exception& e)
         {
@@ -137,6 +138,7 @@ void ControlCursos::desmatricularDeGrupo(string codigoCurso_, int numeroGrupo_, 
     try
     {
 		curso->desmatricularDeGrupo(numeroGrupo_, deportista);
+        deportista->eliminarCurso(curso);
 	}
     catch (exception& e)
     {
@@ -165,6 +167,43 @@ string ControlCursos::reporteGuiaMatriculaCurso(string codigo_)
     {
         return "No se encontro el curso.";
     }
+}
+
+string ControlCursos::reporteCursosMatriculados(string cedula_)
+{
+    if (listaDeportistas->estaVacia())
+    {
+		throw "No hay deportistas registrados.";
+	}
+
+    if (listaCursos->estaVacia())
+    {
+        throw "No hay cursos registrados.";
+    }
+
+    Deportista* deportista = nullptr;
+    try
+    {
+        deportista = listaDeportistas->buscarPorCodigo(cedula_);
+    }
+    catch (exception& e)
+    {
+		throw exception(e.what());
+    }
+
+
+
+    stringstream ss;
+    ss << "Cursos matriculados por el deportista con cedula " << cedula_ << ":" << endl;
+    try {
+        ss << deportista->mostrarCursosMatriculados();
+    }  
+    catch (exception& e)
+    {
+		throw exception(e.what());
+	}
+    
+    return ss.str();
 }
 
 //string ControlCursos::reporteCursosMatriculados(string cedula_)

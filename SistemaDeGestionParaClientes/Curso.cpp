@@ -345,7 +345,6 @@ void Curso::matricularEnGrupo(int numeroGrupo, Deportista* deportista)
         if (nodoActual->getDato()->getNumeroGrupo() == numeroGrupo)
         {
 			nodoActual->getDato()->agregarDeportista(deportista);
-            deportista->setcantidadDeCursosMatriculados(deportista->getcantidadDeCursosMatriculados() + 1);
 			return;
 		}
 		nodoActual = nodoActual->getSiguiente();
@@ -407,7 +406,6 @@ void Curso::desmatricularDeGrupo(int numeroGrupo, Deportista* deportista)
         if (nodoActual->getDato()->getNumeroGrupo() == numeroGrupo)
         {
 			nodoActual->getDato()->eliminarDeportista(deportista);
-			deportista->setcantidadDeCursosMatriculados(deportista->getcantidadDeCursosMatriculados() - 1);
 			return;
 		}
 		nodoActual = nodoActual->getSiguiente();

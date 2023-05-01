@@ -287,3 +287,15 @@ const string Gimnasio::generarReporteDeportistasMatriculadosPorGrupo(string codi
 	}
 	return ss.str();
 }
+
+const string Gimnasio::generarReporteCursosMatriculados(string cedula_) const
+{
+	try
+	{
+		return this->controlCursos->reporteCursosMatriculados(cedula_);
+	}
+	catch (exception& e)
+	{
+		throw exception(e.what());
+	}
+}
