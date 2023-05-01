@@ -1,5 +1,8 @@
 #include "Interfaz.h"
 
+
+Gimnasio* Interfaz::gimnasio = new Gimnasio();
+
 int Interfaz::menuPrincipal()
 {
     int opcion = 0;
@@ -15,7 +18,8 @@ int Interfaz::menuPrincipal()
     return opcion;
 }
 
-int Interfaz::menuAdministracionGeneral()
+//---------------------//
+int Interfaz::menuAdministracionGeneral()   // sub menu 1 de menu principal
 {
     int opcion = 0;
     cout << "\t\t1. Administracion General" << endl;
@@ -25,6 +29,25 @@ int Interfaz::menuAdministracionGeneral()
     cin >> opcion;
     return opcion;
 }
+
+void Interfaz::menuAdministracionGeneralNombreGimnasio()    // sub menu 1 de menu administracion general
+{
+    string nombreGimnasio;
+	cout << "\t<1. Administracion General> <1. Nombre del Gimnasio>" << endl;
+	cout << "Digite el nuevo nombre del gimnasio: ";
+	cin >> nombreGimnasio;
+	gimnasio->setNombreDelGimnasio(nombreGimnasio);
+}
+
+void Interfaz::menuAdministracionGeneralMontoMensual()  // sub menu 2 de menu administracion general
+{
+    double montoMensual;
+    cout << "\t<1. Administracion General> <2. Monto Mensual>" << endl;
+    cout << "Digite el nuevo monto mensual: ";
+    cin >> montoMensual;
+    gimnasio->setMontoMensual(montoMensual);
+}
+//---------------------//
 
 int Interfaz::menuControlDeportistas()
 {
