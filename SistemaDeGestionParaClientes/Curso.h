@@ -50,6 +50,6 @@ public:
 	bool estaMatriculado(Deportista* deportista_);
 	void matricularEnGrupo(int numeroGrupo, Deportista* deportista);
 	// sobrecarga de operador para mostrar los datos
-	friend ostream& operator<<(ostream &out, Curso &curso_);
+	friend ostream& operator<<(ostream &out, const Curso &curso_);
 	Curso& operator=(const Curso& curso_);	// operador de asignacion
 };

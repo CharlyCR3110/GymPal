@@ -395,7 +395,7 @@ const string Curso::getNivel() const
     return this->nivel;
 }
 
-ostream& operator<<(ostream& out, Curso& curso_)
+ostream& operator<<(ostream& out, const Curso& curso_)
 {
     out << curso_.toString();
     return out;
