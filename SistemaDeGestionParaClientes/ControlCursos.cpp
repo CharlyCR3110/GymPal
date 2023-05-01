@@ -133,3 +133,78 @@ string ControlCursos::reporteGuiaMatriculaCurso(string codigo_)
         return "No se encontro el curso.";
     }
 }
+
+//string ControlCursos::reporteCursosMatriculados(string cedula_)
+//{
+//    Deportista* deportista = nullptr;
+//    try
+//    {
+//		deportista = listaDeportistas->buscarPorCodigo(cedula_);
+//	}
+//    catch (exception& e)
+//    {
+//		throw exception(e.what());
+//	}
+//	// si es nullptr probablemente nunca llegue a este punto por el catch, pero por si acaso
+//    if (deportista != nullptr)
+//    {
+//		return deportista->reporteCursosMatriculados(); // TO-DO
+//	}
+//    else
+//    {
+//		return "No se encontro el deportista.";
+//	}
+//}
+
+string ControlCursos::reporteListadoCursos()
+{
+    Nodo<Curso>* cursoActual;
+    try 
+    {
+        cursoActual = listaCursos->getPrimero();
+	}
+    catch (exception& e)
+    {
+        throw exception(e.what());
+    }
+    //recorrer la lista y llamar al metodo listadoDeCurso() de cada curso
+    stringstream ss;
+    ss << "Listado de cursos: " << endl;
+    if (cursoActual != nullptr)
+    {
+        while (cursoActual != nullptr)
+        {
+			ss << cursoActual->getDato()->listadoDeCurso() << endl;
+			cursoActual = cursoActual->getSiguiente();
+		}
+	}
+    else
+    {
+		ss << "No hay cursos registrados." << endl;
+	}
+ 
+    return ss.str();
+}
+
+const string ControlCursos::generarReporteDeportistasMatriculadosPorGrupo(string codigoCurso_, int numeroGrupo_) const
+{
+    stringstream ss;
+    Curso* curso = nullptr;
+    try
+    {
+		curso = listaCursos->buscarPorCodigo(codigoCurso_);
+	}
+    catch (exception& e)
+    {
+		throw exception(e.what());
+	}
+    // si es nullptr probablemente nunca llegue a este punto por el catch, pero por si acaso
+    if (curso != nullptr)
+    {
+		ss << curso->generarReporteDeportistasMatriculadosPorGrupo(numeroGrupo_);
+	}
+    else
+    {
+		ss << "No se encontro el curso." << endl;
+	}
+}

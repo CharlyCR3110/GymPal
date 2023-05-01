@@ -22,4 +22,10 @@ public:
 	void matricularEnGrupo(string codigoCurso_, int numeroGrupo_, string cedulaDeportista_);
 	// mostrar los grupos de un curso para matricular
 	string reporteGuiaMatriculaCurso(string codigo_);
+	// mostrar los cursos en los que esta matriculado un deportista
+	string reporteCursosMatriculados(string cedula_);
+	// mostar listado de cursos
+	string reporteListadoCursos();
+	// mostrar listado de deportistas en un grupo
+	const string generarReporteDeportistasMatriculadosPorGrupo(string codigoCurso_, int numeroGrupo_) const;
 };
