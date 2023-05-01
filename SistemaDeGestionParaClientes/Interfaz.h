@@ -25,6 +25,19 @@ public:
 	static int menuControlPagos();	// 5
 
 
-	//menus globales
+	//menus auxiliares
 	static Fecha* menuFecha();
+	// 
+	void modificarNombreDeportista(Deportista* deportista);
+	void modificarTelefonoDeportista(Deportista* deportista);
+	void modificarFechaNacimientoDeportista(Deportista* deportista);
+	void modificarSexoDeportista(Deportista* deportista);
+	void modificarEstaturaDeportista(Deportista* deportista);
+	void modificarPesoDeportista(Deportista* deportista);
+	void modificarPorcentajeGrasaCorporalDeportista(Deportista* deportista);
+	void modificarPorcentajeMasaMuscularDeportista(Deportista* deportista);
+	void modificarEstadoDeportista(Deportista* deportista);
+	void modificarHorasEntrenamientoDeportista(Deportista* deportista);
+	void modificarCantidadPartidosIronManDeportista(Deportista* deportista);
+	void modificarCantidadTriatlonesGanadosDeportista(Deportista* deportista);
 };
