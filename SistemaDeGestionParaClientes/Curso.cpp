@@ -372,6 +372,29 @@ Grupo* Curso::obtenerGrupo(int numeroGrupo)
     throw exception("No se encontro el grupo");
 }
 
+string Curso::reporteGrupo(int numeroGrupo)
+{
+    if (listaGrupos->estaVacia())
+    {
+		throw exception("No hay grupos en el curso");
+	}
+
+    stringstream ss;
+    ss << "Nombre del curso: " << this->nombreDelCurso << endl;
+	Nodo<Grupo>* nodoActual = this->listaGrupos->getPrimero();
+    while (nodoActual != nullptr)
+    {
+        if (nodoActual->getDato()->getNumeroGrupo() == numeroGrupo)
+        {
+			ss << nodoActual->getDato()->toString();
+			return ss.str();
+		}
+		nodoActual = nodoActual->getSiguiente();
+	}
+
+    throw exception("No se encontro el grupo");
+}
+
 Curso& Curso::operator=(const Curso& curso_)
 {
     if (this != &curso_)

@@ -51,6 +51,7 @@ public:
 	void matricularEnGrupo(int numeroGrupo, Deportista* deportista);
 	// para obtener el grupo
 	Grupo* obtenerGrupo(int numeroGrupo);
+	string reporteGrupo(int numeroGrupo);
 	// sobrecarga de operador para mostrar los datos
 	friend ostream& operator<<(ostream &out, const Curso &curso_);
 	Curso& operator=(const Curso& curso_);	// operador de asignacion
