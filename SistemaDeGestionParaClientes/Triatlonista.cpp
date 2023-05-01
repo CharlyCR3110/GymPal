@@ -275,6 +275,31 @@ const string Triatlonista::toString() const
     return ss.str();
 }
 
+const string Triatlonista::detalleDeportista() const
+{
+    stringstream ss;
+    ss << "Datos generales:" << endl;
+    ss << '\t' << "Cedula: " << this->cedula << endl;
+    ss << '\t' << "Nombre: " << this->nombre << endl;
+    ss << '\t' << "Estado: " << this->estado << endl;
+    ss << '\t' << "Telefono" << this->telefono << endl;
+    ss << '\t' << "Fecha de nacimiento: " << this->fechaNacimiento->toString() << endl;
+    ss << '\t' << "Sexo: " << this->corredor->getSexo() << endl;
+    ss << '\t' << "Horas de entrenamiento diarias: " << this->horasEntrenamiento << endl;
+    ss << '\t' << "Cantidad de participaciones en IronMan: " << this->cantidadParticipacionesIronMan << endl;
+    ss << '\t' << "Cantidad de triatlones ganados: " << this->cantidadTriatlonesGanados << endl;
+
+    ss << "Datos biometricos:" << endl;
+    ss << '\t' << "Estatura: " << this->corredor->getEstatura() << endl;
+    ss << '\t' << "Peso: " << this->nadador->getPeso() << endl;
+    ss << '\t' << "Porcentaje de grasa corporal: " << this->nadador->getPorcentajeGrasaCorporal() << "%" << endl;
+    ss << '\t' << "Masa muscular: " << this->nadador->getMasaMuscular() << "%" << endl;
+    
+    //ss << "Grupos matriculados:" << endl; //TO-DO
+
+    return ss.str();
+}
+
 ostream& operator<<(ostream& out, const Triatlonista& triatlonista_)
 {
     out << triatlonista_.toString();

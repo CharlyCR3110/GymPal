@@ -40,6 +40,7 @@ public:
 	const string getCodigo() const; //devuelve la cedula
 	//metodos
 	virtual const string toString() const = 0;	//MVP - metodo virtual puro
+	virtual const string detalleDeportista() const = 0;	//MVP - metodo virtual puro
 	//sobrecarga de operadores
 	Deportista& operator=(const Deportista& deportista_);	// operador de asignacion
 	bool operator != (const Deportista& deportista_) const; // operador de desigualdad

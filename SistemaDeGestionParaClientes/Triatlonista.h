@@ -53,6 +53,7 @@ public:
     virtual const double getPorcentajeGrasaCorporal() const;
     // Metodos
     virtual const string toString() const override;
+    virtual const string detalleDeportista() const override;
     // Sobrecarga de operadores
     friend ostream& operator<<(ostream& out, const Triatlonista& triatlonista_);
 };
