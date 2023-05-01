@@ -4,6 +4,7 @@
 #include "FechaInvalidaException.h"
 #include "ListaEnlazada.h"
 #include "Pago.h"
+class Curso;
 
 class Deportista
 {
@@ -16,6 +17,7 @@ protected:
 	// agregar lista de pagos
 	ListaEnlazada<Pago>* listaPagos;
 	// agregar lista de cursos??
+	ListaEnlazada<Curso>* listaCursos;
 	int cantidadDeCursosMatriculados;
 public:
 	Deportista(string cedula_ = "", string nombre_ = "", string telefono_ = "", Fecha* fechaNacimiento_ = nullptr, char estado_ = ' ');
@@ -36,9 +38,12 @@ public:
 	virtual const char getEstado() const;
 	ListaEnlazada<Pago>* getPagos();	// devuelve la lista de pagos
 	virtual const int getcantidadDeCursosMatriculados() const;
+	virtual ListaEnlazada<Curso>* getListaCursos();	// devuelve la lista de cursos
 	//metodo para poder utilizar el template de buscar por codigo
 	const string getCodigo() const; //devuelve la cedula
 	//metodos
+	virtual void agregarCurso(Curso* curso_);
+	virtual const string mostrarCursosMatriculados() const;
 	virtual const string toString() const = 0;	//MVP - metodo virtual puro
 	virtual const string detalleDeportista() const = 0;	//MVP - metodo virtual puro
 	//sobrecarga de operadores

@@ -1,5 +1,5 @@
 #include "Deportista.h"
-
+#include "Curso.h"
 
 Deportista::Deportista(string cedula_, string nombre_, string telefono_, Fecha* fechaNacimiento_, char estado_):
     cedula(cedula_),
@@ -17,6 +17,7 @@ Deportista::Deportista(string cedula_, string nombre_, string telefono_, Fecha* 
     }
 
     this->listaPagos = new ListaEnlazada<Pago>();
+    this->listaCursos = new ListaEnlazada<Curso>();
 }
 
 Deportista::Deportista(const Deportista& deportista_): 
@@ -25,7 +26,8 @@ Deportista::Deportista(const Deportista& deportista_):
     telefono(deportista_.telefono),
     estado(deportista_.estado),
     listaPagos(deportista_.listaPagos),
-    cantidadDeCursosMatriculados(deportista_.cantidadDeCursosMatriculados)
+    cantidadDeCursosMatriculados(deportista_.cantidadDeCursosMatriculados),
+    listaCursos(deportista_.listaCursos)
 {
     try {
 		this->fechaNacimiento = new Fecha(*deportista_.fechaNacimiento);
@@ -108,9 +110,54 @@ const int Deportista::getcantidadDeCursosMatriculados() const
     return this->cantidadDeCursosMatriculados;
 }
 
+ListaEnlazada<Curso>* Deportista::getListaCursos()
+{
+    return nullptr;
+}
+
 const string Deportista::getCodigo() const
 {
     return this->cedula;
+}
+
+void Deportista::agregarCurso(Curso* curso_)
+{
+    this->listaCursos->insertar(curso_);
+}
+
+const string Deportista::mostrarCursosMatriculados() const
+{
+    if (listaCursos->estaVacia())
+    {
+        throw exception("El deportista no esta matriculado en ningun curso");   //crear excepcion personalizada
+    }
+    stringstream ss;
+    ss << "Cursos matriculados: " << endl;
+    Nodo<Curso> *nodoActual = listaCursos->getPrimero();
+    while (nodoActual != nullptr)
+    {
+        ss << "(" << nodoActual->getDato()->getCodigo() << ")\t" << nodoActual->getDato()->getNombreDelCurso() << "\tGrupo #";
+        //se busca en la lista de grupos el grupo al que pertenece el curso
+        Nodo<Grupo>* nodoGrupo = nodoActual->getDato()->getListaGrupos()->getPrimero();
+        while (nodoGrupo != nullptr)
+        {
+            //se busca en la lista de deportistas del grupo el deportista
+            Nodo<Deportista>* nodoDeportista = nodoGrupo->getDato()->getDeportistasInscritos()->getPrimero();
+            while (nodoDeportista != nullptr)
+            {
+                if (nodoDeportista->getDato()->getCedula() == this->cedula)
+                {
+					ss << nodoGrupo->getDato()->getNumeroGrupo() << endl;
+					break;
+				}
+				nodoDeportista = nodoDeportista->getSiguiente();
+			}
+			nodoGrupo = nodoGrupo->getSiguiente();
+		}
+		nodoActual = nodoActual->getSiguiente();
+	}
+    	
+    return ss.str();
 }
 
 Deportista& Deportista::operator=(const Deportista& deportista_)
