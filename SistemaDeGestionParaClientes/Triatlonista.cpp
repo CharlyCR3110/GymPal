@@ -295,7 +295,15 @@ const string Triatlonista::detalleDeportista() const
     ss << '\t' << "Porcentaje de grasa corporal: " << this->nadador->getPorcentajeGrasaCorporal() << "%" << endl;
     ss << '\t' << "Masa muscular: " << this->nadador->getMasaMuscular() << "%" << endl;
     
-    //ss << "Grupos matriculados:" << endl; //TO-DO
+    ss << "Grupos matriculados:" << endl; //TO-DO
+    try
+    {
+        ss << mostrarCursosMatriculados() << endl;
+    }
+    catch (exception& e)
+    {
+		ss << e.what() << endl;
+	}
 
     return ss.str();
 }
