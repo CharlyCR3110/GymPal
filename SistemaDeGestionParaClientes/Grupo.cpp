@@ -256,6 +256,22 @@ bool Grupo::estaLleno()
 	return this->cantidadDeInscritos == this->cupoMaximo;
 }
 
+void Grupo::eliminarDeportista(Deportista* deportista_)
+{
+	if (deportista_ == nullptr)
+		throw std::invalid_argument("El deportista no puede ser nulo");	//crear excepcion
+	if (this->cantidadDeInscritos == 0)
+		throw std::invalid_argument("El grupo esta vacio");	//crear excepcion
+	try {
+		this->deportistasInscritos->eliminarDato(deportista_);
+		this->cantidadDeInscritos--;
+	}
+	catch (invalid_argument& e)
+	{
+		throw e;
+	}
+}
+
 Grupo& Grupo::operator=(const Grupo& grupo_)
 {
 	if (this == &grupo_)

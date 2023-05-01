@@ -53,6 +53,8 @@ public:
 	// revisar que el deportista no este inscrito en este grupo (no pueden haber duplicados
 	bool estaInscrito(Deportista* deportista_);
 	bool estaLleno();
+	// desmatricular
+	void eliminarDeportista(Deportista* deportista_);
 	//sobrecarga
 	Grupo& operator=(const Grupo& grupo_);
 	friend ostream& operator<<(ostream& out, const Grupo& grupo_);
