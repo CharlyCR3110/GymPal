@@ -231,3 +231,25 @@ void ControlCursos::agregarGrupo(string codigoCurso_, Grupo* grupo_)
 		throw exception("No se encontro el curso.");
 	}
 }
+
+string ControlCursos::reporteGrupo(string codigoCurso_, int numeroGrupo_)
+{
+    Curso* curso = nullptr;
+    try
+    {
+		curso = listaCursos->buscarPorCodigo(codigoCurso_);
+	}
+    catch (exception& e)
+    {
+		throw exception(e.what());
+	}
+	// si es nullptr probablemente nunca llegue a este punto por el catch, pero por si acaso
+    if (curso != nullptr)
+    {
+		return curso->reporteGrupo(numeroGrupo_);
+	}
+    else
+    {
+		return "No se encontro el curso.";
+	}
+}

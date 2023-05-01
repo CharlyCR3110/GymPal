@@ -30,4 +30,6 @@ public:
 	const string generarReporteDeportistasMatriculadosPorGrupo(string codigoCurso_, int numeroGrupo_) const;
 	// agregar grupo a un curso
 	void agregarGrupo(string codigoCurso_, Grupo* grupo_);
+	//mostrar grupo de un curso
+	string reporteGrupo(string codigoCurso_, int numeroGrupo_);
 };
