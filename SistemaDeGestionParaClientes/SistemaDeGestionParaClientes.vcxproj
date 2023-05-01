@@ -144,6 +144,7 @@
     <ClInclude Include="Grupo.h" />
     <ClInclude Include="Hora.h" />
     <ClInclude Include="Instructor.h" />
+    <ClInclude Include="Interfaz.h" />
     <ClInclude Include="ListaEnlazada.h" />
     <ClInclude Include="ListaEnlazadasException.h" />
     <ClInclude Include="ListaVaciaException.h" />
@@ -173,6 +174,7 @@
     <ClCompile Include="Grupo.cpp" />
     <ClCompile Include="Hora.cpp" />
     <ClCompile Include="Instructor.cpp" />
+    <ClCompile Include="Interfaz.cpp" />
     <ClCompile Include="ListaEnlazada.cpp" />
     <ClCompile Include="ListaEnlazadasException.cpp" />
     <ClCompile Include="ListaVaciaException.cpp" />
