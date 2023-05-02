@@ -204,6 +204,60 @@ void Interfaz::menuControlDeportistasModificarDeportista()
     }
 }
 
+void Interfaz::menuControlDeportistasMostrarListadosDeportistas()
+{
+    int opcion;
+    cout << "<2. Control Deportistas> <3. Listado de Deportistas>" << endl;
+    cout << "1. Listado general" << endl;
+    cout << "2. Listado de deportistas activos" << endl;
+    cout << "3. Listado de deportistas inactivos" << endl;
+    cout << "4. Listado de deportistas en morosidad" << endl;
+    cout << "Digite una opción del menú: ";
+    cin >> opcion;
+
+    switch (opcion) {
+    case 1:
+        // Código para mostrar el listado de deportistas general
+        try {
+            cout << gimnasio->generarReporteDeportistas();
+        }
+        catch (exception& e) {
+            cerr << e.what() << endl;
+        }
+        break;
+    case 2:
+        // Código para mostrar el listado de deportistas activos
+        try {
+            cout << gimnasio->generarReporteDeportistasPorEstado('A');
+        }
+        catch (exception& e) {
+            cerr << e.what() << endl;
+        }
+        break;
+    case 3:
+        // Código para mostrar el listado de deportistas inactivos
+        try {
+            cout << gimnasio->generarReporteDeportistasPorEstado('I');
+        }
+        catch (exception& e) {
+            cerr << e.what() << endl;
+        }
+        break;
+    case 4:
+        // Código para mostrar el listado de deportistas en morosidad
+        try {
+            cout << gimnasio->generarReporteDeportistasPorEstado('P');
+        }
+        catch (exception& e) {
+			cerr << e.what() << endl;
+		}
+        break;
+    default:
+        cout << "Opción inválida. Por favor, seleccione una opción del menú." << endl;
+        break;
+    }
+}
+
 //---------------------//
 int Interfaz::menuControlCursos()
 {
