@@ -32,10 +32,12 @@ public:
 	void modificarTelefonoDeportista(Deportista* deportista);
 	void modificarFechaNacimientoDeportista(Deportista* deportista);
 	void modificarSexoDeportista(Deportista* deportista);
-	void modificarEstaturaDeportista(Deportista* deportista);
-	void modificarPesoDeportista(Deportista* deportista);
-	void modificarPorcentajeGrasaCorporalDeportista(Deportista* deportista);
-	void modificarPorcentajeMasaMuscularDeportista(Deportista* deportista);
+	//biometricos
+	void modificarEstaturaDeportista(Deportista* deportista, Fecha* fechaActual_);
+	void modificarPesoDeportista(Deportista* deportista, Fecha* fechaActual_);
+	void modificarPorcentajeGrasaCorporalDeportista(Deportista* deportista, Fecha* fechaActual_);
+	void modificarPorcentajeMasaMuscularDeportista(Deportista* deportista, Fecha* fechaActual_);
+	//
 	void modificarEstadoDeportista(Deportista* deportista);
 	void modificarHorasEntrenamientoDeportista(Deportista* deportista);
 	void modificarCantidadPartidosIronManDeportista(Deportista* deportista);

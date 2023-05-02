@@ -291,3 +291,21 @@ void Interfaz::modificarSexoDeportista(Deportista* deportista)
 		esSexoValido = true;
 	}
 }
+
+void Interfaz::modificarEstaturaDeportista(Deportista* deportista, Fecha* fechaActual_)
+{
+    float estatura;
+	bool esEstaturaValida = false;
+    while (!esEstaturaValida)
+    {
+		cout << "Digite la nueva estatura del deportista: ";
+		cin >> estatura;
+        if (estatura <= 0)
+        {
+			cout << "Error: La estatura del deportista debe ser mayor a 0." << endl;
+			continue;
+		}
+		deportista->actualizarEstatura(estatura, fechaActual_);
+		esEstaturaValida = true;
+	}
+}
