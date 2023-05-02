@@ -5,6 +5,8 @@ using namespace std;
 class Interfaz
 {
 public:
+	static void prueba();
+
 	// Gimnasio
 	static Gimnasio* gimnasio;
 
@@ -19,6 +21,7 @@ public:
 	static int menuControlDeportistas();	// 2
 	//submenus de menuControlDeportistas
 	static void menuControlDeportistasIngresoNuevoDeportista(); // 1
+	static void menuControlDeportistasModificarDeportista(); // 2
 
 	static int menuControlCursos();	// 3
 	static int menuControlGrupos();	// 4

@@ -3,6 +3,11 @@
 
 Gimnasio* Interfaz::gimnasio = new Gimnasio();
 
+void Interfaz::prueba()
+{
+    cout << gimnasio->generarReporteDeportistas();
+}
+
 int Interfaz::menuPrincipal()
 {
     int opcion = 0;
@@ -90,7 +95,7 @@ void Interfaz::menuControlDeportistasIngresoNuevoDeportista()
     cin >> cantidadParticipacionesIronMan;
     cout << "\tDigite la cantidad de triatlones ganados del deportista: ";
     cin >> cantidadTriatlonesGanados;
-    cout << endl << "Datos biométricos básicos" << endl;
+    cout << endl << "Datos biomï¿½tricos bï¿½sicos" << endl;
     cout << "\tDigite la estatura del deportista: ";
     cin >> estatura;
     cout << "\tDigite el peso del deportista: ";
@@ -109,6 +114,92 @@ void Interfaz::menuControlDeportistasIngresoNuevoDeportista()
     {
 		cout << e.what() << endl;
 	}
+}
+
+void Interfaz::menuControlDeportistasModificarDeportista()
+{
+    Deportista* deportista = nullptr;
+    string cedula;
+    int opcion = 1;
+
+    cout << "\t<2. Control Deportistas> <2. Modificacion de deportista>" << endl;
+    cout << "Digite la cedula del deportista: ";
+    cin >> cedula;
+    try
+    {
+        deportista = gimnasio->buscarDeportista(cedula);
+        cout << "Deportista encontrado!!!" << endl;
+    }
+    catch (exception& e)
+    {
+        cerr << e.what() << endl;
+        return;
+    }
+
+    if (deportista == nullptr)
+    {
+        cerr << "Error: Error inesperado" << endl;
+        return;
+    }
+
+    cout << "Que dato desea modificar: " << endl;
+    cout << "1. Nombre" << endl;
+    cout << "2. Telefono" << endl;
+    cout << "3. Fecha de nacimiento" << endl;
+    cout << "4. Sexo" << endl;
+    cout << "5. Estatura" << endl;
+    cout << "6. Peso" << endl;
+    cout << "7. Porcentaje de grasa corporal" << endl;
+    cout << "8. Porcentaje de masa muscular" << endl;
+    cout << "9. Estado" << endl;
+    cout << "10. Horas entrenamiento" << endl;
+    cout << "11. Cantidad de partidos IronMan" << endl;
+    cout << "12. Cantidad de triatlones ganados" << endl;
+    cout << "Digite una opcion: ";
+    cin >> opcion;
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');    // limpiar buffer de entrada
+
+    switch (opcion)
+    {
+    case 1:
+        modificarNombreDeportista(deportista);
+        break;
+    case 2:
+        modificarTelefonoDeportista(deportista);
+		break;
+    case 3:
+		modificarFechaNacimientoDeportista(deportista);
+    case 4:
+        modificarSexoDeportista(deportista);
+		break;
+    case 5:
+        modificarEstaturaDeportista(deportista, gimnasio->getFechaActual());
+        break;
+    case 6:
+        modificarPesoDeportista(deportista, gimnasio->getFechaActual());
+		break;
+    case 7:
+		modificarPorcentajeGrasaCorporalDeportista(deportista, gimnasio->getFechaActual());
+        break;
+    case 8:
+        modificarPorcentajeMasaMuscularDeportista(deportista, gimnasio->getFechaActual());
+        break;
+    case 9:
+        modificarEstadoDeportista(deportista);
+		break;
+    case 10:
+        modificarHorasEntrenamientoDeportista(deportista);
+		break;
+    case 11:
+        modificarCantidadParticipacionesIronManDeportista(deportista);
+        break;
+    case 12:
+        modificarCantidadTriatlonesGanadosDeportista(deportista);
+		break;
+    default:
+		cout << "Opcion invalida" << endl;
+		break;
+    }
 }
 
 //---------------------//
