@@ -419,7 +419,7 @@ inline string ListaEnlazada<T>::mostrarPorEstado(char estado_)
 		return filtrarPorEstado(estado_)->toString();
 	}
 	catch (ElementoNoEncontradoException<T>) {
-		return "No se encontraron elementos con ese estado.";	//esto debe debe de ser una excepcion
+		throw exception("No se encontraron elementos con ese estado.");	//esto debe debe de ser una excepcion
 	}
 }
 
