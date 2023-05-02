@@ -431,3 +431,29 @@ void Interfaz::modificarCantidadParticipacionesIronManDeportista(Deportista* dep
         esCantidadValida = true;
     }
 }
+
+void Interfaz::modificarCantidadTriatlonesGanadosDeportista(Deportista* deportista)
+{
+    int cantidadTriatlonesGanados;
+	bool esCantidadValida = false;
+    while (!esCantidadValida)
+    {
+		cout << "Digite la nueva cantidad de triatlones ganados: ";
+        if (!(cin >> cantidadTriatlonesGanados) || cantidadTriatlonesGanados < 0)
+        {
+			cerr << "Error: la cantidad de triatlones ganados debe ser un numero mayor o igual a 0." << endl;
+			cin.clear();
+			cin.ignore(numeric_limits<streamsize>::max(), '\n');
+			continue;
+		}
+
+        if (cantidadTriatlonesGanados > deportista->getCantidadParticipacionesIronMan())
+        {
+            cerr << "Error: la cantidad de triatlones ganados debe de ser menor a la cantidad de participaciones en triatlones Iron Man" << endl;
+            continue;
+        }
+
+		deportista->setCantidadTriatlonesGanados(cantidadTriatlonesGanados);
+		esCantidadValida = true;
+	}
+}
