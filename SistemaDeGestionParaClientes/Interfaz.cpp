@@ -294,7 +294,7 @@ void Interfaz::modificarSexoDeportista(Deportista* deportista)
 
 void Interfaz::modificarEstaturaDeportista(Deportista* deportista, Fecha* fechaActual_)
 {
-    float estatura;
+    double estatura;
 	bool esEstaturaValida = false;
     while (!esEstaturaValida)
     {
@@ -330,11 +330,30 @@ void Interfaz::modificarPesoDeportista(Deportista* deportista, Fecha* fechaActua
 	}
 }
 
+void Interfaz::modificarPorcentajeGrasaCorporalDeportista(Deportista* deportista, Fecha* fechaActual_)
+{
+    double porcentajeGrasaCorpolar;
+    bool esPorcentajeValido = false;
+    while (!esPorcentajeValido)
+    {
+        cout << "Digite el nuevo peso del deportista: ";
+        if (!(cin >> porcentajeGrasaCorpolar) || porcentajeGrasaCorpolar <= 0)
+        {
+            cerr << "Error: El peso del deportista debe ser un numero mayor a 0." << endl;
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            continue;
+        }
+        deportista->actualizarPeso(porcentajeGrasaCorpolar, fechaActual_);
+        esPorcentajeValido = true;
+    }
+}
+
 void Interfaz::modificarPorcentajeMasaMuscularDeportista(Deportista* deportista, Fecha* fechaActual_)
 {
-    float porcentajeMasaMuscular;
-	bool esPorcentajeMasaMuscularValido = false;
-    while (!esPorcentajeMasaMuscularValido)
+    double porcentajeMasaMuscular;
+	bool esPorcentajeValido = false;
+    while (!esPorcentajeValido)
     {
 		cout << "Digite el nuevo porcentaje de masa muscular del deportista: ";
         if (!(cin >> porcentajeMasaMuscular) || porcentajeMasaMuscular <= 0)
@@ -345,6 +364,6 @@ void Interfaz::modificarPorcentajeMasaMuscularDeportista(Deportista* deportista,
 			continue;
 		}
 		deportista->actualizarMasaMuscular(porcentajeMasaMuscular, fechaActual_);
-		esPorcentajeMasaMuscularValido = true;
+        esPorcentajeValido = true;
 	}
 }
