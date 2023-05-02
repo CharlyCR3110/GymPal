@@ -1,13 +1,11 @@
 #include "Gimnasio.h"
 
-//control pagos constructor => double montoMensual_ = 0, ListaEnlazada<Deportista>* listaDeportistas_ = nullptr, Fecha* fechaActual_ = nullptr
 Gimnasio::Gimnasio():
 	nombreDelGimnasio("Gimnasio UNAfitness"),
 	montoMensual(20000),
 	fechaActual(new Fecha()),
 	listaDeportistas(new ListaEnlazada<Deportista>()),
 	listaCursos(new ListaEnlazada<Curso>()),
-	controlCursos(new ControlCursos(listaCursos, listaDeportistas, fechaActual)),
 	controlPagos(new ControlPagos(montoMensual,listaDeportistas, fechaActual))
 {
 }
@@ -18,7 +16,6 @@ Gimnasio::Gimnasio(string nombreDelGimnasio_, double montoMensual_, Fecha* fecha
 	montoMensual(montoMensual_),
 	listaDeportistas(new ListaEnlazada<Deportista>()),
 	listaCursos(new ListaEnlazada<Curso>()),
-	controlCursos(new ControlCursos(listaCursos, listaDeportistas, fechaActual_)),
 	controlPagos(new ControlPagos(montoMensual_, listaDeportistas, fechaActual_))
 {
 }
@@ -32,7 +29,6 @@ Gimnasio::~Gimnasio()
 	delete fechaActual;
 	delete listaDeportistas;
 	delete listaCursos;
-	delete controlCursos;
 	delete controlPagos;
 }
 
@@ -57,11 +53,6 @@ void Gimnasio::setMontoMensual(double montoMensual_)
 void Gimnasio::setFechaActual(Fecha* fechaActual_)
 {
 	this->fechaActual = fechaActual_;
-}
-
-void Gimnasio::setControlCursos(ControlCursos* controlCursos_)
-{
-	this->controlCursos = controlCursos_;
 }
 
 void Gimnasio::setControlPagos(ControlPagos* controlPagos_)
@@ -94,11 +85,6 @@ Fecha* Gimnasio::getFechaActual()
 	return this->fechaActual;
 }
 
-ControlCursos* Gimnasio::getControlCursos()
-{
-	return this->controlCursos;
-}
-
 ControlPagos* Gimnasio::getControlPagos()
 {
 	return this->controlPagos;
@@ -117,9 +103,10 @@ ListaEnlazada<Curso>* Gimnasio::getListaCursos()
 //string codigo_, string nombre_, string nivel_, string descripcion_, int cantidadMaximaDeGrupos_
 void Gimnasio::registrarCurso(string codigo_, string nombre_, string nivel_, string descripcion_, int cantidadMaximaDeGrupos_)
 {
+	Curso* curso = new Curso(codigo_, nombre_, nivel_, descripcion_, cantidadMaximaDeGrupos_);
 	try
 	{
-		controlCursos->registrarCurso(codigo_, nombre_, nivel_, descripcion_, cantidadMaximaDeGrupos_);
+		listaCursos->insertar(curso);
 	}
 	catch (exception& e)
 	{
@@ -154,9 +141,43 @@ void Gimnasio::registrarPago(string cedula_, int mesesAPagar_)
 
 void Gimnasio::matricularEnGrupo(string codigoCurso_, int numeroGrupo_, string cedulaDeportista_)
 {
+	Curso* curso = nullptr;
+	Deportista* deportista = nullptr;
 	try
 	{
-		this->controlCursos->matricularEnGrupo(codigoCurso_, numeroGrupo_, cedulaDeportista_);
+		curso = listaCursos->buscarPorCodigo(codigoCurso_);
+		deportista = listaDeportistas->buscarPorCodigo(cedulaDeportista_);
+	}
+	catch (exception& e)
+	{
+		throw exception(e.what());
+	}
+	// si es nullptr probablemente nunca llegue a este punto por el catch, pero por si acaso
+	if (curso == nullptr || deportista == nullptr)
+	{
+		throw exception("No se encontro el curso o el deportista");
+	}
+
+	if (deportista->getcantidadDeCursosMatriculados() >= MAX_CURSOS)
+	{
+		throw exception("El deportista ya tiene 3 cursos matriculados");
+	}
+	// si el deportista ya esta matriculado en el curso
+	if (curso->estaMatriculado(deportista))
+	{
+		throw exception("El deportista ya esta matriculado en el curso");
+	}
+	// si el curso esta lleno
+	if (curso->grupoLleno(numeroGrupo_))
+	{
+		throw exception("El curso esta lleno");
+	}
+
+	// hacer la matricula
+	try
+	{
+		curso->matricularEnGrupo(numeroGrupo_, deportista);
+		deportista->agregarCurso(curso);
 	}
 	catch (exception& e)
 	{
@@ -166,9 +187,32 @@ void Gimnasio::matricularEnGrupo(string codigoCurso_, int numeroGrupo_, string c
 
 void Gimnasio::desmatricularDeGrupo(string codigoCurso_, int numeroGrupo_, string cedulaDeportista_)
 {
+	Curso* curso = nullptr;
+	Deportista* deportista = nullptr;
 	try
 	{
-		this->controlCursos->desmatricularDeGrupo(codigoCurso_, numeroGrupo_, cedulaDeportista_);
+		curso = listaCursos->buscarPorCodigo(codigoCurso_);
+		deportista = listaDeportistas->buscarPorCodigo(cedulaDeportista_);
+	}
+	catch (exception& e)
+	{
+		throw exception(e.what());
+	}
+	// si es nullptr probablemente nunca llegue a este punto por el catch, pero por si acaso
+	if (curso == nullptr || deportista == nullptr)
+	{
+		throw exception("No se encontro el curso o el deportista");
+	}
+	// si el deportista no esta matriculado en el curso
+	if (!curso->estaMatriculado(deportista))
+	{
+		throw exception("El deportista no esta matriculado en el curso");
+	}
+	// hacer la desmatricula
+	try
+	{
+		curso->desmatricularDeGrupo(numeroGrupo_, deportista);
+		deportista->eliminarCurso(curso);
 	}
 	catch (exception& e)
 	{
@@ -178,28 +222,46 @@ void Gimnasio::desmatricularDeGrupo(string codigoCurso_, int numeroGrupo_, strin
 
 void Gimnasio::agregarGrupo(string codigoCurso_, Grupo* grupo_)
 {
+	Curso* curso = nullptr;
 	try
 	{
-		this->controlCursos->agregarGrupo(codigoCurso_, grupo_);
+		curso = listaCursos->buscarPorCodigo(codigoCurso_);
 	}
 	catch (exception& e)
 	{
 		throw exception(e.what());
+	}
+	// si es nullptr probablemente nunca llegue a este punto por el catch, pero por si acaso
+	if (curso != nullptr)
+	{
+		curso->agregarGrupo(grupo_);
+	}
+	else
+	{
+		throw exception("No se encontro el curso.");
 	}
 }
 
 const string Gimnasio::generarReporteCursoCod(string codigo_) const
 {
-	stringstream ss;
+	Curso* curso = nullptr;
 	try
 	{
-		ss << this->controlCursos->generarReporteCurso(codigo_);
+		curso = listaCursos->buscarPorCodigo(codigo_);
 	}
 	catch (exception& e)
 	{
 		throw exception(e.what());
 	}
-	return ss.str();
+	// si es nullptr probablemente nunca llegue a este punto por el catch, pero por si acaso
+	if (curso != nullptr)
+	{
+		return curso->generarReporte();
+	}
+	else
+	{
+		return "No se encontro el curso";
+	}
 }
 
 const string Gimnasio::generarReporteDeportistaCed(string cedula_) const
@@ -248,15 +310,31 @@ const string Gimnasio::generarReporteDeportistas() const
 
 const string Gimnasio::generarListadoCursos() const
 {
-	stringstream ss;
+	Nodo<Curso>* cursoActual;
 	try
 	{
-		ss << this->controlCursos->reporteListadoCursos();
+		cursoActual = listaCursos->getPrimero();
 	}
 	catch (exception& e)
 	{
 		throw exception(e.what());
 	}
+	//recorrer la lista y llamar al metodo listadoDeCurso() de cada curso
+	stringstream ss;
+	ss << "Listado de cursos: " << endl;
+	if (cursoActual != nullptr)
+	{
+		while (cursoActual != nullptr)
+		{
+			ss << cursoActual->getDato()->listadoDeCurso() << endl;
+			cursoActual = cursoActual->getSiguiente();
+		}
+	}
+	else
+	{
+		ss << "No hay cursos registrados." << endl;
+	}
+
 	return ss.str();
 }
 
@@ -276,42 +354,84 @@ const string Gimnasio::generarListadoCursos() const
 
 const string Gimnasio::generarReporteDeportistasPorEstado(char estado_) const
 {
+	if (listaDeportistas->estaVacia())
+	{
+		throw exception("No hay deportistas registrados.");
+	}
+
 	stringstream ss;
 	try
 	{
-		ss << this->controlCursos->reporteDeportistasPorEstado(estado_);
+		ss << this->listaDeportistas->mostrarPorEstado(estado_);
 	}
 	catch (exception& e)
 	{
 		throw exception(e.what());
 	}
+
 	return ss.str();
 }
 
 const string Gimnasio::generarReporteDeportistasMatriculadosPorGrupo(string codigoCurso_, int numeroGrupo_) const
 {
 	stringstream ss;
+	Curso* curso = nullptr;
 	try
 	{
-		ss << this->controlCursos->generarReporteDeportistasMatriculadosPorGrupo(codigoCurso_, numeroGrupo_);
+		curso = listaCursos->buscarPorCodigo(codigoCurso_);
 	}
 	catch (exception& e)
 	{
 		throw exception(e.what());
 	}
+	// si es nullptr probablemente nunca llegue a este punto por el catch, pero por si acaso
+	if (curso != nullptr)
+	{
+		ss << curso->generarReporteDeportistasMatriculadosPorGrupo(numeroGrupo_);
+	}
+	else
+	{
+		ss << "No se encontro el curso." << endl;
+	}
+
 	return ss.str();
 }
 
 const string Gimnasio::generarReporteCursosMatriculados(string cedula_) const
 {
+	if (listaDeportistas->estaVacia())
+	{
+		throw "No hay deportistas registrados.";
+	}
+
+	if (listaCursos->estaVacia())
+	{
+		throw "No hay cursos registrados.";
+	}
+
+	Deportista* deportista = nullptr;
 	try
 	{
-		return this->controlCursos->reporteCursosMatriculados(cedula_);
+		deportista = listaDeportistas->buscarPorCodigo(cedula_);
 	}
 	catch (exception& e)
 	{
 		throw exception(e.what());
 	}
+
+
+
+	stringstream ss;
+	ss << "Cursos matriculados por el deportista con cedula " << cedula_ << ":" << endl;
+	try {
+		ss << deportista->mostrarCursosMatriculados();
+	}
+	catch (exception& e)
+	{
+		throw exception(e.what());
+	}
+
+	return ss.str();
 }
 
 Deportista* Gimnasio::buscarDeportista(string cedula_)
