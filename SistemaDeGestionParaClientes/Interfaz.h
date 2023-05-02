@@ -28,18 +28,18 @@ public:
 	//menus auxiliares
 	static Fecha* menuFecha();
 	// 
-	void modificarNombreDeportista(Deportista* deportista);
-	void modificarTelefonoDeportista(Deportista* deportista);
-	void modificarFechaNacimientoDeportista(Deportista* deportista);
-	void modificarSexoDeportista(Deportista* deportista);
+	static void modificarNombreDeportista(Deportista* deportista);
+	static void modificarTelefonoDeportista(Deportista* deportista);
+	static void modificarFechaNacimientoDeportista(Deportista* deportista);
+	static void modificarSexoDeportista(Deportista* deportista);
 	//biometricos
-	void modificarEstaturaDeportista(Deportista* deportista, Fecha* fechaActual_);
-	void modificarPesoDeportista(Deportista* deportista, Fecha* fechaActual_);
-	void modificarPorcentajeGrasaCorporalDeportista(Deportista* deportista, Fecha* fechaActual_);
-	void modificarPorcentajeMasaMuscularDeportista(Deportista* deportista, Fecha* fechaActual_);
+	static void modificarEstaturaDeportista(Deportista* deportista, Fecha* fechaActual_);
+	static void modificarPesoDeportista(Deportista* deportista, Fecha* fechaActual_);
+	static void modificarPorcentajeGrasaCorporalDeportista(Deportista* deportista, Fecha* fechaActual_);
+	static void modificarPorcentajeMasaMuscularDeportista(Deportista* deportista, Fecha* fechaActual_);
 	//
-	void modificarEstadoDeportista(Deportista* deportista);
-	void modificarHorasEntrenamientoDeportista(Deportista* deportista);
-	void modificarCantidadParticipacionesIronManDeportista(Deportista* deportista);
-	void modificarCantidadTriatlonesGanadosDeportista(Deportista* deportista);
+	static void modificarEstadoDeportista(Deportista* deportista);
+	static void modificarHorasEntrenamientoDeportista(Deportista* deportista);
+	static void modificarCantidadParticipacionesIronManDeportista(Deportista* deportista);
+	static void modificarCantidadTriatlonesGanadosDeportista(Deportista* deportista);
 };
