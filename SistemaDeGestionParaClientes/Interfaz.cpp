@@ -273,3 +273,21 @@ void Interfaz::modificarFechaNacimientoDeportista(Deportista* deportista)
 		esFechaValida = true;
 	}
 }
+
+void Interfaz::modificarSexoDeportista(Deportista* deportista)
+{
+    char sexo;
+	bool esSexoValido = false;
+    while (!esSexoValido)
+    {
+		cout << "Digite el nuevo sexo del deportista: ";
+		cin >> sexo;
+        if (sexo != 'M' && sexo != 'F' && sexo != 'm' && sexo != 'f')
+        {
+			cout << "Error: El sexo del deportista solo puede ser M o F." << endl;
+			continue;
+		}
+		deportista->setSexo(sexo);
+		esSexoValido = true;
+	}
+}
