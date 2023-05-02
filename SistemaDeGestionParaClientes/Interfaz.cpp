@@ -246,3 +246,30 @@ void Interfaz::modificarTelefonoDeportista(Deportista* deportista)
         esTelefonoValido = true;
     }
 }
+
+void Interfaz::modificarFechaNacimientoDeportista(Deportista* deportista)
+{
+    Fecha* fechaNacimiento = nullptr;
+	bool esFechaValida = false;
+    while (!esFechaValida)
+    {
+		cout << "Digite la nueva fecha de nacimiento del deportista: " << endl;
+        try
+        {
+		    fechaNacimiento = menuFecha();
+        }
+        catch (exception& e)
+        {
+			cerr << e.what() << endl;
+			continue;
+		}
+
+        if (fechaNacimiento == nullptr)
+        {
+			cout << "Error: La fecha de nacimiento del deportista no puede estar vacia." << endl;
+			continue;
+		}
+		deportista->setFechaNacimiento(fechaNacimiento);
+		esFechaValida = true;
+	}
+}
