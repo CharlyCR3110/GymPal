@@ -326,3 +326,21 @@ string ControlCursos::reporteGrupo(string codigoCurso_, int numeroGrupo_)
 		return "No se encontro el curso.";
 	}
 }
+
+string ControlCursos::reporteDeportistasPorEstado(char estado_)
+{
+    if (listaDeportistas->estaVacia())
+    {
+        throw exception("No hay deportistas registrados.");
+    }
+
+    stringstream ss;
+    try
+    {
+        ss << this->listaDeportistas->mostrarPorEstado(estado_);
+    }
+    catch (exception& e)
+    {
+		throw exception(e.what());
+	}
+}

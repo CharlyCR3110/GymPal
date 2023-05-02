@@ -34,4 +34,6 @@ public:
 	void agregarGrupo(string codigoCurso_, Grupo* grupo_);
 	//mostrar grupo de un curso
 	string reporteGrupo(string codigoCurso_, int numeroGrupo_);
+	// mostrar los deportistas que por estado
+	string reporteDeportistasPorEstado(char estado_);
 };
