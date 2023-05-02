@@ -6,6 +6,7 @@ Gimnasio* Interfaz::gimnasio = new Gimnasio();
 void Interfaz::prueba()
 {
     cout << gimnasio->generarReporteDeportistas();
+    cout << gimnasio->getFechaActual()->toString();
 }
 
 int Interfaz::menuPrincipal()
@@ -169,6 +170,7 @@ void Interfaz::menuControlDeportistasModificarDeportista()
 		break;
     case 3:
 		modificarFechaNacimientoDeportista(deportista);
+        break;
     case 4:
         modificarSexoDeportista(deportista);
 		break;
@@ -209,7 +211,7 @@ int Interfaz::menuControlCursos()
     cout << "\t\t3. Control de Cursos" << endl;
     cout << "1. Ingreso nuevo curso" << endl;
     cout << "2. Reporte de curso especifico" << endl;
-    cout << "3. Modificacion de curso especifico" << endl;
+    cout << "3. Modificacion de -curso especifico" << endl;
     cout << "Digite una opcion del menu: ";
     cin >> opcion;
     return opcion;
@@ -397,8 +399,16 @@ void Interfaz::modificarEstaturaDeportista(Deportista* deportista, Fecha* fechaA
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
             continue;
         }
-		deportista->actualizarEstatura(estatura, fechaActual_);
-		esEstaturaValida = true;
+
+        try
+        {
+		    deportista->actualizarEstatura(estatura, fechaActual_);
+		    esEstaturaValida = true;
+        }
+        catch (exception& e)
+        {
+            cerr << e.what() << endl;
+        }
 	}
 }
 
@@ -416,8 +426,16 @@ void Interfaz::modificarPesoDeportista(Deportista* deportista, Fecha* fechaActua
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
             continue;
         }
-		deportista->actualizarPeso(peso, fechaActual_);
-		esPesoValido = true;
+
+        try
+        {
+		    deportista->actualizarPeso(peso, fechaActual_);
+		    esPesoValido = true;
+        }
+        catch (exception& e)
+        {
+            cerr << e.what() << endl;
+        }
 	}
 }
 
@@ -435,8 +453,16 @@ void Interfaz::modificarPorcentajeGrasaCorporalDeportista(Deportista* deportista
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
             continue;
         }
-        deportista->actualizarPeso(porcentajeGrasaCorpolar, fechaActual_);
+
+        try
+        {
+        deportista->actualizarPorcentajeGrasaCorporal(porcentajeGrasaCorpolar, fechaActual_);
         esPorcentajeValido = true;
+        }
+        catch (exception& e)
+        {
+            cerr << e.what() << endl;
+        }
     }
 }
 
@@ -454,8 +480,16 @@ void Interfaz::modificarPorcentajeMasaMuscularDeportista(Deportista* deportista,
 			cin.ignore(numeric_limits<streamsize>::max(), '\n');
 			continue;
 		}
+
+        try
+        {
 		deportista->actualizarMasaMuscular(porcentajeMasaMuscular, fechaActual_);
         esPorcentajeValido = true;
+        }
+        catch (exception& e)
+        {
+            cerr << e.what() << endl;
+        }
 	}
 }
 
