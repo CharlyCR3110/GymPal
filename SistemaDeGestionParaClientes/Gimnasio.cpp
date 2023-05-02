@@ -302,12 +302,15 @@ const string Gimnasio::generarReporteCursosMatriculados(string cedula_) const
 
 Deportista* Gimnasio::buscarDeportista(string cedula_)
 {
+	Deportista* deportista = nullptr;
 	try
 	{
-		this->listaDeportistas->buscarPorCodigo(cedula_);
+		deportista = this->listaDeportistas->buscarPorCodigo(cedula_);
 	}
 	catch (exception& e)
 	{
 		throw exception(e.what());
 	}
+
+	return deportista;
 }
