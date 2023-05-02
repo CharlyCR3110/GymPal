@@ -309,3 +309,22 @@ void Interfaz::modificarEstaturaDeportista(Deportista* deportista, Fecha* fechaA
 		esEstaturaValida = true;
 	}
 }
+
+void Interfaz::modificarPesoDeportista(Deportista* deportista, Fecha* fechaActual_)
+{
+    float peso;
+	bool esPesoValido = false;
+    while (!esPesoValido)
+    {
+		cout << "Digite el nuevo peso del deportista: ";
+        if (!(cin >> peso) || peso <= 0)
+        {
+            cerr << "Error: El peso del deportista debe ser un numero mayor a 0." << endl;
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            continue;
+        }
+		deportista->actualizarPeso(peso, fechaActual_);
+		esPesoValido = true;
+	}
+}
