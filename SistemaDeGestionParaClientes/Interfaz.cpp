@@ -367,3 +367,29 @@ void Interfaz::modificarPorcentajeMasaMuscularDeportista(Deportista* deportista,
         esPorcentajeValido = true;
 	}
 }
+
+void Interfaz::modificarEstadoDeportista(Deportista* deportista)
+{
+    // el estado del deportista solo puede ser cambiado a activo o inactivo. Si el estado del deportista es P, no se puede cambiar.
+    char estado;
+    bool esEstadoValido = false;
+    while (!esEstadoValido)
+    {
+		cout << "Digite el nuevo estado del deportista: ";
+		cin >> estado;
+        if (estado != 'A' && estado != 'I' && estado != 'a' && estado != 'i')
+        {
+			cout << "Error: El estado del deportista solo se puede actualizar a 'A' o 'I'." << endl;
+			continue;
+		}
+
+        try {
+	    	deportista->actualizarEstado(estado);
+		    esEstadoValido = true;
+        }
+        catch (exception& e)
+        {
+            cerr << e.what() << endl;
+        }
+	}
+}
