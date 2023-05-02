@@ -393,3 +393,22 @@ void Interfaz::modificarEstadoDeportista(Deportista* deportista)
         }
 	}
 }
+
+void Interfaz::modificarHorasEntrenamientoDeportista(Deportista* deportista)
+{
+    int horasEntrenamiento;
+	bool esHorasValido = false;
+    while (!esHorasValido)
+    {
+		cout << "Digite las nuevas horas de entrenamiento del deportista: ";
+        if (!(cin >> horasEntrenamiento) || horasEntrenamiento <= 0)
+        {
+			cerr << "Error: Las horas de entrenamiento del deportista deben ser un numero mayor a 0." << endl;
+			cin.clear();
+			cin.ignore(numeric_limits<streamsize>::max(), '\n');
+			continue;
+		}
+		deportista->setHorasEntrenamiento(horasEntrenamiento);
+		esHorasValido = true;
+	}
+}
