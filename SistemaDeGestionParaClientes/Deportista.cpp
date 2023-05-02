@@ -78,7 +78,7 @@ void Deportista::setcantidadDeCursosMatriculados(int cantidadDeCursosMatriculado
 void Deportista::actualizarEstado(char estado_)
 {
 //Nota: el estado solo puede ser cambiando de activo a inactivo, el estado de morosidad debe ser determinado automáticamente por el sistema.
-    if (this->estado = 'P')
+    if (this->estado == 'P')
     {
         throw DeportistaInvalidoException("El estado del deportista no puede ser cambiado a inactivo, ya que se encuentra en morosidad. PAGUE, PAGUE");
     }
