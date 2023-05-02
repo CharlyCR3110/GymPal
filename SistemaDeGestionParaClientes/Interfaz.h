@@ -23,7 +23,8 @@ public:
 	static void menuControlDeportistasIngresoNuevoDeportista(); // 1
 	static void menuControlDeportistasModificarDeportista(); // 2
 	static void menuControlDeportistasMostrarListadosDeportistas(); // 3
-
+	static void menuControlDeportistasMostrarDeportistaEspecifico(); // 4
+	//
 	static int menuControlCursos();	// 3
 	static int menuControlGrupos();	// 4
 	static int menuControlPagos();	// 5

@@ -258,6 +258,20 @@ void Interfaz::menuControlDeportistasMostrarListadosDeportistas()
     }
 }
 
+void Interfaz::menuControlDeportistasMostrarDeportistaEspecifico()
+{
+    string cedula;
+    cout << "<2. Control Deportistas> <3. Listado de Deportistas>" << endl;
+    cout << "Digite la cedula del deportista: ";
+    cin >> cedula;
+    try {
+		cout << gimnasio->generarReporteDeportistaCed(cedula);
+	}
+    catch (exception& e) {
+		cerr << e.what() << endl;
+	}
+}
+
 //---------------------//
 int Interfaz::menuControlCursos()
 {
