@@ -329,3 +329,22 @@ void Interfaz::modificarPesoDeportista(Deportista* deportista, Fecha* fechaActua
 		esPesoValido = true;
 	}
 }
+
+void Interfaz::modificarPorcentajeMasaMuscularDeportista(Deportista* deportista, Fecha* fechaActual_)
+{
+    float porcentajeMasaMuscular;
+	bool esPorcentajeMasaMuscularValido = false;
+    while (!esPorcentajeMasaMuscularValido)
+    {
+		cout << "Digite el nuevo porcentaje de masa muscular del deportista: ";
+        if (!(cin >> porcentajeMasaMuscular) || porcentajeMasaMuscular <= 0)
+        {
+			cerr << "Error: El porcentaje de masa muscular del deportista debe ser un numero mayor a 0." << endl;
+			cin.clear();
+			cin.ignore(numeric_limits<streamsize>::max(), '\n');
+			continue;
+		}
+		deportista->actualizarMasaMuscular(porcentajeMasaMuscular, fechaActual_);
+		esPorcentajeMasaMuscularValido = true;
+	}
+}
