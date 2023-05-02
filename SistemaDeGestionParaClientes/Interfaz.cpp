@@ -167,8 +167,45 @@ Fecha* Interfaz::menuFecha()
     }
     catch (exception &e)
     {
-		cout << "Error: " << e.what() << endl;
+        throw exception(e.what());
 	}
 
 	return fecha;
+}
+
+void Interfaz::modificarNombreDeportista(Deportista* deportista)
+{
+    string nombre;
+    bool esNombreValido = false;
+
+    while (!esNombreValido)
+    {
+        cout << "Digite el nuevo nombre del deportista: ";
+        getline(cin, nombre);
+
+        if (nombre.empty())
+        {
+            cout << "Error: El nombre del deportista no puede estar vacio." << endl;
+            continue;
+        }
+
+        bool esCadenaValida = true;
+        for (char c : nombre)
+        {
+            if (!isalpha(c) && c != ' ')
+            {
+                esCadenaValida = false;
+                break;
+            }
+        }
+
+        if (!esCadenaValida)
+        {
+            cout << "Error: El nombre del deportista solo puede contener letras y espacios." << endl;
+            continue;
+        }
+
+        deportista->setNombre(nombre);
+        esNombreValido = true;
+    }
 }
