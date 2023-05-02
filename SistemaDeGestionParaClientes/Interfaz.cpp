@@ -299,12 +299,13 @@ void Interfaz::modificarEstaturaDeportista(Deportista* deportista, Fecha* fechaA
     while (!esEstaturaValida)
     {
 		cout << "Digite la nueva estatura del deportista: ";
-		cin >> estatura;
-        if (estatura <= 0)
+        if (!(cin >> estatura) || estatura <= 0)
         {
-			cout << "Error: La estatura del deportista debe ser mayor a 0." << endl;
-			continue;
-		}
+            cerr << "Error: La estatura del deportista debe ser un numero mayor a 0." << endl;
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            continue;
+        }
 		deportista->actualizarEstatura(estatura, fechaActual_);
 		esEstaturaValida = true;
 	}
