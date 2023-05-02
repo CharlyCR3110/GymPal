@@ -412,3 +412,22 @@ void Interfaz::modificarHorasEntrenamientoDeportista(Deportista* deportista)
 		esHorasValido = true;
 	}
 }
+
+void Interfaz::modificarCantidadParticipacionesIronManDeportista(Deportista* deportista)
+{
+    int cantidadPartidosIronMan;
+    bool esCantidadValida = false;
+    while (!esCantidadValida)
+    {
+        cout << "Digite la nueva cantidad de participaciones en competencias Iron Man: ";
+        if (!(cin >> cantidadPartidosIronMan) || cantidadPartidosIronMan < 0)
+        {
+            cerr << "Error: la cantidad de participaciones en competencias Iron Man debe ser un numero mayor o igual a 0." << endl;
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            continue;
+        }
+        deportista->setCantidadParticipacionesIronMan(cantidadPartidosIronMan);
+        esCantidadValida = true;
+    }
+}

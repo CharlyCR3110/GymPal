@@ -40,6 +40,6 @@ public:
 	//
 	void modificarEstadoDeportista(Deportista* deportista);
 	void modificarHorasEntrenamientoDeportista(Deportista* deportista);
-	void modificarCantidadPartidosIronManDeportista(Deportista* deportista);
+	void modificarCantidadParticipacionesIronManDeportista(Deportista* deportista);
 	void modificarCantidadTriatlonesGanadosDeportista(Deportista* deportista);
 };
