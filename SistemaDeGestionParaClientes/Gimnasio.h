@@ -51,7 +51,8 @@ public:
 	const string generarReporteDeportistas() const;
 	const string generarListadoCursos() const;
 	const string generarReportePagos() const;	// puede que no haga falta
-	// bs
+	// Reporte deportistas por estado:
+	const string generarReporteDeportistasPorEstado(char estado_) const;
 	// Reporte deportistas matriculados por grupo
 	const string generarReporteDeportistasMatriculadosPorGrupo(string codigoCurso_, int numeroGrupo_) const;
 	// muestra los cursos que esta matriculado un deportista

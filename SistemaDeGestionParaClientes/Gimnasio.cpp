@@ -274,6 +274,20 @@ const string Gimnasio::generarListadoCursos() const
 //	return ss.str();
 //}
 
+const string Gimnasio::generarReporteDeportistasPorEstado(char estado_) const
+{
+	stringstream ss;
+	try
+	{
+		ss << this->controlCursos->reporteDeportistasPorEstado(estado_);
+	}
+	catch (exception& e)
+	{
+		throw exception(e.what());
+	}
+	return ss.str();
+}
+
 const string Gimnasio::generarReporteDeportistasMatriculadosPorGrupo(string codigoCurso_, int numeroGrupo_) const
 {
 	stringstream ss;
