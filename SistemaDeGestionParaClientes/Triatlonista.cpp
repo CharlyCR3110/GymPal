@@ -75,11 +75,6 @@ void Triatlonista::actualizarEstatura(double estatura_, Fecha* fechaActualizacio
         throw FechaInvalidaException("Fecha de actualizacion invalida");
     }
 
-    if (this->fechaUltimaActualizacion > fechaActualizacion_)
-    {
-		throw FechaInvalidaException("Fecha de actualizacion invalida");
-	}
-
     try
     {
         this->corredor->actualizarEstatura(estatura_, fechaActualizacion_);
@@ -144,11 +139,6 @@ void Triatlonista::actualizarPeso(double peso_, Fecha* fechaActualizacion_)
         throw FechaInvalidaException("Fecha de actualizacion invalida");
     }
 
-    if (this->fechaUltimaActualizacion > fechaActualizacion_)
-    {
-        throw FechaInvalidaException("Fecha de actualizacion invalida");
-    }
-
     try
     {
         this->nadador->actualizarPeso(peso_, fechaActualizacion_);
@@ -170,11 +160,6 @@ void Triatlonista::setPorcentajeGrasaCorporal(double porcentajeGrasaCorporal_)
 void Triatlonista::actualizarPorcentajeGrasaCorporal(double porcentajeGrasaCorporal_, Fecha* fechaActualizacion_)
 {
     if (fechaActualizacion_ == nullptr)
-    {
-        throw FechaInvalidaException("Fecha de actualizacion invalida");
-    }
-
-    if (this->fechaUltimaActualizacion > fechaActualizacion_)
     {
         throw FechaInvalidaException("Fecha de actualizacion invalida");
     }
