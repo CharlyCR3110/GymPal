@@ -134,6 +134,29 @@ bool operator>(const Fecha& fecha1_, const Fecha& fecha2_)
     return false;
 }
 
+bool operator>=(const Fecha& fecha1_, const Fecha& fecha2_)
+{
+    if (fecha1_.anio > fecha2_.anio)
+    {
+		return true;
+	}
+    else if (fecha1_.anio == fecha2_.anio)
+    {
+        if (fecha1_.mes > fecha2_.mes)
+        {
+			return true;
+		}
+        else if (fecha1_.mes == fecha2_.mes)
+        {
+            if (fecha1_.dia >= fecha2_.dia)
+            {
+				return true;
+			}
+		}
+	}
+	return false;
+}
+
 ostream& operator<<(ostream& out, const Fecha& fecha_)
 {
     out << fecha_.toString();
