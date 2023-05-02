@@ -505,6 +505,8 @@ void Interfaz::modificarEstadoDeportista(Deportista* deportista)
         if (estado != 'A' && estado != 'I' && estado != 'a' && estado != 'i')
         {
 			cout << "Error: El estado del deportista solo se puede actualizar a 'A' o 'I'." << endl;
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
 			continue;
 		}
 
