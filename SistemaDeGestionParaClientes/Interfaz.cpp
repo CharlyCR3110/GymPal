@@ -209,3 +209,40 @@ void Interfaz::modificarNombreDeportista(Deportista* deportista)
         esNombreValido = true;
     }
 }
+
+void Interfaz::modificarTelefonoDeportista(Deportista* deportista)
+{
+    string telefono;
+    bool esTelefonoValido = false;
+
+    while (!esTelefonoValido)
+    {
+        cout << "Digite el nuevo telefono del deportista: ";
+        getline(cin, telefono);
+
+        if (telefono.empty())
+        {
+            cout << "Error: El telefono del deportista no puede estar vacio." << endl;
+            continue;
+        }
+
+        bool esCadenaValida = true;
+        for (char c : telefono)
+        {
+            if (!isdigit(c) && c != '-')
+            {
+                esCadenaValida = false;
+                break;
+            }
+        }
+
+        if (!esCadenaValida)
+        {
+            cout << "Error: El telefono del deportista solo puede contener numeros y guiones." << endl;
+            continue;
+        }
+
+        deportista->setTelefono(telefono);
+        esTelefonoValido = true;
+    }
+}
