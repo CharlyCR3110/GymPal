@@ -30,6 +30,8 @@ public:
 	virtual void setFechaNacimiento(Fecha* fechaNacimiento_);
 	virtual void setEstado(char estado);
 	virtual void setcantidadDeCursosMatriculados(int cantidadDeCursosMatriculados_);
+	// pa'l estado y no de wassap
+	virtual void actualizarEstado(char estado_);
 	// setters que se van pa' abajo
 	virtual void setSexo(char sexo_) = 0;
 	// Corredor
