@@ -46,6 +46,7 @@ public:
 	// triatlonista
 	virtual void setCantidadParticipacionesIronMan(int cantidadParticipacionesIronMan_) = 0;
 	virtual void setCantidadTriatlonesGanados(int cantidadTriatlonesGanados_) = 0;
+	virtual const int getCantidadParticipacionesIronMan() const = 0;
 	//getters
 	virtual const string getCedula() const;
 	virtual const string getNombre() const;
