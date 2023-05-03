@@ -684,6 +684,84 @@ void Interfaz::menuControlGruposMostrarGrupoEspecifico()
 	Utils::pause();
 }
 
+//< 5.Control Grupos> < 5. Reporte deportistas matriculados por grupo>
+//
+//Listado de cursos :
+//101  Spinning  basico
+//102  Natacion
+//103  Spinning avanzado
+//104  Natacion
+//105  Spinning intermedio
+//
+//Digite el código del curso : _101
+//Curso encontrado!!!!
+//
+//Listado de grupos para el curso seleccionado :
+//1
+//2
+//3
+//
+//Digite el numero de grupo : _1
+//Grupo encontrado!!!!
+//
+//Listado de matriculados en el grupo #1 del grupo 101:
+//152424  Juan Perez Lopez
+//143333  Maritza Rojas Alvarez
+//103343  Lupita Gonzalez Viquez
+//143440  Rosaura
+//
+//
+//< Digite Enter >
+
+void Interfaz::menuControlGruposMostrarDeportistasPorGrupo()
+{
+	Curso* curso = nullptr;
+	int numeroGrupo;
+	string codigoCurso;
+	Grupo* grupo = nullptr;
+	cout << "<5. Control Grupo> <4. Reporte de grupo especifico>" << endl;
+	cout << "Digite el codigo del curso: ";
+	cin >> codigoCurso;
+
+	try
+	{
+		curso = gimnasio->buscarCurso(codigoCurso);
+		cout << "Curso encontrado!!!" << endl;
+	}
+	catch (exception& e)
+	{
+		cerr << e.what() << endl;
+		return;
+	}
+
+	try
+	{
+		cout << curso->generarListadoDeGrupos();
+	}
+	catch (exception& e)
+	{
+		cerr << e.what() << endl;
+		Utils::pause();
+		return;
+	}
+
+	cout << "Digite el numero de grupo deseado: ";
+	cin >> numeroGrupo;
+	try
+	{
+		grupo = curso->obtenerGrupo(numeroGrupo);
+	}
+	catch (exception& e)
+	{
+		cerr << e.what() << endl;
+		Utils::pause();
+		return;
+	}
+
+	cout << " Listado de matriculados en el grupo #" << numeroGrupo << " del grupo " << codigoCurso << ":" << endl;
+	cout << grupo->mostrarCedulaYNombreInscritos() << endl;
+}
+
 int Interfaz::menuControlPagos()
 {
 	int opcion = 0;
