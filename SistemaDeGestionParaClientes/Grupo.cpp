@@ -179,24 +179,24 @@ const string Grupo::toString() const	// 5.4
 	return ss.str();
 }
 
-const string Grupo::mostrarDeportistasInscritos() const
-{
-	stringstream ss;
-	ss << "Triatlonistas inscritos: " << endl;
-	Nodo<Deportista>* nodoActual = this->deportistasInscritos->getPrimero();
-	if (nodoActual == nullptr)
-	{
-		ss << "No hay triatlonistas inscritos" << endl;
-		return ss.str();
-	}
-
-	while (nodoActual != nullptr)
-	{
-		ss << *nodoActual->getDato() << endl;
-		nodoActual = nodoActual->getSiguiente();
-	}
-	return ss.str();
-}
+//const string Grupo::mostrarDeportistasInscritos() const
+//{
+//	stringstream ss;
+//	ss << "Triatlonistas inscritos: " << endl;
+//	Nodo<Deportista>* nodoActual = this->deportistasInscritos->getPrimero();
+//	if (nodoActual == nullptr)
+//	{
+//		ss << "No hay triatlonistas inscritos" << endl;
+//		return ss.str();
+//	}
+//
+//	while (nodoActual != nullptr)
+//	{
+//		ss << *nodoActual->getDato() << endl;
+//		nodoActual = nodoActual->getSiguiente();
+//	}
+//	return ss.str();
+//}
 
 const string Grupo::mostrarCedulaYNombreInscritos() const
 {
