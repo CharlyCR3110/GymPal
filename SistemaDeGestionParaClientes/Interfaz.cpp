@@ -284,6 +284,39 @@ int Interfaz::menuControlCursos()
     cin >> opcion;
     return opcion;
 }
+//< 3.Control Cursos> < 1.Ingreso nuevo curso >
+//
+//Digite el código del curso : _ 101
+//Digite el nombre del curso : _Spinning
+//Digite el nivel : _Principiantes
+//Cantidad de grupos : _4
+//Descripción : _Curso destinado a la introducción al …… ect
+//
+//
+//< Digite Enter >
+
+void Interfaz::menuControlCursosIngresoNuevoCurso()
+{
+    string codigo, nombre, nivel, descripcion;
+	int cantidadGrupos;
+	cout << "<3. Control Cursos> <1. Ingreso nuevo curso>" << endl;
+    Utils::clearInputBuffer();
+    codigo = Interfaz::ingresarYValidarCodigo();
+    Utils::clearInputBuffer();
+    nombre = Interfaz::ingresarYValidarNombre();
+    Utils::clearInputBuffer();
+    nivel = Interfaz::ingresarYValidarNivel();
+    Utils::clearInputBuffer();
+    cantidadGrupos = Interfaz::ingresarYValidarCantidadGrupos();
+    Utils::clearInputBuffer();
+    descripcion = Interfaz::ingresarYValidarDescripcion();
+    try {
+		gimnasio->registrarCurso(codigo, nombre, nivel, descripcion, cantidadGrupos);
+	}
+    catch (exception& e) {
+		cerr << e.what() << endl;
+	}
+}
 
 int Interfaz::menuControlGrupos()
 {
@@ -463,8 +496,7 @@ void Interfaz::modificarEstaturaDeportista(Deportista* deportista, Fecha* fechaA
         if (!(cin >> estatura) || estatura <= 0)
         {
             cerr << "Error: La estatura del deportista debe ser un numero mayor a 0." << endl;
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            Utils::clearInputBuffer();
             continue;
         }
 
@@ -490,8 +522,7 @@ void Interfaz::modificarPesoDeportista(Deportista* deportista, Fecha* fechaActua
         if (!(cin >> peso) || peso <= 0)
         {
             cerr << "Error: El peso del deportista debe ser un numero mayor a 0." << endl;
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            Utils::clearInputBuffer();
             continue;
         }
 
@@ -517,8 +548,7 @@ void Interfaz::modificarPorcentajeGrasaCorporalDeportista(Deportista* deportista
         if (!(cin >> porcentajeGrasaCorpolar) || porcentajeGrasaCorpolar <= 0)
         {
             cerr << "Error: El peso del deportista debe ser un numero mayor a 0." << endl;
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            Utils::clearInputBuffer();
             continue;
         }
 
@@ -544,8 +574,7 @@ void Interfaz::modificarPorcentajeMasaMuscularDeportista(Deportista* deportista,
         if (!(cin >> porcentajeMasaMuscular) || porcentajeMasaMuscular <= 0)
         {
 			cerr << "Error: El porcentaje de masa muscular del deportista debe ser un numero mayor a 0." << endl;
-			cin.clear();
-			cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            Utils::clearInputBuffer();
 			continue;
 		}
 
@@ -573,8 +602,7 @@ void Interfaz::modificarEstadoDeportista(Deportista* deportista)
         if (estado != 'A' && estado != 'I' && estado != 'a' && estado != 'i')
         {
 			cout << "Error: El estado del deportista solo se puede actualizar a 'A' o 'I'." << endl;
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            Utils::clearInputBuffer();
 			continue;
 		}
 
@@ -599,8 +627,7 @@ void Interfaz::modificarHorasEntrenamientoDeportista(Deportista* deportista)
         if (!(cin >> horasEntrenamiento) || horasEntrenamiento <= 0)
         {
 			cerr << "Error: Las horas de entrenamiento del deportista deben ser un numero mayor a 0." << endl;
-			cin.clear();
-			cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            Utils::clearInputBuffer();
 			continue;
 		}
 		deportista->setHorasEntrenamiento(horasEntrenamiento);
@@ -618,8 +645,7 @@ void Interfaz::modificarCantidadParticipacionesIronManDeportista(Deportista* dep
         if (!(cin >> cantidadPartidosIronMan) || cantidadPartidosIronMan < 0)
         {
             cerr << "Error: la cantidad de participaciones en competencias Iron Man debe ser un numero mayor o igual a 0." << endl;
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            Utils::clearInputBuffer();
             continue;
         }
         deportista->setCantidadParticipacionesIronMan(cantidadPartidosIronMan);
@@ -637,8 +663,7 @@ void Interfaz::modificarCantidadTriatlonesGanadosDeportista(Deportista* deportis
         if (!(cin >> cantidadTriatlonesGanados) || cantidadTriatlonesGanados < 0)
         {
 			cerr << "Error: la cantidad de triatlones ganados debe ser un numero mayor o igual a 0." << endl;
-			cin.clear();
-			cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            Utils::clearInputBuffer();
 			continue;
 		}
 
@@ -651,4 +676,185 @@ void Interfaz::modificarCantidadTriatlonesGanadosDeportista(Deportista* deportis
 		deportista->setCantidadTriatlonesGanados(cantidadTriatlonesGanados);
 		esCantidadValida = true;
 	}
+}
+
+//string nombre;
+//bool esNombreValido = false;
+//
+//while (!esNombreValido)
+//{
+//    cout << "Digite el nuevo nombre del deportista: ";
+//    getline(cin, nombre);
+//
+//    if (nombre.empty())
+//    {
+//        cout << "Error: El nombre del deportista no puede estar vacio." << endl;
+//        continue;
+//    }
+//
+//    bool esCadenaValida = true;
+//    for (char c : nombre)
+//    {
+//        if (!isalpha(c) && c != ' ')
+//        {
+//            esCadenaValida = false;
+//            break;
+//        }
+//    }
+//
+//    if (!esCadenaValida)
+//    {
+//        cout << "Error: El nombre del deportista solo puede contener letras y espacios." << endl;
+//        continue;
+//    }
+//
+//    deportista->setNombre(nombre);
+//    esNombreValido = true;
+//}
+string Interfaz::ingresarYValidarNombre()
+{
+    string nombre;
+    bool esNombreValido = false;
+    while (!esNombreValido)
+    {
+        cout << "Digite el nombre del curso: ";
+        getline(cin, nombre);
+
+        if (nombre.empty())
+        {
+			cout << "Error: El nombre del curso no puede estar vacio." << endl;
+			continue;
+		}
+        
+        bool esCadenaValida = true;
+        for (char c : nombre)
+        {
+            if (!isalpha(c) && c != ' ')
+            {
+                esCadenaValida = false;
+				break;
+            }
+        }
+
+        if (!esCadenaValida)
+        {
+            cerr << "Error: El nombre del curso solo puede contener letras y espacios. Si desea agregar un numero escriba un numero romano" << endl;
+            Utils::clearInputBuffer();
+            continue;
+        }
+        esNombreValido = true;
+    }
+    return nombre;
+}
+
+string Interfaz::ingresarYValidarDescripcion()
+{
+    string descripcion;
+	bool esDescripcionValida = false;
+    while (!esDescripcionValida)
+    {
+		cout << "Digite la descripcion del curso: ";
+		getline(cin, descripcion);
+        if (descripcion.empty())
+        {
+			cerr << "Error: La descripcion del curso no puede estar vacia." << endl;
+			continue;
+		}
+		bool esCadenaValida = true;
+        for (char c : descripcion)
+        {
+            if (!isalpha(c) && c != ' ')
+            {
+				esCadenaValida = false;
+				break;
+			}
+		}
+        if (!esCadenaValida)
+        {
+			cerr << "Error: La descripcion del curso solo puede contener letras y espacios. Si desea agregar un numero escriba un numero romano" << endl;
+            Utils::clearInputBuffer();
+			continue;
+		}
+		esDescripcionValida = true;
+	}
+	return descripcion;
+}
+// principiante, intermedio, avanzado (P, I, A)
+string Interfaz::ingresarYValidarNivel()
+{
+    char nivel;
+    bool esNivelValido = false;
+    while (!esNivelValido)
+    {
+		cout << "Digite el nivel del curso (P, I, A): ";
+		cin >> nivel;
+		nivel = toupper(nivel);
+        if (nivel != 'P' && nivel != 'I' && nivel != 'A')
+        {
+			cerr << "Error: El nivel del curso debe ser P, I o A." << endl;
+            Utils::clearInputBuffer();
+			continue;
+		}
+		esNivelValido = true;
+	}
+
+    if (nivel == 'P')
+    {
+		return "Principiante";
+	}
+    else if (nivel == 'I')
+    {
+		return "Intermedio";
+	}
+    else
+    {
+		return "Avanzado";
+	}
+}
+
+int Interfaz::ingresarYValidarCantidadGrupos()
+{
+    int cantidadGrupos;
+	bool esCantidadValida = false;
+    while (!esCantidadValida)
+    {
+		cout << "Digite la cantidad de grupos del curso: ";
+        if (!(cin >> cantidadGrupos) || cantidadGrupos < 0)
+        {
+			cerr << "Error: La cantidad de grupos del curso debe ser un numero mayor o igual a 0." << endl;
+            Utils::clearInputBuffer();
+			continue;
+		}
+		esCantidadValida = true;
+	}
+	return cantidadGrupos;
+}
+
+string Interfaz::ingresarYValidarCodigo()
+{
+    //validar que no exista otro curso con el mismo codigo
+    string codigo;
+    bool esCodigoValido = false;
+    while (!esCodigoValido)
+    {
+        cout << "Digite el codigo del curso: ";
+        getline(cin, codigo);
+        if (codigo.empty())
+        {
+			cerr << "Error: El codigo del curso no puede estar vacio." << endl;
+            Utils::clearInputBuffer();
+			continue;
+		}
+
+        if (gimnasio->existeCursoConCodigo(codigo))
+        {
+            cerr << "Error: Ya existe un curso con ese codigo." << endl;
+            Utils::clearInputBuffer();
+            continue;
+        }
+
+        esCodigoValido = true;
+    }
+
+    return codigo;
 }
