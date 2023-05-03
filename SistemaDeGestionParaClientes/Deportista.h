@@ -30,6 +30,8 @@ public:
 	virtual void setFechaNacimiento(Fecha* fechaNacimiento_);
 	virtual void setEstado(char estado);
 	virtual void setcantidadDeCursosMatriculados(int cantidadDeCursosMatriculados_);
+	// pa'l estado y no de wassap
+	virtual void actualizarEstado(char estado_);
 	// setters que se van pa' abajo
 	virtual void setSexo(char sexo_) = 0;
 	// Corredor
@@ -44,6 +46,7 @@ public:
 	// triatlonista
 	virtual void setCantidadParticipacionesIronMan(int cantidadParticipacionesIronMan_) = 0;
 	virtual void setCantidadTriatlonesGanados(int cantidadTriatlonesGanados_) = 0;
+	virtual const int getCantidadParticipacionesIronMan() const = 0;
 	//getters
 	virtual const string getCedula() const;
 	virtual const string getNombre() const;

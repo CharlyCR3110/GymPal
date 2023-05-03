@@ -40,7 +40,7 @@ void Corredor::setEstatura(double estatura_)
 
 void Corredor::actualizarEstatura(double estatura_, Fecha* fechaActualizacion_)
 {
-	if (fechaActualizacion_ > this->fechaUltimaActualizacion)
+	if (*fechaActualizacion_ >= *this->fechaUltimaActualizacion)
 	{
 		try 
 		{
@@ -66,7 +66,7 @@ void Corredor::setFechaUltimaActualizacion(Fecha* fechaUltimaActualizacion_)
 	}
 	catch (FechaInvalidaException& e)
 	{
-		throw FechaInvalidaException("Fecha de nacimiento invalida");
+		throw FechaInvalidaException("Fecha de actualizacion invalida");
 	}
 }
 

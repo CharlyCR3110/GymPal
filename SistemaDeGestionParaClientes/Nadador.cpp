@@ -37,7 +37,7 @@ void Nadador::setMasaMuscular(double masaMuscular_)
 
 void Nadador::actualizarMasaMuscular(double masaMuscular_, Fecha* fechaActualizacion_)
 {
-    if (fechaActualizacion_ > this->fechaUltimaActualizacion)   //aqui pueden haber excepciones TO-DO
+    if (*fechaActualizacion_ >= *this->fechaUltimaActualizacion)   //aqui pueden haber excepciones TO-DO
     {
         this->masaMuscular = masaMuscular_;
         this->fechaUltimaActualizacion = fechaActualizacion_;
@@ -54,7 +54,7 @@ void Nadador::setPeso(double peso_)
 
 void Nadador::actualizarPeso(double peso_, Fecha* fechaActualizacion_)
 {
-    if (fechaActualizacion_ > this->fechaUltimaActualizacion)
+    if (*fechaActualizacion_ >= *this->fechaUltimaActualizacion)
     {
         this->peso = peso_;
         this->fechaUltimaActualizacion = fechaActualizacion_;
@@ -71,7 +71,7 @@ void Nadador::setPorcentajeGrasaCorporal(double porcentajeGrasaCorporal_)
 
 void Nadador::actualizarPorcentajeGrasaCorporal(double porcentajeGrasaCorporal_, Fecha* fechaActualizacion_)
 {
-    if (fechaActualizacion_ > this->fechaUltimaActualizacion)
+    if (*fechaActualizacion_ >= *this->fechaUltimaActualizacion)
     {
         this->porcentajeGrasaCorporal = porcentajeGrasaCorporal_;
         this->fechaUltimaActualizacion = fechaActualizacion_;

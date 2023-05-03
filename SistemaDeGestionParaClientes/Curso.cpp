@@ -164,6 +164,7 @@ const string Curso::generarReporte() const
     ss << "Codigo: " << this->codigo << endl;
     ss << "Nombre del curso: " << this->nombreDelCurso << endl;
     ss << "Nivel: " << this->nivel << endl;
+    ss << "Descripcion: " << this->descripcion << endl;
     ss << "Cantidad maxima de grupos: " << this->cantidadMaximaDeGrupos << endl;
     ss << "Detalle de grupos abiertos para el curso: " << endl;
     if (!this->listaGrupos->estaVacia())
@@ -209,6 +210,23 @@ const string Curso::reporteCursoGuiaMatricula() const
 const string Curso::listadoDeCurso() const
 {
     return this->codigo + "  " + this->nombreDelCurso + '\n';
+}
+
+const string Curso::generarListadoDeGrupos() const
+{
+    if (this->listaGrupos->estaVacia())
+    {
+        return "No hay grupos disponibles \n";
+    }
+    stringstream ss;
+    ss << "Grupo" << '\t' << "Dia" << '\t' << "Horario" << '\t' << "Cupo" << '\t' << "Cantidad" << endl;
+    Nodo<Grupo>* nodoActual = this->listaGrupos->getPrimero();
+    while (nodoActual != nullptr)
+    {
+		ss << nodoActual->getDato()->reporteGrupoGuiaMatricula() << endl;
+		nodoActual = nodoActual->getSiguiente();
+	}
+    return ss.str();
 }
 
 const string Curso::generarReporteDeportistasMatriculadosPorGrupo(int numeroGrupo) const
@@ -392,6 +410,25 @@ string Curso::reporteGrupo(int numeroGrupo)
 	}
 
     throw exception("No se encontro el grupo");
+}
+
+bool Curso::existeGrupo(int numeroGrupo)
+{
+    if (!hayGrupos())
+    {
+        return false;
+    }
+
+    Nodo<Grupo>* nodoActual = this->listaGrupos->getPrimero();
+    while (nodoActual != nullptr)
+    {
+        if (nodoActual->getDato()->getNumeroGrupo() == numeroGrupo)
+        {
+			return true;
+		}
+		nodoActual = nodoActual->getSiguiente();
+	}
+    return false;
 }
 
 void Curso::desmatricularDeGrupo(int numeroGrupo, Deportista* deportista)

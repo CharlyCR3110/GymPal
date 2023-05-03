@@ -93,10 +93,16 @@
     <ClCompile Include="PagosNoRegistradosException.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ControlCursos.cpp">
+    <ClCompile Include="Gimnasio.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Gimnasio.cpp">
+    <ClCompile Include="Interfaz.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Utils.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Controlador.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -176,10 +182,16 @@
     <ClInclude Include="PagosNoRegistradosException.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ControlCursos.h">
+    <ClInclude Include="Gimnasio.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Gimnasio.h">
+    <ClInclude Include="Interfaz.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Controlador.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

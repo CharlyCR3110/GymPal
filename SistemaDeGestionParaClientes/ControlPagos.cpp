@@ -1,57 +1,20 @@
 #include "ControlPagos.h"
 
-ControlPagos::ControlPagos(double montoMensual_, ListaEnlazada<Deportista>* listaDeportistas_, Fecha* fechaActual_)
-{
-	if (montoMensual_ < 0)
-		throw ControlPagosInvalidoException("Monto mensual invalido");	//ControlPagosInvalidoException
-
-	this->montoMensual = montoMensual_;
-
-	if (listaDeportistas_ == nullptr)
-	{
-		this->listaDeportistas = new ListaEnlazada<Deportista>();
-	}
-	else
-	{
-		this->listaDeportistas = listaDeportistas_;
-	}
-	
-	if (fechaActual_ == nullptr)
-	{
-		this->fechaActual = new Fecha();
-	}
-	else
-	{
-		this->fechaActual = fechaActual_;
-	}
-
-
-}
-
-ControlPagos::ControlPagos(const ControlPagos& controlPagos_):
-	montoMensual(controlPagos_.montoMensual),
-	listaDeportistas(controlPagos_.listaDeportistas),
-	fechaActual(controlPagos_.fechaActual)
+ControlPagos::ControlPagos()
 {
 }
+
 
 ControlPagos::~ControlPagos()
 {
 }
 
-void ControlPagos::setMontoMensual(double montoMensual_)
-{
-	if (montoMensual_ < 0)
-		throw ControlPagosInvalidoException("Monto mensual invalido");	//ControlPagosInvalidoException
-	this->montoMensual = montoMensual_;
-}
-
-void ControlPagos::registrarPago(string cedula_, string mesCancelado_, double monto_)
+void ControlPagos::registrarPago(string cedula_, string mesCancelado_, double monto_, ListaEnlazada<Deportista>* listaDeportistas, Fecha* fechaActual)
 {
 	Deportista* deportista;
 	try 
 	{
-		deportista = this->listaDeportistas->buscarPorCodigo(cedula_);
+		deportista = listaDeportistas->buscarPorCodigo(cedula_);
 	}
 	catch (exception& e)
 	{
@@ -79,12 +42,12 @@ void ControlPagos::registrarPago(string cedula_, string mesCancelado_, double mo
 
 }
 
-string ControlPagos::generarReportePagos(string cedula_)
+string ControlPagos::generarReportePagos(string cedula_, ListaEnlazada<Deportista>* listaDeportistas)
 {
 	Deportista* deportista;
 	try
 	{
-		deportista = this->listaDeportistas->buscarPorCodigo(cedula_);
+		deportista = listaDeportistas->buscarPorCodigo(cedula_);
 	}
 	catch (exception& e)
 	{
@@ -102,12 +65,13 @@ string ControlPagos::generarReportePagos(string cedula_)
 	return ss.str();
 }
 
-void ControlPagos::pagarMeses(string cedula_, int cantidadMeses_)
+string ControlPagos::pagarMeses(string cedula_, int cantidadMeses_, ListaEnlazada<Deportista>* listaDeportistas, Fecha* fechaActual_, double montoMensual)
 {
-	Deportista* deportista;
+	Fecha* fechaActual = new Fecha(fechaActual_->getDia(), fechaActual_->getMes(), fechaActual_->getAnio());	// copia de la fecha actual para no modificarla
+	Deportista* deportista = nullptr;
 	try
 	{
-		deportista = this->listaDeportistas->buscarPorCodigo(cedula_);
+		deportista = listaDeportistas->buscarPorCodigo(cedula_);
 	}
 	catch (exception& e)
 	{
@@ -117,26 +81,37 @@ void ControlPagos::pagarMeses(string cedula_, int cantidadMeses_)
 	string meses[12] = { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
 							 "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" };
 
-	// si yo estoy en enero y quiero pagar 3 meses, entonces debo pagar enero, febrero y marzo
-	int mesActual = this->fechaActual->getMes() - 1;
+
+	int ultimoMesPagado = deportista->getPagos()->getUltimo()->getDato()->getFecha()->getMes() - 1;
+
+	stringstream ss;
+	ss << "Monto a pagar: " << montoMensual * cantidadMeses_ << endl << endl;
+	ss << "Excelente se ha cancelado las siguiente cuotas: " << endl;
+
 
 	for (int i = 0; i < cantidadMeses_; i++)
 	{
-		string mes = meses[mesActual];
-		double monto = this->montoMensual;
+		string mes = meses[ultimoMesPagado];
+		double monto = montoMensual;
 
 		try {
-			this->registrarPago(cedula_, mes, monto);
+			registrarPago(cedula_, mes, monto, listaDeportistas, fechaActual);
+			ss << "-" << mes << " " << fechaActual->getAnio() << endl;
 		}
 		catch (exception& e)
 		{
 			throw PagoInvalidoException();
 		}
 
-		mesActual++;
-		if (mesActual == 11)
-			mesActual = 0;
+		ultimoMesPagado++;
+		if (ultimoMesPagado == 12)
+		{
+			ultimoMesPagado = 0;
+			fechaActual->setAnio(fechaActual->getAnio() + 1);
+		}
 	}
+	ss << "El deportista " << deportista->getNombre() << " ha pagado " << cantidadMeses_ << " meses" << endl;
+	ss << "Debe de pagar haste el mes de: " << meses[ultimoMesPagado] << " " << fechaActual->getAnio() << endl;
+	delete fechaActual;
+	return ss.str();
 }
-
-

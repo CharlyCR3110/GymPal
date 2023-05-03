@@ -128,7 +128,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Ciclista.h" />
-    <ClInclude Include="ControlCursos.h" />
+    <ClInclude Include="Controlador.h" />
     <ClInclude Include="ControlPagos.h" />
     <ClInclude Include="ControlPagosInvalidoException.h" />
     <ClInclude Include="Corredor.h" />
@@ -155,10 +155,11 @@
     <ClInclude Include="PagoInvalidoException.h" />
     <ClInclude Include="PagosNoRegistradosException.h" />
     <ClInclude Include="Triatlonista.h" />
+    <ClInclude Include="Utils.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Ciclista.cpp" />
-    <ClCompile Include="ControlCursos.cpp" />
+    <ClCompile Include="Controlador.cpp" />
     <ClCompile Include="ControlPagos.cpp" />
     <ClCompile Include="ControlPagosInvalidoException.cpp" />
     <ClCompile Include="Corredor.cpp" />
@@ -186,6 +187,7 @@
     <ClCompile Include="PagoInvalidoException.cpp" />
     <ClCompile Include="PagosNoRegistradosException.cpp" />
     <ClCompile Include="Triatlonista.cpp" />
+    <ClCompile Include="Utils.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -40,6 +40,7 @@ public:
 	const string generarReporte() const;
 	const string reporteCursoGuiaMatricula() const;
 	const string listadoDeCurso() const;	// devuelve el codigo y el nombre del curso
+	const string generarListadoDeGrupos() const;
 	const string generarReporteDeportistasMatriculadosPorGrupo(int numeroGrupo) const;
 	bool hayGrupos();
 	bool estaLleno();
@@ -52,6 +53,7 @@ public:
 	// para obtener el grupo
 	Grupo* obtenerGrupo(int numeroGrupo);
 	string reporteGrupo(int numeroGrupo);
+	bool existeGrupo(int numeroGrupo);
 	// desmatricular
 	void desmatricularDeGrupo(int numeroGrupo, Deportista* deportista);
 	// sobrecarga de operador para mostrar los datos

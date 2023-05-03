@@ -64,6 +64,10 @@ bool Hora::operator==(const Hora& hora)
     {
 		return true;
 	}
+    else
+    {
+		return false;
+    }
 }
 
 bool operator>(const Hora& hora1_, const Hora& hora2_)

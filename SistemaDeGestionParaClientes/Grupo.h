@@ -36,6 +36,7 @@ public:
 	//getters
 	Instructor* getInstructor();
 	const int getCupoMaximo() const;
+	const int getCantidadDeInscritos() const;
 	Fecha* getFechaDeInicio();
 	const int getSemanasDeDuracion() const;
 	const int getNumeroGrupo() const;
@@ -46,7 +47,7 @@ public:
 	//metodos
 	const string generarReporte() const;
 	const string toString() const;	
-	const string mostrarDeportistasInscritos() const;
+	//const string mostrarDeportistasInscritos() const;
 	const string mostrarCedulaYNombreInscritos() const;
 	void agregarDeportista(Deportista* deportista_);
 	const string reporteGrupoGuiaMatricula() const;	// 5.3
