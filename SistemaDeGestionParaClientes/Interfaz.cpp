@@ -889,6 +889,25 @@ void Interfaz::menuControlPagosIngresoNuevoPago()
 	}
 }
 
+void Interfaz::menuControlPagosMostrarPagosDeportista()
+{
+	string cedula;
+	cout << "<5. Control Pagos> <2. Reporte de pagos por deportista>" << endl;
+	cout << "Digite la cedula del deportista: ";
+	cin >> cedula;
+
+	try
+	{
+		gimnasio->generarReportePagosCed(cedula);
+	}
+	catch (exception& e)
+	{
+		cerr << e.what() << endl;
+		Utils::pause();
+		return;
+	}
+}
+
 Fecha* Interfaz::menuFecha()
 {
 	int dia, mes, anio;

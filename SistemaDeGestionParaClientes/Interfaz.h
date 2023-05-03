@@ -44,6 +44,7 @@ public:
 	static int menuControlPagos();	// 5
 	// submenus de menuControlPagos
 	static void menuControlPagosIngresoNuevoPago(); // 5.1
+	static void menuControlPagosMostrarPagosDeportista(); // 5.2
 	//
 
 
