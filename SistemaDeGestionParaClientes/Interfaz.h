@@ -35,6 +35,7 @@ public:
 	static int menuControlGrupos();	// 4
 	// submenus de menuControlGrupos
 	static void menuControlGruposIngresoNuevoGrupo(); // 4.1
+	static void menuControlGruposModificarGrupo(); // 4.2
 	//
 	static int menuControlPagos();	// 5
 
@@ -86,5 +87,15 @@ public:
 	static char ingresarYValidarDiaDeLaSemana();
 	static Hora* ingresarYValidarHoraEntrada();
 	static Hora* ingresarYValidarHoraSalida(Hora* horaEntrada);
+
+	//metodos para cambiar y validad datos de un grupo;
+	static void modificarNombreInstructor(Grupo* grupo);
+	static void modificarCedulaInstructor(Grupo* grupo);
+	static void modificarCupoMaximoGrupo(Grupo* grupo);
+	static void modificarFechaInicioGrupo(Grupo* grupo);
+	static void modificarSemanasDuracionGrupo(Grupo* grupo);
+	static void modificarDiaDeLaSemanaGrupo(Grupo* grupo);
+	static void modificarHoraEntradaGrupo(Grupo* grupo);
+	static void modificarHoraSalidaGrupo(Grupo* grupo);
 
 };
