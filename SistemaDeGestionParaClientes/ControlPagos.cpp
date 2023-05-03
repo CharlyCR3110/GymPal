@@ -85,6 +85,7 @@ string ControlPagos::pagarMeses(string cedula_, int cantidadMeses_, ListaEnlazad
 	int ultimoMesPagado = deportista->getPagos()->getUltimo()->getDato()->getFecha()->getMes() - 1;
 
 	stringstream ss;
+	ss << "Monto a pagar: " << montoMensual * cantidadMeses_ << endl << endl;
 	ss << "Excelente se ha cancelado las siguiente cuotas: " << endl;
 
 
@@ -109,6 +110,8 @@ string ControlPagos::pagarMeses(string cedula_, int cantidadMeses_, ListaEnlazad
 			fechaActual->setAnio(fechaActual->getAnio() + 1);
 		}
 	}
+	ss << "El deportista " << deportista->getNombre() << " ha pagado " << cantidadMeses_ << " meses" << endl;
+	ss << "Debe de pagar haste el mes de: " << meses[ultimoMesPagado] << " " << fechaActual->getAnio() << endl;
 	delete fechaActual;
 	return ss.str();
 }
