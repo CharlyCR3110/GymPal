@@ -318,6 +318,27 @@ void Interfaz::menuControlCursosIngresoNuevoCurso()
 	}
 }
 
+void Interfaz::menuControlCursosMostrarCursoEspecifico()
+{
+    string codigo;
+	cout << "<3. Control Cursos> <2. Reporte de curso especifico>" << endl;
+    try {
+		cout << gimnasio->generarListadoCursos();
+	}
+    catch (exception& e) {
+		cerr << e.what() << endl;
+	}
+	cout << "Digite el codigo del curso: ";
+	cin >> codigo;
+
+    try {
+		cout << gimnasio->generarReporteCursoCod(codigo);
+	}
+    catch (exception& e) {
+		cerr << e.what() << endl;
+	}
+}
+
 int Interfaz::menuControlGrupos()
 {
     int opcion = 0;

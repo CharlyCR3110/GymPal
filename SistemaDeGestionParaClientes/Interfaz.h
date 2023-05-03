@@ -29,6 +29,7 @@ public:
 	static int menuControlCursos();	// 3
 	// submenus de menuControlCursos
 	static void menuControlCursosIngresoNuevoCurso(); // 3.1
+	static void menuControlCursosMostrarCursoEspecifico(); // 3.2
 	//
 	static int menuControlGrupos();	// 4
 	static int menuControlPagos();	// 5
