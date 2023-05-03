@@ -370,5 +370,4 @@ SistemaDeGestionParaClientes/SistemaDeGestionParaClientes.vcxproj.*
 # Visual Studio Code
 SistemaDeGestionParaClientes/.vscode/*
 # Temp main
-SistemaDeGestionParaClientes/main.cpp
 SistemaDeGestionParaClientes.sln
