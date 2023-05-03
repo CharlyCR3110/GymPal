@@ -37,7 +37,7 @@ public:
 	// 1. Metodo de Registro
 	void registrarCurso(string codigo_, string nombre_, string nivel_, string descripcion_, int cantidadMaximaDeGrupos_);
 	void registrarDeportista(string cedula_, string nombre_, string telefono_, Fecha* fechaNacimiento_, int horasEntremiento_, double temperaturaPromedio_, int cantidadParticipacionesIronMan_, int cantidadTriatlonesGanados_, char sexo_, double estatura_, double masaMuscular_, double peso_, double porcentajeGrasaCorporal_);
-	void registrarPago(string cedula_, int mesesAPagar_);
+	string registrarPago(string cedula_, int mesesAPagar_);
 	// 2.Me todos de matricula y desmatricula:
 	void matricularEnGrupo(string codigoCurso_, int numeroGrupo_, string cedulaDeportista_);
 	void desmatricularDeGrupo(string codigoCurso_, int numeroGrupo_, string cedulaDeportista_);

@@ -119,11 +119,11 @@ void Gimnasio::registrarDeportista(string cedula_, string nombre_, string telefo
 	}
 }
 
-void Gimnasio::registrarPago(string cedula_, int mesesAPagar_)
+string Gimnasio::registrarPago(string cedula_, int mesesAPagar_)
 {
 	try
 	{
-		this->controlPagos->pagarMeses(cedula_, mesesAPagar_, this->listaDeportistas, this->fechaActual, this->montoMensual);
+		return this->controlPagos->pagarMeses(cedula_, mesesAPagar_, this->listaDeportistas, this->fechaActual, this->montoMensual);
 	}
 	catch (exception& e)
 	{
