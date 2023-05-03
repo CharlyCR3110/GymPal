@@ -879,3 +879,147 @@ string Interfaz::ingresarYValidarCodigo()
 
     return codigo;
 }
+
+void Interfaz::modificarNombreCurso(Curso* curso)
+{
+    string nombre;
+    bool esNombreValido = false;
+    while (!esNombreValido)
+    {
+        cout << "Digite el nombre del curso: ";
+        getline(cin, nombre);
+
+        if (nombre.empty())
+        {
+            cout << "Error: El nombre del curso no puede estar vacio." << endl;
+            continue;
+        }
+
+        bool esCadenaValida = true;
+        for (char c : nombre)
+        {
+            if (!isalpha(c) && c != ' ')
+            {
+                esCadenaValida = false;
+                break;
+            }
+        }
+
+        if (!esCadenaValida)
+        {
+            cerr << "Error: El nombre del curso solo puede contener letras y espacios. Si desea agregar un numero escriba un numero romano" << endl;
+            Utils::clearInputBuffer();
+            continue;
+        }
+
+        curso->setNombreDelCurso(nombre);
+        esNombreValido = true;
+    }
+}
+
+void Interfaz::modificarDescripcionCurso(Curso* curso)
+{
+    string descripcion;
+	bool esDescripcionValida = false;
+    while (!esDescripcionValida)
+    {
+		cout << "Digite la descripcion del curso: ";
+		getline(cin, descripcion);
+        if (descripcion.empty())
+        {
+			cerr << "Error: La descripcion del curso no puede estar vacia." << endl;
+			continue;
+		}
+		bool esCadenaValida = true;
+        for (char c : descripcion)
+        {
+            if (!isalpha(c) && c != ' ')
+            {
+				esCadenaValida = false;
+				break;
+			}
+		}
+        if (!esCadenaValida)
+        {
+			cerr << "Error: La descripcion del curso solo puede contener letras y espacios. Si desea agregar un numero escriba un numero romano" << endl;
+			Utils::clearInputBuffer();
+			continue;
+		}
+		curso->setDescripcion(descripcion);
+		esDescripcionValida = true;
+	}
+}
+
+void Interfaz::modificarNivelCurso(Curso* curso)
+{
+    char nivel;
+	bool esNivelValido = false;
+    while (!esNivelValido)
+    {
+		cout << "Digite el nivel del curso (P, I, A): ";
+		cin >> nivel;
+		nivel = toupper(nivel);
+        if (nivel != 'P' && nivel != 'I' && nivel != 'A')
+        {
+			cerr << "Error: El nivel del curso debe ser P, I o A." << endl;
+			Utils::clearInputBuffer();
+			continue;
+		}
+		esNivelValido = true;
+	}
+
+    switch (nivel)
+    {
+    case 'P':
+        curso->setNivel("Principiante");
+        break;
+    case 'I':
+        curso->setNivel("Intermedio"); 
+        break;
+    case 'A':
+        curso->setNivel("Avanzado");
+        break;
+    }
+}
+
+void Interfaz::modificarCantidadGruposCurso(Curso* curso)
+{
+    int cantidadGrupos;
+	bool esCantidadValida = false;
+    while (!esCantidadValida)
+    {
+		cout << "Digite la cantidad de grupos del curso: ";
+        if (!(cin >> cantidadGrupos) || cantidadGrupos < 0)
+        {
+			cerr << "Error: La cantidad de grupos del curso debe ser un numero mayor o igual a 0." << endl;
+			Utils::clearInputBuffer();
+			continue;
+		}
+		curso->setCantidadMaximaDeGrupos(cantidadGrupos);
+		esCantidadValida = true;
+	}
+}
+
+void Interfaz::modificarCodigoCurso(Curso* curso)
+{
+    string codigo;
+	bool esCodigoValido = false;
+    while (!esCodigoValido)
+    {
+		cout << "Digite el codigo del curso: ";
+		getline(cin, codigo);
+        if (codigo.empty())
+        {
+			cerr << "Error: El codigo del curso no puede estar vacio." << endl;
+			continue;
+		}
+        if (gimnasio->existeCursoConCodigo(codigo))
+        {
+			cerr << "Error: Ya existe un curso con ese codigo." << endl;
+			Utils::clearInputBuffer();
+			continue;
+		}
+		curso->setCodigo(codigo);
+		esCodigoValido = true;
+	}
+}

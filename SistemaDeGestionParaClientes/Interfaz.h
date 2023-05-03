@@ -39,6 +39,9 @@ public:
 	static Fecha* menuFecha();
 	// 
 
+	//to-do metodo para validar ingreso de datos de un deportista
+
+
 	// modificar datos
 	static void modificarNombreDeportista(Deportista* deportista);
 	static void modificarTelefonoDeportista(Deportista* deportista);
@@ -63,5 +66,10 @@ public:
 	static int ingresarYValidarCantidadGrupos();
 	static string ingresarYValidarCodigo();
 	//
-
+	// metodos para cambiar y validad datos de un curso;
+	static void modificarNombreCurso(Curso* curso);
+	static void modificarDescripcionCurso(Curso* curso);
+	static void modificarNivelCurso(Curso* curso);
+	static void modificarCantidadGruposCurso(Curso* curso);
+	static void modificarCodigoCurso(Curso* curso);
 };
