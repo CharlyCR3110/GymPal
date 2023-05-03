@@ -30,6 +30,7 @@ public:
 	// submenus de menuControlCursos
 	static void menuControlCursosIngresoNuevoCurso(); // 3.1
 	static void menuControlCursosMostrarCursoEspecifico(); // 3.2
+	static void menuControlCursosModificarCurso(); // 3.3
 	//
 	static int menuControlGrupos();	// 4
 	static int menuControlPagos();	// 5
