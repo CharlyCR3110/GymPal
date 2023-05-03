@@ -36,6 +36,7 @@ public:
 	// submenus de menuControlGrupos
 	static void menuControlGruposIngresoNuevoGrupo(); // 4.1
 	static void menuControlGruposModificarGrupo(); // 4.2
+	static void menuControlGruposMatricularEnGrupo(); // 4.3
 	//
 	static int menuControlPagos();	// 5
 

@@ -563,6 +563,77 @@ void Interfaz::menuControlGruposModificarGrupo()
 	}
 }
 
+void Interfaz::menuControlGruposMatricularEnGrupo()
+{
+	int numeroGrupo;
+	string idDeportista;
+	string codigoCurso;
+	Curso* curso = nullptr;
+
+	cout << "<4. Control Grupo> <3. Matricula en grupo especifico>" << endl;
+	cout << "Digite el ID del deportista: ";
+	cin >> idDeportista;
+	if (gimnasio->existeDeportistaConCedula(idDeportista))
+	{
+		cout << "Deportista encontrado!!!" << endl;
+	}
+	else
+	{
+		cout << "Deportista no encontrado!!!" << endl;
+		return;
+	}
+
+	cout << "Digite el codigo del curso: ";
+	cin >> codigoCurso;
+	try
+	{
+		curso = gimnasio->buscarCurso(codigoCurso);
+		cout << "Curso encontrado!!!" << endl;
+	}
+	catch (exception& e)
+	{
+		cerr << e.what() << endl;
+		return;
+	}
+
+	try
+	{
+		cout << curso->generarListadoDeGrupos();
+	}
+	catch (exception& e)
+	{
+		cerr << e.what() << endl;
+		Utils::pause();
+		return;
+	}
+
+	cout << "Digite el numero de grupo deseado: ";
+	cin >> numeroGrupo;
+
+	if (curso->existeGrupo(numeroGrupo))
+	{
+		cout << "Grupo encontrado!!!" << endl;
+	}
+	else
+	{
+		cout << "Grupo no encontrado!!!" << endl;
+		Utils::pause();
+		return;
+	}
+
+	try
+	{
+		gimnasio->matricularEnGrupo(codigoCurso, numeroGrupo, idDeportista);
+		cout << "Haz matriculado al deportista con ID" << idDeportista << " en el grupo " << numeroGrupo << " del curso " << codigoCurso << " el dia " << gimnasio->getFechaActual()->toString() << " exitosamente " << endl;
+	}
+	catch (exception& e)
+	{
+		cerr << e.what() << endl;
+		Utils::pause();
+		return;
+	}
+}
+
 int Interfaz::menuControlPagos()
 {
 	int opcion = 0;
