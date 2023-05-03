@@ -9,23 +9,16 @@
 
 class ControlPagos
 {
-private:
-	double montoMensual;	// esto le debe de pertenecer a Gimnasio, pero por ahora lo dejo aqui
-	ListaEnlazada<Deportista>* listaDeportistas;
-	Fecha* fechaActual;	//la fecha actual del sistema
 public:
-	ControlPagos(double montoMensual_ = 0, ListaEnlazada<Deportista>* listaDeportistas_ = nullptr, Fecha* fechaActual_ = nullptr);
-	ControlPagos(const ControlPagos& controlPagos_);
+	ControlPagos();
 	virtual ~ControlPagos();
 	// setter
-	void setMontoMensual(double montoMensual_);
 	// metodo para registrar el pago de un deportista
-	void registrarPago(string cedula_, string mesCancelado_, double monto_);	//cedula = codigo
+	void registrarPago(string cedula_, string mesCancelado_, double monto_, ListaEnlazada<Deportista>* listaDeportistas, Fecha* fechaActual);	//cedula = codigo
 	// metodo para generar un reporte de pagos de un deportista
-	string generarReportePagos(string cedula_);
+	string generarReportePagos(string cedula_, ListaEnlazada<Deportista>* listaDeportistas);
 	// metodo para pagar x cantidad de meses
-	void pagarMeses(string cedula_, int cantidadMeses_);
+	void pagarMeses(string cedula_, int cantidadMeses_, ListaEnlazada<Deportista>* listaDeportistas, Fecha* fechaActual, double montoMensual);
 	//
 	//Verificar pago: un método que recibe como parámetro el número de identificación del cliente y verifica si tiene pagos pendientes o si se encuentra activo en el gimnasio.
-	
 };
