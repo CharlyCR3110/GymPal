@@ -448,3 +448,8 @@ Deportista* Gimnasio::buscarDeportista(string cedula_)
 
 	return deportista;
 }
+
+bool Gimnasio::existeCursoConCodigo(string codigo_)
+{
+	return listaCursos->existeItemConCodigo(codigo_);
+}
