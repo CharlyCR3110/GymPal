@@ -449,6 +449,20 @@ Deportista* Gimnasio::buscarDeportista(string cedula_)
 	return deportista;
 }
 
+Curso* Gimnasio::buscarCurso(string codigo_)
+{
+	Curso* curso = nullptr;
+	try
+	{
+		curso = this->listaCursos->buscarPorCodigo(codigo_);
+	}
+	catch (exception& e)
+	{
+		throw exception(e.what());
+	}
+	return curso;
+}
+
 bool Gimnasio::existeCursoConCodigo(string codigo_)
 {
 	return listaCursos->existeItemConCodigo(codigo_);

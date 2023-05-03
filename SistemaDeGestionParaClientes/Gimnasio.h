@@ -59,6 +59,7 @@ public:
 	const string generarReporteCursosMatriculados(string cedula_) const;
 	// 4. Metodo para buscar
 	Deportista* buscarDeportista(string cedula_);
+	Curso* buscarCurso(string codigo_);
 	// 5. verificar repetidos
 	bool existeCursoConCodigo(string codigo_);
 };
