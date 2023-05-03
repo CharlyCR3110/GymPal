@@ -199,9 +199,14 @@ void Gimnasio::desmatricularDeGrupo(string codigoCurso_, int numeroGrupo_, strin
 		throw exception(e.what());
 	}
 	// si es nullptr probablemente nunca llegue a este punto por el catch, pero por si acaso
-	if (curso == nullptr || deportista == nullptr)
+	if (curso == nullptr)
 	{
-		throw exception("No se encontro el curso o el deportista");
+		throw exception("No se encontro el curso");
+	}
+
+	if (deportista == nullptr)
+	{
+		throw exception("No se encontro el deportista");
 	}
 	// si el deportista no esta matriculado en el curso
 	if (!curso->estaMatriculado(deportista))
@@ -332,7 +337,7 @@ const string Gimnasio::generarListadoCursos() const
 	}
 	else
 	{
-		ss << "No hay cursos registrados." << endl;
+		throw exception("No hay cursos registrados.");
 	}
 
 	return ss.str();
