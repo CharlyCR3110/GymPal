@@ -857,6 +857,38 @@ int Interfaz::menuControlPagos()
 	return opcion;
 }
 
+void Interfaz::menuControlPagosIngresoNuevoPago()
+{
+	string idDeportista;
+	int cantidadDeCuotas;
+	cout << "<5. Control Pagos> <1. Registro de nuevo pago>" << endl;
+	cout << "Fecha Actual: " << gimnasio->getFechaActual()->toString();
+	cout << "Digite la cedula del deportista: ";
+	cin >> idDeportista;
+	if (gimnasio->existeDeportistaConCedula(idDeportista))
+	{
+		cout << "Deportista encontrado!!!" << endl;
+	}
+	else
+	{
+		cout << "El deportista no existe" << endl;
+		Utils::pause();
+		return;
+	}
+	cout << "Cuantas cuotas desea cancelar o pagar: ";
+	cin >> cantidadDeCuotas;
+	try
+	{
+		cout << gimnasio->registrarPago(idDeportista, cantidadDeCuotas);
+	}
+	catch (exception& e)
+	{
+		cerr << e.what() << endl;
+		Utils::pause();
+		return;
+	}
+}
+
 Fecha* Interfaz::menuFecha()
 {
 	int dia, mes, anio;

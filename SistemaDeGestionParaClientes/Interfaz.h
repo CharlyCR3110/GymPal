@@ -42,6 +42,9 @@ public:
 	static void menuControlGruposCancelarMatriculaEnGrupo(); // 4.6
 	//
 	static int menuControlPagos();	// 5
+	// submenus de menuControlPagos
+	static void menuControlPagosIngresoNuevoPago(); // 5.1
+	//
 
 
 	//menus auxiliares
