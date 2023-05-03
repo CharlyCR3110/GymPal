@@ -39,6 +39,7 @@ public:
 	static void menuControlGruposMatricularEnGrupo(); // 4.3
 	static void menuControlGruposMostrarGrupoEspecifico(); // 4.4
 	static void menuControlGruposMostrarDeportistasPorGrupo(); // 4.5
+	static void menuControlGruposCancelarMatriculaEnGrupo(); // 4.6
 	//
 	static int menuControlPagos();	// 5
 

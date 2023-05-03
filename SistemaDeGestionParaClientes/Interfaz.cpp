@@ -762,6 +762,90 @@ void Interfaz::menuControlGruposMostrarDeportistasPorGrupo()
 	cout << grupo->mostrarCedulaYNombreInscritos() << endl;
 }
 
+void Interfaz::menuControlGruposCancelarMatriculaEnGrupo()
+{
+	int numeroGrupo;
+	string codigoCurso;
+	string idDeportista;
+
+	cout << "<4. Control Grupo> <6. Cancelacion de matricula en grupo>" << endl;
+	cout << "Digite el ID del deportista: ";
+	cin >> idDeportista;
+
+	if (gimnasio->existeDeportistaConCedula(idDeportista))
+	{
+		cout << "Deportista encontrado!!!" << endl;
+	}
+	else
+	{
+		cout << "El deportista no existe" << endl;
+		Utils::pause();
+		return;
+	}
+
+	cout << "Listado de cursos: " << endl;
+	try
+	{
+		gimnasio->generarListadoCursos();
+	}
+	catch (exception& e)
+	{
+		cerr << e.what() << endl;
+		Utils::pause();
+		return;
+	}
+	cout << "Digite el codigo del curso: ";
+	cin >> codigoCurso;
+
+
+	if (gimnasio->existeCursoConCodigo(codigoCurso))
+	{
+		cout << "Curso encontrado!!!" << endl;
+	}
+	else
+	{
+		cout << "El curso no existe" << endl;
+		Utils::pause();
+		return;
+	}
+
+	try
+	{
+		cout << gimnasio->buscarCurso(codigoCurso)->generarListadoDeGrupos();
+	}
+	catch (exception& e)
+	{
+		cerr << e.what() << endl;
+		Utils::pause();
+		return;
+	}
+
+	cout << "Digite el numero de grupo: ";
+	cin >> numeroGrupo;
+
+	if (gimnasio->buscarCurso(codigoCurso)->existeGrupo(numeroGrupo))
+	{
+		cout << "Grupo encontrado!!!" << endl;
+	}
+	else
+	{
+		cout << "El grupo no existe" << endl;
+		Utils::pause();
+		return;
+	}
+
+	try
+	{
+		gimnasio->desmatricularDeGrupo(codigoCurso, numeroGrupo, idDeportista);
+	}
+	catch (exception& e)
+	{
+		cerr << e.what() << endl;
+		Utils::pause();
+		return;
+	}
+}
+
 int Interfaz::menuControlPagos()
 {
 	int opcion = 0;
