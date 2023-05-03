@@ -34,6 +34,7 @@ public:
 	//metodos para buscar cositas
 	Nodo<T>* buscarNodo(T* dato_);	// busca el nodo que contiene el dato --- poco util
 	T* buscarPorCodigo(string codigo_);	// me devuelve el dato que contiene el codigo (o sea un deportista, un curso, etc)
+	bool existeItemConCodigo(string codigo_);
 	//metodos para filtrar Deportistas por estado
 	ListaEnlazada<T>* filtrarPorEstado(char estado_);	// lo filtro. luego en otro metodo lo muestro con 'X
 	//metodos para mostrar lista con base en el estado;
@@ -383,6 +384,24 @@ inline T* ListaEnlazada<T>::buscarPorCodigo(string codigo_)
 	}
 	// si no lo encuentra lanza una excepcion
 	throw ElementoNoEncontradoException<T>();
+}
+
+template<class T>
+inline bool ListaEnlazada<T>::existeItemConCodigo(string codigo_)
+{
+	if (estaVacia())
+	{
+		return false;
+	}
+
+	Nodo<T>* actual = primero;
+	while (actual != nullptr) {
+		if ((actual->getDato())->getCodigo() == codigo_) {
+			return true;
+		}
+		actual = actual->getSiguiente();
+	}
+	return false;
 }
 
 template<class T>
