@@ -634,6 +634,56 @@ void Interfaz::menuControlGruposMatricularEnGrupo()
 	}
 }
 
+void Interfaz::menuControlGruposMostrarGrupoEspecifico()
+{
+	Curso* curso = nullptr;
+	int numeroGrupo;
+	string codigoCurso;
+	Grupo* grupo = nullptr;
+	cout << "<5. Control Grupo> <4. Reporte de grupo especifico>" << endl;
+	cout << "Digite el codigo del curso: ";
+	cin >> codigoCurso;
+
+	try
+	{
+		curso = gimnasio->buscarCurso(codigoCurso);
+		cout << "Curso encontrado!!!" << endl;
+	}
+	catch (exception& e)
+	{
+		cerr << e.what() << endl;
+		return;
+	}
+
+	try
+	{
+		cout << curso->generarListadoDeGrupos();
+	}
+	catch (exception& e)
+	{
+		cerr << e.what() << endl;
+		Utils::pause();
+		return;
+	}
+
+	cout << "Digite el numero de grupo deseado: ";
+	cin >> numeroGrupo;
+	try
+	{
+		grupo = curso->obtenerGrupo(numeroGrupo);
+	}
+	catch (exception& e)
+	{
+		cerr << e.what() << endl;
+		Utils::pause();
+		return;
+	}
+
+	cout << "A continuacion se muestra la informacion del grupo #" << numeroGrupo << " del curso " << codigoCurso << ":" << endl;
+	cout << grupo->toString() << endl;
+	Utils::pause();
+}
+
 int Interfaz::menuControlPagos()
 {
 	int opcion = 0;
