@@ -47,6 +47,10 @@ public:
 	static void menuControlPagosMostrarPagosDeportista(); // 5.2
 	//
 
+	//
+	static void regresar();
+	static void opcionInvalida();	// para cuando salte el default
+	static void salir();	// para cuando se quiera salir del programa
 
 	//menus auxiliares
 	static Fecha* menuFecha();

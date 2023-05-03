@@ -908,6 +908,26 @@ void Interfaz::menuControlPagosMostrarPagosDeportista()
 	}
 }
 
+void Interfaz::regresar()
+{
+	cout << "Presione cualquier tecla para regresar al menu principal..." << endl;
+	Utils::pause();
+	Utils::clearScreen();
+}
+
+void Interfaz::opcionInvalida()
+{
+	cout << "Opcion invalida, presione cualquier tecla para continuar..." << endl;
+	Utils::pause();
+	Utils::clearScreen();
+}
+
+void Interfaz::salir()
+{
+	cout << "Gracias por usar el sistema, presione cualquier tecla para salir..." << endl;
+	Utils::pause();
+}
+
 Fecha* Interfaz::menuFecha()
 {
 	int dia, mes, anio;
