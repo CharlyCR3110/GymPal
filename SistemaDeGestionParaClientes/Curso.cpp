@@ -164,6 +164,7 @@ const string Curso::generarReporte() const
     ss << "Codigo: " << this->codigo << endl;
     ss << "Nombre del curso: " << this->nombreDelCurso << endl;
     ss << "Nivel: " << this->nivel << endl;
+    ss << "Descripcion: " << this->descripcion << endl;
     ss << "Cantidad maxima de grupos: " << this->cantidadMaximaDeGrupos << endl;
     ss << "Detalle de grupos abiertos para el curso: " << endl;
     if (!this->listaGrupos->estaVacia())
