@@ -36,6 +36,7 @@ public:
 	//getters
 	Instructor* getInstructor();
 	const int getCupoMaximo() const;
+	const int getCantidadDeInscritos() const;
 	Fecha* getFechaDeInicio();
 	const int getSemanasDeDuracion() const;
 	const int getNumeroGrupo() const;
