@@ -6,7 +6,7 @@ Gimnasio::Gimnasio():
 	fechaActual(new Fecha()),
 	listaDeportistas(new ListaEnlazada<Deportista>()),
 	listaCursos(new ListaEnlazada<Curso>()),
-	controlPagos(new ControlPagos(montoMensual,listaDeportistas, fechaActual))
+	controlPagos()
 {
 }
 
@@ -16,7 +16,7 @@ Gimnasio::Gimnasio(string nombreDelGimnasio_, double montoMensual_, Fecha* fecha
 	montoMensual(montoMensual_),
 	listaDeportistas(new ListaEnlazada<Deportista>()),
 	listaCursos(new ListaEnlazada<Curso>()),
-	controlPagos(new ControlPagos(montoMensual_, listaDeportistas, fechaActual_))
+	controlPagos()
 {
 }
 
@@ -39,14 +39,6 @@ void Gimnasio::setNombreDelGimnasio(string nombreDelGimnasio_)
 
 void Gimnasio::setMontoMensual(double montoMensual_)
 {
-	try
-	{
-		this->controlPagos->setMontoMensual(montoMensual_);
-	}
-	catch (exception& e)
-	{
-		throw exception(e.what());
-	}
 	this->montoMensual = montoMensual_;
 }
 
@@ -131,7 +123,7 @@ void Gimnasio::registrarPago(string cedula_, int mesesAPagar_)
 {
 	try
 	{
-		this->controlPagos->pagarMeses(cedula_, mesesAPagar_);
+		this->controlPagos->pagarMeses(cedula_, mesesAPagar_, this->listaDeportistas, this->fechaActual, this->montoMensual);
 	}
 	catch (exception& e)
 	{
@@ -290,7 +282,7 @@ const string Gimnasio::generarReportePagosCed(string cedula_) const
 	stringstream ss;
 	try
 	{
-		ss << this->controlPagos->generarReportePagos(cedula_);
+		ss << this->controlPagos->generarReportePagos(cedula_, this->listaDeportistas);
 	}
 	catch (exception& e)
 	{
