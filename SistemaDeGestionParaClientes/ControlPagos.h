@@ -18,7 +18,7 @@ public:
 	// metodo para generar un reporte de pagos de un deportista
 	string generarReportePagos(string cedula_, ListaEnlazada<Deportista>* listaDeportistas);
 	// metodo para pagar x cantidad de meses
-	void pagarMeses(string cedula_, int cantidadMeses_, ListaEnlazada<Deportista>* listaDeportistas, Fecha* fechaActual, double montoMensual);
+	string pagarMeses(string cedula_, int cantidadMeses_, ListaEnlazada<Deportista>* listaDeportistas, Fecha* fechaActual, double montoMensual);
 	//
 	//Verificar pago: un método que recibe como parámetro el número de identificación del cliente y verifica si tiene pagos pendientes o si se encuentra activo en el gimnasio.
 };

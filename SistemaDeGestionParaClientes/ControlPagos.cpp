@@ -65,9 +65,10 @@ string ControlPagos::generarReportePagos(string cedula_, ListaEnlazada<Deportist
 	return ss.str();
 }
 
-void ControlPagos::pagarMeses(string cedula_, int cantidadMeses_, ListaEnlazada<Deportista>* listaDeportistas, Fecha* fechaActual, double montoMensual)
+string ControlPagos::pagarMeses(string cedula_, int cantidadMeses_, ListaEnlazada<Deportista>* listaDeportistas, Fecha* fechaActual_, double montoMensual)
 {
-	Deportista* deportista;
+	Fecha* fechaActual = new Fecha(fechaActual_->getDia(), fechaActual_->getMes(), fechaActual_->getAnio());	// copia de la fecha actual para no modificarla
+	Deportista* deportista = nullptr;
 	try
 	{
 		deportista = listaDeportistas->buscarPorCodigo(cedula_);
@@ -80,24 +81,34 @@ void ControlPagos::pagarMeses(string cedula_, int cantidadMeses_, ListaEnlazada<
 	string meses[12] = { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
 							 "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" };
 
-	// si yo estoy en enero y quiero pagar 3 meses, entonces debo pagar enero, febrero y marzo
-	int mesActual = fechaActual->getMes() - 1;
+
+	int ultimoMesPagado = deportista->getPagos()->getUltimo()->getDato()->getFecha()->getMes() - 1;
+
+	stringstream ss;
+	ss << "Excelente se ha cancelado las siguiente cuotas: " << endl;
+
 
 	for (int i = 0; i < cantidadMeses_; i++)
 	{
-		string mes = meses[mesActual];
+		string mes = meses[ultimoMesPagado];
 		double monto = montoMensual;
 
 		try {
 			registrarPago(cedula_, mes, monto, listaDeportistas, fechaActual);
+			ss << "-" << mes << " " << fechaActual->getAnio() << endl;
 		}
 		catch (exception& e)
 		{
 			throw PagoInvalidoException();
 		}
 
-		mesActual++;
-		if (mesActual == 11)
-			mesActual = 0;
+		ultimoMesPagado++;
+		if (ultimoMesPagado == 12)
+		{
+			ultimoMesPagado = 0;
+			fechaActual->setAnio(fechaActual->getAnio() + 1);
+		}
 	}
+	delete fechaActual;
+	return ss.str();
 }
