@@ -212,6 +212,23 @@ const string Curso::listadoDeCurso() const
     return this->codigo + "  " + this->nombreDelCurso + '\n';
 }
 
+const string Curso::generarListadoDeGrupos() const
+{
+    if (this->listaGrupos->estaVacia())
+    {
+        return "No hay grupos disponibles \n";
+    }
+    stringstream ss;
+    ss << "Grupo" << '\t' << "Dia" << '\t' << "Horario" << '\t' << "Cupo" << '\t' << "Cantidad" << endl;
+    Nodo<Grupo>* nodoActual = this->listaGrupos->getPrimero();
+    while (nodoActual != nullptr)
+    {
+		ss << nodoActual->getDato()->reporteGrupoGuiaMatricula() << endl;
+		nodoActual = nodoActual->getSiguiente();
+	}
+    return ss.str();
+}
+
 const string Curso::generarReporteDeportistasMatriculadosPorGrupo(int numeroGrupo) const
 {
     // muestra los deportistas matriculados en un grupo

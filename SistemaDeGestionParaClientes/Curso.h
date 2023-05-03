@@ -40,6 +40,7 @@ public:
 	const string generarReporte() const;
 	const string reporteCursoGuiaMatricula() const;
 	const string listadoDeCurso() const;	// devuelve el codigo y el nombre del curso
+	const string generarListadoDeGrupos() const;
 	const string generarReporteDeportistasMatriculadosPorGrupo(int numeroGrupo) const;
 	bool hayGrupos();
 	bool estaLleno();
