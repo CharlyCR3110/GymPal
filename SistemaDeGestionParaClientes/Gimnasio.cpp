@@ -467,3 +467,8 @@ bool Gimnasio::existeCursoConCodigo(string codigo_)
 {
 	return listaCursos->existeItemConCodigo(codigo_);
 }
+
+bool Gimnasio::existeDeportistaConCedula(string cedula_)
+{
+	return listaDeportistas->existeItemConCodigo(cedula_);
+}

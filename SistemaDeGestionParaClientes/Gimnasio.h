@@ -62,5 +62,6 @@ public:
 	Curso* buscarCurso(string codigo_);
 	// 5. verificar repetidos
 	bool existeCursoConCodigo(string codigo_);
+	bool existeDeportistaConCedula(string cedula_);
 };
 
