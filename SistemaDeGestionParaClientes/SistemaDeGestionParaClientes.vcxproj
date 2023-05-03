@@ -129,7 +129,6 @@
   <ItemGroup>
     <ClInclude Include="Ciclista.h" />
     <ClInclude Include="Controlador.h" />
-    <ClInclude Include="ControlCursos.h" />
     <ClInclude Include="ControlPagos.h" />
     <ClInclude Include="ControlPagosInvalidoException.h" />
     <ClInclude Include="Corredor.h" />
@@ -161,7 +160,6 @@
   <ItemGroup>
     <ClCompile Include="Ciclista.cpp" />
     <ClCompile Include="Controlador.cpp" />
-    <ClCompile Include="ControlCursos.cpp" />
     <ClCompile Include="ControlPagos.cpp" />
     <ClCompile Include="ControlPagosInvalidoException.cpp" />
     <ClCompile Include="Corredor.cpp" />

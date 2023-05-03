@@ -93,9 +93,6 @@
     <ClCompile Include="PagosNoRegistradosException.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ControlCursos.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Gimnasio.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -183,9 +180,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="PagosNoRegistradosException.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ControlCursos.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Gimnasio.h">
