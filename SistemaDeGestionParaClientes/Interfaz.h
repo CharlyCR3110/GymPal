@@ -33,6 +33,9 @@ public:
 	static void menuControlCursosModificarCurso(); // 3.3
 	//
 	static int menuControlGrupos();	// 4
+	// submenus de menuControlGrupos
+	static void menuControlGruposIngresoNuevoGrupo(); // 4.1
+	//
 	static int menuControlPagos();	// 5
 
 
@@ -73,4 +76,15 @@ public:
 	static void modificarNivelCurso(Curso* curso);
 	static void modificarCantidadGruposCurso(Curso* curso);
 	static void modificarCodigoCurso(Curso* curso);
+
+	 //metodos para validar ingreso de datos de un grupo
+	static Instructor* ingresarYValidarInstructor();
+	static string ingresarYValidarNombreInstructor();
+	static string ingresarYValidarCedulaInstructor();
+	static int ingresarYValidarCupoMaximo();
+	static int ingresarYValidarSemanasDuracion();
+	static char ingresarYValidarDiaDeLaSemana();
+	static Hora* ingresarYValidarHoraEntrada();
+	static Hora* ingresarYValidarHoraSalida(Hora* horaEntrada);
+
 };

@@ -1,6 +1,6 @@
 #include "Interfaz.h"
 
-
+using namespace std;
 Gimnasio* Interfaz::gimnasio = new Gimnasio();
 
 void Interfaz::prueba()
@@ -418,6 +418,110 @@ int Interfaz::menuControlGrupos()
 	cin >> opcion;
 	return opcion;
 }
+//< 5.Control Grupos> < 1.Ingreso nuevo grupo>
+//
+//Listado de cursos :
+//101  Spinning  basico
+//102  Natacion
+//103  Spinning avanzado
+//104  Natacion
+//105  Spinning intermedio
+//
+//Digite el código del curso : _ 101
+//
+//Curso encontrado!!!!
+//
+//Digite el ID del Instructor : _202
+//Digite el nombre del Instructor : _Mirian Moran
+//Digite el cupo máximo : _ 20
+//Fecha de inicio(dd / mm / aaaa) : _12 / 12 / 2023
+//Semanas de duración : _4
+//
+//Horario :
+//Digite el día de la semana(l - k - m - j - v - s - d) ): _k
+//Digite la hora de inicio(en hora militar) : _ 14 : 00
+//Digite la hora de finalización(en hora militar) : _ 16 : 00
+//
+//Excelente!!!Se ha creado el grupo #3 del curso 101
+
+void Interfaz::menuControlGruposIngresoNuevoGrupo()
+{
+	Curso * curso = nullptr;
+	Instructor* instructor = nullptr;
+	int cupoMaximo, semanasDuracion = 0;
+	Fecha* fechaInicio = nullptr;
+	char dia = ' ';
+	Hora* horaInicio = nullptr;
+	Hora* horaFin = nullptr;
+	string codigo = "";
+	Grupo* grupo = nullptr;
+	int numeroGrupo = 0;
+	cout << "<5. Control Grupos> <1. Ingreso nuevo grupo>" << endl;
+	try
+	{
+		cout << gimnasio->generarListadoCursos();
+	}
+	catch (exception& e)
+	{
+		cerr << e.what() << endl;
+	}
+	cout << "Digite el codigo del curso: ";
+	cin >> codigo;
+
+	try
+	{
+		curso = gimnasio->buscarCurso(codigo);
+		cout << "Curso encontrado!!!" << endl;
+	}
+	catch (exception& e)
+	{
+		cerr << e.what() << endl;
+	}
+	Utils::clearInputBuffer();
+	instructor = Interfaz::ingresarYValidarInstructor();
+	Utils::clearInputBuffer();
+	cupoMaximo = Interfaz::ingresarYValidarCupoMaximo();
+	Utils::clearInputBuffer();
+	fechaInicio = Interfaz::menuFecha();
+	Utils::clearInputBuffer();
+	semanasDuracion = Interfaz::ingresarYValidarSemanasDuracion();
+	Utils::clearInputBuffer();
+	cout << "Horario: " << endl;
+	Utils::clearInputBuffer();
+	dia = Interfaz::ingresarYValidarDiaDeLaSemana();
+	Utils::clearInputBuffer();
+	horaInicio = Interfaz::ingresarYValidarHoraEntrada();
+	Utils::clearInputBuffer();
+	horaFin = Interfaz::ingresarYValidarHoraSalida(horaInicio);
+
+	if (curso->getListaGrupos()->getCantidad() == 0)
+	{
+		numeroGrupo = 1;
+	}
+	else
+	{
+		numeroGrupo = curso->getListaGrupos()->getCantidad() + 1;
+	}
+
+	try
+	{
+		grupo = new Grupo(instructor, cupoMaximo, fechaInicio, semanasDuracion, numeroGrupo, dia, horaInicio, horaFin);
+	}
+	catch (exception& e)
+	{
+		cerr << e.what() << endl;
+	}
+
+	try 
+	{
+		gimnasio->agregarGrupo(codigo, grupo);
+		cout << "Excelente!!! Se ha creado el grupo #" << numeroGrupo << " del curso " << curso->getCodigo() << endl;
+	}
+	catch (exception& e)
+	{
+		cerr << e.what() << endl;
+	}
+}
 
 int Interfaz::menuControlPagos()
 {
@@ -433,25 +537,53 @@ int Interfaz::menuControlPagos()
 Fecha* Interfaz::menuFecha()
 {
 	int dia, mes, anio;
-	Fecha* fecha = nullptr;
-	cout << "Digite el dia: ";
-	cin >> dia;
-	cout << "Digite el mes: ";
-	cin >> mes;
-	cout << "Digite el anio: ";
-	cin >> anio;
-	try
-	{
-		fecha = new Fecha(dia, mes, anio);
+	Fecha* fecha = new Fecha(); // Se crea un objeto Fecha por defecto
+	bool esFechaValida = false;
 
-	}
-	catch (exception &e)
+	while (!esFechaValida)
 	{
-		throw exception(e.what());
+		cout << "Digite la fecha de inicio (dd/mm/aaaa): " << endl;
+		cout << "Dia: ";
+		if (!(cin >> dia))
+		{
+			cerr << "Error: El dia debe ser un numero." << endl;
+			Utils::clearInputBuffer();
+			continue;
+		}
+
+		cout << "Mes: ";
+		if (!(cin >> mes))
+		{
+			cerr << "Error: El mes debe ser un numero." << endl;
+			Utils::clearInputBuffer();
+			continue;
+		}
+
+		cout << "Anio: ";
+		if (!(cin >> anio))
+		{
+			cerr << "Error: El anio debe ser un numero." << endl;
+			Utils::clearInputBuffer();
+			continue;
+		}
+
+		if (fecha->esValida(dia, mes, anio))
+		{
+			fecha->setDia(dia);
+			fecha->setMes(mes);
+			fecha->setAnio(anio);
+			esFechaValida = true;
+		}
+		else
+		{
+			cerr << "Error: La fecha ingresada no es valida." << endl;
+			cout << "Por favor, intente de nuevo." << endl;
+		}
 	}
 
 	return fecha;
 }
+
 
 void Interfaz::modificarNombreDeportista(Deportista* deportista)
 {
@@ -1087,4 +1219,205 @@ void Interfaz::modificarCodigoCurso(Curso* curso)
 		curso->setCodigo(codigo);
 		esCodigoValido = true;
 	}
+}
+
+Instructor* Interfaz::ingresarYValidarInstructor()
+{
+	string nombre = ingresarYValidarNombreInstructor();
+	string cedula = ingresarYValidarCedulaInstructor();
+
+	return new Instructor(nombre, cedula);
+}
+
+string Interfaz::ingresarYValidarNombreInstructor()
+{
+	string nombre;
+	bool esNombreValido = false;
+
+	while (!esNombreValido)
+	{
+		cout << "Digite el nombre del instructor: ";
+		getline(cin, nombre);
+
+		if (nombre.empty())
+		{
+			cout << "Error: El nombre del instructor no puede estar vacio." << endl;
+			Utils::clearInputBuffer();
+			continue;
+		}
+
+		bool esCadenaValida = true;
+		for (char c : nombre)
+		{
+			if (!isalpha(c) && c != ' ')
+			{
+				esCadenaValida = false;
+				break;
+			}
+		}
+
+		if (!esCadenaValida)
+		{
+			cout << "Error: El nombre del instructor solo puede contener letras y espacios." << endl;
+			Utils::clearInputBuffer();
+			continue;
+		}
+
+		esNombreValido = true;
+	}
+
+	return nombre;
+}
+
+string Interfaz::ingresarYValidarCedulaInstructor()
+{
+	string cedula;
+	bool esCedulaValida = false;
+	while (!esCedulaValida)
+	{
+		cout << "Digite la cedula del instructor: ";
+		getline(cin, cedula);
+		if (cedula.empty())
+		{
+			cerr << "Error: La cedula del instructor no puede estar vacia." << endl;
+			Utils::clearInputBuffer();
+			continue;
+		}
+		esCedulaValida = true;
+	}
+	return cedula;
+}
+
+int Interfaz::ingresarYValidarCupoMaximo()
+{
+	int cupoMaximo;
+	bool esCupoValido = false;
+	while (!esCupoValido)
+	{
+		cout << "Digite el cupo maximo del grupo: ";
+		if (!(cin >> cupoMaximo) || cupoMaximo < 0)
+		{
+			cerr << "Error: El cupo maximo del grupo debe ser un numero mayor o igual a 0." << endl;
+			Utils::clearInputBuffer();
+			continue;
+		}
+		esCupoValido = true;
+	}
+	return cupoMaximo;
+}
+
+int Interfaz::ingresarYValidarSemanasDuracion()
+{
+	int semanasDuracion;
+	bool esSemanasValidas = false;
+	while (!esSemanasValidas)
+	{
+		cout << "Digite la cantidad de semanas de duracion del grupo: ";
+		if (!(cin >> semanasDuracion) || semanasDuracion < 0)
+		{
+			cerr << "Error: La cantidad de semanas de duracion del grupo debe ser un numero mayor o igual a 0." << endl;
+			Utils::clearInputBuffer();
+			continue;
+		}
+		esSemanasValidas = true;
+	}
+	return semanasDuracion;
+}
+
+// (l-k-m-j-v-s-d) 
+char Interfaz::ingresarYValidarDiaDeLaSemana()
+{
+	char dia;
+	bool esDiaValido = false;
+	while (!esDiaValido)
+	{
+		cout << "Digite el dia de la semana del grupo (l-k-m-j-v-s-d): ";
+		if (!(cin >> dia) || (dia != 'l' && dia != 'k' && dia != 'm' && dia != 'j' && dia != 'v' && dia != 's' && dia != 'd'))
+		{
+			cerr << "Error: El dia de la semana del grupo debe ser una letra entre l-k-m-j-v-s-d." << endl;
+			Utils::clearInputBuffer();
+			continue;
+		}
+		esDiaValido = true;
+	}
+	return dia;
+}
+
+Hora* Interfaz::ingresarYValidarHoraEntrada()
+{
+	int hora, minuto, segundo;
+	bool esHoraValida = false;
+	while (!esHoraValida)
+	{
+		cout << "Digite la hora de inicio del grupo: ";
+		if (!(cin >> hora) || hora < 0 || hora > 23)
+		{
+			cerr << "Error: La hora de inicio del grupo debe ser un numero entre 0 y 23." << endl;
+			Utils::clearInputBuffer();
+			continue;
+		}
+
+		cout << "Digite el minuto de inicio del grupo: ";
+		if (!(cin >> minuto) || minuto < 0 || minuto > 59)
+		{
+			cerr << "Error: El minuto de inicio del grupo debe ser un numero entre 0 y 59." << endl;
+			Utils::clearInputBuffer();
+			continue;
+		}
+
+		cout << "Digite el segundo de inicio del grupo: ";
+		if (!(cin >> segundo) || segundo < 0 || segundo > 59)
+		{
+			cerr << "Error: El segundo de inicio del grupo debe ser un numero entre 0 y 59." << endl;
+			Utils::clearInputBuffer();
+			continue;
+		}
+
+		esHoraValida = true;
+	}
+
+	return new Hora(hora, minuto, segundo);
+}
+
+Hora* Interfaz::ingresarYValidarHoraSalida(Hora* horaEntrada)
+{
+	int hora, minuto, segundo;
+	bool esHoraValida = false;
+	Hora* horaSalida = nullptr;
+	while (!esHoraValida)
+	{
+		cout << "Digite la hora de finalizacion del grupo: ";
+		if (!(cin >> hora) || hora < 0 || hora > 23)
+		{
+			cerr << "Error: La hora de finalizacion del grupo debe ser un numero entre 0 y 23." << endl;
+			Utils::clearInputBuffer();
+			continue;
+		}
+		cout << "Digite el minuto de finalizacion del grupo: ";
+		if (!(cin >> minuto) || minuto < 0 || minuto > 59)
+		{
+			cerr << "Error: El minuto de finalizacion del grupo debe ser un numero entre 0 y 59." << endl;
+			Utils::clearInputBuffer();
+			continue;
+		}
+		cout << "Digite el segundo de finalizacion del grupo: ";
+		if (!(cin >> segundo) || segundo < 0 || segundo > 59)
+		{
+			cerr << "Error: El segundo de finalizacion del grupo debe ser un numero entre 0 y 59." << endl;
+			Utils::clearInputBuffer();
+			continue;
+		}
+
+		horaSalida = new Hora(hora, minuto, segundo);
+		if (*horaEntrada > *horaSalida)
+		{
+			cerr << "Error: La hora de finalizacion del grupo debe ser mayor a la hora de inicio." << endl;
+			Utils::clearInputBuffer();
+			delete horaSalida;
+			horaSalida = nullptr;
+			continue;
+		}
+		esHoraValida = true;
+	}
+	return horaSalida;
 }
