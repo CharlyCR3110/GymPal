@@ -412,6 +412,25 @@ string Curso::reporteGrupo(int numeroGrupo)
     throw exception("No se encontro el grupo");
 }
 
+bool Curso::existeGrupo(int numeroGrupo)
+{
+    if (!hayGrupos())
+    {
+        return false;
+    }
+
+    Nodo<Grupo>* nodoActual = this->listaGrupos->getPrimero();
+    while (nodoActual != nullptr)
+    {
+        if (nodoActual->getDato()->getNumeroGrupo() == numeroGrupo)
+        {
+			return true;
+		}
+		nodoActual = nodoActual->getSiguiente();
+	}
+    return false;
+}
+
 void Curso::desmatricularDeGrupo(int numeroGrupo, Deportista* deportista)
 {
     if (!hayGrupos())

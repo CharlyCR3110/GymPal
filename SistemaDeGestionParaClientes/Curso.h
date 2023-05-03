@@ -53,6 +53,7 @@ public:
 	// para obtener el grupo
 	Grupo* obtenerGrupo(int numeroGrupo);
 	string reporteGrupo(int numeroGrupo);
+	bool existeGrupo(int numeroGrupo);
 	// desmatricular
 	void desmatricularDeGrupo(int numeroGrupo, Deportista* deportista);
 	// sobrecarga de operador para mostrar los datos
