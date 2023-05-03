@@ -31,6 +31,7 @@ int Interfaz::menuAdministracionGeneral()   // sub menu 1 de menu principal
 	cout << "\t\t1. Administracion General" << endl;
 	cout << "1. Nombre del Gimnasio" << endl;
 	cout << "2. Monto Mensual" << endl;
+	cout << "3. Regresar al menu principal" << endl;
 	cout << "Digite una opcion del menu: ";
 	cin >> opcion;
 	return opcion;
@@ -64,6 +65,7 @@ int Interfaz::menuControlDeportistas()
 	cout << "2. Modificacion de deportista" << endl;
 	cout << "3. Listado de deportistas" << endl;
 	cout << "4. Detalle de deportista especifico" << endl;
+	cout << "5. Regresar al menu principal" << endl;
 	cout << "Digite una opcion del menu: ";
 	cin >> opcion;
 	return opcion;
@@ -280,6 +282,7 @@ int Interfaz::menuControlCursos()
 	cout << "1. Ingreso nuevo curso" << endl;
 	cout << "2. Reporte de curso especifico" << endl;
 	cout << "3. Modificacion de -curso especifico" << endl;
+	cout << "4. Regresar al menu principal" << endl;
 	cout << "Digite una opcion del menu: ";
 	cin >> opcion;
 	return opcion;
@@ -388,6 +391,7 @@ int Interfaz::menuControlGrupos()
 	cout << "4. Reporte de grupo especifico" << endl;
 	cout << "5. Reporte deportistas matriculados en grupo" << endl;
 	cout << "6. Cancelacion de matricula en grupo" << endl;
+	cout << "7. Regresar al menu principal" << endl;
 	cout << "Digite una opcion del menu: ";
 	cin >> opcion;
 	return opcion;
@@ -852,6 +856,7 @@ int Interfaz::menuControlPagos()
 	cout << "\t\t5. Control de Pagos" << endl;
 	cout << "1. Registro de nuevo pago" << endl;
 	cout << "2. Reporte de pagos por deportista" << endl;
+	cout << "3. Regresar al menu principal" << endl;
 	cout << "Digite una opcion del menu: ";
 	cin >> opcion;
 	return opcion;
@@ -926,6 +931,13 @@ void Interfaz::salir()
 {
 	cout << "Gracias por usar el sistema, presione cualquier tecla para salir..." << endl;
 	Utils::pause();
+}
+
+void Interfaz::mensajeDeBienvenida()
+{
+	cout << "Bienvenido al sistema de gestion de gimnasio" << endl;
+	cout << gimnasio->getNombreDelGimnasio() << endl;
+	cout << "La fecha del sistema es: " << gimnasio->getFechaActual()->toString() << endl;
 }
 
 Fecha* Interfaz::menuFecha()
