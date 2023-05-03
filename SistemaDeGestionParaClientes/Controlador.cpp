@@ -3,13 +3,14 @@
 void Controlador::iniciar()
 {
 	int opcion = 0;
+	Interfaz::mensajeDeBienvenida();
 	do
 	{
-		opcion = Interfaz::menuPrincipal();
-		controladorPrincipal(opcion);
 		Utils::pause();
 		Utils::clearScreen();
-		Utils::clearInputBuffer();
+		opcion = Interfaz::menuPrincipal();
+		Utils::clearScreen();
+		controladorPrincipal(opcion);
 	} while (opcion != 6);
 }
 
@@ -52,6 +53,7 @@ void Controlador::controladorAdministracionGenerarl()
 	int opcion = 0;
 	do
 	{
+		Utils::clearScreen();
 		opcion = Interfaz::menuAdministracionGeneral();
 		Utils::clearScreen();
 		switch (opcion)
@@ -80,6 +82,8 @@ void Controlador::controladorControlDeportistas()
 	int opcion = 0;
 	do
 	{
+		Utils::pause();
+		Utils::clearScreen();
 		opcion = Interfaz::menuControlDeportistas();
 		Utils::clearScreen();
 		switch (opcion)
@@ -116,6 +120,8 @@ void Controlador::controladorControlCursos()
 	int opcion = 0;
 	do
 	{
+		Utils::pause();
+		Utils::clearScreen();
 		opcion = Interfaz::menuControlCursos();
 		Utils::clearScreen();
 		switch (opcion)
@@ -155,6 +161,8 @@ void Controlador::controladorControlGrupos()
 	int opcion = 0;
 	do
 	{
+		Utils::pause();
+		Utils::clearScreen();
 		opcion = Interfaz::menuControlGrupos();
 		Utils::clearScreen();
 		switch (opcion)
@@ -195,9 +203,13 @@ void Controlador::controladorControlGrupos()
 }
 
 void Controlador::controladorControlPagos()
-{int opcion = 0;
-do
 {
+	int opcion = 0;
+
+	do
+	{
+		Utils::pause();
+		Utils::clearScreen();
 		opcion = Interfaz::menuControlPagos();
 		Utils::clearScreen();
 		switch (opcion)
