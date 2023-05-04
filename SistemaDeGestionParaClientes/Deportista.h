@@ -64,6 +64,8 @@ public:
 	virtual const string mostrarCursosMatriculados() const;
 	virtual const string toString() const = 0;	//MVP - metodo virtual puro
 	virtual const string detalleDeportista() const = 0;	//MVP - metodo virtual puro
+	// archivos
+	virtual const string toStringParaGuardar() const = 0;	//MVP - metodo virtual puro
 	//sobrecarga de operadores
 	Deportista& operator=(const Deportista& deportista_);	// operador de asignacion
 	bool operator != (const Deportista& deportista_) const; // operador de desigualdad
