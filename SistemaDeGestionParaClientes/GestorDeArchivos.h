@@ -16,5 +16,6 @@ public:
 	// metodos para grupos
 	virtual void guardarGrupo(Grupo* grupo_);
 	virtual void guardarGrupos(ListaEnlazada<Grupo>* listaGrupos_);
+	virtual void guardarGrupos(ListaEnlazada<Grupo>* listaGrupos_, string nombreArchivo_);
 };
 

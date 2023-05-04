@@ -117,3 +117,23 @@ void GestorDeArchivos::guardarGrupos(ListaEnlazada<Grupo>* listaGrupos_)
 		archivoGrupos.close();
 	}
 }
+
+void GestorDeArchivos::guardarGrupos(ListaEnlazada<Grupo>* listaGrupos_, string nombreArchivo_)
+{
+	ofstream archivoGrupos;
+	archivoGrupos.open(nombreArchivo_.c_str());
+	if (!archivoGrupos.is_open())
+	{
+		throw runtime_error("No se pudo abrir el archivo Grupos.txt");
+	}
+	else
+	{
+		Nodo<Grupo>* nodoActual = listaGrupos_->getPrimero();
+		while (nodoActual != nullptr)
+		{
+			archivoGrupos << nodoActual->getDato()->toStringParaGuardar();
+			nodoActual = nodoActual->getSiguiente();
+		}
+		archivoGrupos.close();
+	}
+}
