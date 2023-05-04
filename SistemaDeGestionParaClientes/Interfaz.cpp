@@ -938,6 +938,15 @@ void Interfaz::salir()
 	{
 		cerr << e.what() << endl;
 	}
+	try
+	{
+		gimnasio->guardarCursosYGrupos();
+		cout << "Archivo cursos y grupos guardado exitosamente" << endl;
+	}
+	catch (exception& e)
+	{
+		cerr << e.what() << endl;
+	}
 	cout << "Gracias por usar el sistema, presione cualquier tecla para salir..." << endl;
 	Utils::pause();
 }
