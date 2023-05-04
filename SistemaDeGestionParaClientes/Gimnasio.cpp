@@ -483,3 +483,15 @@ void Gimnasio::guardarEnArchivoDeportistas()
 		throw exception(e.what());
 	}
 }
+
+void Gimnasio::guardarCursosYGrupos()
+{
+	try
+	{
+		gestorDeArchivos.guardarCursosYGrupos(this->listaCursos);
+	}
+	catch (exception& e)
+	{
+		throw exception(e.what());
+	}
+}

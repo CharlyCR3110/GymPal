@@ -68,5 +68,6 @@ public:
 	bool existeDeportistaConCedula(string cedula_);
 	//archivos
 	void guardarEnArchivoDeportistas();
+	void guardarCursosYGrupos();
 };
 
