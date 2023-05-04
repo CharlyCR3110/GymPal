@@ -24,6 +24,7 @@ public:
 
 	//cursos y grupos
 	virtual void guardarCursosYGrupos(ListaEnlazada<Curso>* listaCursos_);
+	virtual ListaEnlazada<Curso>* cargarCursosYGrupos();
 
 };
 

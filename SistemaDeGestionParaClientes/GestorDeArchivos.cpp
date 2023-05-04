@@ -189,7 +189,7 @@ ListaEnlazada<Curso>* GestorDeArchivos::cargarCursos()
 			getline(ss, nombreDelCurso, ';');
 			getline(ss, nivel, ';');
 			getline(ss, descripcion, ';');
-			getline(ss, cantidadMaximaDeGrupos, '\n');
+			getline(ss, cantidadMaximaDeGrupos, '|');
 			curso->setCodigo(codigo);
 			curso->setNombreDelCurso(nombreDelCurso);
 			curso->setNivel(nivel);
@@ -273,10 +273,174 @@ void GestorDeArchivos::guardarCursosYGrupos(ListaEnlazada<Curso>* listaCursos_)
 				// se agrega el grupo al archivo
 				archivoCursos << grupoActual->toStringParaGuardar();
 				// se elimina el grupo de la lista
+				listaGrupos->eliminar(1);
+				archivoCursos << '|';	// delimitador para separar los grupos
 			}
 			archivoCursos << '\n';	// salto de linea para separar los cursos
 			nodoActual = nodoActual->getSiguiente();
 		}
 	}
 	archivoCursos.close();
+}
+
+ListaEnlazada<Curso>* GestorDeArchivos::cargarCursosYGrupos()
+{
+	ListaEnlazada<Curso>* listaCursos = new ListaEnlazada<Curso>();
+	ifstream archivoCursos;
+	archivoCursos.open("../Cursos.txt");
+	if (!archivoCursos.is_open())
+	{ 
+		throw runtime_error("No se pudo abrir el archivo Cursos.txt");
+	}
+	else
+	{
+		string linea;
+		while (getline(archivoCursos, linea))
+		{
+			//    ss << this->codigo << ';' << this->nombreDelCurso << ';' << this->nivel << ';' << this->descripcion << ';' << this->cantidadMaximaDeGrupos << ';' << this->cantidadDeGruposActuales;
+			stringstream ss(linea);
+			string codigo, nombreDelCurso, nivel, descripcion, cantidadMaximaDeGrupos, cantidadGruposActuales;
+			getline(ss, codigo, ';');
+			getline(ss, nombreDelCurso, ';');
+			getline(ss, nivel, ';');
+			getline(ss, descripcion, ';');
+			getline(ss, cantidadMaximaDeGrupos, ';');
+			getline(ss, cantidadGruposActuales, '|');
+			Curso* cursoActual = new Curso(codigo, nombreDelCurso, nivel, descripcion, stoi(cantidadMaximaDeGrupos));
+			cout << cursoActual->toString() << "actuales" << cantidadGruposActuales <<endl;
+			ListaEnlazada<Grupo>* listaGrupos = new ListaEnlazada<Grupo>();
+			for (int i = 0; i < stoi(cantidadGruposActuales); i++)
+			{
+
+				string lineaGrupo;
+				getline(ss, lineaGrupo, '|');
+				stringstream ssGrupo(lineaGrupo);
+
+
+				string nombreInstructor, apellidoInstructor, idInstructor, cupoMaximo, diaDeInicio, mesDeInicio, anioDeInicio, semanasDeDuracion, numeroGrupo, diaDeLaSemana, horaDeInicio, minutoDeInicio, segundoDeInicio, horaDeFin, minutoDeFin, segundoDeFin;
+				int valorDiaDeInicio, valorMesDeInicio, valorAnioDeInicio, valorHoraDeInicio, valorMinutoDeInicio, valorSegundoDeInicio, valorHoraDeFin, valorMinutoDeFin, valorSegundoDeFin;
+				getline(ssGrupo, nombreInstructor, ';');
+				getline(ssGrupo, apellidoInstructor, ';');
+				getline(ssGrupo, idInstructor, ';');
+				getline(ssGrupo, cupoMaximo, ';');
+				getline(ssGrupo, diaDeInicio, ';');
+				getline(ssGrupo, mesDeInicio, ';');
+				getline(ssGrupo, anioDeInicio, ';');
+				getline(ssGrupo, semanasDeDuracion, ';');
+				getline(ssGrupo, numeroGrupo, ';');
+				getline(ssGrupo, diaDeLaSemana, ';');
+				getline(ssGrupo, horaDeInicio, ';');
+				getline(ssGrupo, minutoDeInicio, ';');
+				getline(ssGrupo, segundoDeInicio, ';');
+				getline(ssGrupo, horaDeFin, ';');
+				getline(ssGrupo, minutoDeFin, ';');
+				getline(ssGrupo, segundoDeFin, '\n');
+
+				try
+				{
+					valorDiaDeInicio = stoi(diaDeInicio);
+				}
+				catch (const std::exception& e)
+				{
+					cout << "Nombre del instructor: " << nombreInstructor << ", ID: " << idInstructor << " cupo" << cupoMaximo << endl;
+					throw runtime_error("El dia de inicio del grupo " + numeroGrupo + " del curso " + codigo + " no es un numero: " + diaDeInicio);
+				}
+
+				try
+				{
+					valorMesDeInicio = stoi(mesDeInicio);
+				}
+				catch (const std::exception& e)
+				{
+					throw runtime_error("El mes de inicio del grupo " + numeroGrupo + " del curso " + codigo + " no es un numero");
+				}
+
+				try
+				{
+					valorMesDeInicio = stoi(mesDeInicio);
+				}
+				catch (const std::exception& e)
+				{
+					throw runtime_error("El anio de inicio del grupo " + numeroGrupo + " del curso " + codigo + " no es un numero");
+				}
+
+				try
+				{
+					valorHoraDeInicio = stoi(horaDeInicio);
+				}
+				catch (const std::exception& e)
+				{
+					throw runtime_error("la hora de inicio del grupo " + numeroGrupo + " del curso " + codigo + " no es un numero");
+				}
+
+
+				try
+				{
+					valorMinutoDeInicio = stoi(minutoDeInicio);
+				}
+				catch (const std::exception& e)
+				{
+					throw runtime_error("el segundo de inicio del grupo " + numeroGrupo + " del curso " + codigo + " no es un numero");
+				}
+
+
+				try
+				{
+					valorSegundoDeInicio = stoi(segundoDeInicio);
+				}
+				catch (const std::exception& e)
+				{
+					throw runtime_error("el segundo de inicio del grupo " + numeroGrupo + " del curso " + codigo + " no es un numero");
+				}
+
+				// fin
+				try
+				{
+					valorHoraDeFin = stoi(horaDeFin);
+				}
+				catch (const std::exception& e)
+				{
+					throw runtime_error("la hora de fin del grupo " + numeroGrupo + " del curso " + codigo + " no es un numero");
+				}
+
+
+				try
+				{
+					valorMinutoDeFin = stoi(minutoDeFin);
+				}
+				catch (const std::exception& e)
+				{
+					throw runtime_error("el minuto de fin del grupo " + numeroGrupo + " del curso " + codigo + " no es un numero");
+				}
+
+
+				try
+				{
+					valorSegundoDeFin = stoi(segundoDeFin);
+				}
+				catch (const std::exception& e)
+				{
+					throw runtime_error("el segundo de fin del grupo " + numeroGrupo + " del curso " + codigo + " no es un numero");
+				}
+
+				// Crear un objeto Fecha con los datos obtenidos
+				Fecha* fechaDeInicio = new Fecha(valorDiaDeInicio, valorMesDeInicio, valorMesDeInicio);
+				// Crear un objeto Hora con los datos obtenidos
+				Hora* horaDeInicioHora = new Hora(valorHoraDeInicio, valorMinutoDeInicio, valorSegundoDeInicio);
+				Hora* horaDeFinHora = new Hora(valorHoraDeFin, valorMinutoDeFin, valorSegundoDeFin);
+				// Crear un objeto Instructor con los datos obtenidos
+				Instructor* instructor = new Instructor(nombreInstructor, apellidoInstructor, idInstructor);
+				// Crear un objeto Grupo con los datos obtenidos
+				Grupo* grupoActual = new Grupo(instructor, stoi(cupoMaximo), fechaDeInicio, stoi(semanasDeDuracion), stoi(numeroGrupo), diaDeLaSemana[0], horaDeInicioHora, horaDeFinHora);
+				// Agregar el grupo a la lista de grupos
+				cursoActual->agregarGrupo(grupoActual);
+			}
+			//// Agregar la lista de grupos al curso
+			//cursoActual->setListaGrupos(listaGrupos);
+			// Agregar el curso a la lista de cursos
+			listaCursos->insertar(cursoActual);
+		}
+	}
+	archivoCursos.close();
+	return listaCursos;
 }
