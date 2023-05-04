@@ -140,6 +140,7 @@
     <ClInclude Include="ElementoNoEncontradoException.h" />
     <ClInclude Include="Fecha.h" />
     <ClInclude Include="FechaInvalidaException.h" />
+    <ClInclude Include="GestorDeArchivos.h" />
     <ClInclude Include="Gimnasio.h" />
     <ClInclude Include="Grupo.h" />
     <ClInclude Include="Hora.h" />
@@ -171,6 +172,7 @@
     <ClCompile Include="ElementoNoEncontradoException.cpp" />
     <ClCompile Include="Fecha.cpp" />
     <ClCompile Include="FechaInvalidaException.cpp" />
+    <ClCompile Include="GestorDeArchivos.cpp" />
     <ClCompile Include="Gimnasio.cpp" />
     <ClCompile Include="Grupo.cpp" />
     <ClCompile Include="Hora.cpp" />

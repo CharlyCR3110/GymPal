@@ -40,19 +40,23 @@ int Interfaz::menuAdministracionGeneral()   // sub menu 1 de menu principal
 void Interfaz::menuAdministracionGeneralNombreGimnasio()    // sub menu 1 de menu administracion general
 {
 	string nombreGimnasio;
-	cout << "\t<1. Administracion General> <1. Nombre del Gimnasio>" << endl;
+	cout << endl << endl << "\t<1. Administracion General> <1. Nombre del Gimnasio>" << endl << endl;
+	cout << "-----------------------------------------------------------" << endl;
 	cout << "Digite el nuevo nombre del gimnasio: ";
 	cin >> nombreGimnasio;
 	gimnasio->setNombreDelGimnasio(nombreGimnasio);
+	cout << "-----------------------------------------------------------" << endl;
 }
 
 void Interfaz::menuAdministracionGeneralMontoMensual()  // sub menu 2 de menu administracion general
 {
 	double montoMensual;
-	cout << "\t<1. Administracion General> <2. Monto Mensual>" << endl;
+	cout << endl << endl << "\t<1. Administracion General> <2. Monto Mensual>" << endl << endl;
+	cout << "-----------------------------------------------------------" << endl;
 	cout << "Digite el nuevo monto mensual: ";
 	cin >> montoMensual;
 	gimnasio->setMontoMensual(montoMensual);
+	cout << "-----------------------------------------------------------" << endl;
 }
 //---------------------//
 
@@ -78,35 +82,49 @@ void Interfaz::menuControlDeportistasIngresoNuevoDeportista()
 	char sexo;
 	int horasEntrenamiento, cantidadParticipacionesIronMan, cantidadTriatlonesGanados;
 	double temperaturaPromedio, estatura, masaMuscular, peso, porcentajeGrasaCorporal;
-	cout << "\t<2. Control Deportistas> <1. Ingreso nuevo deportista>" << endl;
+	cout << endl << endl << "\t<2. Control Deportistas> <1. Ingreso nuevo deportista>" << endl << endl;
+	cout << "-----------------------------------------------------------" << endl;
 	cout << "Datos generales:" << endl;
 	cout << "\tDigite la cedula del deportista: ";
 	cin >> cedula;
+	cout << "----" << endl;
 	cout << "\tDigite el nombre del deportista: ";
 	cin >> nombre;
+	cout << "----" << endl;
 	cout << "\tDigite el telefono del deportista: ";
 	cin >> telefono;
+	cout << "----" << endl;
 	cout << "\tDigite la fecha de nacimiento del deportista: " << endl;
 	fechaNacimiento = Interfaz::menuFecha();
+	cout << "----" << endl;
 	cout << "\tDigite el sexo del deportista (f/m): ";
 	cin >> sexo;
+	cout << "----" << endl;
 	cout << "\tDigite la cantidad de horas de entrenamiento del deportista: ";
 	cin >> horasEntrenamiento;
+	cout << "----" << endl;
 	cout << "\tDigite la temperatura promedio del deportista: ";
 	cin >> temperaturaPromedio;
+	cout << "----" << endl;
 	cout << "\tDigite la cantidad de participaciones en IronMan del deportista: ";
 	cin >> cantidadParticipacionesIronMan;
+	cout << "----" << endl;
 	cout << "\tDigite la cantidad de triatlones ganados del deportista: ";
 	cin >> cantidadTriatlonesGanados;
+	cout << "----" << endl;
 	cout << endl << "Datos biom�tricos b�sicos" << endl;
 	cout << "\tDigite la estatura del deportista: ";
 	cin >> estatura;
+	cout << "----" << endl;
 	cout << "\tDigite el peso del deportista: ";
 	cin >> peso;
+	cout << "----" << endl;
 	cout << "\tDigite el porcentaje de grasa corporal del deportista: ";
 	cin >> porcentajeGrasaCorporal;
+	cout << "----" << endl;
 	cout << "\tDigite la masa muscular del deportista: ";
 	cin >> masaMuscular;
+	cout << "----" << endl;
 
 	try
 	{
@@ -117,6 +135,7 @@ void Interfaz::menuControlDeportistasIngresoNuevoDeportista()
 	{
 		cout << e.what() << endl;
 	}
+	cout << "-----------------------------------------------------------" << endl;
 }
 
 void Interfaz::menuControlDeportistasModificarDeportista()
@@ -125,7 +144,9 @@ void Interfaz::menuControlDeportistasModificarDeportista()
 	string cedula;
 	int opcion = 1;
 
-	cout << "\t<2. Control Deportistas> <2. Modificacion de deportista>" << endl;
+	cout << endl << endl << "\t<2. Control Deportistas> <2. Modificacion de deportista>" << endl << endl;
+	cout << "-----------------------------------------------------------" << endl;
+
 	cout << "Digite la cedula del deportista: ";
 	cin >> cedula;
 	try
@@ -138,13 +159,13 @@ void Interfaz::menuControlDeportistasModificarDeportista()
 		cerr << e.what() << endl;
 		return;
 	}
-
+	cout << "-----------------------------------------------------------" << endl;
 	if (deportista == nullptr)
 	{
 		cerr << "Error: Error inesperado" << endl;
 		return;
 	}
-
+	cout << "-----------------------------------------------------------" << endl;
 	cout << "Que dato desea modificar: " << endl;
 	cout << "1. Nombre" << endl;
 	cout << "2. Telefono" << endl;
@@ -161,7 +182,7 @@ void Interfaz::menuControlDeportistasModificarDeportista()
 	cout << "Digite una opcion: ";
 	cin >> opcion;
 	cin.ignore(numeric_limits<streamsize>::max(), '\n');    // limpiar buffer de entrada
-
+	cout << "-----------------------------------------------------------" << endl;
 	switch (opcion)
 	{
 	case 1:
@@ -204,19 +225,21 @@ void Interfaz::menuControlDeportistasModificarDeportista()
 		cout << "Opcion invalida" << endl;
 		break;
 	}
+	cout << "-----------------------------------------------------------" << endl;
 }
 
 void Interfaz::menuControlDeportistasMostrarListadosDeportistas()
 {
 	int opcion;
-	cout << "<2. Control Deportistas> <3. Listado de Deportistas>" << endl;
+	cout << endl << endl << "<2. Control Deportistas> <3. Listado de Deportistas>" << endl << endl;
+	cout << "-----------------------------------------------------------" << endl;
 	cout << "1. Listado general" << endl;
 	cout << "2. Listado de deportistas activos" << endl;
 	cout << "3. Listado de deportistas inactivos" << endl;
 	cout << "4. Listado de deportistas en morosidad" << endl;
 	cout << "Digite una opción del menú: ";
 	cin >> opcion;
-
+	cout << "-----------------------------------------------------------" << endl;
 	switch (opcion) {
 	case 1:
 		// Código para mostrar el listado de deportistas general
@@ -258,20 +281,24 @@ void Interfaz::menuControlDeportistasMostrarListadosDeportistas()
 		cout << "Opción inválida. Por favor, seleccione una opción del menú." << endl;
 		break;
 	}
+	cout << "-----------------------------------------------------------" << endl;
 }
 
 void Interfaz::menuControlDeportistasMostrarDeportistaEspecifico()
 {
 	string cedula;
-	cout << "<2. Control Deportistas> <3. Listado de Deportistas>" << endl;
+	cout << endl << endl << "<2. Control Deportistas> <3. Listado de Deportistas>" << endl << endl;
+	cout << "-----------------------------------------------------------" << endl;
 	cout << "Digite la cedula del deportista: ";
 	cin >> cedula;
+	cout << "-----------------------------------------------------------" << endl;
 	try {
 		cout << gimnasio->generarReporteDeportistaCed(cedula);
 	}
 	catch (exception& e) {
 		cerr << e.what() << endl;
 	}
+	cout << "-----------------------------------------------------------" << endl;
 }
 
 //---------------------//
@@ -292,44 +319,53 @@ void Interfaz::menuControlCursosIngresoNuevoCurso()
 {
 	string codigo, nombre, nivel, descripcion;
 	int cantidadGrupos;
-	cout << "<3. Control Cursos> <1. Ingreso nuevo curso>" << endl;
-	Utils::clearInputBuffer();
+	cout << endl << endl << "<3. Control Cursos> <1. Ingreso nuevo curso>" << endl << endl;
+	cout << "-----------------------------------------------------------" << endl;
 	codigo = Interfaz::ingresarYValidarCodigo();
-	Utils::clearInputBuffer();
+	cout << "----" << endl;
 	nombre = Interfaz::ingresarYValidarNombre();
-	Utils::clearInputBuffer();
+	cout << "----" << endl;
 	nivel = Interfaz::ingresarYValidarNivel();
-	Utils::clearInputBuffer();
+	cout << "----" << endl;
 	cantidadGrupos = Interfaz::ingresarYValidarCantidadGrupos();
-	Utils::clearInputBuffer();
+	cout << "----" << endl;
 	descripcion = Interfaz::ingresarYValidarDescripcion();
+	cout << "----" << endl;
 	try {
 		gimnasio->registrarCurso(codigo, nombre, nivel, descripcion, cantidadGrupos);
+		cout << "Curso registrado exitosamente" << endl;
 	}
 	catch (exception& e) {
 		cerr << e.what() << endl;
+		return;
 	}
+	cout << "-----------------------------------------------------------" << endl;
 }
 
 void Interfaz::menuControlCursosMostrarCursoEspecifico()
 {
 	string codigo;
-	cout << "<3. Control Cursos> <2. Reporte de curso especifico>" << endl;
+	cout << endl << endl << "<3. Control Cursos> <2. Reporte de curso especifico>" << endl << endl;
+	cout << "-----------------------------------------------------------" << endl;
+
 	try {
 		cout << gimnasio->generarListadoCursos();
 	}
 	catch (exception& e) {
 		cerr << e.what() << endl;
+		return;
 	}
 	cout << "Digite el codigo del curso: ";
 	cin >> codigo;
-
+	cout << "-----------------------------------------------------------" << endl;
 	try {
 		cout << gimnasio->generarReporteCursoCod(codigo);
 	}
 	catch (exception& e) {
 		cerr << e.what() << endl;
+		return;
 	}
+	cout << "-----------------------------------------------------------" << endl;
 }
 
 void Interfaz::menuControlCursosModificarCurso()
@@ -337,7 +373,8 @@ void Interfaz::menuControlCursosModificarCurso()
 	Curso* curso = nullptr;
 	string codigo;
 	int opcion;
-	cout << "<3. Control Cursos> <3. Modificacion de curso especifico>" << endl;
+	cout << endl << endl << "<3. Control Cursos> <3. Modificacion de curso especifico>" << endl << endl;
+	cout << "-----------------------------------------------------------" << endl;
 	cout << "Ingrese el codigo del curso especifico: ";
 	cin >> codigo;
 	try
@@ -348,8 +385,9 @@ void Interfaz::menuControlCursosModificarCurso()
 	catch (exception& e)
 	{
 		cerr << e.what() << endl;
+		return;
 	}
-
+	cout << "-----------------------------------------------------------" << endl;
 	cout << "Cual dato desea modificar: " << endl;
 	cout << "1. Codigo del curso" << endl;
 	cout << "2. Nombre del curso" << endl;
@@ -358,6 +396,7 @@ void Interfaz::menuControlCursosModificarCurso()
 	cout << "5. Cantidad de grupos" << endl;
 	cout << "Ingrese una opcion del menu: ";
 	cin >> opcion;
+	cout << "-----------------------------------------------------------" << endl;
 	switch (opcion)
 	{
 	case 1:
@@ -379,6 +418,7 @@ void Interfaz::menuControlCursosModificarCurso()
 		cout << "Opcion invalida. Por favor, seleccione una opcion del menu." << endl;
 		break;
 	}
+	cout << "-----------------------------------------------------------" << endl;
 }
 
 int Interfaz::menuControlGrupos()
@@ -409,7 +449,8 @@ void Interfaz::menuControlGruposIngresoNuevoGrupo()
 	string codigo = "";
 	Grupo* grupo = nullptr;
 	int numeroGrupo = 0;
-	cout << "<4. Control Grupos> <1. Ingreso nuevo grupo>" << endl;
+	cout << endl << endl << "<4. Control Grupos> <1. Ingreso nuevo grupo>" << endl << endl;
+	cout << "-----------------------------------------------------------" << endl;
 	try
 	{
 		cout << gimnasio->generarListadoCursos();
@@ -420,7 +461,7 @@ void Interfaz::menuControlGruposIngresoNuevoGrupo()
 	}
 	cout << "Digite el codigo del curso: ";
 	cin >> codigo;
-
+	cout << "-----------------------------------------------------------" << endl;
 	try
 	{
 		curso = gimnasio->buscarCurso(codigo);
@@ -429,23 +470,30 @@ void Interfaz::menuControlGruposIngresoNuevoGrupo()
 	catch (exception& e)
 	{
 		cerr << e.what() << endl;
+		return;
 	}
+	cout << "-----------------------------------------------------------" << endl;
 	Utils::clearInputBuffer();
 	instructor = Interfaz::ingresarYValidarInstructor();
-	Utils::clearInputBuffer();
+	cout << "----" << endl;
 	cupoMaximo = Interfaz::ingresarYValidarCupoMaximo();
 	Utils::clearInputBuffer();
+	cout << "----" << endl;
 	fechaInicio = Interfaz::menuFecha();
 	Utils::clearInputBuffer();
+	cout << "----" << endl;
 	semanasDuracion = Interfaz::ingresarYValidarSemanasDuracion();
 	Utils::clearInputBuffer();
+	cout << "----" << endl;
 	cout << "Horario: " << endl;
-	Utils::clearInputBuffer();
 	dia = Interfaz::ingresarYValidarDiaDeLaSemana();
+	cout << "----" << endl;
 	Utils::clearInputBuffer();
 	horaInicio = Interfaz::ingresarYValidarHoraEntrada();
+	cout << "----" << endl;
 	Utils::clearInputBuffer();
 	horaFin = Interfaz::ingresarYValidarHoraSalida(horaInicio);
+	cout << "----" << endl;
 
 	if (curso->getListaGrupos()->getCantidad() == 0)
 	{
@@ -463,6 +511,7 @@ void Interfaz::menuControlGruposIngresoNuevoGrupo()
 	catch (exception& e)
 	{
 		cerr << e.what() << endl;
+		return;
 	}
 
 	try 
@@ -473,7 +522,9 @@ void Interfaz::menuControlGruposIngresoNuevoGrupo()
 	catch (exception& e)
 	{
 		cerr << e.what() << endl;
+		return;
 	}
+	cout << endl << endl << "-------------------------------------------------";
 }
 
 void Interfaz::menuControlGruposModificarGrupo()
@@ -482,7 +533,8 @@ void Interfaz::menuControlGruposModificarGrupo()
 	Grupo* grupo = nullptr;
 	int opcion = 0;
 	string codigo = "";
-	cout << "<4. Control Grupo> <2. Modificacion de grupo especifico>" << endl;
+	cout << endl << endl << "<4. Control Grupo> <2. Modificacion de grupo especifico>" << endl << endl;
+	cout << "-----------------------------------------------------------" << endl;
 	try
 	{
 		cout << gimnasio->generarListadoCursos();
@@ -490,10 +542,12 @@ void Interfaz::menuControlGruposModificarGrupo()
 	catch (exception& e)
 	{
 		cerr << e.what() << endl;
+		return;
 	}
 
 	cout << "Digite el codigo del curso: ";
 	cin >> codigo;
+	cout << "-----------------------------------------------------------" << endl;
 	try
 	{
 		curso = gimnasio->buscarCurso(codigo);
@@ -502,6 +556,7 @@ void Interfaz::menuControlGruposModificarGrupo()
 	catch (exception& e)
 	{
 		cerr << e.what() << endl;
+		return;
 	}
 
 	try
@@ -512,8 +567,11 @@ void Interfaz::menuControlGruposModificarGrupo()
 	{
 		cerr << e.what() << endl;
 	}
+	cout << "-----------------------------------------------------------" << endl;
 	cout << "Digite el numero del grupo a modificar: ";
 	cin >> opcion;
+	cout << "-----------------------------------------------------------" << endl;
+
 	try
 	{
 		grupo = curso->obtenerGrupo(opcion);
@@ -522,7 +580,9 @@ void Interfaz::menuControlGruposModificarGrupo()
 	catch (exception& e)
 	{
 		cerr << e.what() << endl;
+		return;
 	}
+
 	cout << "Que desea modificar: " << endl;
 	cout << "1. ID del Instructor" << endl;
 	cout << "2. Nombre del Instructor" << endl;
@@ -534,7 +594,7 @@ void Interfaz::menuControlGruposModificarGrupo()
 	cout << "8. Hora de finalizacion" << endl;
 	cout << "Digite una opcion: ";
 	cin >> opcion;
-
+	cout << "-----------------------------------------------------------" << endl;
 	switch (opcion)
 	{
 	case 1:
@@ -565,6 +625,7 @@ void Interfaz::menuControlGruposModificarGrupo()
 		cout << "Opcion invalida" << endl;
 		break;
 	}
+	cout << endl << endl << "-------------------------------------------------";
 }
 
 void Interfaz::menuControlGruposMatricularEnGrupo()
@@ -574,9 +635,11 @@ void Interfaz::menuControlGruposMatricularEnGrupo()
 	string codigoCurso;
 	Curso* curso = nullptr;
 
-	cout << "<4. Control Grupo> <3. Matricula en grupo especifico>" << endl;
+	cout << endl << endl << "<4. Control Grupo> <3. Matricula en grupo especifico>" << endl << endl;
+	cout << "-----------------------------------------------------------" << endl;
 	cout << "Digite el ID del deportista: ";
 	cin >> idDeportista;
+	cout << "-----------------------------------------------------------" << endl;
 	if (gimnasio->existeDeportistaConCedula(idDeportista))
 	{
 		cout << "Deportista encontrado!!!" << endl;
@@ -586,9 +649,10 @@ void Interfaz::menuControlGruposMatricularEnGrupo()
 		cout << "Deportista no encontrado!!!" << endl;
 		return;
 	}
-
+	cout << "-----------------------------------------------------------" << endl;
 	cout << "Digite el codigo del curso: ";
 	cin >> codigoCurso;
+	cout << "-----------------------------------------------------------" << endl;
 	try
 	{
 		curso = gimnasio->buscarCurso(codigoCurso);
@@ -599,7 +663,7 @@ void Interfaz::menuControlGruposMatricularEnGrupo()
 		cerr << e.what() << endl;
 		return;
 	}
-
+	cout << "-----------------------------------------------------------" << endl;
 	try
 	{
 		cout << curso->generarListadoDeGrupos();
@@ -610,10 +674,10 @@ void Interfaz::menuControlGruposMatricularEnGrupo()
 		Utils::pause();
 		return;
 	}
-
+	cout << "-----------------------------------------------------------" << endl;
 	cout << "Digite el numero de grupo deseado: ";
 	cin >> numeroGrupo;
-
+	cout << "-----------------------------------------------------------" << endl;
 	if (curso->existeGrupo(numeroGrupo))
 	{
 		cout << "Grupo encontrado!!!" << endl;
@@ -624,7 +688,7 @@ void Interfaz::menuControlGruposMatricularEnGrupo()
 		Utils::pause();
 		return;
 	}
-
+	cout << "-----------------------------------------------------------" << endl;
 	try
 	{
 		gimnasio->matricularEnGrupo(codigoCurso, numeroGrupo, idDeportista);
@@ -636,6 +700,7 @@ void Interfaz::menuControlGruposMatricularEnGrupo()
 		Utils::pause();
 		return;
 	}
+	cout << "-----------------------------------------------------------" << endl;
 }
 
 void Interfaz::menuControlGruposMostrarGrupoEspecifico()
@@ -644,10 +709,11 @@ void Interfaz::menuControlGruposMostrarGrupoEspecifico()
 	int numeroGrupo;
 	string codigoCurso;
 	Grupo* grupo = nullptr;
-	cout << "<5. Control Grupo> <4. Reporte de grupo especifico>" << endl;
+	cout << endl << endl << "<5. Control Grupo> <4. Reporte de grupo especifico>" << endl << endl;
+	cout << "-----------------------------------------------------------" << endl;
 	cout << "Digite el codigo del curso: ";
 	cin >> codigoCurso;
-
+	cout << "-----------------------------------------------------------" << endl;
 	try
 	{
 		curso = gimnasio->buscarCurso(codigoCurso);
@@ -658,7 +724,7 @@ void Interfaz::menuControlGruposMostrarGrupoEspecifico()
 		cerr << e.what() << endl;
 		return;
 	}
-
+	cout << "-----------------------------------------------------------" << endl;
 	try
 	{
 		cout << curso->generarListadoDeGrupos();
@@ -669,9 +735,10 @@ void Interfaz::menuControlGruposMostrarGrupoEspecifico()
 		Utils::pause();
 		return;
 	}
-
+	cout << "-----------------------------------------------------------" << endl;
 	cout << "Digite el numero de grupo deseado: ";
 	cin >> numeroGrupo;
+	cout << "-----------------------------------------------------------" << endl;
 	try
 	{
 		grupo = curso->obtenerGrupo(numeroGrupo);
@@ -682,40 +749,12 @@ void Interfaz::menuControlGruposMostrarGrupoEspecifico()
 		Utils::pause();
 		return;
 	}
-
 	cout << "A continuacion se muestra la informacion del grupo #" << numeroGrupo << " del curso " << codigoCurso << ":" << endl;
 	cout << grupo->toString() << endl;
 	Utils::pause();
-}
+	cout << "-----------------------------------------------------------" << endl;
 
-//< 5.Control Grupos> < 5. Reporte deportistas matriculados por grupo>
-//
-//Listado de cursos :
-//101  Spinning  basico
-//102  Natacion
-//103  Spinning avanzado
-//104  Natacion
-//105  Spinning intermedio
-//
-//Digite el código del curso : _101
-//Curso encontrado!!!!
-//
-//Listado de grupos para el curso seleccionado :
-//1
-//2
-//3
-//
-//Digite el numero de grupo : _1
-//Grupo encontrado!!!!
-//
-//Listado de matriculados en el grupo #1 del grupo 101:
-//152424  Juan Perez Lopez
-//143333  Maritza Rojas Alvarez
-//103343  Lupita Gonzalez Viquez
-//143440  Rosaura
-//
-//
-//< Digite Enter >
+}
 
 void Interfaz::menuControlGruposMostrarDeportistasPorGrupo()
 {
@@ -723,9 +762,12 @@ void Interfaz::menuControlGruposMostrarDeportistasPorGrupo()
 	int numeroGrupo;
 	string codigoCurso;
 	Grupo* grupo = nullptr;
-	cout << "<5. Control Grupo> <4. Reporte de grupo especifico>" << endl;
+	cout << endl << endl << "<5. Control Grupo> <4. Reporte de grupo especifico>" << endl << endl;
+	cout << "-----------------------------------------------------------" << endl;
+
 	cout << "Digite el codigo del curso: ";
 	cin >> codigoCurso;
+	cout << "-----------------------------------------------------------" << endl;
 
 	try
 	{
@@ -737,6 +779,7 @@ void Interfaz::menuControlGruposMostrarDeportistasPorGrupo()
 		cerr << e.what() << endl;
 		return;
 	}
+	cout << "-----------------------------------------------------------" << endl;
 
 	try
 	{
@@ -748,9 +791,10 @@ void Interfaz::menuControlGruposMostrarDeportistasPorGrupo()
 		Utils::pause();
 		return;
 	}
-
+	cout << "-----------------------------------------------------------" << endl;
 	cout << "Digite el numero de grupo deseado: ";
 	cin >> numeroGrupo;
+	cout << "-----------------------------------------------------------" << endl;
 	try
 	{
 		grupo = curso->obtenerGrupo(numeroGrupo);
@@ -761,9 +805,10 @@ void Interfaz::menuControlGruposMostrarDeportistasPorGrupo()
 		Utils::pause();
 		return;
 	}
-
 	cout << " Listado de matriculados en el grupo #" << numeroGrupo << " del grupo " << codigoCurso << ":" << endl;
 	cout << grupo->mostrarCedulaYNombreInscritos() << endl;
+	cout << "-----------------------------------------------------------" << endl;
+
 }
 
 void Interfaz::menuControlGruposCancelarMatriculaEnGrupo()
@@ -772,9 +817,11 @@ void Interfaz::menuControlGruposCancelarMatriculaEnGrupo()
 	string codigoCurso;
 	string idDeportista;
 
-	cout << "<4. Control Grupo> <6. Cancelacion de matricula en grupo>" << endl;
+	cout << endl << endl << "<4. Control Grupo> <6. Cancelacion de matricula en grupo>" << endl << endl;
+	cout << "-----------------------------------------------------------" << endl;
 	cout << "Digite el ID del deportista: ";
 	cin >> idDeportista;
+	cout << "-----------------------------------------------------------" << endl;
 
 	if (gimnasio->existeDeportistaConCedula(idDeportista))
 	{
@@ -786,6 +833,7 @@ void Interfaz::menuControlGruposCancelarMatriculaEnGrupo()
 		Utils::pause();
 		return;
 	}
+	cout << "-----------------------------------------------------------" << endl;
 
 	cout << "Listado de cursos: " << endl;
 	try
@@ -798,8 +846,10 @@ void Interfaz::menuControlGruposCancelarMatriculaEnGrupo()
 		Utils::pause();
 		return;
 	}
+	cout << "-----------------------------------------------------------" << endl;
 	cout << "Digite el codigo del curso: ";
 	cin >> codigoCurso;
+	cout << "-----------------------------------------------------------" << endl;
 
 
 	if (gimnasio->existeCursoConCodigo(codigoCurso))
@@ -812,6 +862,7 @@ void Interfaz::menuControlGruposCancelarMatriculaEnGrupo()
 		Utils::pause();
 		return;
 	}
+	cout << "-----------------------------------------------------------" << endl;
 
 	try
 	{
@@ -823,9 +874,11 @@ void Interfaz::menuControlGruposCancelarMatriculaEnGrupo()
 		Utils::pause();
 		return;
 	}
+	cout << "-----------------------------------------------------------" << endl;
 
 	cout << "Digite el numero de grupo: ";
 	cin >> numeroGrupo;
+	cout << "-----------------------------------------------------------" << endl;
 
 	if (gimnasio->buscarCurso(codigoCurso)->existeGrupo(numeroGrupo))
 	{
@@ -837,7 +890,7 @@ void Interfaz::menuControlGruposCancelarMatriculaEnGrupo()
 		Utils::pause();
 		return;
 	}
-
+	cout << "-----------------------------------------------------------" << endl;
 	try
 	{
 		gimnasio->desmatricularDeGrupo(codigoCurso, numeroGrupo, idDeportista);
@@ -848,6 +901,8 @@ void Interfaz::menuControlGruposCancelarMatriculaEnGrupo()
 		Utils::pause();
 		return;
 	}
+	cout << "-----------------------------------------------------------" << endl;
+
 }
 
 int Interfaz::menuControlPagos()
@@ -866,10 +921,12 @@ void Interfaz::menuControlPagosIngresoNuevoPago()
 {
 	string idDeportista;
 	int cantidadDeCuotas;
-	cout << "<5. Control Pagos> <1. Registro de nuevo pago>" << endl;
+	cout << endl << endl << "<5. Control Pagos> <1. Registro de nuevo pago>" << endl << endl;
+	cout << "-----------------------------------------------------------" << endl;
 	cout << "Fecha Actual: " << gimnasio->getFechaActual()->toString();
 	cout << "Digite la cedula del deportista: ";
 	cin >> idDeportista;
+	cout << "-----------------------------------------------------------" << endl;
 	if (gimnasio->existeDeportistaConCedula(idDeportista))
 	{
 		cout << "Deportista encontrado!!!" << endl;
@@ -880,8 +937,10 @@ void Interfaz::menuControlPagosIngresoNuevoPago()
 		Utils::pause();
 		return;
 	}
+	cout << "-----------------------------------------------------------" << endl;
 	cout << "Cuantas cuotas desea cancelar o pagar: ";
 	cin >> cantidadDeCuotas;
+	cout << "-----------------------------------------------------------" << endl;
 	try
 	{
 		cout << gimnasio->registrarPago(idDeportista, cantidadDeCuotas);
@@ -892,15 +951,19 @@ void Interfaz::menuControlPagosIngresoNuevoPago()
 		Utils::pause();
 		return;
 	}
+	cout << "-----------------------------------------------------------" << endl;
+
 }
 
 void Interfaz::menuControlPagosMostrarPagosDeportista()
 {
 	string cedula;
-	cout << "<5. Control Pagos> <2. Reporte de pagos por deportista>" << endl;
+	cout << endl << endl << "<5. Control Pagos> <2. Reporte de pagos por deportista>" << endl << endl;
+	cout << "-----------------------------------------------------------" << endl;
+
 	cout << "Digite la cedula del deportista: ";
 	cin >> cedula;
-
+	cout << "-----------------------------------------------------------" << endl;
 	try
 	{
 		gimnasio->generarReportePagosCed(cedula);
@@ -911,6 +974,7 @@ void Interfaz::menuControlPagosMostrarPagosDeportista()
 		Utils::pause();
 		return;
 	}
+	cout << "-----------------------------------------------------------" << endl;
 }
 
 void Interfaz::regresar()
@@ -929,12 +993,51 @@ void Interfaz::opcionInvalida()
 
 void Interfaz::salir()
 {
+	try
+	{
+		gimnasio->guardarEnArchivoDeportistas();
+		cout << "Archivo deportistas guardado exitosamente" << endl;
+	}
+	catch (exception& e)
+	{
+		cerr << e.what() << endl;
+	}
+	try
+	{
+		gimnasio->guardarCursosYGrupos();
+		cout << "Archivo cursos y grupos guardado exitosamente" << endl;
+	}
+	catch (exception& e)
+	{
+		cerr << e.what() << endl;
+	}
 	cout << "Gracias por usar el sistema, presione cualquier tecla para salir..." << endl;
 	Utils::pause();
 }
 
 void Interfaz::mensajeDeBienvenida()
 {
+	try
+	{
+		gimnasio->setListaDeportistas(GestorDeArchivos().cargarDeportistas());
+		cout << "Archivo deportistas cargado exitosamente" << endl;
+	}
+	catch (exception& e)
+	{
+		cerr << e.what() << endl;
+	}
+	try
+	{
+		gimnasio->setListaCursos(GestorDeArchivos().cargarCursosYGrupos());
+		cout << "Archivo cursos y grupos cargado exitosamente" << endl;
+	}
+	catch (exception& e)
+	{
+		cerr << e.what() << endl;
+	}
+
+	Utils::pause();
+	Utils::clearScreen();
 	cout << "Bienvenido al sistema de gestion de gimnasio" << endl;
 	cout << gimnasio->getNombreDelGimnasio() << endl;
 	cout << "La fecha del sistema es: " << gimnasio->getFechaActual()->toString() << endl;
@@ -999,6 +1102,7 @@ void Interfaz::modificarNombreDeportista(Deportista* deportista)
 	while (!esNombreValido)
 	{
 		cout << "Digite el nuevo nombre del deportista: ";
+		Utils::clearInputBuffer();
 		getline(cin, nombre);
 
 		if (nombre.empty())
@@ -1036,6 +1140,7 @@ void Interfaz::modificarTelefonoDeportista(Deportista* deportista)
 	while (!esTelefonoValido)
 	{
 		cout << "Digite el nuevo telefono del deportista: ";
+		Utils::clearInputBuffer();
 		getline(cin, telefono);
 
 		if (telefono.empty())
@@ -1308,6 +1413,7 @@ string Interfaz::ingresarYValidarNombre()
 	bool esNombreValido = false;
 	while (!esNombreValido)
 	{
+		Utils::clearInputBuffer();
 		cout << "Digite el nombre del curso: ";
 		getline(cin, nombre);
 
@@ -1345,6 +1451,7 @@ string Interfaz::ingresarYValidarDescripcion()
 	while (!esDescripcionValida)
 	{
 		cout << "Digite la descripcion del curso: ";
+		Utils::clearInputBuffer();
 		getline(cin, descripcion);
 		if (descripcion.empty())
 		{
@@ -1428,6 +1535,7 @@ string Interfaz::ingresarYValidarCodigo()
 	bool esCodigoValido = false;
 	while (!esCodigoValido)
 	{
+		Utils::clearInputBuffer();
 		cout << "Digite el codigo del curso: ";
 		getline(cin, codigo);
 		if (codigo.empty())
@@ -1457,6 +1565,7 @@ void Interfaz::modificarNombreCurso(Curso* curso)
 	while (!esNombreValido)
 	{
 		cout << "Digite el nombre del curso: ";
+		Utils::clearInputBuffer();
 		getline(cin, nombre);
 
 		if (nombre.empty())
@@ -1577,6 +1686,7 @@ void Interfaz::modificarCodigoCurso(Curso* curso)
 	while (!esCodigoValido)
 	{
 		cout << "Digite el codigo del curso: ";
+		Utils::clearInputBuffer();
 		getline(cin, codigo);
 		if (codigo.empty())
 		{
@@ -1598,8 +1708,9 @@ Instructor* Interfaz::ingresarYValidarInstructor()
 {
 	string nombre = ingresarYValidarNombreInstructor();
 	string cedula = ingresarYValidarCedulaInstructor();
+	string apellido = ingresarYValidarApellidoInstructor();
 
-	return new Instructor(nombre, cedula);
+	return new Instructor(nombre, apellido, cedula);
 }
 
 string Interfaz::ingresarYValidarNombreInstructor()
@@ -1640,6 +1751,46 @@ string Interfaz::ingresarYValidarNombreInstructor()
 	}
 
 	return nombre;
+}
+
+string Interfaz::ingresarYValidarApellidoInstructor()
+{
+	string apellido;
+	bool esApellidoValido = false;
+
+	while (!esApellidoValido)
+	{
+		cout << "Digite el apellido del instructor: ";
+		getline(cin, apellido);
+
+		if (apellido.empty())
+		{
+			cout << "Error: El apellido del instructor no puede estar vacio." << endl;
+			Utils::clearInputBuffer();
+			continue;
+		}
+
+		bool esCadenaValida = true;
+		for (char c : apellido)
+		{
+			if (!isalpha(c) && c != ' ')
+			{
+				esCadenaValida = false;
+				break;
+			}
+		}
+
+		if (!esCadenaValida)
+		{
+			cout << "Error: El apellido del instructor solo puede contener letras y espacios." << endl;
+			Utils::clearInputBuffer();
+			continue;
+		}
+
+		esApellidoValido = true;
+	}
+
+	return apellido;
 }
 
 string Interfaz::ingresarYValidarCedulaInstructor()

@@ -276,6 +276,16 @@ void Grupo::eliminarDeportista(Deportista* deportista_)
 		throw e;
 	}
 }
+//(Instructor* instructor_, int cupoMaximo_, Fecha* fechaDeInicio_, int semanasDeDuracion_, int numeroGrupo_, char diaDeLaSemana_, Hora* horaDeInicio_, Hora* horaDeFin_
+//Instructor(string nombre_ = "", string apellido_ = "", string id_ = "");
+//fecha: dia, mes, anio
+//hora: hora, minuto, segundo;
+string Grupo::toStringParaGuardar()
+{
+	stringstream ss;
+	ss << this->instructor->getNombre() << ';' << this->instructor->getApellido() << ';' << this->instructor->getId() << ';' << this->cupoMaximo << ';' << this->fechaDeInicio->getDia() << ';' << this->fechaDeInicio->getMes() << ';' << this->fechaDeInicio->getAnio() << ';' << this->semanasDeDuracion << ';' << this->numeroGrupo << ';' << this->diaDeLaSemana << ';' << this->horaDeInicio->getHora() << ';' << this->horaDeInicio->getMinuto() << ';' << this->horaDeInicio->getSegundo() << ';' << this->horaDeFin->getHora() << ';' << this->horaDeFin->getMinuto() << ';' << this->horaDeFin->getSegundo();
+	return ss.str();
+}
 
 Grupo& Grupo::operator=(const Grupo& grupo_)
 {
