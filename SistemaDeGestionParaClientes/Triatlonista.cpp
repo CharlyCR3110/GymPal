@@ -296,7 +296,7 @@ const string Triatlonista::detalleDeportista() const
 const string Triatlonista::toStringParaGuardar() const
 {
     stringstream ss;
-    ss << this->cedula << ';' << this->nombre << ';' << this->telefono << ';' << this->fechaNacimiento->getDia() << ';' << this->fechaNacimiento->getMes() << ';' << this->fechaNacimiento->getAnio() << ';' << this->horasEntrenamiento << ';' << this->cantidadParticipacionesIronMan << ';' << this->cantidadTriatlonesGanados << ';' << this->corredor->getSexo() << ';' << this->corredor->getEstatura() << ';' << this->nadador->getMasaMuscular() << ';' << this->nadador->getPeso() << ';' << this->nadador->getPorcentajeGrasaCorporal() << ';' << this->fechaUltimaActualizacion->getDia() << ';' << this->fechaUltimaActualizacion->getMes() << ';' << this->fechaUltimaActualizacion->getAnio() << '\n';
+    ss << this->cedula << ';' << this->nombre << ';' << this->telefono << ';' << this->fechaNacimiento->getDia() << ';' << this->fechaNacimiento->getMes() << ';' << this->fechaNacimiento->getAnio() << ';' << this->horasEntrenamiento << ';' << this->temperaturaPromedio << ';' << this->cantidadParticipacionesIronMan << ';' << this->cantidadTriatlonesGanados << ';' << this->corredor->getSexo() << ';' << this->corredor->getEstatura() << ';' << this->nadador->getMasaMuscular() << ';' << this->nadador->getPeso() << ';' << this->nadador->getPorcentajeGrasaCorporal() << ';' << this->fechaUltimaActualizacion->getDia() << ';' << this->fechaUltimaActualizacion->getMes() << ';' << this->fechaUltimaActualizacion->getAnio() << '\n';
     return ss.str();
 }
 
