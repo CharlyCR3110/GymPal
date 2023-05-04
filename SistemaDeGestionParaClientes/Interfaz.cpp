@@ -962,6 +962,16 @@ void Interfaz::mensajeDeBienvenida()
 	{
 		cerr << e.what() << endl;
 	}
+	try
+	{
+		gimnasio->setListaCursos(GestorDeArchivos().cargarCursosYGrupos());
+		cout << "Archivo cursos y grupos cargado exitosamente" << endl;
+	}
+	catch (exception& e)
+	{
+		cerr << e.what() << endl;
+	}
+
 	Utils::pause();
 	Utils::clearScreen();
 	cout << "Bienvenido al sistema de gestion de gimnasio" << endl;
