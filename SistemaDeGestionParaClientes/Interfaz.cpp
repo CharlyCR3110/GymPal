@@ -944,6 +944,17 @@ void Interfaz::salir()
 
 void Interfaz::mensajeDeBienvenida()
 {
+	try
+	{
+		gimnasio->setListaDeportistas(GestorDeArchivos().cargarDeportistas());
+		cout << "Archivo deportistas cargado exitosamente" << endl;
+	}
+	catch (exception& e)
+	{
+		cerr << e.what() << endl;
+	}
+	Utils::pause();
+	Utils::clearScreen();
 	cout << "Bienvenido al sistema de gestion de gimnasio" << endl;
 	cout << gimnasio->getNombreDelGimnasio() << endl;
 	cout << "La fecha del sistema es: " << gimnasio->getFechaActual()->toString() << endl;
