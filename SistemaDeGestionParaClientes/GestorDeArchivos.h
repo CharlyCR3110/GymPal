@@ -17,5 +17,13 @@ public:
 	virtual void guardarGrupo(Grupo* grupo_);
 	virtual void guardarGrupos(ListaEnlazada<Grupo>* listaGrupos_);
 	virtual void guardarGrupos(ListaEnlazada<Grupo>* listaGrupos_, string nombreArchivo_);
+	
+	//cursos
+	virtual void guardarCursos(ListaEnlazada<Curso>* listaCursos_);
+	virtual ListaEnlazada<Curso>* cargarCursos();
+
+	//cursos y grupos
+	virtual void guardarCursosYGrupos(ListaEnlazada<Curso>* listaCursos_);
+
 };
 
