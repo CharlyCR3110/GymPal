@@ -929,6 +929,15 @@ void Interfaz::opcionInvalida()
 
 void Interfaz::salir()
 {
+	try
+	{
+		gimnasio->guardarEnArchivoDeportistas();
+		cout << "Archivo deportistas guardado exitosamente" << endl;
+	}
+	catch (exception& e)
+	{
+		cerr << e.what() << endl;
+	}
 	cout << "Gracias por usar el sistema, presione cualquier tecla para salir..." << endl;
 	Utils::pause();
 }
