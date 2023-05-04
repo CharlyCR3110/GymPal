@@ -283,7 +283,7 @@ void Grupo::eliminarDeportista(Deportista* deportista_)
 string Grupo::toStringParaGuardar()
 {
 	stringstream ss;
-	ss << this->instructor->getNombre() << ';' << this->instructor->getApellido() << ';' << this->instructor->getId() << ';' << this->cupoMaximo << ';' << this->fechaDeInicio->getDia() << ';' << this->fechaDeInicio->getMes() << ';' << this->fechaDeInicio->getAnio() << ';' << this->semanasDeDuracion << ';' << this->numeroGrupo << ';' << this->diaDeLaSemana << ';' << this->horaDeInicio->getHora() << ';' << this->horaDeInicio->getMinuto() << ';' << this->horaDeInicio->getSegundo() << ';' << this->horaDeFin->getHora() << ';' << this->horaDeFin->getMinuto() << ';' << this->horaDeFin->getSegundo() << '\n';
+	ss << this->instructor->getNombre() << ';' << this->instructor->getApellido() << ';' << this->instructor->getId() << ';' << this->cupoMaximo << ';' << this->fechaDeInicio->getDia() << ';' << this->fechaDeInicio->getMes() << ';' << this->fechaDeInicio->getAnio() << ';' << this->semanasDeDuracion << ';' << this->numeroGrupo << ';' << this->diaDeLaSemana << ';' << this->horaDeInicio->getHora() << ';' << this->horaDeInicio->getMinuto() << ';' << this->horaDeInicio->getSegundo() << ';' << this->horaDeFin->getHora() << ';' << this->horaDeFin->getMinuto() << ';' << this->horaDeFin->getSegundo();
 	return ss.str();
 }
 
