@@ -13,5 +13,7 @@ public:
 	virtual void guardarDeportista(Deportista* deportista_);
 	virtual void guardarDeportistas(ListaEnlazada<Deportista>* listaDeportistas_);
 	virtual ListaEnlazada<Deportista>* cargarDeportistas();
+	// metodos para grupos
+	virtual void guardarGrupo(Grupo* grupo_);
 };
 

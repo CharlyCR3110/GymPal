@@ -39,12 +39,6 @@ void GestorDeArchivos::guardarDeportistas(ListaEnlazada<Deportista>* listaDeport
     }
 }
 
-
-//const string Triatlonista::toStringParaGuardar() const
-//{
-//ss << this->cedula << ';' << this->nombre << ';' << this->telefono << ';' << this->fechaNacimiento->getDia() << ';' << this->fechaNacimiento->getMes() << ';' << this->fechaNacimiento->getAnio() << ';' << this->horasEntrenamiento << ';' << temperaturaPromedio << ';' << this->cantidadParticipacionesIronMan << ';' << this->cantidadTriatlonesGanados << ';' << this->corredor->getSexo() << ';' << this->corredor->getEstatura() << ';' << this->nadador->getMasaMuscular() << ';' << this->nadador->getPeso() << ';' << this->nadador->getPorcentajeGrasaCorporal() << ';' << this->fechaUltimaActualizacion->getDia() << ';' << this->fechaUltimaActualizacion->getMes() << ';' << this->fechaUltimaActualizacion->getAnio() << '\n';
-//    return ss.str();
-//}
 ListaEnlazada<Deportista>* GestorDeArchivos::cargarDeportistas()
 {
     ListaEnlazada<Deportista>* listaDeportistas = new ListaEnlazada<Deportista>();
@@ -87,4 +81,19 @@ ListaEnlazada<Deportista>* GestorDeArchivos::cargarDeportistas()
 		archivoDeportistas.close();
 	}
 	return listaDeportistas;
+}
+
+void GestorDeArchivos::guardarGrupo(Grupo* grupo_)
+{
+	ofstream archivoGrupos;
+	archivoGrupos.open("../Grupos.txt", ios::app);
+	if (archivoGrupos.is_open())
+	{
+		archivoGrupos << grupo_->toStringParaGuardar() << endl;
+		archivoGrupos.close();
+	}
+	else
+	{
+		throw new exception("No se pudo abrir el archivo Grupos.txt");
+	}
 }
