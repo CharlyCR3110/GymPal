@@ -450,6 +450,14 @@ void Curso::desmatricularDeGrupo(int numeroGrupo, Deportista* deportista)
 	throw exception("No se encontro el grupo");
 }
 
+string Curso::toStringParaGuardar()
+{
+    stringstream ss;
+    //string codigo_ = "", string nombreDelCurso_ = "", string nivel_ = "", string descripcion_ = "", int cantidadMaximaDeGrupos = 0
+    ss << this->codigo << ';' << this->nombreDelCurso << ';' << this->nivel << ';' << this->descripcion << ';' << this->cantidadMaximaDeGrupos << ';' << this->cantidadDeGruposActuales;
+    return ss.str();
+}
+
 Curso& Curso::operator=(const Curso& curso_)
 {
     if (this != &curso_)
