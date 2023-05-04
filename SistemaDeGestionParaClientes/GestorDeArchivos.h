@@ -6,10 +6,11 @@
 class GestorDeArchivos
 {
 public:
-	GestorDeArchivos() = default;
+	GestorDeArchivos();
 	virtual ~GestorDeArchivos() = default;
 
 	// metodos para deportistas
 	virtual void guardarDeportista(Deportista* deportista_);
+	virtual void guardarDeportistas(ListaEnlazada<Deportista>* listaDeportistas_);
 };
 
