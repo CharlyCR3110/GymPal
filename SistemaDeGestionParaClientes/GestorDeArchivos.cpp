@@ -15,7 +15,7 @@ void GestorDeArchivos::guardarDeportista(Deportista* deportista_)
 	}
 	else
 	{
-		throw new exception("No se pudo abrir el archivo Deportistas.txt");
+		throw runtime_error("No se pudo abrir el archivo Deportistas.txt");
 	}
 }
 
@@ -94,6 +94,26 @@ void GestorDeArchivos::guardarGrupo(Grupo* grupo_)
 	}
 	else
 	{
-		throw new exception("No se pudo abrir el archivo Grupos.txt");
+		throw runtime_error("No se pudo abrir el archivo Grupos.txt");
+	}
+}
+
+void GestorDeArchivos::guardarGrupos(ListaEnlazada<Grupo>* listaGrupos_)
+{
+	ofstream archivoGrupos;
+	archivoGrupos.open("../Grupos.txt");
+	if (!archivoGrupos.is_open())
+	{
+		throw runtime_error("No se pudo abrir el archivo Grupos.txt");
+	}
+	else
+	{
+		Nodo<Grupo>* nodoActual = listaGrupos_->getPrimero();
+		while (nodoActual != nullptr)
+		{
+			archivoGrupos << nodoActual->getDato()->toStringParaGuardar();
+			nodoActual = nodoActual->getSiguiente();
+		}
+		archivoGrupos.close();
 	}
 }
