@@ -2,7 +2,6 @@
 
 GestorDeArchivos::GestorDeArchivos()
 {
-    cout << "GestorDeArchivos()";
 }
 
 void GestorDeArchivos::guardarDeportista(Deportista* deportista_)
