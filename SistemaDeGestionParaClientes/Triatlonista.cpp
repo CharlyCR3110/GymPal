@@ -295,10 +295,8 @@ const string Triatlonista::detalleDeportista() const
 
 const string Triatlonista::toStringParaGuardar() const
 {
-    //string cedula_ = "", string nombre_ = "", string telefono_ = "", Fecha* fechaNacimiento_ = nullptr, int horasEntrenamiento_ = 0, double temperaturaPromedio_ = 0.0, int cantidadParticipacionesIronMan_ = 0, int cantidadTriatlonesGanados_ = 0.0, char sexo_ = ' ', double estatura_ = 0.0, double masaMuscular_ = 0.0, double peso_ = 0.0, double porcentajeGrasaCorporal_ = 0.0, Fecha* fechaUltimaActualizacion_ = nullptr
     stringstream ss;
     ss << this->cedula << ';' << this->nombre << ';' << this->telefono << ';' << this->fechaNacimiento->getDia() << ';' << this->fechaNacimiento->getMes() << ';' << this->fechaNacimiento->getAnio() << ';' << this->horasEntrenamiento << ';' << this->cantidadParticipacionesIronMan << ';' << this->cantidadTriatlonesGanados << ';' << this->corredor->getSexo() << ';' << this->corredor->getEstatura() << ';' << this->nadador->getMasaMuscular() << ';' << this->nadador->getPeso() << ';' << this->nadador->getPorcentajeGrasaCorporal() << ';' << this->fechaUltimaActualizacion->getDia() << ';' << this->fechaUltimaActualizacion->getMes() << ';' << this->fechaUltimaActualizacion->getAnio() << '\n';
-
     return ss.str();
 }
 
