@@ -371,3 +371,7 @@ SistemaDeGestionParaClientes/SistemaDeGestionParaClientes.vcxproj.*
 SistemaDeGestionParaClientes/.vscode/*
 # Temp main
 SistemaDeGestionParaClientes.sln
+Cursos.txt
+Deportistas.txt
+# ignore .txt
+*.txt
