@@ -12,5 +12,6 @@ public:
 	// metodos para deportistas
 	virtual void guardarDeportista(Deportista* deportista_);
 	virtual void guardarDeportistas(ListaEnlazada<Deportista>* listaDeportistas_);
+	virtual ListaEnlazada<Deportista>* cargarDeportistas();
 };
 
