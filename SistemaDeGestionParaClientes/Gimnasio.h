@@ -3,6 +3,7 @@
 #include "Triatlonista.h"
 #include "ListaEnlazada.h"
 #include "Curso.h"
+#include "GestorDeArchivos.h"
 const int MAX_CURSOS = 3;
 
 class Gimnasio
@@ -14,6 +15,8 @@ private:
 	ListaEnlazada<Deportista>* listaDeportistas;
 	ListaEnlazada<Curso>* listaCursos;
 	ControlPagos* controlPagos;
+	// archivos
+	GestorDeArchivos gestorDeArchivos;
 public:
 	Gimnasio();
 	Gimnasio(string nombreDelGimnasio_, double montoMensual_, Fecha* fechaActual_);
@@ -63,5 +66,7 @@ public:
 	// 5. verificar repetidos
 	bool existeCursoConCodigo(string codigo_);
 	bool existeDeportistaConCedula(string cedula_);
+	//archivos
+	void guardarEnArchivoDeportistas();
 };
 

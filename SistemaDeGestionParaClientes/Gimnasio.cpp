@@ -1,12 +1,13 @@
 #include "Gimnasio.h"
 
-Gimnasio::Gimnasio():
+Gimnasio::Gimnasio() :
 	nombreDelGimnasio("Gimnasio UNAfitness"),
 	montoMensual(20000),
 	fechaActual(new Fecha()),
 	listaDeportistas(new ListaEnlazada<Deportista>()),
 	listaCursos(new ListaEnlazada<Curso>()),
-	controlPagos()
+	controlPagos(),
+	gestorDeArchivos()
 {
 }
 
@@ -16,7 +17,8 @@ Gimnasio::Gimnasio(string nombreDelGimnasio_, double montoMensual_, Fecha* fecha
 	montoMensual(montoMensual_),
 	listaDeportistas(new ListaEnlazada<Deportista>()),
 	listaCursos(new ListaEnlazada<Curso>()),
-	controlPagos()
+	controlPagos(),
+	gestorDeArchivos()
 {
 }
 
@@ -468,4 +470,16 @@ bool Gimnasio::existeCursoConCodigo(string codigo_)
 bool Gimnasio::existeDeportistaConCedula(string cedula_)
 {
 	return listaDeportistas->existeItemConCodigo(cedula_);
+}
+
+void Gimnasio::guardarEnArchivoDeportistas()
+{
+	try
+	{
+		gestorDeArchivos.guardarDeportistas(this->listaDeportistas);
+	}
+	catch (exception& e)
+	{
+		throw exception(e.what());
+	}
 }
