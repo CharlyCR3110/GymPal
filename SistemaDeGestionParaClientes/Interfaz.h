@@ -94,6 +94,7 @@ public:
 	 //metodos para validar ingreso de datos de un grupo
 	static Instructor* ingresarYValidarInstructor();
 	static string ingresarYValidarNombreInstructor();
+	static string ingresarYValidarApellidoInstructor();
 	static string ingresarYValidarCedulaInstructor();
 	static int ingresarYValidarCupoMaximo();
 	static int ingresarYValidarSemanasDuracion();
