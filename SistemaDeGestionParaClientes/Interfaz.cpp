@@ -1425,6 +1425,46 @@ void Interfaz::modificarCantidadTriatlonesGanadosDeportista(Deportista* deportis
 	}
 }
 
+string Interfaz::ingresarYValidarNombreDeportista()
+{
+	string nombre;
+	bool esNombreValido = false;
+
+	while (!esNombreValido)
+	{
+		cout << "Digite el nombre del deportista: ";
+		getline(cin, nombre);
+
+		if (nombre.empty())
+		{
+			cout << "Error: El nombre del deportista no puede estar vacio." << endl;
+			Utils::clearInputBuffer();
+			continue;
+		}
+
+		bool esCadenaValida = true;
+		for (char c : nombre)
+		{
+			if (!isalpha(c) && c != ' ')
+			{
+				esCadenaValida = false;
+				break;
+			}
+		}
+
+		if (!esCadenaValida)
+		{
+			cout << "Error: El nombre del deportista solo puede contener letras y espacios." << endl;
+			Utils::clearInputBuffer();
+			continue;
+		}
+
+		esNombreValido = true;
+	}
+
+	return nombre;
+}
+
 string Interfaz::ingresarYValidarNombre()
 {
 	string nombre;

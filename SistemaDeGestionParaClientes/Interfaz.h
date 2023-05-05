@@ -74,7 +74,8 @@ public:
 	static void modificarCantidadParticipacionesIronManDeportista(Deportista* deportista);
 	static void modificarCantidadTriatlonesGanadosDeportista(Deportista* deportista);
 	//
-	//static string ingresarYValidarNombreDeportista();
+	// metodo para validar ingreso de datos de un deportista
+	static string ingresarYValidarNombreDeportista();
 	//static string ingresarYValidarTelefonoDeportista();
 	//static Fecha* ingresarYValidarFechaNacimientoDeportista();
 	//static string ingresarYValidarSexoDeportista();
