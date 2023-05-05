@@ -524,7 +524,6 @@ void Gimnasio::guardarEnArchivoDeportistasYSusPagos()
 const void Gimnasio::guardarParaMatricular() const
 {
 	string texto = toStringParaGuardarCursoGrupoYCedulaDeLosDeportistasAsociados();
-	cout << toStringParaGuardarCursoGrupoYCedulaDeLosDeportistasAsociados();
 	gestorDeArchivos.guardarCursoGrupoYCedulaDeLosDeportistasAsociados(texto);
 }
 
