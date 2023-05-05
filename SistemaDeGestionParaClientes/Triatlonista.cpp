@@ -252,11 +252,13 @@ const double Triatlonista::getPorcentajeGrasaCorporal() const
 const string Triatlonista::toString() const
 {
     stringstream ss;
+    ss << "-----------------------------------------------------------" << endl;
     ss << Ciclista::toString();
     ss << corredor->toString();
     ss << nadador->toString();
     ss << "Cantidad de participaciones en IronMan: " << this->cantidadParticipacionesIronMan << endl;
     ss << "Cantidad de triatlones ganados: " << this->cantidadTriatlonesGanados << endl;
+    ss << "-----------------------------------------------------------" << endl;
     return ss.str();
 }
 
