@@ -112,4 +112,6 @@ public:
 	static void modificarHoraEntradaGrupo(Grupo* grupo);
 	static void modificarHoraSalidaGrupo(Grupo* grupo);
 
+	//
+	static void test();
 };
