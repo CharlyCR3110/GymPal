@@ -69,6 +69,69 @@ int Interfaz::menuControlDeportistas()
 	return opcion;
 }
 
+//void Interfaz::menuControlDeportistasIngresoNuevoDeportista()
+//{
+//	string cedula, nombre, telefono;
+//	Fecha* fechaNacimiento;
+//	char sexo;
+//	int horasEntrenamiento, cantidadParticipacionesIronMan, cantidadTriatlonesGanados;
+//	double temperaturaPromedio, estatura, masaMuscular, peso, porcentajeGrasaCorporal;
+//	cout << endl << endl << "\t<2. Control Deportistas> <1. Ingreso nuevo deportista>" << endl << endl;
+//	cout << "-----------------------------------------------------------" << endl;
+//	cout << "Datos generales:" << endl;
+//	cout << "\tDigite la cedula del deportista: ";
+//	cin >> cedula;
+//	cout << "----" << endl;
+//	cout << "\tDigite el nombre del deportista: ";
+//	cin >> nombre;
+//	cout << "----" << endl;
+//	cout << "\tDigite el telefono del deportista: ";
+//	cin >> telefono;
+//	cout << "----" << endl;
+//	cout << "\tDigite la fecha de nacimiento del deportista: " << endl;
+//	fechaNacimiento = Interfaz::menuFecha();
+//	cout << "----" << endl;
+//	cout << "\tDigite el sexo del deportista (f/m): ";
+//	cin >> sexo;
+//	cout << "----" << endl;
+//	cout << "\tDigite la cantidad de horas de entrenamiento del deportista: ";
+//	cin >> horasEntrenamiento;
+//	cout << "----" << endl;
+//	cout << "\tDigite la temperatura promedio del deportista: ";
+//	cin >> temperaturaPromedio;
+//	cout << "----" << endl;
+//	cout << "\tDigite la cantidad de participaciones en IronMan del deportista: ";
+//	cin >> cantidadParticipacionesIronMan;
+//	cout << "----" << endl;
+//	cout << "\tDigite la cantidad de triatlones ganados del deportista: ";
+//	cin >> cantidadTriatlonesGanados;
+//	cout << "----" << endl;
+//	cout << endl << "Datos biom�tricos b�sicos" << endl;
+//	cout << "\tDigite la estatura del deportista: ";
+//	cin >> estatura;
+//	cout << "----" << endl;
+//	cout << "\tDigite el peso del deportista: ";
+//	cin >> peso;
+//	cout << "----" << endl;
+//	cout << "\tDigite el porcentaje de grasa corporal del deportista: ";
+//	cin >> porcentajeGrasaCorporal;
+//	cout << "----" << endl;
+//	cout << "\tDigite la masa muscular del deportista: ";
+//	cin >> masaMuscular;
+//	cout << "----" << endl;
+//
+//	try
+//	{
+//		gimnasio->registrarDeportista(cedula, nombre, telefono, fechaNacimiento, horasEntrenamiento, temperaturaPromedio, cantidadParticipacionesIronMan, cantidadTriatlonesGanados, sexo, estatura, masaMuscular, peso, porcentajeGrasaCorporal);
+//		cout << "Deportista registrado con exito" << endl;
+//	}
+//	catch (exception& e)
+//	{
+//		cout << e.what() << endl;
+//	}
+//	cout << "-----------------------------------------------------------" << endl;
+//}
+
 void Interfaz::menuControlDeportistasIngresoNuevoDeportista()
 {
 	string cedula, nombre, telefono;
