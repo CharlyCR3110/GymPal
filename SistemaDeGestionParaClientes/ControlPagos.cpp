@@ -124,18 +124,6 @@ string ControlPagos::pagarMeses(string cedula_, int cantidadMeses_, ListaEnlazad
 
 		pagosDelDeportista->insertar(new Pago(fechaActual, mes, monto));
 		try {
-			cout << "-----------------------------------------------------------" << endl;
-			if (deportista->getPagos()->estaVacia())
-			{
-				cout << "la lista esta vacia" << endl;
-			}
-			else
-			{
-				cout << deportista->getPagos()->toString();
-			}
-			cout << "Se supone que se agrego el pago" << endl;
-			cout << "-----------------------------------------------------------" << endl;
-
 			ss << "-" << mes << " " << fechaActual->getAnio() << endl;
 		}
 		catch (exception& e)
@@ -150,10 +138,10 @@ string ControlPagos::pagarMeses(string cedula_, int cantidadMeses_, ListaEnlazad
 			fechaActual->setAnio(fechaActual->getAnio() + 1);
 		}
 	}
+
 	ss << "El deportista " << deportista->getNombre() << " ha pagado " << cantidadMeses_ << " meses" << endl;
 	ss << "Debe de pagar haste el mes de: " << meses[ultimoMesPagado] << " " << fechaActual->getAnio() << endl;
 
-	cout << "AL FINAL CON LOS PAGOS" << endl;
-	cout << deportista->getPagos()->toString();
+	deportista->setCantidadDePagos(deportista->getCantidadDePagos() + cantidadMeses_);
 	return ss.str();
 }
