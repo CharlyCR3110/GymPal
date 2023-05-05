@@ -83,6 +83,33 @@ ListaEnlazada<Deportista>* GestorDeArchivos::cargarDeportistas()
 	return listaDeportistas;
 }
 
+void GestorDeArchivos::guardarDeportistasYPagos(ListaEnlazada<Deportista>* listaDeportistas_)
+{
+	ofstream archivoDeportistas;
+	archivoDeportistas.open("../DeportistasConPagos.txt");
+	if (!archivoDeportistas.is_open())
+	{
+		throw runtime_error("No se pudo abrir el archivo Deportistas.txt");
+	}
+	else
+	{
+		Nodo<Deportista>* nodoActual = listaDeportistas_->getPrimero();
+		while (nodoActual != nullptr)
+		{
+			archivoDeportistas << nodoActual->getDato()->toStringParaGuardarConPagos() << '|';	// delimitador para separar los pagos
+			Nodo<Pago>* nodoActualPago = nodoActual->getDato()->getPagos()->getPrimero();
+			while (nodoActualPago != nullptr)
+			{
+				archivoDeportistas << nodoActualPago->getDato()->toStringParaGuardar() << '|';	// delimitador para separar los pagos
+				nodoActualPago = nodoActualPago->getSiguiente();
+			}
+			archivoDeportistas << '\n';	// delimitador para separar los deportistas
+			nodoActual = nodoActual->getSiguiente();
+		}
+		archivoDeportistas.close();
+	}
+}
+
 void GestorDeArchivos::guardarGrupo(Grupo* grupo_)
 {
 	ofstream archivoGrupos;

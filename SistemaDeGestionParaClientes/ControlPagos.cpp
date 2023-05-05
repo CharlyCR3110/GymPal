@@ -44,18 +44,34 @@ void ControlPagos::registrarPago(string cedula_, string mesCancelado_, double mo
 
 string ControlPagos::generarReportePagos(string cedula_, ListaEnlazada<Deportista>* listaDeportistas)
 {
-	Deportista* deportista;
+	Deportista* deportista = nullptr;
+
 	try
 	{
 		deportista = listaDeportistas->buscarPorCodigo(cedula_);
 	}
 	catch (exception& e)
 	{
-		throw DeportistaNoEncontradoException();
+		//throw DeportistaNoEncontradoException();
+		throw runtime_error("El deportista no esta registrado");
+	}
+
+	if (deportista == nullptr)
+	{
+		//throw DeportistaNoEncontradoException();
+		throw runtime_error("El deportista no esta registrado");
+	}
+
+	if (deportista->getPagos() == nullptr)
+	{
+		throw runtime_error("El deportista no tiene pagos registrados");
 	}
 
 	if (deportista->getPagos()->estaVacia())
-		throw PagosNoRegistradosException();
+	{
+		throw runtime_error("El deportista no tiene pagos registrados");
+		//throw PagosNoRegistradosException().what();	// me esta dando problemas
+	}
 
 	stringstream ss;
 	ss << "Reporte de pagos de " << deportista->getNombre() << endl;
@@ -78,11 +94,23 @@ string ControlPagos::pagarMeses(string cedula_, int cantidadMeses_, ListaEnlazad
 		throw DeportistaNoEncontradoException();
 	}
 
+	ListaEnlazada<Pago>* pagosDelDeportista = (deportista->getPagos());
+
 	string meses[12] = { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
 							 "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" };
 
+	
+	int ultimoMesPagado = 0;
+	if (pagosDelDeportista->estaVacia())
+	{
+		ultimoMesPagado = fechaActual->getMes() - 1;
+	}
+	else
+	{
+		ultimoMesPagado = deportista->getPagos()->getUltimo()->getDato()->getFecha()->getMes() - 1;
+	}
 
-	int ultimoMesPagado = deportista->getPagos()->getUltimo()->getDato()->getFecha()->getMes() - 1;
+
 
 	stringstream ss;
 	ss << "Monto a pagar: " << montoMensual * cantidadMeses_ << endl << endl;
@@ -94,8 +122,20 @@ string ControlPagos::pagarMeses(string cedula_, int cantidadMeses_, ListaEnlazad
 		string mes = meses[ultimoMesPagado];
 		double monto = montoMensual;
 
+		pagosDelDeportista->insertar(new Pago(fechaActual, mes, monto));
 		try {
-			registrarPago(cedula_, mes, monto, listaDeportistas, fechaActual);
+			cout << "-----------------------------------------------------------" << endl;
+			if (deportista->getPagos()->estaVacia())
+			{
+				cout << "la lista esta vacia" << endl;
+			}
+			else
+			{
+				cout << deportista->getPagos()->toString();
+			}
+			cout << "Se supone que se agrego el pago" << endl;
+			cout << "-----------------------------------------------------------" << endl;
+
 			ss << "-" << mes << " " << fechaActual->getAnio() << endl;
 		}
 		catch (exception& e)
@@ -112,6 +152,8 @@ string ControlPagos::pagarMeses(string cedula_, int cantidadMeses_, ListaEnlazad
 	}
 	ss << "El deportista " << deportista->getNombre() << " ha pagado " << cantidadMeses_ << " meses" << endl;
 	ss << "Debe de pagar haste el mes de: " << meses[ultimoMesPagado] << " " << fechaActual->getAnio() << endl;
-	delete fechaActual;
+
+	cout << "AL FINAL CON LOS PAGOS" << endl;
+	cout << deportista->getPagos()->toString();
 	return ss.str();
 }

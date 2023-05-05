@@ -286,18 +286,24 @@ const string Gimnasio::generarReportePagosCed(string cedula_) const
 	{
 		if (this->listaDeportistas->estaVacia())
 		{
-			throw exception("No hay deportistas registrados");
+			throw runtime_error("No hay deportistas registrados");
 		}
 
 		if (!this->listaDeportistas->existeItemConCodigo(cedula_))
 		{
-			throw exception("No se encontro el deportista");
+			throw runtime_error("No se encontro el deportista");
 		}
 	}
 	else
 	{
-		throw exception("No hay deportistas registrados");
+		throw runtime_error("No hay deportistas registrados");
 	}
+
+	if (listaDeportistas->buscarPorCodigo(cedula_)->getPagos() == nullptr)
+	{
+		throw runtime_error("El deportista no tiene pagos registrados");
+	}
+
 
 	try
 	{
