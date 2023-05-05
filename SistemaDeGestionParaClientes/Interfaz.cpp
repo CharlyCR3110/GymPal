@@ -1465,6 +1465,44 @@ string Interfaz::ingresarYValidarNombreDeportista()
 	return nombre;
 }
 
+string Interfaz::ingresarYValidarTelefonoDeportista()
+{
+	string telefono;
+	bool esTelefonoValido = false;
+
+	while (!esTelefonoValido)
+	{
+		cout << "Digite el telefono del deportista: ";
+		Utils::clearInputBuffer();
+		getline(cin, telefono);
+
+		if (telefono.empty())
+		{
+			cout << "Error: El telefono del deportista no puede estar vacio." << endl;
+			continue;
+		}
+
+		bool esCadenaValida = true;
+		for (char c : telefono)
+		{
+			if (!isdigit(c) && c != '-')
+			{
+				esCadenaValida = false;
+				break;
+			}
+		}
+
+		if (!esCadenaValida)
+		{
+			cout << "Error: El telefono del deportista solo puede contener numeros y guiones." << endl;
+			continue;
+		}
+
+		esTelefonoValido = true;
+	}
+	return telefono;
+}
+
 string Interfaz::ingresarYValidarNombre()
 {
 	string nombre;

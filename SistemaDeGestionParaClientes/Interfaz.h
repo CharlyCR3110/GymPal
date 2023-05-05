@@ -76,7 +76,7 @@ public:
 	//
 	// metodo para validar ingreso de datos de un deportista
 	static string ingresarYValidarNombreDeportista();
-	//static string ingresarYValidarTelefonoDeportista();
+	static string ingresarYValidarTelefonoDeportista();
 	//static Fecha* ingresarYValidarFechaNacimientoDeportista();
 	//static string ingresarYValidarSexoDeportista();
 	//static int ingresarYValidarHorasEntrenamientoDeportista();
