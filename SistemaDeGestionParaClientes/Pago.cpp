@@ -67,6 +67,13 @@ const string Pago::toString() const
 	return ss.str();
 }
 
+const string Pago::toStringParaGuardar() const
+{
+	stringstream ss;
+	ss << fecha->getDia() << ';' << fecha->getMes() << ';' << fecha->getAnio() << ';' << mesCancelado << ';' << monto;
+	return ss.str();
+}
+
 Pago& Pago::operator=(const Pago& pago_)
 {
 	if (this != &pago_)

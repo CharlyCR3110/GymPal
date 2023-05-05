@@ -21,6 +21,8 @@ public:
 	const double getMonto() const;
 	// metodos
 	const string toString() const;
+	// arhcivos
+	const string toStringParaGuardar() const;
 	// sobrecarga de operadores
 	Pago& operator=(const Pago& pago_);
 	friend ostream& operator<<(ostream& out, const Pago& pago_);
