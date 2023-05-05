@@ -125,7 +125,8 @@ ListaEnlazada<Deportista>* GestorDeArchivos::cargarDeportistasYPagos()
 		while (getline(archivoDeportistasYPagos, linea))
 		{
 			stringstream ss(linea);
-			string cedula, nombre, telefono, fechaNacimientoDia, fechaNacimientoMes, fechaNacimientoAnio, horasEntrenamiento, temperaturaPromedio, cantidadParticipacionesIronMan, cantidadTriatlonesGanados, sexo, estatura, masaMuscular, peso, porcentajeGrasaCorporal, fechaUltimaActualizacionDia, fechaUltimaActualizacionMes, fechaUltimaActualizacionAnio;
+			string cedula, nombre, telefono, fechaNacimientoDia, fechaNacimientoMes, fechaNacimientoAnio, horasEntrenamiento, temperaturaPromedio, cantidadParticipacionesIronMan, cantidadTriatlonesGanados, sexo, estatura, masaMuscular, peso, porcentajeGrasaCorporal, fechaUltimaActualizacionDia, fechaUltimaActualizacionMes, fechaUltimaActualizacionAnio, cantidadDePagos;
+			int valorCantidadDePagos;
 			getline(ss, cedula, ';');
 			getline(ss, nombre, ';');
 			getline(ss, telefono, ';');
@@ -143,18 +144,23 @@ ListaEnlazada<Deportista>* GestorDeArchivos::cargarDeportistasYPagos()
 			getline(ss, porcentajeGrasaCorporal, ';');
 			getline(ss, fechaUltimaActualizacionDia, ';');
 			getline(ss, fechaUltimaActualizacionMes, ';');
-			getline(ss, fechaUltimaActualizacionAnio, '|');
+			getline(ss, fechaUltimaActualizacionAnio, ';');
+			getline(ss, cantidadDePagos, '|');
 			Deportista* deportista = new Triatlonista(cedula, nombre, telefono, new Fecha(stoi(fechaNacimientoDia), stoi(fechaNacimientoMes), stoi(fechaNacimientoAnio)), stoi(horasEntrenamiento), stod(temperaturaPromedio), stoi(cantidadParticipacionesIronMan), stoi(cantidadTriatlonesGanados), sexo[0], stod(estatura), stod(masaMuscular), stod(peso), stod(porcentajeGrasaCorporal), new Fecha(stoi(fechaUltimaActualizacionDia), stoi(fechaUltimaActualizacionMes), stoi(fechaUltimaActualizacionAnio)));
-			string lineaPagos;
-			getline(ss, lineaPagos, '|');
-			stringstream ssPagos(lineaPagos);
-			string fechaPagoDia, fechaPagoMes, fechaPagoAnio,mesCancelado, monto;
-			while (getline(ssPagos, fechaPagoDia, ';'))
+
+			valorCantidadDePagos = stoi(cantidadDePagos);
+			// while para cargar los pagos, cada pago esta separado por un |, cuando se encuentre un '\n' es porque es otro deportista
+			for (int i = 0; i < valorCantidadDePagos; i++)
 			{
-				getline(ssPagos, fechaPagoMes, ';');
-				getline(ssPagos, fechaPagoAnio, ';');
-				getline(ssPagos, mesCancelado, ';');
-				getline(ssPagos, monto, '|');
+				string lineaPago;
+				getline(ss, lineaPago, '|');
+				stringstream ssPago(lineaPago);
+				string fechaPagoDia, fechaPagoMes, fechaPagoAnio, mesCancelado, monto;
+				getline(ssPago, fechaPagoDia, ';');
+				getline(ssPago, fechaPagoMes, ';');
+				getline(ssPago, fechaPagoAnio, ';');
+				getline(ssPago, mesCancelado, ';');
+				getline(ssPago, monto, '|');
 				Pago* pago = new Pago(new Fecha(stoi(fechaPagoDia), stoi(fechaPagoMes), stoi(fechaPagoAnio)), mesCancelado, stod(monto));
 				deportista->getPagos()->insertar(pago);
 			}
