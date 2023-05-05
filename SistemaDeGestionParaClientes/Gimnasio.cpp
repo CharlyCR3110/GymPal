@@ -288,22 +288,26 @@ const string Gimnasio::generarReportePagosCed(string cedula_) const
 	{
 		if (this->listaDeportistas->estaVacia())
 		{
-			throw runtime_error("No hay deportistas registrados");
+			throw ListaVaciaException();	// si da problemas comentar esta linea y descomentar la de abajo
+			//throw runtime_error("No hay deportistas registrados");
 		}
 
 		if (!this->listaDeportistas->existeItemConCodigo(cedula_))
 		{
-			throw runtime_error("No se encontro el deportista");
+			throw ElementoNoEncontradoException<Deportista>();	// si da problemas comentar esta linea y descomentar la de abajo
+			//throw runtime_error("No se encontro el deportista");
 		}
 	}
 	else
 	{
-		throw runtime_error("No hay deportistas registrados");
+		throw ListaVaciaException();	// si da problemas comentar esta linea y descomentar la de abajo
+		//throw runtime_error("No hay deportistas registrados");
 	}
 
 	if (listaDeportistas->buscarPorCodigo(cedula_)->getPagos() == nullptr)
 	{
-		throw runtime_error("El deportista no tiene pagos registrados");
+		throw ElementoNoEncontradoException<Pago>();	// si da problemas comentar esta linea y descomentar la de abajo
+		//throw runtime_error("El deportista no tiene pagos registrados");
 	}
 
 

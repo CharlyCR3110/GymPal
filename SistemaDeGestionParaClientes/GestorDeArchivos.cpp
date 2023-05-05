@@ -182,6 +182,7 @@ ListaEnlazada<Curso>* GestorDeArchivos::cargarCursosYGrupos()
 				getline(ssGrupo, minutoDeFin, ';');
 				getline(ssGrupo, segundoDeFin, '\n');
 
+				// estos try's no son tan necesarios, tenia un error en el codigo y me ayudaron a encontrarlo // ya son parte de la historia
 				try
 				{
 					valorDiaDeInicio = stoi(diaDeInicio);
@@ -280,8 +281,6 @@ ListaEnlazada<Curso>* GestorDeArchivos::cargarCursosYGrupos()
 				// Agregar el grupo a la lista de grupos
 				cursoActual->agregarGrupo(grupoActual);
 			}
-			//// Agregar la lista de grupos al curso
-			//cursoActual->setListaGrupos(listaGrupos);
 			// Agregar el curso a la lista de cursos
 			listaCursos->insertar(cursoActual);
 		}
