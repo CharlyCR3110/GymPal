@@ -282,6 +282,23 @@ const string Gimnasio::generarReporteDeportistaCed(string cedula_) const
 const string Gimnasio::generarReportePagosCed(string cedula_) const
 {
 	stringstream ss;
+	if (this->listaDeportistas != nullptr)
+	{
+		if (this->listaDeportistas->estaVacia())
+		{
+			throw exception("No hay deportistas registrados");
+		}
+
+		if (!this->listaDeportistas->existeItemConCodigo(cedula_))
+		{
+			throw exception("No se encontro el deportista");
+		}
+	}
+	else
+	{
+		throw exception("No hay deportistas registrados");
+	}
+
 	try
 	{
 		ss << this->controlPagos->generarReportePagos(cedula_, this->listaDeportistas);
@@ -489,6 +506,18 @@ void Gimnasio::guardarCursosYGrupos()
 	try
 	{
 		gestorDeArchivos.guardarCursosYGrupos(this->listaCursos);
+	}
+	catch (exception& e)
+	{
+		throw exception(e.what());
+	}
+}
+
+void Gimnasio::guardarEnArchivoDeportistasYSusPagos()
+{
+	try
+	{
+		gestorDeArchivos.guardarDeportistasYPagos(this->listaDeportistas);
 	}
 	catch (exception& e)
 	{

@@ -69,5 +69,6 @@ public:
 	//archivos
 	void guardarEnArchivoDeportistas();
 	void guardarCursosYGrupos();
+	void guardarEnArchivoDeportistasYSusPagos();
 };
 
