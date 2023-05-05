@@ -85,9 +85,9 @@ ListaEnlazada<Deportista>* GestorDeArchivos::cargarDeportistas()
 
 void GestorDeArchivos::guardarDeportistasYPagos(ListaEnlazada<Deportista>* listaDeportistas_)
 {
-	ofstream archivoDeportistas;
-	archivoDeportistas.open("../DeportistasConPagos.txt");
-	if (!archivoDeportistas.is_open())
+	ofstream archivoDeportistasYPagos;
+	archivoDeportistasYPagos.open("../DeportistasConPagos.txt");
+	if (!archivoDeportistasYPagos.is_open())
 	{
 		throw runtime_error("No se pudo abrir el archivo Deportistas.txt");
 	}
@@ -96,19 +96,77 @@ void GestorDeArchivos::guardarDeportistasYPagos(ListaEnlazada<Deportista>* lista
 		Nodo<Deportista>* nodoActual = listaDeportistas_->getPrimero();
 		while (nodoActual != nullptr)
 		{
-			archivoDeportistas << nodoActual->getDato()->toStringParaGuardarConPagos() << '|';	// delimitador para separar los pagos
+			archivoDeportistasYPagos << nodoActual->getDato()->toStringParaGuardarConPagos() << '|';	// delimitador para separar los pagos
 			Nodo<Pago>* nodoActualPago = nodoActual->getDato()->getPagos()->getPrimero();
 			while (nodoActualPago != nullptr)
 			{
-				archivoDeportistas << nodoActualPago->getDato()->toStringParaGuardar() << '|';	// delimitador para separar los pagos
+				archivoDeportistasYPagos << nodoActualPago->getDato()->toStringParaGuardar() << '|';	// delimitador para separar los pagos
 				nodoActualPago = nodoActualPago->getSiguiente();
 			}
-			archivoDeportistas << '\n';	// delimitador para separar los deportistas
+			archivoDeportistasYPagos << '\n';	// delimitador para separar los deportistas
 			nodoActual = nodoActual->getSiguiente();
 		}
-		archivoDeportistas.close();
+		archivoDeportistasYPagos.close();
 	}
 }
+
+ListaEnlazada<Deportista>* GestorDeArchivos::cargarDeportistasYPagos()
+{
+	ListaEnlazada<Deportista>* listaDeportistas = new ListaEnlazada<Deportista>();
+	ifstream archivoDeportistasYPagos;
+	archivoDeportistasYPagos.open("../DeportistasConPagos.txt");
+	if (!archivoDeportistasYPagos.is_open())
+	{
+		throw runtime_error("No se pudo abrir el archivo DeportistasConPagos.txt");
+	}
+	else
+	{
+		string linea;
+		while (getline(archivoDeportistasYPagos, linea))
+		{
+			stringstream ss(linea);
+			string cedula, nombre, telefono, fechaNacimientoDia, fechaNacimientoMes, fechaNacimientoAnio, horasEntrenamiento, temperaturaPromedio, cantidadParticipacionesIronMan, cantidadTriatlonesGanados, sexo, estatura, masaMuscular, peso, porcentajeGrasaCorporal, fechaUltimaActualizacionDia, fechaUltimaActualizacionMes, fechaUltimaActualizacionAnio;
+			getline(ss, cedula, ';');
+			getline(ss, nombre, ';');
+			getline(ss, telefono, ';');
+			getline(ss, fechaNacimientoDia, ';');
+			getline(ss, fechaNacimientoMes, ';');
+			getline(ss, fechaNacimientoAnio, ';');
+			getline(ss, horasEntrenamiento, ';');
+			getline(ss, temperaturaPromedio, ';');
+			getline(ss, cantidadParticipacionesIronMan, ';');
+			getline(ss, cantidadTriatlonesGanados, ';');
+			getline(ss, sexo, ';');
+			getline(ss, estatura, ';');
+			getline(ss, masaMuscular, ';');
+			getline(ss, peso, ';');
+			getline(ss, porcentajeGrasaCorporal, ';');
+			getline(ss, fechaUltimaActualizacionDia, ';');
+			getline(ss, fechaUltimaActualizacionMes, ';');
+			getline(ss, fechaUltimaActualizacionAnio, '|');
+			Deportista* deportista = new Triatlonista(cedula, nombre, telefono, new Fecha(stoi(fechaNacimientoDia), stoi(fechaNacimientoMes), stoi(fechaNacimientoAnio)), stoi(horasEntrenamiento), stod(temperaturaPromedio), stoi(cantidadParticipacionesIronMan), stoi(cantidadTriatlonesGanados), sexo[0], stod(estatura), stod(masaMuscular), stod(peso), stod(porcentajeGrasaCorporal), new Fecha(stoi(fechaUltimaActualizacionDia), stoi(fechaUltimaActualizacionMes), stoi(fechaUltimaActualizacionAnio)));
+			string lineaPagos;
+			getline(ss, lineaPagos, '|');
+			stringstream ssPagos(lineaPagos);
+			string fechaPagoDia, fechaPagoMes, fechaPagoAnio,mesCancelado, monto;
+			while (getline(ssPagos, fechaPagoDia, ';'))
+			{
+				getline(ssPagos, fechaPagoMes, ';');
+				getline(ssPagos, fechaPagoAnio, ';');
+				getline(ssPagos, mesCancelado, ';');
+				getline(ssPagos, monto, '|');
+				Pago* pago = new Pago(new Fecha(stoi(fechaPagoDia), stoi(fechaPagoMes), stoi(fechaPagoAnio)), mesCancelado, stod(monto));
+				deportista->getPagos()->insertar(pago);
+			}
+			listaDeportistas->insertar(deportista);
+		}
+	}
+	archivoDeportistasYPagos.close();
+	return listaDeportistas;
+}
+
+
+
 
 void GestorDeArchivos::guardarGrupo(Grupo* grupo_)
 {
@@ -225,7 +283,7 @@ ListaEnlazada<Curso>* GestorDeArchivos::cargarCursos()
 			// Crear una lista de Grupos para el curso actual
 			ListaEnlazada<Grupo>* listaGrupos = new ListaEnlazada<Grupo>();
 
-			// Leer cada línea adicional del archivo y crear un objeto Grupo para cada conjunto de datos
+			// Leer cada lï¿½nea adicional del archivo y crear un objeto Grupo para cada conjunto de datos
 			while (getline(archivoCursos, linea))
 			{
 				string nombreInstructor, apellidoInstructor, idInstructor, cupoMaximo, diaDeInicio, mesDeInicio, anioDeInicio, semanasDeDuracion, numeroGrupo, diaDeLaSemana, horaDeInicio, minutoDeInicio, segundoDeInicio, horaDeFin, minutoDeFin, segundoDeFin;
@@ -334,7 +392,6 @@ ListaEnlazada<Curso>* GestorDeArchivos::cargarCursosYGrupos()
 			getline(ss, cantidadMaximaDeGrupos, ';');
 			getline(ss, cantidadGruposActuales, '|');
 			Curso* cursoActual = new Curso(codigo, nombreDelCurso, nivel, descripcion, stoi(cantidadMaximaDeGrupos));
-			cout << cursoActual->toString() << "actuales" << cantidadGruposActuales <<endl;
 			ListaEnlazada<Grupo>* listaGrupos = new ListaEnlazada<Grupo>();
 			for (int i = 0; i < stoi(cantidadGruposActuales); i++)
 			{
