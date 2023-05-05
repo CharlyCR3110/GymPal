@@ -432,7 +432,6 @@ ListaEnlazada<Curso>* GestorDeArchivos::cargarCursosYGrupos()
 				}
 				catch (const std::exception& e)
 				{
-					cout << "Nombre del instructor: " << nombreInstructor << ", ID: " << idInstructor << " cupo" << cupoMaximo << endl;
 					throw runtime_error("El dia de inicio del grupo " + numeroGrupo + " del curso " + codigo + " no es un numero: " + diaDeInicio);
 				}
 
@@ -533,4 +532,17 @@ ListaEnlazada<Curso>* GestorDeArchivos::cargarCursosYGrupos()
 	}
 	archivoCursos.close();
 	return listaCursos;
+}
+
+// recibe el texto que va a tener el archivo
+const void GestorDeArchivos::guardarCursoGrupoYCedulaDeLosDeportistasAsociados(string texto) const
+{
+	ofstream archivoCursos;
+	archivoCursos.open("../ArchivoParaMatricular.txt");
+	if (archivoCursos.fail())
+	{
+		throw runtime_error("No se pudo abrir el archivo para matricular");
+	}
+	archivoCursos << texto;
+	archivoCursos.close();
 }
