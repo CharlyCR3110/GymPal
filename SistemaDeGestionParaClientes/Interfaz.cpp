@@ -923,7 +923,7 @@ void Interfaz::menuControlPagosIngresoNuevoPago()
 	int cantidadDeCuotas;
 	cout << endl << endl << "<5. Control Pagos> <1. Registro de nuevo pago>" << endl << endl;
 	cout << "-----------------------------------------------------------" << endl;
-	cout << "Fecha Actual: " << gimnasio->getFechaActual()->toString();
+	cout << "Fecha Actual: " << gimnasio->getFechaActual()->toString() << endl;
 	cout << "Digite la cedula del deportista: ";
 	cin >> idDeportista;
 	cout << "-----------------------------------------------------------" << endl;
@@ -964,9 +964,10 @@ void Interfaz::menuControlPagosMostrarPagosDeportista()
 	cout << "Digite la cedula del deportista: ";
 	cin >> cedula;
 	cout << "-----------------------------------------------------------" << endl;
+
 	try
 	{
-		gimnasio->generarReportePagosCed(cedula);
+		cout << gimnasio->generarReportePagosCed(cedula);
 	}
 	catch (exception& e)
 	{
@@ -1011,6 +1012,15 @@ void Interfaz::salir()
 	{
 		cerr << e.what() << endl;
 	}
+	try
+	{
+		gimnasio->guardarEnArchivoDeportistasYSusPagos();
+		cout << "Archivo deportistas y sus pagos guardado exitosamente" << endl;
+	}
+	catch (exception& e)
+	{
+		cerr << e.what() << endl;
+	}
 	cout << "Gracias por usar el sistema, presione cualquier tecla para salir..." << endl;
 	Utils::pause();
 }
@@ -1019,8 +1029,9 @@ void Interfaz::mensajeDeBienvenida()
 {
 	try
 	{
-		gimnasio->setListaDeportistas(GestorDeArchivos().cargarDeportistas());
-		cout << "Archivo deportistas cargado exitosamente" << endl;
+		//gimnasio->setListaDeportistas(GestorDeArchivos().cargarDeportistas());
+		gimnasio->setListaDeportistas(GestorDeArchivos().cargarDeportistasYPagos());
+		cout << "Archivo deportistas y pagos cargado exitosamente" << endl;
 	}
 	catch (exception& e)
 	{

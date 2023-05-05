@@ -58,6 +58,8 @@ public:
     // archivos
         // archivos
     virtual const string toStringParaGuardar() const override;
+    virtual const string toStringParaGuardarConPagos() const override;
+
     // Sobrecarga de operadores
     friend ostream& operator<<(ostream& out, const Triatlonista& triatlonista_);
 };

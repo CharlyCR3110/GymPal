@@ -63,7 +63,21 @@ const double Pago::getMonto() const
 const string Pago::toString() const
 {
 	stringstream ss;
-	ss << fecha->toString() << "\t" << mesCancelado << "\t" << monto;
+	if (mesCancelado.length() > 8)
+	{
+		ss << fecha->toString() << "\t" << mesCancelado << "\t" << monto;
+	}
+	else 
+	{
+		ss << fecha->toString() << "\t" << mesCancelado << "\t\t" << monto;
+	}
+	return ss.str();
+}
+
+const string Pago::toStringParaGuardar() const
+{
+	stringstream ss;
+	ss << fecha->getDia() << ';' << fecha->getMes() << ';' << fecha->getAnio() << ';' << mesCancelado << ';' << monto;
 	return ss.str();
 }
 

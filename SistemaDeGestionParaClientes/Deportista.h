@@ -16,6 +16,7 @@ protected:
 	char estado; // Activo = 'A', Inactivo = 'I', Con Cuentas Pendientes = 'P'
 	// agregar lista de pagos
 	ListaEnlazada<Pago>* listaPagos;
+	int cantidadDePagos;
 	// agregar lista de cursos??
 	ListaEnlazada<Curso>* listaCursos;
 	int cantidadDeCursosMatriculados;
@@ -30,6 +31,7 @@ public:
 	virtual void setFechaNacimiento(Fecha* fechaNacimiento_);
 	virtual void setEstado(char estado);
 	virtual void setcantidadDeCursosMatriculados(int cantidadDeCursosMatriculados_);
+	virtual void setCantidadDePagos(int cantidadDePagos_);
 	// pa'l estado y no de wassap
 	virtual void actualizarEstado(char estado_);
 	// setters que se van pa' abajo
@@ -54,6 +56,7 @@ public:
 	virtual Fecha* getFechaNacimiento();
 	virtual const char getEstado() const;
 	ListaEnlazada<Pago>* getPagos();	// devuelve la lista de pagos
+	virtual const int getCantidadDePagos() const;
 	virtual const int getcantidadDeCursosMatriculados() const;
 	virtual ListaEnlazada<Curso>* getListaCursos();	// devuelve la lista de cursos
 	//metodo para poder utilizar el template de buscar por codigo
@@ -66,6 +69,7 @@ public:
 	virtual const string detalleDeportista() const = 0;	//MVP - metodo virtual puro
 	// archivos
 	virtual const string toStringParaGuardar() const = 0;	//MVP - metodo virtual puro
+	virtual const string toStringParaGuardarConPagos() const = 0;	//MVP - metodo virtual puro
 	//sobrecarga de operadores
 	Deportista& operator=(const Deportista& deportista_);	// operador de asignacion
 	bool operator != (const Deportista& deportista_) const; // operador de desigualdad
