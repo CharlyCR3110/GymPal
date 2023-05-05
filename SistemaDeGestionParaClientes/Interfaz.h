@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 // luego incluyo las clases necesarias
 #include "Gimnasio.h"
 #include "Utils.h"
@@ -6,8 +6,6 @@ using namespace std;
 class Interfaz
 {
 public:
-	static void prueba();
-
 	// Gimnasio
 	static Gimnasio* gimnasio;
 
@@ -76,7 +74,17 @@ public:
 	static void modificarCantidadParticipacionesIronManDeportista(Deportista* deportista);
 	static void modificarCantidadTriatlonesGanadosDeportista(Deportista* deportista);
 	//
-
+	//static string ingresarYValidarNombreDeportista();
+	//static string ingresarYValidarTelefonoDeportista();
+	//static Fecha* ingresarYValidarFechaNacimientoDeportista();
+	//static string ingresarYValidarSexoDeportista();
+	//static int ingresarYValidarHorasEntrenamientoDeportista();
+	//static int ingresarYValidarCantidadParticipacionesIronManDeportista();
+	//static int ingresarYValidarCantidadTriatlonesGanadosDeportista();
+	//static double ingresarYValidarEstaturaDeportista();
+	//static double ingresarYValidarPesoDeportista();
+	//static double ingresarYValidarPorcentajeGrasaCorporalDeportista();
+	//static double ingresarYValidarPorcentajeMasaMuscularDeportista();
 	// metodos para validar ingreso de datos de un curso
 	static string ingresarYValidarNombre();
 	static string ingresarYValidarDescripcion();
@@ -112,4 +120,6 @@ public:
 	static void modificarHoraEntradaGrupo(Grupo* grupo);
 	static void modificarHoraSalidaGrupo(Grupo* grupo);
 
+	//
+	static void test();
 };

@@ -42,6 +42,10 @@ void Controlador::controladorPrincipal(int opcion)
 		// salir
 		Interfaz::salir();
 		break;
+	case 1000:
+		// test
+		Interfaz::test();
+		break;
 	default:
 		Interfaz::opcionInvalida();
 		break;

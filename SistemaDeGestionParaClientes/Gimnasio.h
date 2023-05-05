@@ -67,8 +67,11 @@ public:
 	bool existeCursoConCodigo(string codigo_);
 	bool existeDeportistaConCedula(string cedula_);
 	//archivos
-	void guardarEnArchivoDeportistas();
 	void guardarCursosYGrupos();
 	void guardarEnArchivoDeportistasYSusPagos();
+	const void guardarParaMatricular() const;
+	const string toStringParaGuardarCursoGrupoYCedulaDeLosDeportistasAsociados() const;
+	// de prueba();
+	void prueba();
 };
 

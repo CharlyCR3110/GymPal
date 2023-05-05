@@ -3,12 +3,6 @@
 using namespace std;
 Gimnasio* Interfaz::gimnasio = new Gimnasio();
 
-void Interfaz::prueba()
-{
-	cout << gimnasio->generarReporteDeportistas();
-	cout << gimnasio->getFechaActual()->toString();
-}
-
 int Interfaz::menuPrincipal()
 {
 	int opcion = 0;
@@ -996,13 +990,14 @@ void Interfaz::salir()
 {
 	try
 	{
-		gimnasio->guardarEnArchivoDeportistas();
-		cout << "Archivo deportistas guardado exitosamente" << endl;
+		gimnasio->guardarParaMatricular();
+		cout << "Archivo para matricular guardado exitosamente" << endl;
 	}
 	catch (exception& e)
 	{
 		cerr << e.what() << endl;
 	}
+
 	try
 	{
 		gimnasio->guardarCursosYGrupos();
@@ -1012,6 +1007,7 @@ void Interfaz::salir()
 	{
 		cerr << e.what() << endl;
 	}
+
 	try
 	{
 		gimnasio->guardarEnArchivoDeportistasYSusPagos();
@@ -1021,6 +1017,7 @@ void Interfaz::salir()
 	{
 		cerr << e.what() << endl;
 	}
+
 	cout << "Gracias por usar el sistema, presione cualquier tecla para salir..." << endl;
 	Utils::pause();
 }
@@ -1041,6 +1038,16 @@ void Interfaz::mensajeDeBienvenida()
 	{
 		gimnasio->setListaCursos(GestorDeArchivos().cargarCursosYGrupos());
 		cout << "Archivo cursos y grupos cargado exitosamente" << endl;
+	}
+	catch (exception& e)
+	{
+		cerr << e.what() << endl;
+	}
+
+	try
+	{
+		GestorDeArchivos().cargarCursoGrupoYCedulaDeLosDeportistasAsociados(gimnasio);
+		cout << "Archivo curso, grupo y cedula de los deportistas asociados cargado exitosamente" << endl;
 	}
 	catch (exception& e)
 	{
@@ -2130,4 +2137,9 @@ void Interfaz::modificarHoraSalidaGrupo(Grupo* grupo)
 		esHoraValida = true;
 	}
 	grupo->setHoraDeFin(horaSalida);
+}
+
+void Interfaz::test()
+{
+	gimnasio->prueba();
 }
