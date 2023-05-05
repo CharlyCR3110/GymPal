@@ -56,12 +56,12 @@ void Gimnasio::setControlPagos(ControlPagos* controlPagos_)
 
 void Gimnasio::setListaDeportistas(ListaEnlazada<Deportista>* listaDeportistas_)
 {
-	this->listaDeportistas = listaDeportistas_;
+	this->listaDeportistas = new ListaEnlazada<Deportista>(*listaDeportistas_);
 }
 
 void Gimnasio::setListaCursos(ListaEnlazada<Curso>* listaCursos_)
 {
-	this->listaCursos = listaCursos_;
+	this->listaCursos = new ListaEnlazada<Curso>(*listaCursos_);
 }
 
 const string Gimnasio::getNombreDelGimnasio() const
@@ -225,6 +225,7 @@ void Gimnasio::agregarGrupo(string codigoCurso_, Grupo* grupo_)
 	try
 	{
 		curso = listaCursos->buscarPorCodigo(codigoCurso_);
+		cout << "Se esta agregando el grupo al curso" << endl;
 	}
 	catch (exception& e)
 	{
@@ -234,6 +235,7 @@ void Gimnasio::agregarGrupo(string codigoCurso_, Grupo* grupo_)
 	if (curso != nullptr)
 	{
 		curso->agregarGrupo(grupo_);
+		cout << "Se agrego el grupo al curso" << endl;
 	}
 	else
 	{
@@ -495,18 +497,6 @@ bool Gimnasio::existeDeportistaConCedula(string cedula_)
 	return listaDeportistas->existeItemConCodigo(cedula_);
 }
 
-void Gimnasio::guardarEnArchivoDeportistas()
-{
-	try
-	{
-		gestorDeArchivos.guardarDeportistas(this->listaDeportistas);
-	}
-	catch (exception& e)
-	{
-		throw exception(e.what());
-	}
-}
-
 void Gimnasio::guardarCursosYGrupos()
 {
 	try
@@ -529,4 +519,50 @@ void Gimnasio::guardarEnArchivoDeportistasYSusPagos()
 	{
 		throw exception(e.what());
 	}
+}
+
+const void Gimnasio::guardarParaMatricular() const
+{
+	string texto = toStringParaGuardarCursoGrupoYCedulaDeLosDeportistasAsociados();
+	cout << toStringParaGuardarCursoGrupoYCedulaDeLosDeportistasAsociados();
+	gestorDeArchivos.guardarCursoGrupoYCedulaDeLosDeportistasAsociados(texto);
+}
+
+const string Gimnasio::toStringParaGuardarCursoGrupoYCedulaDeLosDeportistasAsociados() const
+{
+	stringstream ss;
+	Curso* curso = nullptr;
+	Grupo* grupo = nullptr;
+	Nodo<Curso>* nodoCursoActual = this->listaCursos->getPrimero();
+	while (nodoCursoActual != nullptr)
+	{
+		curso = nodoCursoActual->getDato();
+		if (curso != nullptr)
+		{
+			ss << curso->getCodigo() << ";" << curso->getCantidadDeGruposActuales() << ';';
+			Nodo<Grupo>* nodoGrupoActual = curso->getListaGrupos()->getPrimero();
+			while (nodoGrupoActual != nullptr)
+			{
+				grupo = nodoGrupoActual->getDato();
+				ss << grupo->getNumeroGrupo() << ";" << grupo->getCantidadDeInscritos() << "-";
+				Nodo<Deportista>* deportistaActual = grupo->getDeportistasInscritos()->getPrimero();
+				while (deportistaActual != nullptr)
+				{
+					
+					ss << deportistaActual->getDato()->getCedula() << ";";
+					deportistaActual = deportistaActual->getSiguiente();
+				}
+				
+				nodoGrupoActual = nodoGrupoActual->getSiguiente();
+			}
+		}
+		ss << '\n';
+		nodoCursoActual = nodoCursoActual->getSiguiente();
+	}
+	return ss.str();
+}
+
+void Gimnasio::prueba()
+{
+	cout << toStringParaGuardarCursoGrupoYCedulaDeLosDeportistasAsociados();
 }
