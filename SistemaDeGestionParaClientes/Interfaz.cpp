@@ -923,7 +923,7 @@ void Interfaz::menuControlPagosIngresoNuevoPago()
 	int cantidadDeCuotas;
 	cout << endl << endl << "<5. Control Pagos> <1. Registro de nuevo pago>" << endl << endl;
 	cout << "-----------------------------------------------------------" << endl;
-	cout << "Fecha Actual: " << gimnasio->getFechaActual()->toString();
+	cout << "Fecha Actual: " << gimnasio->getFechaActual()->toString() << endl;
 	cout << "Digite la cedula del deportista: ";
 	cin >> idDeportista;
 	cout << "-----------------------------------------------------------" << endl;
@@ -964,9 +964,10 @@ void Interfaz::menuControlPagosMostrarPagosDeportista()
 	cout << "Digite la cedula del deportista: ";
 	cin >> cedula;
 	cout << "-----------------------------------------------------------" << endl;
+
 	try
 	{
-		gimnasio->generarReportePagosCed(cedula);
+		cout << gimnasio->generarReportePagosCed(cedula);
 	}
 	catch (exception& e)
 	{
@@ -1006,6 +1007,15 @@ void Interfaz::salir()
 	{
 		gimnasio->guardarCursosYGrupos();
 		cout << "Archivo cursos y grupos guardado exitosamente" << endl;
+	}
+	catch (exception& e)
+	{
+		cerr << e.what() << endl;
+	}
+	try
+	{
+		gimnasio->guardarEnArchivoDeportistasYSusPagos();
+		cout << "Archivo deportistas y sus pagos guardado exitosamente" << endl;
 	}
 	catch (exception& e)
 	{
