@@ -53,10 +53,6 @@ public:
 
 	//menus auxiliares
 	static Fecha* menuFecha();
-	// 
-
-	//to-do metodo para validar ingreso de datos de un deportista
-
 
 	// modificar datos
 	static void modificarNombreDeportista(Deportista* deportista);
@@ -75,17 +71,18 @@ public:
 	static void modificarCantidadTriatlonesGanadosDeportista(Deportista* deportista);
 	//
 	// metodo para validar ingreso de datos de un deportista
+	static string ingresarYValidarCedulaDeportista();
 	static string ingresarYValidarNombreDeportista();
 	static string ingresarYValidarTelefonoDeportista();
-	//static Fecha* ingresarYValidarFechaNacimientoDeportista();
-	//static string ingresarYValidarSexoDeportista();
-	//static int ingresarYValidarHorasEntrenamientoDeportista();
-	//static int ingresarYValidarCantidadParticipacionesIronManDeportista();
-	//static int ingresarYValidarCantidadTriatlonesGanadosDeportista();
-	//static double ingresarYValidarEstaturaDeportista();
-	//static double ingresarYValidarPesoDeportista();
-	//static double ingresarYValidarPorcentajeGrasaCorporalDeportista();
-	//static double ingresarYValidarPorcentajeMasaMuscularDeportista();
+	static char ingresarYValidarSexoDeportista();
+	static int ingresarYValidarHorasEntrenamientoDeportista();
+	static int ingresarYValidarCantidadParticipacionesIronManDeportista();
+	static int ingresarYValidarCantidadTriatlonesGanadosDeportista(int cantidadParticipados);
+	static int ingresarYValidarTemperaturaPromedio();
+	static double ingresarYValidarEstaturaDeportista();
+	static double ingresarYValidarPesoDeportista();
+	static double ingresarYValidarPorcentajeGrasaCorporalDeportista();
+	static double ingresarYValidarPorcentajeMasaMuscularDeportista();
 	// metodos para validar ingreso de datos de un curso
 	static string ingresarYValidarNombre();
 	static string ingresarYValidarDescripcion();
