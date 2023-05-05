@@ -3,12 +3,6 @@
 using namespace std;
 Gimnasio* Interfaz::gimnasio = new Gimnasio();
 
-void Interfaz::prueba()
-{
-	cout << gimnasio->generarReporteDeportistas();
-	cout << gimnasio->getFechaActual()->toString();
-}
-
 int Interfaz::menuPrincipal()
 {
 	int opcion = 0;
