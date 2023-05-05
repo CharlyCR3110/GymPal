@@ -1029,8 +1029,9 @@ void Interfaz::mensajeDeBienvenida()
 {
 	try
 	{
-		gimnasio->setListaDeportistas(GestorDeArchivos().cargarDeportistas());
-		cout << "Archivo deportistas cargado exitosamente" << endl;
+		//gimnasio->setListaDeportistas(GestorDeArchivos().cargarDeportistas());
+		gimnasio->setListaDeportistas(GestorDeArchivos().cargarDeportistasYPagos());
+		cout << "Archivo deportistas y pagos cargado exitosamente" << endl;
 	}
 	catch (exception& e)
 	{
