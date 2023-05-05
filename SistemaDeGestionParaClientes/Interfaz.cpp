@@ -69,6 +69,69 @@ int Interfaz::menuControlDeportistas()
 	return opcion;
 }
 
+//void Interfaz::menuControlDeportistasIngresoNuevoDeportista()
+//{
+//	string cedula, nombre, telefono;
+//	Fecha* fechaNacimiento;
+//	char sexo;
+//	int horasEntrenamiento, cantidadParticipacionesIronMan, cantidadTriatlonesGanados;
+//	double temperaturaPromedio, estatura, masaMuscular, peso, porcentajeGrasaCorporal;
+//	cout << endl << endl << "\t<2. Control Deportistas> <1. Ingreso nuevo deportista>" << endl << endl;
+//	cout << "-----------------------------------------------------------" << endl;
+//	cout << "Datos generales:" << endl;
+//	cout << "\tDigite la cedula del deportista: ";
+//	cin >> cedula;
+//	cout << "----" << endl;
+//	cout << "\tDigite el nombre del deportista: ";
+//	cin >> nombre;
+//	cout << "----" << endl;
+//	cout << "\tDigite el telefono del deportista: ";
+//	cin >> telefono;
+//	cout << "----" << endl;
+//	cout << "\tDigite la fecha de nacimiento del deportista: " << endl;
+//	fechaNacimiento = Interfaz::menuFecha();
+//	cout << "----" << endl;
+//	cout << "\tDigite el sexo del deportista (f/m): ";
+//	cin >> sexo;
+//	cout << "----" << endl;
+//	cout << "\tDigite la cantidad de horas de entrenamiento del deportista: ";
+//	cin >> horasEntrenamiento;
+//	cout << "----" << endl;
+//	cout << "\tDigite la temperatura promedio del deportista: ";
+//	cin >> temperaturaPromedio;
+//	cout << "----" << endl;
+//	cout << "\tDigite la cantidad de participaciones en IronMan del deportista: ";
+//	cin >> cantidadParticipacionesIronMan;
+//	cout << "----" << endl;
+//	cout << "\tDigite la cantidad de triatlones ganados del deportista: ";
+//	cin >> cantidadTriatlonesGanados;
+//	cout << "----" << endl;
+//	cout << endl << "Datos biom�tricos b�sicos" << endl;
+//	cout << "\tDigite la estatura del deportista: ";
+//	cin >> estatura;
+//	cout << "----" << endl;
+//	cout << "\tDigite el peso del deportista: ";
+//	cin >> peso;
+//	cout << "----" << endl;
+//	cout << "\tDigite el porcentaje de grasa corporal del deportista: ";
+//	cin >> porcentajeGrasaCorporal;
+//	cout << "----" << endl;
+//	cout << "\tDigite la masa muscular del deportista: ";
+//	cin >> masaMuscular;
+//	cout << "----" << endl;
+//
+//	try
+//	{
+//		gimnasio->registrarDeportista(cedula, nombre, telefono, fechaNacimiento, horasEntrenamiento, temperaturaPromedio, cantidadParticipacionesIronMan, cantidadTriatlonesGanados, sexo, estatura, masaMuscular, peso, porcentajeGrasaCorporal);
+//		cout << "Deportista registrado con exito" << endl;
+//	}
+//	catch (exception& e)
+//	{
+//		cout << e.what() << endl;
+//	}
+//	cout << "-----------------------------------------------------------" << endl;
+//}
+
 void Interfaz::menuControlDeportistasIngresoNuevoDeportista()
 {
 	string cedula, nombre, telefono;
@@ -78,46 +141,34 @@ void Interfaz::menuControlDeportistasIngresoNuevoDeportista()
 	double temperaturaPromedio, estatura, masaMuscular, peso, porcentajeGrasaCorporal;
 	cout << endl << endl << "\t<2. Control Deportistas> <1. Ingreso nuevo deportista>" << endl << endl;
 	cout << "-----------------------------------------------------------" << endl;
-	cout << "Datos generales:" << endl;
-	cout << "\tDigite la cedula del deportista: ";
-	cin >> cedula;
+	cout << "\tDatos generales:" << endl;
+	cedula = Interfaz::ingresarYValidarCedulaDeportista();
 	cout << "----" << endl;
-	cout << "\tDigite el nombre del deportista: ";
-	cin >> nombre;
+	nombre = Interfaz::ingresarYValidarNombreDeportista();
 	cout << "----" << endl;
-	cout << "\tDigite el telefono del deportista: ";
-	cin >> telefono;
+	telefono = Interfaz::ingresarYValidarTelefonoDeportista();
 	cout << "----" << endl;
 	cout << "\tDigite la fecha de nacimiento del deportista: " << endl;
 	fechaNacimiento = Interfaz::menuFecha();
 	cout << "----" << endl;
-	cout << "\tDigite el sexo del deportista (f/m): ";
-	cin >> sexo;
+	sexo = Interfaz::ingresarYValidarSexoDeportista();
 	cout << "----" << endl;
-	cout << "\tDigite la cantidad de horas de entrenamiento del deportista: ";
-	cin >> horasEntrenamiento;
+	horasEntrenamiento = Interfaz::ingresarYValidarHorasEntrenamientoDeportista();
 	cout << "----" << endl;
-	cout << "\tDigite la temperatura promedio del deportista: ";
-	cin >> temperaturaPromedio;
+	temperaturaPromedio = Interfaz::ingresarYValidarTemperaturaPromedio();
 	cout << "----" << endl;
-	cout << "\tDigite la cantidad de participaciones en IronMan del deportista: ";
-	cin >> cantidadParticipacionesIronMan;
+	cantidadParticipacionesIronMan = Interfaz::ingresarYValidarCantidadParticipacionesIronManDeportista();
 	cout << "----" << endl;
-	cout << "\tDigite la cantidad de triatlones ganados del deportista: ";
-	cin >> cantidadTriatlonesGanados;
+	cantidadTriatlonesGanados = Interfaz::ingresarYValidarCantidadTriatlonesGanadosDeportista(cantidadParticipacionesIronMan);
 	cout << "----" << endl;
-	cout << endl << "Datos biom�tricos b�sicos" << endl;
-	cout << "\tDigite la estatura del deportista: ";
-	cin >> estatura;
+	cout << "\tDatos Biometricos Basicos" << endl;
+	estatura = Interfaz::ingresarYValidarEstaturaDeportista();
 	cout << "----" << endl;
-	cout << "\tDigite el peso del deportista: ";
-	cin >> peso;
+	peso = Interfaz::ingresarYValidarPesoDeportista();
 	cout << "----" << endl;
-	cout << "\tDigite el porcentaje de grasa corporal del deportista: ";
-	cin >> porcentajeGrasaCorporal;
+	porcentajeGrasaCorporal = Interfaz::ingresarYValidarPorcentajeGrasaCorporalDeportista();
 	cout << "----" << endl;
-	cout << "\tDigite la masa muscular del deportista: ";
-	cin >> masaMuscular;
+	masaMuscular = Interfaz::ingresarYValidarPorcentajeMasaMuscularDeportista();
 	cout << "----" << endl;
 
 	try
@@ -1299,6 +1350,13 @@ void Interfaz::modificarPorcentajeGrasaCorporalDeportista(Deportista* deportista
 			continue;
 		}
 
+		if (porcentajeGrasaCorpolar >= 100)
+		{
+			cerr << "Error: El porcentaje de grasa corporal del deportista debe ser menor a 100." << endl;
+			Utils::clearInputBuffer();
+			continue;
+		}
+
 		try
 		{
 		deportista->actualizarPorcentajeGrasaCorporal(porcentajeGrasaCorpolar, fechaActual_);
@@ -1321,6 +1379,13 @@ void Interfaz::modificarPorcentajeMasaMuscularDeportista(Deportista* deportista,
 		if (!(cin >> porcentajeMasaMuscular) || porcentajeMasaMuscular <= 0)
 		{
 			cerr << "Error: El porcentaje de masa muscular del deportista debe ser un numero mayor a 0." << endl;
+			Utils::clearInputBuffer();
+			continue;
+		}
+
+		if (porcentajeMasaMuscular >= 100)
+		{
+			cerr << "Error: El porcentaje de masa muscular del deportista debe ser menor a 100." << endl;
 			Utils::clearInputBuffer();
 			continue;
 		}
@@ -1423,6 +1488,295 @@ void Interfaz::modificarCantidadTriatlonesGanadosDeportista(Deportista* deportis
 		deportista->setCantidadTriatlonesGanados(cantidadTriatlonesGanados);
 		esCantidadValida = true;
 	}
+}
+
+string Interfaz::ingresarYValidarCedulaDeportista()
+{
+	Utils::clearInputBuffer();
+	string cedula;
+	bool esCedulaValida = false;
+	while (!esCedulaValida)
+	{
+		cout << "Digite la cedula del deportista: ";
+		getline(cin, cedula);
+		if (cedula.empty())
+		{
+			cerr << "Error: EL ID del deportista no puede estar vacia." << endl;
+			Utils::clearInputBuffer();
+			continue;
+		}
+
+		// verificar que no haya otro deportista con la misma cedula
+		if (gimnasio->existeDeportistaConCedula(cedula))
+		{
+			cerr << "Error: Ya existe un deportista con la cedula " << cedula << "." << endl;
+			continue;
+		}
+
+		esCedulaValida = true;
+	}
+	return cedula;
+}
+
+string Interfaz::ingresarYValidarNombreDeportista()
+{
+	string nombre;
+	bool esNombreValido = false;
+
+	while (!esNombreValido)
+	{
+		cout << "Digite el nombre del deportista: ";
+		getline(cin, nombre);
+
+		if (nombre.empty())
+		{
+			cout << "Error: El nombre del deportista no puede estar vacio." << endl;
+			Utils::clearInputBuffer();
+			continue;
+		}
+
+		bool esCadenaValida = true;
+		for (char c : nombre)
+		{
+			if (!isalpha(c) && c != ' ')
+			{
+				esCadenaValida = false;
+				break;
+			}
+		}
+
+		if (!esCadenaValida)
+		{
+			cout << "Error: El nombre del deportista solo puede contener letras y espacios." << endl;
+			Utils::clearInputBuffer();
+			continue;
+		}
+
+		esNombreValido = true;
+	}
+
+	return nombre;
+}
+
+string Interfaz::ingresarYValidarTelefonoDeportista()
+{
+	string telefono;
+	bool esTelefonoValido = false;
+
+	while (!esTelefonoValido)
+	{
+		cout << "Digite el telefono del deportista: ";
+		getline(cin, telefono);
+
+		if (telefono.empty())
+		{
+			cout << "Error: El telefono del deportista no puede estar vacio." << endl;
+			continue;
+		}
+
+		bool esCadenaValida = true;
+		for (char c : telefono)
+		{
+			if (!isdigit(c) && c != '-')
+			{
+				esCadenaValida = false;
+				break;
+			}
+		}
+
+		if (!esCadenaValida)
+		{
+			cout << "Error: El telefono del deportista solo puede contener numeros y guiones." << endl;
+			continue;
+		}
+
+		esTelefonoValido = true;
+	}
+	return telefono;
+}
+
+char Interfaz::ingresarYValidarSexoDeportista()
+{
+	char sexo;
+	bool esSexoValido = false;
+	while (!esSexoValido)
+	{
+		cout << "Digite el sexo del deportista: ";
+		cin >> sexo;
+		if (sexo != 'M' && sexo != 'F' && sexo != 'm' && sexo != 'f')
+		{
+			cout << "Error: El sexo del deportista solo puede ser M o F." << endl;
+			continue;
+		}
+		esSexoValido = true;
+	}
+	return sexo;
+}
+
+int Interfaz::ingresarYValidarHorasEntrenamientoDeportista()
+{
+	int horasEntrenamiento;
+	bool esHorasValido = false;
+	while (!esHorasValido)
+	{
+		cout << "Digite las horas de entrenamiento del deportista: ";
+		if (!(cin >> horasEntrenamiento) || horasEntrenamiento <= 0)
+		{
+			cerr << "Error: Las horas de entrenamiento del deportista deben ser un numero mayor a 0." << endl;
+			Utils::clearInputBuffer();
+			continue;
+		}
+		esHorasValido = true;
+	}
+	return horasEntrenamiento;
+}
+
+int Interfaz::ingresarYValidarCantidadParticipacionesIronManDeportista()
+{
+	int cantidadPartidosIronMan;
+	bool esCantidadValida = false;
+	while (!esCantidadValida)
+	{
+		cout << "Digite la cantidad de participaciones en competencias Iron Man: ";
+		if (!(cin >> cantidadPartidosIronMan) || cantidadPartidosIronMan < 0)
+		{
+			cerr << "Error: la cantidad de participaciones en competencias Iron Man debe ser un numero mayor o igual a 0." << endl;
+			Utils::clearInputBuffer();
+			continue;
+		}
+		esCantidadValida = true;
+	}
+	return cantidadPartidosIronMan;
+}
+
+int Interfaz::ingresarYValidarCantidadTriatlonesGanadosDeportista(int cantidadParticipados)
+{
+	int cantidadTriatlonesGanados;
+	bool esCantidadValida = false;
+	while (!esCantidadValida)
+	{
+		cout << "Digite la cantidad de triatlones ganados: ";
+		if (!(cin >> cantidadTriatlonesGanados) || cantidadTriatlonesGanados < 0)
+		{
+			cerr << "Error: la cantidad de triatlones ganados debe ser un numero mayor o igual a 0." << endl;
+			Utils::clearInputBuffer();
+			continue;
+		}
+
+		if (cantidadTriatlonesGanados > cantidadParticipados)
+		{
+			cerr << "Error: la cantidad de triatlones ganados debe de ser menor a la cantidad de participaciones en triatlones Iron Man" << endl;
+			continue;
+		}
+
+		esCantidadValida = true;
+	}
+	return cantidadTriatlonesGanados;
+}
+
+int Interfaz::ingresarYValidarTemperaturaPromedio()
+{
+	int temperaturaPromedio;
+	bool esTemperaturaValida = false;
+	while (!esTemperaturaValida)
+	{
+		cout << "Digite la temperatura promedio del deportista: ";
+		if (!(cin >> temperaturaPromedio) || temperaturaPromedio < 0)
+		{
+			cerr << "Error: la temperatura promedio del deportista debe ser un numero mayor o igual a 0." << endl;
+			Utils::clearInputBuffer();
+			continue;
+		}
+		if (temperaturaPromedio > 50)
+		{
+			cerr << "Error: la temperatura promedio del deportista debe ser menor o igual a 50." << endl;
+			Utils::clearInputBuffer();
+			continue;
+		}
+		esTemperaturaValida = true;
+	}
+	return temperaturaPromedio;
+}
+
+double Interfaz::ingresarYValidarEstaturaDeportista()
+{
+	double estatura;
+	bool esEstaturaValida = false;
+	while (!esEstaturaValida)
+	{
+		cout << "Digite la estatura del deportista: ";
+		if (!(cin >> estatura) || estatura <= 0)
+		{
+			cerr << "Error: La estatura del deportista debe ser un numero mayor a 0." << endl;
+			Utils::clearInputBuffer();
+			continue;
+		}
+		esEstaturaValida = true;
+	}
+	return estatura;
+}
+
+double Interfaz::ingresarYValidarPesoDeportista()
+{
+	float peso;
+	bool esPesoValido = false;
+	while (!esPesoValido)
+	{
+		cout << "Digite el peso del deportista: ";
+		if (!(cin >> peso) || peso <= 0)
+		{
+			cerr << "Error: El peso del deportista debe ser un numero mayor a 0." << endl;
+			Utils::clearInputBuffer();
+			continue;
+		}
+		esPesoValido = true;
+	}
+	return peso;
+}
+
+double Interfaz::ingresarYValidarPorcentajeGrasaCorporalDeportista()
+{
+	double porcentajeGrasaCorpolar;
+	bool esPorcentajeValido = false;
+	while (!esPorcentajeValido)
+	{
+		cout << "Digite el porcentaje de grasa corporal: ";
+		if (!(cin >> porcentajeGrasaCorpolar) || porcentajeGrasaCorpolar <= 0)
+		{
+			cerr << "Error: El porcentaje de grasa corpora del deportista debe ser un numero mayor a 0." << endl;
+			Utils::clearInputBuffer();
+			continue;
+		}
+
+		if (porcentajeGrasaCorpolar >= 100)
+		{
+			cerr << "Error: El porcentaje de grasa corporal del deportista debe ser menor a 100." << endl;
+			Utils::clearInputBuffer();
+			continue;
+		}
+
+		esPorcentajeValido = true;
+	}
+	return porcentajeGrasaCorpolar;
+}
+
+double Interfaz::ingresarYValidarPorcentajeMasaMuscularDeportista()
+{
+	double porcentajeMasaMuscular;
+	bool esPorcentajeValido = false;
+	while (!esPorcentajeValido)
+	{
+		cout << "Digite el porcentaje de masa muscular del deportista: ";
+		if (!(cin >> porcentajeMasaMuscular) || porcentajeMasaMuscular <= 0)
+		{
+			cerr << "Error: El porcentaje de masa muscular del deportista debe ser un numero mayor a 0." << endl;
+			Utils::clearInputBuffer();
+			continue;
+		}
+
+		esPorcentajeValido = true;
+	}
+	return porcentajeMasaMuscular;
 }
 
 string Interfaz::ingresarYValidarNombre()
