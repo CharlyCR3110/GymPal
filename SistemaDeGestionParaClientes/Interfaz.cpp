@@ -1079,6 +1079,9 @@ void Interfaz::salir()
 	Utils::clearScreen();
 	cout << "Gracias por usar el sistema" << endl;
 	Utils::pause();
+	Utils::clearScreen();
+	cout << "Eliminando gimnasio...";
+	delete gimnasio;
 }
 
 void Interfaz::mensajeDeBienvenida()
