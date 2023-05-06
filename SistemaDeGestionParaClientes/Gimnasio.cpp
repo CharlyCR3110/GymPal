@@ -24,29 +24,6 @@ Gimnasio::Gimnasio(string nombreDelGimnasio_, double montoMensual_, Fecha* fecha
 // destructor profundo asf
 Gimnasio::~Gimnasio()
 {
-	if (this->fechaActual != nullptr)
-	{
-		delete this->fechaActual;
-		this->fechaActual = nullptr;
-	}
-
-	if (this->listaDeportistas != nullptr)
-	{
-		delete this->listaDeportistas;
-		this->listaDeportistas = nullptr;
-	}
-
-	if (this->listaCursos != nullptr)
-	{
-		delete this->listaCursos;
-		this->listaCursos = nullptr;
-	}
-
-	if (this->controlPagos != nullptr)
-	{
-		delete this->controlPagos;
-		this->controlPagos = nullptr;
-	}
 }
 
 void Gimnasio::setNombreDelGimnasio(string nombreDelGimnasio_)

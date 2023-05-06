@@ -37,17 +37,6 @@ Curso::Curso(string codigo_, string nombreDelCurso_, string nivel_, string descr
 
 Curso::~Curso()
 {
-    Nodo<Grupo>* nodoActual = this->listaGrupos->getPrimero();
-    while (nodoActual != nullptr)
-    {
-        Grupo* grupoActual = nodoActual->getDato();
-        delete grupoActual;
-        nodoActual = nodoActual->getSiguiente();
-    }
-    if (this->listaGrupos != nullptr)
-    {
-		delete this->listaGrupos;
-	}
 }
 
 void Curso::setCodigo(string codigo_)

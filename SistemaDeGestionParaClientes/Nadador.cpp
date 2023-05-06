@@ -32,11 +32,6 @@ Nadador::Nadador(const Nadador& nadador_) :
 
 Nadador::~Nadador()
 {
-    if (this->fechaUltimaActualizacion != nullptr)
-    {
-        delete this->fechaUltimaActualizacion;
-        this->fechaUltimaActualizacion = nullptr;
-    }
 }
 
 void Nadador::setMasaMuscular(double masaMuscular_)

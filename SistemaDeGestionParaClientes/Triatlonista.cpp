@@ -36,21 +36,6 @@ Triatlonista::Triatlonista(const Triatlonista& triatlonista_) :
 
 Triatlonista::~Triatlonista()
 {
-    if (this->corredor != nullptr)
-    {
-		delete this->corredor;
-		this->corredor = nullptr;
-	}
-    if (this->nadador != nullptr)
-    {
-        delete this->nadador;
-        this->nadador = nullptr;
-    }
-    if (this->fechaUltimaActualizacion)
-    {
-        delete this->fechaUltimaActualizacion;
-        this->fechaUltimaActualizacion = nullptr;
-    }
 }
 
 void Triatlonista::setCantidadParticipacionesIronMan(int cantidadParticipacionesIronMan_)
