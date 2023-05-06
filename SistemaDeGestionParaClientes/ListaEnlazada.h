@@ -14,7 +14,7 @@ private:
 public:
 	ListaEnlazada(const ListaEnlazada<T>& lista_);	// constructor copia
 	ListaEnlazada();
-	virtual ~ListaEnlazada();
+	~ListaEnlazada();
 	//getters
 	Nodo<T>* getPrimero();
 	Nodo<T>* getUltimo();
@@ -80,6 +80,7 @@ template<class T>
 inline ListaEnlazada<T>::~ListaEnlazada()
 {
 	vaciar();
+	// el metodo vaciar se encarga de eliminar los nodos
 }
 
 template<class T>
