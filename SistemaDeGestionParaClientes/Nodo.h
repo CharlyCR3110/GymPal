@@ -25,26 +25,36 @@ public:
 template<class T>
 inline Nodo<T>::Nodo(const T& dato_)
 {
-	dato = new T(dato_);
-	siguiente = nullptr;
+	this->dato = new T(dato_);
+	this->siguiente = nullptr;
 }
 
 template<class T>
 inline Nodo<T>::Nodo(T* dato_)
 {
-	dato = dato_;
-	siguiente = nullptr;
+	this->dato = dato_;
+	this->siguiente = nullptr;
 }
 
 template<class T>
 Nodo<T>::~Nodo()
 {
+	if (this->dato != nullptr)
+	{
+		delete this->dato;
+		this->dato = nullptr;
+	}
+	if (this->siguiente != nullptr)
+	{
+		delete this->siguiente;
+		this->siguiente = nullptr;
+	}
 }
 
 template<class T>
 void Nodo<T>::setSiguiente(Nodo<T>* siguiente_)
 {
-	siguiente = siguiente_;
+	this->siguiente = siguiente_;
 }
 
 template<class T>
