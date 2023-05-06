@@ -34,5 +34,4 @@ public:
 	friend bool operator>(const Fecha& fecha1_, const Fecha& fecha2_);	// operador mayor que
 	friend bool operator>=(const Fecha& fecha1_, const Fecha& fecha2_);	// operador mayor o igual que
 	friend ostream& operator<<(ostream& out, const Fecha& fecha_);	// operador de salida
-
 };
