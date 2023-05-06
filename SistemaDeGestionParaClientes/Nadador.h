@@ -11,7 +11,7 @@ private:
 public:
 	Nadador(double masaMuscular_ = 0.0, double peso_ = 0.0, double porcentajeGrasaCorporal_ = 0.0, Fecha* fechaUltimaActualizacion_ = nullptr);
 	Nadador(const Nadador& nadador_);
-	virtual ~Nadador() = default;
+	~Nadador();
 	//Setters
 	virtual void setMasaMuscular(double masaMuscular_);
 	virtual void actualizarMasaMuscular(double masaMuscular_, Fecha* fechaActualizacion_);

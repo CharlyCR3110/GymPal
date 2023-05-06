@@ -9,7 +9,7 @@ private:
 public:
 	Corredor(char sexo_ = ' ', double estatura_ = 0.0, Fecha* fechaUltimaActualizacion_ = nullptr);
 	Corredor(const Corredor& corredor_);
-	virtual ~Corredor() = default;
+	~Corredor();
 	//Setters
 	virtual void setSexo(char sexo_);
 	virtual void setEstatura(double estatura_);
