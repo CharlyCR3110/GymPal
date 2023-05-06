@@ -79,8 +79,16 @@ inline ListaEnlazada<T>::ListaEnlazada()
 template<class T>
 inline ListaEnlazada<T>::~ListaEnlazada()
 {
-	vaciar();
-	// el metodo vaciar se encarga de eliminar los nodos
+	Nodo<T>* actual = this->primero;
+	while (actual != nullptr)
+	{
+		Nodo<T>* siguiente = actual->getSiguiente();
+		delete actual;
+		actual = siguiente;
+	}
+	this->primero = nullptr;
+	this->ultimo = nullptr;
+	this->cantidad = 0;
 }
 
 template<class T>

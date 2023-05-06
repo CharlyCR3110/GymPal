@@ -26,11 +26,8 @@ Pago::Pago(const Pago& pago_)
 
 Pago::~Pago()
 {
-	if (this->fecha != nullptr)
-	{
-		delete this->fecha;
-		this->fecha = nullptr;
-	}
+	delete this->fecha;
+	this->fecha = nullptr;
 }
 
 void Pago::setFecha(Fecha* fecha_)

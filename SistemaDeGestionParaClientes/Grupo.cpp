@@ -44,6 +44,17 @@ Grupo::Grupo(const Grupo& grupo_):
 
 Grupo::~Grupo()
 {
+	delete this->instructor;
+	this->instructor = nullptr;
+
+	delete this->fechaDeInicio;
+	this->fechaDeInicio = nullptr;
+
+	delete this->horaDeInicio;
+	this->horaDeInicio = nullptr;
+
+	delete this->horaDeFin;
+	this->horaDeFin = nullptr;
 }
 
 void Grupo::setInstructor(Instructor* instructor_)

@@ -41,7 +41,6 @@ Nodo<T>::~Nodo()
 {
 	delete this->dato;
 	this->dato = nullptr;
-	this->siguiente = nullptr;
 }
 
 template<class T>

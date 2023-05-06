@@ -37,6 +37,8 @@ Curso::Curso(string codigo_, string nombreDelCurso_, string nivel_, string descr
 
 Curso::~Curso()
 {
+    delete this->listaGrupos;
+    this->listaGrupos = nullptr;
 }
 
 void Curso::setCodigo(string codigo_)
