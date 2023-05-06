@@ -30,8 +30,11 @@ Corredor::Corredor(const Corredor& corredor_) :
 
 Corredor::~Corredor()
 {
-	delete this->fechaUltimaActualizacion;
-	this->fechaUltimaActualizacion = nullptr;
+	if (this->fechaUltimaActualizacion != nullptr)
+	{
+		delete this->fechaUltimaActualizacion;
+		this->fechaUltimaActualizacion = nullptr;
+	}
 }
 
 void Corredor::setSexo(char sexo_)
