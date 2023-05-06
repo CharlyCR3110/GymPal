@@ -39,16 +39,9 @@ inline Nodo<T>::Nodo(T* dato_)
 template<class T>
 Nodo<T>::~Nodo()
 {
-	if (this->dato != nullptr)
-	{
-		delete this->dato;
-		this->dato = nullptr;
-	}
-	if (this->siguiente != nullptr)
-	{
-		delete this->siguiente;
-		this->siguiente = nullptr;
-	}
+	delete this->dato;
+	this->dato = nullptr;
+	this->siguiente = nullptr;
 }
 
 template<class T>
