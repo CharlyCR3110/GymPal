@@ -3,6 +3,9 @@
 using namespace std;
 Gimnasio* Interfaz::gimnasio = new Gimnasio();
 
+
+// *Nota* El clearInputBuffer puede generar la necesidad de tocar dos veces enter para que se ejecute la siguiente instruccion, pero si no se usa, muchas veces se toma una entrada vacia y salta el mensaje "No se puede ingresar un valor vacio"
+
 int Interfaz::menuPrincipal()
 {
 	int opcion = 0;
@@ -178,6 +181,7 @@ void Interfaz::menuControlDeportistasIngresoNuevoDeportista()
 	}
 	catch (exception& e)
 	{
+		cout << "Error al registrar el deportista" << endl;
 		cout << e.what() << endl;
 	}
 	cout << "-----------------------------------------------------------" << endl;
@@ -503,6 +507,7 @@ void Interfaz::menuControlGruposIngresoNuevoGrupo()
 	catch (exception& e)
 	{
 		cerr << e.what() << endl;
+		return;	// si no hay cursos registrados, no se puede registrar un grupo
 	}
 	cout << "Digite el codigo del curso: ";
 	cin >> codigo;
@@ -566,6 +571,7 @@ void Interfaz::menuControlGruposIngresoNuevoGrupo()
 	}
 	catch (exception& e)
 	{
+		cout << "Error al crear el grupo" << endl;
 		cerr << e.what() << endl;
 		return;
 	}
@@ -874,7 +880,7 @@ void Interfaz::menuControlGruposCancelarMatriculaEnGrupo()
 	}
 	else
 	{
-		cout << "El deportista no existe" << endl;
+		cerr << "Error: El deportista no existe" << endl;
 		Utils::pause();
 		return;
 	}
@@ -889,7 +895,7 @@ void Interfaz::menuControlGruposCancelarMatriculaEnGrupo()
 	{
 		cerr << e.what() << endl;
 		Utils::pause();
-		return;
+		return;	// si no hay cursos, no se puede cancelar la matricula
 	}
 	cout << "-----------------------------------------------------------" << endl;
 	cout << "Digite el codigo del curso: ";
@@ -917,7 +923,7 @@ void Interfaz::menuControlGruposCancelarMatriculaEnGrupo()
 	{
 		cerr << e.what() << endl;
 		Utils::pause();
-		return;
+		return;	// si no hay grupos, no se puede cancelar la matricula
 	}
 	cout << "-----------------------------------------------------------" << endl;
 
@@ -1199,6 +1205,7 @@ void Interfaz::modificarNombreDeportista(Deportista* deportista)
 		}
 
 		deportista->setNombre(nombre);
+		cout << "Nombre modificado exitosamente." << endl;
 		esNombreValido = true;
 	}
 }
@@ -1238,6 +1245,7 @@ void Interfaz::modificarTelefonoDeportista(Deportista* deportista)
 
 		deportista->setTelefono(telefono);
 		esTelefonoValido = true;
+		cout << "Telefono modificado exitosamente." << endl;
 	}
 }
 
@@ -1265,6 +1273,7 @@ void Interfaz::modificarFechaNacimientoDeportista(Deportista* deportista)
 		}
 		deportista->setFechaNacimiento(fechaNacimiento);
 		esFechaValida = true;
+		cout << "Fecha de nacimiento modificada exitosamente." << endl;
 	}
 }
 
@@ -1283,6 +1292,7 @@ void Interfaz::modificarSexoDeportista(Deportista* deportista)
 		}
 		deportista->setSexo(sexo);
 		esSexoValido = true;
+		cout << "Sexo modificado exitosamente." << endl;
 	}
 }
 
@@ -1304,6 +1314,7 @@ void Interfaz::modificarEstaturaDeportista(Deportista* deportista, Fecha* fechaA
 		{
 			deportista->actualizarEstatura(estatura, fechaActual_);
 			esEstaturaValida = true;
+			cout << "Estatura modificada exitosamente." << endl;
 		}
 		catch (exception& e)
 		{
@@ -1330,6 +1341,7 @@ void Interfaz::modificarPesoDeportista(Deportista* deportista, Fecha* fechaActua
 		{
 			deportista->actualizarPeso(peso, fechaActual_);
 			esPesoValido = true;
+			cout << "Peso modificado exitosamente." << endl;
 		}
 		catch (exception& e)
 		{
@@ -1361,8 +1373,9 @@ void Interfaz::modificarPorcentajeGrasaCorporalDeportista(Deportista* deportista
 
 		try
 		{
-		deportista->actualizarPorcentajeGrasaCorporal(porcentajeGrasaCorpolar, fechaActual_);
-		esPorcentajeValido = true;
+			deportista->actualizarPorcentajeGrasaCorporal(porcentajeGrasaCorpolar, fechaActual_);
+			esPorcentajeValido = true;
+			cout << "Porcentaje de grasa corporal modificado exitosamente." << endl;
 		}
 		catch (exception& e)
 		{
@@ -1394,8 +1407,9 @@ void Interfaz::modificarPorcentajeMasaMuscularDeportista(Deportista* deportista,
 
 		try
 		{
-		deportista->actualizarMasaMuscular(porcentajeMasaMuscular, fechaActual_);
-		esPorcentajeValido = true;
+			deportista->actualizarMasaMuscular(porcentajeMasaMuscular, fechaActual_);
+			esPorcentajeValido = true;
+			cout << "Porcentaje de masa muscular modificado exitosamente." << endl;
 		}
 		catch (exception& e)
 		{
@@ -1423,6 +1437,7 @@ void Interfaz::modificarEstadoDeportista(Deportista* deportista)
 		try {
 			deportista->actualizarEstado(estado);
 			esEstadoValido = true;
+			cout << "Estado modificado exitosamente." << endl;
 		}
 		catch (exception& e)
 		{
@@ -1446,6 +1461,7 @@ void Interfaz::modificarHorasEntrenamientoDeportista(Deportista* deportista)
 		}
 		deportista->setHorasEntrenamiento(horasEntrenamiento);
 		esHorasValido = true;
+		cout << "Horas de entrenamiento modificadas exitosamente." << endl;
 	}
 }
 
@@ -1464,6 +1480,7 @@ void Interfaz::modificarCantidadParticipacionesIronManDeportista(Deportista* dep
 		}
 		deportista->setCantidadParticipacionesIronMan(cantidadPartidosIronMan);
 		esCantidadValida = true;
+		cout << "Cantidad de participacones Iron Man modificadase exitosamente" << endl;
 	}
 }
 
@@ -1489,6 +1506,7 @@ void Interfaz::modificarCantidadTriatlonesGanadosDeportista(Deportista* deportis
 
 		deportista->setCantidadTriatlonesGanados(cantidadTriatlonesGanados);
 		esCantidadValida = true;
+		cout << "Cantidad de triatlones ganados modificada exitosamente." << endl;
 	}
 }
 
@@ -1967,6 +1985,7 @@ void Interfaz::modificarNombreCurso(Curso* curso)
 
 		curso->setNombreDelCurso(nombre);
 		esNombreValido = true;
+		cout << "Nombre del curso modificado exitosamente." << endl;
 	}
 }
 
@@ -2000,6 +2019,7 @@ void Interfaz::modificarDescripcionCurso(Curso* curso)
 		}
 		curso->setDescripcion(descripcion);
 		esDescripcionValida = true;
+		cout << "Descripcion del curso modificada exitosamente." << endl;
 	}
 }
 
@@ -2032,7 +2052,12 @@ void Interfaz::modificarNivelCurso(Curso* curso)
 	case 'A':
 		curso->setNivel("Avanzado");
 		break;
+	default:
+		cerr << "Error: Error inesperado al modificar el nivel del curso." << endl;
+		return;
+		break;
 	}
+	cout << "Nivel del curso modificado exitosamente." << endl;
 }
 
 void Interfaz::modificarCantidadGruposCurso(Curso* curso)
@@ -2050,6 +2075,7 @@ void Interfaz::modificarCantidadGruposCurso(Curso* curso)
 		}
 		curso->setCantidadMaximaDeGrupos(cantidadGrupos);
 		esCantidadValida = true;
+		cout << "Cantidad de grupos del curso modificada exitosamente." << endl;
 	}
 }
 
@@ -2075,6 +2101,7 @@ void Interfaz::modificarCodigoCurso(Curso* curso)
 		}
 		curso->setCodigo(codigo);
 		esCodigoValido = true;
+		cout << "Codigo del curso modificado exitosamente." << endl;
 	}
 }
 
@@ -2336,6 +2363,7 @@ void Interfaz::modificarNombreInstructor(Grupo* grupo)
 		esNombreValido = true;
 	}
 	grupo->getInstructor()->setNombre(nombre);
+	cout << "Nombre del instructor modificado exitosamente." << endl;
 }
 
 void Interfaz::modificarCedulaInstructor(Grupo* grupo)
@@ -2354,6 +2382,7 @@ void Interfaz::modificarCedulaInstructor(Grupo* grupo)
 		esCedulaValida = true;
 	}
 	grupo->getInstructor()->setId(cedula);
+	cout << "ID del instructor modificado exitosamente." << endl;
 }
 
 void Interfaz::modificarCupoMaximoGrupo(Grupo* grupo)
@@ -2380,13 +2409,14 @@ void Interfaz::modificarCupoMaximoGrupo(Grupo* grupo)
 		esCupoMaximoValido = true;
 	}
 	grupo->setCupoMaximo(cupoMaximo);
+	cout << "Cupo maximo del grupo modificado exitosamente." << endl;
 }
 
 void Interfaz::modificarFechaInicioGrupo(Grupo* grupo)
 {
-	Fecha * fechaInicio = menuFecha();
+	Fecha* fechaInicio = menuFecha();
 	grupo->setFechaDeInicio(fechaInicio);
-	delete fechaInicio;
+	cout << "Fecha de inicio del grupo modificada exitosamente." << endl;
 }
 
 void Interfaz::modificarSemanasDuracionGrupo(Grupo* grupo)
@@ -2405,12 +2435,14 @@ void Interfaz::modificarSemanasDuracionGrupo(Grupo* grupo)
 		esSemanasDuracionValido = true;
 	}
 	grupo->setSemanasDeDuracion(semanasDuracion);
+	cout << "Numero de semanas de duracion del grupo modificado exitosamente." << endl;
 }
 
 void Interfaz::modificarDiaDeLaSemanaGrupo(Grupo* grupo)
 {
 	char diaDeLaSemana = Interfaz::ingresarYValidarDiaDeLaSemana();
 	grupo->setDiaDeLaSemana(diaDeLaSemana);
+	cout << "Dia de la semana del grupo modificado exitosamente." << endl;
 }
 
 void Interfaz::modificarHoraEntradaGrupo(Grupo* grupo)
@@ -2452,6 +2484,7 @@ void Interfaz::modificarHoraEntradaGrupo(Grupo* grupo)
 		esHoraValida = true;
 	}
 	grupo->setHoraDeInicio(horaEntrada);
+	cout << "Hora de inicio del grupo modificada exitosamente." << endl;
 }
 
 void Interfaz::modificarHoraSalidaGrupo(Grupo* grupo)
@@ -2493,6 +2526,7 @@ void Interfaz::modificarHoraSalidaGrupo(Grupo* grupo)
 		esHoraValida = true;
 	}
 	grupo->setHoraDeFin(horaSalida);
+	cout << "Hora de salida del grupo modificada exitosamente." << endl;
 }
 
 void Interfaz::test()
