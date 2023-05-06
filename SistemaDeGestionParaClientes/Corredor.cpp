@@ -28,6 +28,10 @@ Corredor::Corredor(const Corredor& corredor_) :
 	}
 }
 
+Corredor::~Corredor()
+{
+}
+
 void Corredor::setSexo(char sexo_)
 {
 	this->sexo = sexo_;

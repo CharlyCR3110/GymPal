@@ -15,7 +15,7 @@ public:
 	Fecha();	//constructor por defecto
 	Fecha(const Fecha& fecha_);	//constructor copia
 	Fecha(int dia_, int mes_, int anio_);
-	virtual ~Fecha();
+	~Fecha() = default;
 	//setters
 	void setDia(int dia_);
 	void setMes(int mes_);
@@ -34,5 +34,4 @@ public:
 	friend bool operator>(const Fecha& fecha1_, const Fecha& fecha2_);	// operador mayor que
 	friend bool operator>=(const Fecha& fecha1_, const Fecha& fecha2_);	// operador mayor o igual que
 	friend ostream& operator<<(ostream& out, const Fecha& fecha_);	// operador de salida
-
 };

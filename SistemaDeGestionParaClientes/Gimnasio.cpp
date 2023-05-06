@@ -22,16 +22,26 @@ Gimnasio::Gimnasio(string nombreDelGimnasio_, double montoMensual_, Fecha* fecha
 {
 }
 
-//Gimnasio::Gimnasio(const Gimnasio& gimnasio_)
-//{
-//}
-
 Gimnasio::~Gimnasio()
 {
-	delete fechaActual;
-	delete listaDeportistas;
-	delete listaCursos;
-	delete controlPagos;
+	if (this->fechaActual != nullptr)
+	{
+		delete this->fechaActual;
+		this->fechaActual = nullptr;
+	}
+
+	if (this->listaCursos != nullptr)
+	{
+		delete this->listaCursos;
+		this->listaCursos = nullptr;
+	}
+
+	if (this->listaDeportistas != nullptr)
+	{
+		delete this->listaDeportistas;
+		this->listaDeportistas = nullptr;
+	}
+
 }
 
 void Gimnasio::setNombreDelGimnasio(string nombreDelGimnasio_)
@@ -225,7 +235,6 @@ void Gimnasio::agregarGrupo(string codigoCurso_, Grupo* grupo_)
 	try
 	{
 		curso = listaCursos->buscarPorCodigo(codigoCurso_);
-		cout << "Se esta agregando el grupo al curso" << endl;
 	}
 	catch (exception& e)
 	{
@@ -235,7 +244,6 @@ void Gimnasio::agregarGrupo(string codigoCurso_, Grupo* grupo_)
 	if (curso != nullptr)
 	{
 		curso->agregarGrupo(grupo_);
-		cout << "Se agrego el grupo al curso" << endl;
 	}
 	else
 	{

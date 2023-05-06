@@ -36,8 +36,6 @@ Triatlonista::Triatlonista(const Triatlonista& triatlonista_) :
 
 Triatlonista::~Triatlonista()
 {
-    delete this->corredor;
-	delete this->nadador;
 }
 
 void Triatlonista::setCantidadParticipacionesIronMan(int cantidadParticipacionesIronMan_)

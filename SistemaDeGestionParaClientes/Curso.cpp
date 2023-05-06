@@ -37,10 +37,8 @@ Curso::Curso(string codigo_, string nombreDelCurso_, string nivel_, string descr
 
 Curso::~Curso()
 {
-    if (this->listaGrupos != nullptr)
-    {
-		delete this->listaGrupos;
-	}
+    delete this->listaGrupos;
+    this->listaGrupos = nullptr;
 }
 
 void Curso::setCodigo(string codigo_)
@@ -219,7 +217,7 @@ const string Curso::generarListadoDeGrupos() const
         return "No hay grupos disponibles \n";
     }
     stringstream ss;
-    ss << "Grupo" << '\t' << "Dia" << '\t' << "Horario" << '\t' << "Cupo" << '\t' << "Cantidad" << endl;
+    ss << "Grupo" << '\t' << "Dia" << '\t' << "      " << "Horario" << '\t' << '\t' << "Cupo" << '\t' << "Cantidad" << endl;
     Nodo<Grupo>* nodoActual = this->listaGrupos->getPrimero();
     while (nodoActual != nullptr)
     {

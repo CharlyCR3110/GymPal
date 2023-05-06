@@ -11,7 +11,7 @@ class ControlPagos
 {
 public:
 	ControlPagos();
-	virtual ~ControlPagos();
+	~ControlPagos();
 	// setter
 	// metodo para registrar el pago de un deportista
 	void registrarPago(string cedula_, string mesCancelado_, double monto_, ListaEnlazada<Deportista>* listaDeportistas, Fecha* fechaActual);	//cedula = codigo

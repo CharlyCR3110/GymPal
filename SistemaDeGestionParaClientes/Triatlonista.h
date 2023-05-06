@@ -2,8 +2,7 @@
 #include "Ciclista.h"
 #include "Corredor.h"
 #include "Nadador.h"
-#define DELIMITA_CAMPO = ';'
-#define DELIMITA_REGISTRO = '\n'
+ 
 class Triatlonista :
     public Ciclista
 {

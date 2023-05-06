@@ -8,8 +8,7 @@ void Utils::clearInputBuffer()
 
 void Utils::pause()
 {
-	std::cout << "Presione enter para continuar...";
-	std::system("pause");
+	std::system("pause");	// esto imprime un mensaje de "Presione una tecla para continuar..." y unicamente sirve en Windows
 }
 
 void Utils::clearScreen()

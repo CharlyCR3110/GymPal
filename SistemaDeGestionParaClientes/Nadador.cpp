@@ -30,6 +30,10 @@ Nadador::Nadador(const Nadador& nadador_) :
 	}
 }
 
+Nadador::~Nadador()
+{
+}
+
 void Nadador::setMasaMuscular(double masaMuscular_)
 {
     this->masaMuscular = masaMuscular_;

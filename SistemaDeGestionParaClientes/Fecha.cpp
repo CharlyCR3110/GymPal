@@ -9,7 +9,7 @@ Fecha::Fecha()
     // Asignar los componentes de la fecha a los atributos de la clases
     dia = tm.tm_mday;
     mes = tm.tm_mon + 1;    // +1 porque enero es 0
-    anio = tm.tm_year + 1900; // año desde 1900
+    anio = tm.tm_year + 1900; // aï¿½o desde 1900
 }
 
 Fecha::Fecha(const Fecha& fecha_)
@@ -29,10 +29,6 @@ Fecha::Fecha(int dia_, int mes_, int anio_)
     this->dia = dia_;
     this->mes = mes_;
     this->anio = anio_;
-}
-
-Fecha::~Fecha()
-{
 }
 
 void Fecha::setDia(int dia_)

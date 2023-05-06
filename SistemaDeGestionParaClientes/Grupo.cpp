@@ -45,10 +45,16 @@ Grupo::Grupo(const Grupo& grupo_):
 Grupo::~Grupo()
 {
 	delete this->instructor;
+	this->instructor = nullptr;
+
 	delete this->fechaDeInicio;
+	this->fechaDeInicio = nullptr;
+
 	delete this->horaDeInicio;
+	this->horaDeInicio = nullptr;
+
 	delete this->horaDeFin;
-	delete this->deportistasInscritos;
+	this->horaDeFin = nullptr;
 }
 
 void Grupo::setInstructor(Instructor* instructor_)
@@ -234,8 +240,9 @@ void Grupo::agregarDeportista(Deportista* deportista_)
 const string Grupo::reporteGrupoGuiaMatricula() const
 {
 	stringstream ss;
-	//ss << "Grupo" << '\t' << "Dia" << '\t' << "Horario" << '\t' << "Cupo" << '\t' << "Cantidad" << endl;
-	ss << this->numeroGrupo << '\t' << " " << this->diaDeLaSemana << '\t' << this->horaDeInicio->toString() << " - " << this->horaDeFin->toString() << '\t' << "   " << this->cupoMaximo << '\t' << "    " << this->cantidadDeInscritos << endl;
+	string horario = this->horaDeInicio->toString() + " - " + this->horaDeFin->toString();
+	//ss << "Grupo" << '\t' << "Dia" << '\t' << "      " << "Horario" << '\t' << '\t' << "Cupo" << '\t' << "Cantidad" << endl;
+	ss << this->numeroGrupo << '\t' << this->diaDeLaSemana << '\t' << horario << '\t' << this->cupoMaximo << '\t' << this->cantidadDeInscritos << endl;
 	return ss.str();
 }
 

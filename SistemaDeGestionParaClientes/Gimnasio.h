@@ -4,7 +4,7 @@
 #include "ListaEnlazada.h"
 #include "Curso.h"
 #include "GestorDeArchivos.h"
-const int MAX_CURSOS = 3;
+const int MAX_CURSOS = 3;	// maximo de cursos que puede tener un deportista
 
 class Gimnasio
 {
@@ -21,7 +21,7 @@ public:
 	Gimnasio();
 	Gimnasio(string nombreDelGimnasio_, double montoMensual_, Fecha* fechaActual_);
 	//Gimnasio(const Gimnasio& gimnasio_);
-	virtual ~Gimnasio();
+	~Gimnasio();
 	// setters
 	void setNombreDelGimnasio(string nombreDelGimnasio_);	//1.2
 	void setMontoMensual(double montoMensual_);	//1.1
