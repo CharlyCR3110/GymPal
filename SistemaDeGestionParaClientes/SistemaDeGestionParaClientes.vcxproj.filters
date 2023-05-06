@@ -13,18 +13,18 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\Excepciones">
+      <UniqueIdentifier>{9054bba8-9216-4006-8eb3-61b56fa1afb6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Excepciones">
+      <UniqueIdentifier>{10e6a804-b8e3-4a18-af95-8d9f0fc41418}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Deportista.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="DeportistaInvalidoException.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Fecha.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="FechaInvalidaException.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
@@ -39,13 +39,7 @@
     <ClCompile Include="ListaEnlazada.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ListaEnlazadasException.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Curso.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CupoMaximoExcedido.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Ciclista.cpp">
@@ -72,25 +66,7 @@
     <ClCompile Include="ControlPagos.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ElementoNoEncontradoException.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ListaVaciaException.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Pago.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ControlPagosInvalidoException.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="DeportistaNoEncontradoException.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="PagoInvalidoException.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="PagosNoRegistradosException.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Gimnasio.cpp">
@@ -105,18 +81,51 @@
     <ClCompile Include="Controlador.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="GestorDeArchivos.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ControlPagosInvalidoException.cpp">
+      <Filter>Source Files\Excepciones</Filter>
+    </ClCompile>
+    <ClCompile Include="ElementoNoEncontradoException.cpp">
+      <Filter>Source Files\Excepciones</Filter>
+    </ClCompile>
+    <ClCompile Include="DeportistaInvalidoException.cpp">
+      <Filter>Source Files\Excepciones</Filter>
+    </ClCompile>
+    <ClCompile Include="DeportistaNoEncontradoException.cpp">
+      <Filter>Source Files\Excepciones</Filter>
+    </ClCompile>
+    <ClCompile Include="CupoMaximoExcedido.cpp">
+      <Filter>Source Files\Excepciones</Filter>
+    </ClCompile>
+    <ClCompile Include="FechaInvalidaException.cpp">
+      <Filter>Source Files\Excepciones</Filter>
+    </ClCompile>
+    <ClCompile Include="PagoInvalidoException.cpp">
+      <Filter>Source Files\Excepciones</Filter>
+    </ClCompile>
+    <ClCompile Include="PagosNoRegistradosException.cpp">
+      <Filter>Source Files\Excepciones</Filter>
+    </ClCompile>
+    <ClCompile Include="ListaVaciaException.cpp">
+      <Filter>Source Files\Excepciones</Filter>
+    </ClCompile>
+    <ClCompile Include="ListaEnlazadasException.cpp">
+      <Filter>Source Files\Excepciones</Filter>
+    </ClCompile>
+    <ClCompile Include="CursoNoEncontradoException.cpp">
+      <Filter>Source Files\Excepciones</Filter>
+    </ClCompile>
+    <ClCompile Include="DeportistaYaMatriculadoException.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Deportista.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="DeportistaInvalidoException.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Fecha.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="FechaInvalidaException.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ManejoFechas.h">
@@ -128,13 +137,7 @@
     <ClInclude Include="ListaEnlazada.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ListaEnlazadasException.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Curso.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CupoMaximoExcedido.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Ciclista.h">
@@ -161,25 +164,7 @@
     <ClInclude Include="ControlPagos.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ElementoNoEncontradoException.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ListaVaciaException.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Pago.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ControlPagosInvalidoException.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="DeportistaNoEncontradoException.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="PagoInvalidoException.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="PagosNoRegistradosException.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Gimnasio.h">
@@ -192,6 +177,45 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Controlador.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GestorDeArchivos.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ElementoNoEncontradoException.h">
+      <Filter>Header Files\Excepciones</Filter>
+    </ClInclude>
+    <ClInclude Include="DeportistaInvalidoException.h">
+      <Filter>Header Files\Excepciones</Filter>
+    </ClInclude>
+    <ClInclude Include="DeportistaNoEncontradoException.h">
+      <Filter>Header Files\Excepciones</Filter>
+    </ClInclude>
+    <ClInclude Include="FechaInvalidaException.h">
+      <Filter>Header Files\Excepciones</Filter>
+    </ClInclude>
+    <ClInclude Include="ControlPagosInvalidoException.h">
+      <Filter>Header Files\Excepciones</Filter>
+    </ClInclude>
+    <ClInclude Include="CupoMaximoExcedido.h">
+      <Filter>Header Files\Excepciones</Filter>
+    </ClInclude>
+    <ClInclude Include="ListaEnlazadasException.h">
+      <Filter>Header Files\Excepciones</Filter>
+    </ClInclude>
+    <ClInclude Include="ListaVaciaException.h">
+      <Filter>Header Files\Excepciones</Filter>
+    </ClInclude>
+    <ClInclude Include="PagoInvalidoException.h">
+      <Filter>Header Files\Excepciones</Filter>
+    </ClInclude>
+    <ClInclude Include="PagosNoRegistradosException.h">
+      <Filter>Header Files\Excepciones</Filter>
+    </ClInclude>
+    <ClInclude Include="CursoNoEncontradoException.h">
+      <Filter>Header Files\Excepciones</Filter>
+    </ClInclude>
+    <ClInclude Include="DeportistaYaMatriculadoException.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
