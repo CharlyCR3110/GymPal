@@ -226,7 +226,7 @@ const string Curso::generarListadoDeGrupos() const
         return "No hay grupos disponibles \n";
     }
     stringstream ss;
-    ss << "Grupo" << '\t' << "Dia" << '\t' << "Horario" << '\t' << "Cupo" << '\t' << "Cantidad" << endl;
+    ss << "Grupo" << '\t' << "Dia" << '\t' << "      " << "Horario" << '\t' << '\t' << "Cupo" << '\t' << "Cantidad" << endl;
     Nodo<Grupo>* nodoActual = this->listaGrupos->getPrimero();
     while (nodoActual != nullptr)
     {

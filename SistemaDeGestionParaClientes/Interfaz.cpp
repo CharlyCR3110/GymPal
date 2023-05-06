@@ -760,7 +760,7 @@ void Interfaz::menuControlGruposMostrarGrupoEspecifico()
 	int numeroGrupo;
 	string codigoCurso;
 	Grupo* grupo = nullptr;
-	cout << endl << endl << "<5. Control Grupo> <4. Reporte de grupo especifico>" << endl << endl;
+	cout << endl << endl << "<4. Control Grupo> <4. Reporte de grupo especifico>" << endl << endl;
 	cout << "-----------------------------------------------------------" << endl;
 	cout << "Digite el codigo del curso: ";
 	cin >> codigoCurso;

@@ -54,7 +54,18 @@ const int Hora::getSegundo() const
 const string Hora::toString() const
 {
     stringstream ss;
-    ss << this->hora << ":" << this->minuto << ":" << this->segundo;
+    ss << this->hora << ":";
+    if (this->minuto < 10)
+    {
+		ss << "0";
+	}
+    ss << this->minuto << ":";
+    if (this->segundo < 10)
+    {
+        ss << "0";
+    }
+    ss << this->segundo;
+   
     return ss.str();
 }
 
