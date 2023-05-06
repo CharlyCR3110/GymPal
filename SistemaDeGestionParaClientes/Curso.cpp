@@ -354,6 +354,12 @@ void Curso::matricularEnGrupo(int numeroGrupo, Deportista* deportista)
     {
 		throw exception("No hay grupos en el curso");
 	}
+
+    if (deportista->getEstado() != 'A')
+    {
+        throw exception("El deportista no esta activo");
+    }
+
 	Nodo<Grupo>* nodoActual = this->listaGrupos->getPrimero();
     while (nodoActual != nullptr)
     {
