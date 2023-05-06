@@ -71,6 +71,7 @@ ListaEnlazada<Deportista>* GestorDeArchivos::cargarDeportistasYPagos()
 			Deportista* deportista = new Triatlonista(cedula, nombre, telefono, new Fecha(stoi(fechaNacimientoDia), stoi(fechaNacimientoMes), stoi(fechaNacimientoAnio)), stoi(horasEntrenamiento), stod(temperaturaPromedio), stoi(cantidadParticipacionesIronMan), stoi(cantidadTriatlonesGanados), sexo[0], stod(estatura), stod(masaMuscular), stod(peso), stod(porcentajeGrasaCorporal), new Fecha(stoi(fechaUltimaActualizacionDia), stoi(fechaUltimaActualizacionMes), stoi(fechaUltimaActualizacionAnio)));
 
 			valorCantidadDePagos = stoi(cantidadDePagos);
+			deportista->setCantidadDePagos(valorCantidadDePagos);
 			// while para cargar los pagos, cada pago esta separado por un |, cuando se encuentre un '\n' es porque es otro deportista
 			for (int i = 0; i < valorCantidadDePagos; i++)
 			{
