@@ -183,7 +183,7 @@ ListaEnlazada<Curso>* GestorDeArchivos::cargarCursosYGrupos()
 				getline(ssGrupo, minutoDeFin, ';');
 				getline(ssGrupo, segundoDeFin, '\n');
 
-				// estos try's no son tan necesarios, tenia un error en el codigo y me ayudaron a encontrarlo // ya son parte de la historia
+				// estos try's no son tan necesarios, tenia un error en el codigo y me ayudaron a encontrarlo
 				try
 				{
 					valorDiaDeInicio = stoi(diaDeInicio);
