@@ -1068,8 +1068,10 @@ void Interfaz::salir()
 	{
 		cerr << e.what() << endl;
 	}
-
-	cout << "Gracias por usar el sistema, presione cualquier tecla para salir..." << endl;
+	
+	Utils::pause();
+	Utils::clearScreen();
+	cout << "Gracias por usar el sistema" << endl;
 	Utils::pause();
 }
 
