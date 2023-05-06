@@ -225,7 +225,6 @@ void Gimnasio::agregarGrupo(string codigoCurso_, Grupo* grupo_)
 	try
 	{
 		curso = listaCursos->buscarPorCodigo(codigoCurso_);
-		cout << "Se esta agregando el grupo al curso" << endl;
 	}
 	catch (exception& e)
 	{
@@ -235,7 +234,6 @@ void Gimnasio::agregarGrupo(string codigoCurso_, Grupo* grupo_)
 	if (curso != nullptr)
 	{
 		curso->agregarGrupo(grupo_);
-		cout << "Se agrego el grupo al curso" << endl;
 	}
 	else
 	{
