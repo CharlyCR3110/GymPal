@@ -23,7 +23,7 @@ protected:
 public:
 	Deportista(string cedula_ = "", string nombre_ = "", string telefono_ = "", Fecha* fechaNacimiento_ = nullptr);
 	Deportista(const Deportista& deportista_);	//constructor copia
-	~Deportista() = default;
+	virtual ~Deportista();
 	//setters
 	virtual void setCedula(string cedula_);
 	virtual void setNombre(string nombre_);

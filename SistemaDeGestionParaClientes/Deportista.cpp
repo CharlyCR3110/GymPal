@@ -40,6 +40,25 @@ Deportista::Deportista(const Deportista& deportista_):
 	}
 }
 
+Deportista::~Deportista()
+{
+    if (this->fechaNacimiento != nullptr)
+    {
+		delete this->fechaNacimiento;
+		this->fechaNacimiento = nullptr;
+	}
+    if (this->listaPagos != nullptr)
+    {
+        delete this->listaPagos;
+        this->listaPagos = nullptr;
+    }
+    if (this->listaCursos != nullptr)
+    {
+		delete this->listaCursos;
+		this->listaCursos = nullptr;
+	}
+}
+
 void Deportista::setCedula(string cedula_)
 {
     this->cedula = cedula_;
