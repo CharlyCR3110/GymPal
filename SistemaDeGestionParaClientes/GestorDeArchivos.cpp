@@ -304,6 +304,7 @@ const void GestorDeArchivos::guardarCursoGrupoYCedulaDeLosDeportistasAsociados(s
 }
 
 #include "Gimnasio.h"
+// se encarga de matricular los deportistas a los cursos y grupos en los que estan inscritos
 void GestorDeArchivos::cargarCursoGrupoYCedulaDeLosDeportistasAsociados(Gimnasio* gimnasio_)
 {
 //

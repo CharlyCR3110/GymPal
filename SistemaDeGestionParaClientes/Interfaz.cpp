@@ -1090,7 +1090,7 @@ void Interfaz::mensajeDeBienvenida()
 	{
 		//gimnasio->setListaDeportistas(GestorDeArchivos().cargarDeportistas());
 		gimnasio->setListaDeportistas(GestorDeArchivos().cargarDeportistasYPagos());
-		cout << "Archivo deportistas y pagos cargado exitosamente" << endl;
+		cout << "Deportistas y sus pagos cargados exitosamente" << endl;
 	}
 	catch (exception& e)
 	{
@@ -1099,7 +1099,7 @@ void Interfaz::mensajeDeBienvenida()
 	try
 	{
 		gimnasio->setListaCursos(GestorDeArchivos().cargarCursosYGrupos());
-		cout << "Archivo cursos y grupos cargado exitosamente" << endl;
+		cout << "Cursos y sus respectivos grupos cargados exitosamente" << endl;
 	}
 	catch (exception& e)
 	{
@@ -1109,7 +1109,7 @@ void Interfaz::mensajeDeBienvenida()
 	try
 	{
 		GestorDeArchivos().cargarCursoGrupoYCedulaDeLosDeportistasAsociados(gimnasio);
-		cout << "Archivo curso, grupo y cedula de los deportistas asociados cargado exitosamente" << endl;
+		cout << "Se han matriculado los deportistas en sus respectivos grupos" << endl;
 	}
 	catch (exception& e)
 	{
