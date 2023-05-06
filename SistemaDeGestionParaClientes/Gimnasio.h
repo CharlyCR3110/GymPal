@@ -4,6 +4,11 @@
 #include "ListaEnlazada.h"
 #include "Curso.h"
 #include "GestorDeArchivos.h"
+#include "DeportistaNoEncontradoException.h"
+#include "CursoNoEncontradoException.h"
+#include "CupoMaximoExcedido.h"
+#include "DeportistaYaMatriculadoException.h"
+
 const int MAX_CURSOS = 3;	// maximo de cursos que puede tener un deportista
 
 class Gimnasio
