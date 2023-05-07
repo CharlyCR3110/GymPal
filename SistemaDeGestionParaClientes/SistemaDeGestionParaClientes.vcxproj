@@ -138,6 +138,7 @@
     <ClInclude Include="CupoMaximoExcedido.h" />
     <ClInclude Include="Curso.h" />
     <ClInclude Include="DeportistaNoEncontradoException.h" />
+    <ClInclude Include="DeportistaNoMatriculadoException.h" />
     <ClInclude Include="DeportistaYaMatriculadoException.h" />
     <ClInclude Include="ElementoNoEncontradoException.h" />
     <ClInclude Include="Fecha.h" />
@@ -172,6 +173,7 @@
     <ClCompile Include="CupoMaximoExcedido.cpp" />
     <ClCompile Include="Curso.cpp" />
     <ClCompile Include="DeportistaNoEncontradoException.cpp" />
+    <ClCompile Include="DeportistaNoMatriculadoException.cpp" />
     <ClCompile Include="DeportistaYaMatriculadoException.cpp" />
     <ClCompile Include="ElementoNoEncontradoException.cpp" />
     <ClCompile Include="Fecha.cpp" />

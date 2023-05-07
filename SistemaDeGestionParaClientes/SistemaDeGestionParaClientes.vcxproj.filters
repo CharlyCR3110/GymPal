@@ -118,6 +118,9 @@
       <Filter>Source Files\Excepciones</Filter>
     </ClCompile>
     <ClCompile Include="DeportistaYaMatriculadoException.cpp">
+      <Filter>Source Files\Excepciones</Filter>
+    </ClCompile>
+    <ClCompile Include="DeportistaNoMatriculadoException.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -216,6 +219,9 @@
       <Filter>Header Files\Excepciones</Filter>
     </ClInclude>
     <ClInclude Include="DeportistaYaMatriculadoException.h">
+      <Filter>Header Files\Excepciones</Filter>
+    </ClInclude>
+    <ClInclude Include="DeportistaNoMatriculadoException.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
