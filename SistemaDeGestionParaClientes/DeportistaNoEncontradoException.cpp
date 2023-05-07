@@ -2,5 +2,5 @@
 
 const char* DeportistaNoEncontradoException::what() const throw()
 {
-    return "Deportista no encontrado";
+    return "Error: Deportista no encontrado";
 }

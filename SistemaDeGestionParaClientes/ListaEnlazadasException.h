@@ -1,10 +1,9 @@
 #pragma once
-#include <exception>
+#include <stdexcept>
 #include <iostream>
 using namespace std;
 
-class ListaEnlazadasExceptions 
-	: public exception
+class ListaEnlazadasExceptions : public std::exception
 {
 private:
 	string mensaje;

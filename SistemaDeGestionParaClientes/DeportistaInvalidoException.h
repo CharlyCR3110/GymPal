@@ -1,10 +1,9 @@
 #pragma once
-#include <exception>
+#include <stdexcept>
 #include <iostream>
 using namespace std;
 
-class DeportistaInvalidoException :
-	public exception
+class DeportistaInvalidoException : public std::exception
 {
 private:
 	string mensaje;

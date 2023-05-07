@@ -157,24 +157,32 @@ void Gimnasio::matricularEnGrupo(string codigoCurso_, int numeroGrupo_, string c
 		throw exception(e.what());
 	}
 	// si es nullptr probablemente nunca llegue a este punto por el catch, pero por si acaso
-	if (curso == nullptr || deportista == nullptr)
+	if (curso == nullptr)
 	{
-		throw exception("No se encontro el curso o el deportista");
+		throw CursoNoEncontradoException();
+	}
+
+	if (deportista == nullptr)
+	{
+		throw DeportistaNoEncontradoException();
 	}
 
 	if (deportista->getcantidadDeCursosMatriculados() >= MAX_CURSOS)
 	{
-		throw exception("El deportista ya tiene 3 cursos matriculados");
+		string mensajeError = "Error: El deportista ya alcanzo el maximo de cursos matriculados. Maximo: " + std::to_string(MAX_CURSOS);
+		throw CupoMaximoExcedido(mensajeError);
 	}
 	// si el deportista ya esta matriculado en el curso
 	if (curso->estaMatriculado(deportista))
 	{
-		throw exception("El deportista ya esta matriculado en el curso");
+		string mensajeError = "Error: El deportista " + deportista->getNombre() + " ya esta matriculado en el curso " + curso->getCodigo();
+		throw DeportistaYaMatriculadoException(mensajeError);
 	}
 	// si el curso esta lleno
 	if (curso->grupoLleno(numeroGrupo_))
 	{
-		throw exception("El curso esta lleno");
+		string mensajeError = "Error: El grupo " + std::to_string(numeroGrupo_) + " del curso " + curso->getCodigo() + " esta lleno";
+		throw CupoMaximoExcedido(mensajeError);
 	}
 
 	// hacer la matricula
@@ -205,17 +213,18 @@ void Gimnasio::desmatricularDeGrupo(string codigoCurso_, int numeroGrupo_, strin
 	// si es nullptr probablemente nunca llegue a este punto por el catch, pero por si acaso
 	if (curso == nullptr)
 	{
-		throw exception("No se encontro el curso");
+		throw CursoNoEncontradoException();
 	}
 
 	if (deportista == nullptr)
 	{
-		throw exception("No se encontro el deportista");
+		throw DeportistaNoEncontradoException();
 	}
 	// si el deportista no esta matriculado en el curso
 	if (!curso->estaMatriculado(deportista))
 	{
-		throw exception("El deportista no esta matriculado en el curso");
+		string mensajeError = "Error: El deportista " + deportista->getNombre() + " no esta matriculado en el curso " + curso->getCodigo();
+		throw DeportistaYaMatriculadoException(mensajeError);
 	}
 	// hacer la desmatricula
 	try
@@ -247,7 +256,7 @@ void Gimnasio::agregarGrupo(string codigoCurso_, Grupo* grupo_)
 	}
 	else
 	{
-		throw exception("No se encontro el curso.");
+		throw CursoNoEncontradoException();
 	}
 }
 
@@ -373,20 +382,6 @@ const string Gimnasio::generarListadoCursos() const
 
 	return ss.str();
 }
-
-//const string Gimnasio::generarReportePagos() const
-//{
-//	stringstream ss;
-//	try
-//	{
-//		ss << this->controlPagos->;
-//	}
-//	catch (exception& e)
-//	{
-//		throw exception(e.what());
-//	}
-//	return ss.str();
-//}
 
 const string Gimnasio::generarReporteDeportistasPorEstado(char estado_) const
 {

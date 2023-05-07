@@ -305,7 +305,8 @@ void Curso::agregarGrupo(Grupo* grupo_)
 	}
     else
     {
-		throw exception("No se pueden agregar mas grupos");
+        string mensajeError = "Error al agregar grupo. Ya se alcanzo el limte de grupos del curso. Limite de grupos: " + to_string(this->cantidadMaximaDeGrupos);
+		throw CupoMaximoExcedido(mensajeError);
     }
 }
 

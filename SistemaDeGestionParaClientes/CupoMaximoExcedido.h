@@ -1,10 +1,9 @@
 #pragma once
-#include <exception>
+#include <stdexcept>
 #include <iostream>
-using namespace std;\
+using namespace std;
 
-class CupoMaximoExcedido 
-    : public exception
+class CupoMaximoExcedido : public std::exception
 {
 private:
     string mensaje;

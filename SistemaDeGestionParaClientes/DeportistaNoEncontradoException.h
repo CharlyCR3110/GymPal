@@ -1,6 +1,6 @@
 #pragma once
 #include <stdexcept>
-class DeportistaNoEncontradoException : std::exception
+class DeportistaNoEncontradoException : public std::exception
 {
 public:
 	const char* what() const throw();

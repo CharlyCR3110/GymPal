@@ -1,10 +1,9 @@
 #pragma once
 #include <iostream>
-#include <exception>
+#include <stdexcept>
 
 using namespace std;
-class FechaInvalidaException 
-	: public exception
+class FechaInvalidaException : public std::exception
 {
 private:
 	string mensaje;

@@ -1,6 +1,6 @@
 #pragma once
 #include <stdexcept>
-class PagosNoRegistradosException : std::exception
+class PagosNoRegistradosException : public std::exception
 {
 public:
 	const char* what() const throw();
