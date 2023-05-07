@@ -5,7 +5,7 @@ Gimnasio* Interfaz::gimnasio = new Gimnasio();
 
 
 // *Nota* El clearInputBuffer puede generar la necesidad de tocar dos veces enter para que se ejecute la siguiente instruccion, pero si no se usa, muchas veces se toma una entrada vacia y salta el mensaje "No se puede ingresar un valor vacio"
-
+// *Nota* El pause, muchas veces suele genera la necesidad de presionar enter 2 veces, debido a que despues de este se lanza un return;
 int Interfaz::menuPrincipal()
 {
 	int opcion = 0;
@@ -228,6 +228,7 @@ void Interfaz::menuControlDeportistasModificarDeportista()
 	cout << "10. Horas entrenamiento" << endl;
 	cout << "11. Cantidad de partidos IronMan" << endl;
 	cout << "12. Cantidad de triatlones ganados" << endl;
+	cout << "13. Regresar" << endl;
 	cout << "Digite una opcion: ";
 	cin >> opcion;
 	cin.ignore(numeric_limits<streamsize>::max(), '\n');    // limpiar buffer de entrada
@@ -270,6 +271,9 @@ void Interfaz::menuControlDeportistasModificarDeportista()
 	case 12:
 		modificarCantidadTriatlonesGanadosDeportista(deportista);
 		break;
+	case 13:
+		return;
+		break;
 	default:
 		cout << "Opcion invalida" << endl;
 		break;
@@ -286,6 +290,7 @@ void Interfaz::menuControlDeportistasMostrarListadosDeportistas()
 	cout << "2. Listado de deportistas activos" << endl;
 	cout << "3. Listado de deportistas inactivos" << endl;
 	cout << "4. Listado de deportistas en morosidad" << endl;
+	cout << "5. Regresar" << endl;
 	cout << "Digite una opción del menú: ";
 	cin >> opcion;
 	cout << "-----------------------------------------------------------" << endl;
@@ -325,6 +330,9 @@ void Interfaz::menuControlDeportistasMostrarListadosDeportistas()
 		catch (exception& e) {
 			cerr << e.what() << endl;
 		}
+		break;
+	case 5:
+		return;
 		break;
 	default:
 		cout << "Opción inválida. Por favor, seleccione una opción del menú." << endl;
@@ -443,6 +451,7 @@ void Interfaz::menuControlCursosModificarCurso()
 	cout << "3. Nivel" << endl;
 	cout << "4. Descripcion" << endl;
 	cout << "5. Cantidad de grupos" << endl;
+	cout << "6. Regresar" << endl;
 	cout << "Ingrese una opcion del menu: ";
 	cin >> opcion;
 	cout << "-----------------------------------------------------------" << endl;
@@ -462,6 +471,9 @@ void Interfaz::menuControlCursosModificarCurso()
 		break;
 	case 5:
 		Interfaz::modificarCantidadGruposCurso(curso);
+		break;
+	case 6:
+		return;
 		break;
 	default:
 		cout << "Opcion invalida. Por favor, seleccione una opcion del menu." << endl;
@@ -643,6 +655,7 @@ void Interfaz::menuControlGruposModificarGrupo()
 	cout << "6. Dia de la semana" << endl;
 	cout << "7. Hora de inicio" << endl;
 	cout << "8. Hora de finalizacion" << endl;
+	cout << "9. Regresar" << endl;
 	cout << "Digite una opcion: ";
 	cin >> opcion;
 	cout << "-----------------------------------------------------------" << endl;
@@ -671,6 +684,9 @@ void Interfaz::menuControlGruposModificarGrupo()
 		break;
 	case 8:
 		Interfaz::modificarHoraSalidaGrupo(grupo);
+		break;
+	case 9:
+		return;
 		break;
 	default:
 		cout << "Opcion invalida" << endl;
