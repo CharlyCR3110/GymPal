@@ -213,17 +213,18 @@ void Gimnasio::desmatricularDeGrupo(string codigoCurso_, int numeroGrupo_, strin
 	// si es nullptr probablemente nunca llegue a este punto por el catch, pero por si acaso
 	if (curso == nullptr)
 	{
-		throw exception("No se encontro el curso");
+		throw CursoNoEncontradoException();
 	}
 
 	if (deportista == nullptr)
 	{
-		throw exception("No se encontro el deportista");
+		throw DeportistaNoEncontradoException();
 	}
 	// si el deportista no esta matriculado en el curso
 	if (!curso->estaMatriculado(deportista))
 	{
-		throw exception("El deportista no esta matriculado en el curso");
+		string mensajeError = "Error: El deportista " + deportista->getNombre() + " no esta matriculado en el curso " + curso->getCodigo();
+		throw DeportistaYaMatriculadoException(mensajeError);
 	}
 	// hacer la desmatricula
 	try
@@ -255,7 +256,7 @@ void Gimnasio::agregarGrupo(string codigoCurso_, Grupo* grupo_)
 	}
 	else
 	{
-		throw exception("No se encontro el curso.");
+		throw CursoNoEncontradoException();
 	}
 }
 
@@ -381,20 +382,6 @@ const string Gimnasio::generarListadoCursos() const
 
 	return ss.str();
 }
-
-//const string Gimnasio::generarReportePagos() const
-//{
-//	stringstream ss;
-//	try
-//	{
-//		ss << this->controlPagos->;
-//	}
-//	catch (exception& e)
-//	{
-//		throw exception(e.what());
-//	}
-//	return ss.str();
-//}
 
 const string Gimnasio::generarReporteDeportistasPorEstado(char estado_) const
 {
