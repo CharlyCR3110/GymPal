@@ -19,69 +19,54 @@
     <Filter Include="Header Files\Excepciones">
       <UniqueIdentifier>{10e6a804-b8e3-4a18-af95-8d9f0fc41418}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Archivos">
+      <UniqueIdentifier>{b25d30bf-daf2-4402-9a46-d81d759365e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Cursos">
+      <UniqueIdentifier>{c252480f-71f7-4e60-ac3c-e876c82b45bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Delegacion">
+      <UniqueIdentifier>{ed1aa8f7-c301-4d23-9b64-ebd39a979258}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Fecha">
+      <UniqueIdentifier>{d94440f0-4e65-4eb3-810c-6aea91b9a161}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Interfaz">
+      <UniqueIdentifier>{ac9260c2-b208-4949-8c5f-8d616b5f55f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Pagos">
+      <UniqueIdentifier>{e8a92178-af09-4dc0-81d5-c47821909ae0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Lista">
+      <UniqueIdentifier>{cdfd3844-387d-453c-a015-6b20e36ce895}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Archivos">
+      <UniqueIdentifier>{e710ffcd-4fbc-4469-a5de-1ef13566639f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Cursos">
+      <UniqueIdentifier>{591db113-7c5c-493a-996f-c68fa636e47c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Delegacion">
+      <UniqueIdentifier>{f630a97d-d4df-41cc-901c-9912941a4559}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Fecha">
+      <UniqueIdentifier>{3962459f-348d-4856-883f-f99b61b3a2f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Interfaz">
+      <UniqueIdentifier>{b0bc271e-667e-4385-bd88-4d9385c9dbe7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Lista">
+      <UniqueIdentifier>{0b037cb9-6b68-4134-a785-400eb5cebc75}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Pagos">
+      <UniqueIdentifier>{cfe732c0-85f1-4061-9c59-6be08f5c0e84}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Deportista.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Fecha.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ManejoFechas.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Nodo.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ListaEnlazada.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Curso.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Ciclista.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Nadador.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Corredor.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Triatlonista.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Instructor.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Grupo.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Hora.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ControlPagos.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Pago.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Gimnasio.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Interfaz.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Utils.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Controlador.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GestorDeArchivos.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ControlPagosInvalidoException.cpp">
@@ -121,68 +106,68 @@
       <Filter>Source Files\Excepciones</Filter>
     </ClCompile>
     <ClCompile Include="DeportistaNoMatriculadoException.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Excepciones</Filter>
+    </ClCompile>
+    <ClCompile Include="Ciclista.cpp">
+      <Filter>Source Files\Delegacion</Filter>
+    </ClCompile>
+    <ClCompile Include="Corredor.cpp">
+      <Filter>Source Files\Delegacion</Filter>
+    </ClCompile>
+    <ClCompile Include="Deportista.cpp">
+      <Filter>Source Files\Delegacion</Filter>
+    </ClCompile>
+    <ClCompile Include="Nadador.cpp">
+      <Filter>Source Files\Delegacion</Filter>
+    </ClCompile>
+    <ClCompile Include="Triatlonista.cpp">
+      <Filter>Source Files\Delegacion</Filter>
+    </ClCompile>
+    <ClCompile Include="Controlador.cpp">
+      <Filter>Source Files\Interfaz</Filter>
+    </ClCompile>
+    <ClCompile Include="Curso.cpp">
+      <Filter>Source Files\Cursos</Filter>
+    </ClCompile>
+    <ClCompile Include="Fecha.cpp">
+      <Filter>Source Files\Fecha</Filter>
+    </ClCompile>
+    <ClCompile Include="ControlPagos.cpp">
+      <Filter>Source Files\Pagos</Filter>
+    </ClCompile>
+    <ClCompile Include="GestorDeArchivos.cpp">
+      <Filter>Source Files\Archivos</Filter>
+    </ClCompile>
+    <ClCompile Include="Hora.cpp">
+      <Filter>Source Files\Cursos</Filter>
+    </ClCompile>
+    <ClCompile Include="Grupo.cpp">
+      <Filter>Source Files\Cursos</Filter>
+    </ClCompile>
+    <ClCompile Include="Instructor.cpp">
+      <Filter>Source Files\Cursos</Filter>
+    </ClCompile>
+    <ClCompile Include="ManejoFechas.cpp">
+      <Filter>Source Files\Fecha</Filter>
+    </ClCompile>
+    <ClCompile Include="Nodo.cpp">
+      <Filter>Source Files\Lista</Filter>
+    </ClCompile>
+    <ClCompile Include="ListaEnlazada.cpp">
+      <Filter>Source Files\Lista</Filter>
+    </ClCompile>
+    <ClCompile Include="Pago.cpp">
+      <Filter>Source Files\Pagos</Filter>
+    </ClCompile>
+    <ClCompile Include="Utils.cpp">
+      <Filter>Source Files\Interfaz</Filter>
+    </ClCompile>
+    <ClCompile Include="Interfaz.cpp">
+      <Filter>Source Files\Interfaz</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Deportista.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Fecha.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ManejoFechas.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Nodo.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ListaEnlazada.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Curso.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Ciclista.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Nadador.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Corredor.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Triatlonista.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Instructor.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Grupo.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Hora.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ControlPagos.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Pago.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Gimnasio.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Interfaz.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Utils.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Controlador.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GestorDeArchivos.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ElementoNoEncontradoException.h">
@@ -221,8 +206,65 @@
     <ClInclude Include="DeportistaYaMatriculadoException.h">
       <Filter>Header Files\Excepciones</Filter>
     </ClInclude>
+    <ClInclude Include="Curso.h">
+      <Filter>Header Files\Cursos</Filter>
+    </ClInclude>
+    <ClInclude Include="Grupo.h">
+      <Filter>Header Files\Cursos</Filter>
+    </ClInclude>
+    <ClInclude Include="Hora.h">
+      <Filter>Header Files\Cursos</Filter>
+    </ClInclude>
+    <ClInclude Include="Instructor.h">
+      <Filter>Header Files\Cursos</Filter>
+    </ClInclude>
+    <ClInclude Include="Ciclista.h">
+      <Filter>Header Files\Delegacion</Filter>
+    </ClInclude>
+    <ClInclude Include="Corredor.h">
+      <Filter>Header Files\Delegacion</Filter>
+    </ClInclude>
+    <ClInclude Include="Deportista.h">
+      <Filter>Header Files\Delegacion</Filter>
+    </ClInclude>
+    <ClInclude Include="Nadador.h">
+      <Filter>Header Files\Delegacion</Filter>
+    </ClInclude>
+    <ClInclude Include="Triatlonista.h">
+      <Filter>Header Files\Delegacion</Filter>
+    </ClInclude>
     <ClInclude Include="DeportistaNoMatriculadoException.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Excepciones</Filter>
+    </ClInclude>
+    <ClInclude Include="Fecha.h">
+      <Filter>Header Files\Fecha</Filter>
+    </ClInclude>
+    <ClInclude Include="ManejoFechas.h">
+      <Filter>Header Files\Fecha</Filter>
+    </ClInclude>
+    <ClInclude Include="Pago.h">
+      <Filter>Header Files\Pagos</Filter>
+    </ClInclude>
+    <ClInclude Include="Nodo.h">
+      <Filter>Header Files\Lista</Filter>
+    </ClInclude>
+    <ClInclude Include="ListaEnlazada.h">
+      <Filter>Header Files\Lista</Filter>
+    </ClInclude>
+    <ClInclude Include="Controlador.h">
+      <Filter>Header Files\Interfaz</Filter>
+    </ClInclude>
+    <ClInclude Include="Interfaz.h">
+      <Filter>Header Files\Interfaz</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils.h">
+      <Filter>Header Files\Interfaz</Filter>
+    </ClInclude>
+    <ClInclude Include="ControlPagos.h">
+      <Filter>Header Files\Pagos</Filter>
+    </ClInclude>
+    <ClInclude Include="GestorDeArchivos.h">
+      <Filter>Header Files\Archivos</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
