@@ -1051,6 +1051,14 @@ void Interfaz::menuControlPagosIngresoNuevoPago()
 	cout << "-----------------------------------------------------------" << endl;
 	cout << "Cuantas cuotas desea cancelar o pagar: ";
 	cin >> cantidadDeCuotas;
+
+	if (cantidadDeCuotas <= 0)
+	{
+		cout << "Error: La cantidad de cuotas debe ser mayor a 0" << endl;
+		Utils::pause();
+		return;
+	}
+
 	cout << "-----------------------------------------------------------" << endl;
 	try
 	{
