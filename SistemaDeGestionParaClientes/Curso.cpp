@@ -358,7 +358,8 @@ void Curso::matricularEnGrupo(int numeroGrupo, Deportista* deportista)
 
     if (deportista->getEstado() != 'A')
     {
-        throw exception("El deportista no esta activo");
+        string mensajeError = "Deportista: " + deportista->getNombre() + " no esta activo(a). Estado: " + deportista->getEstado();
+        throw exception(mensajeError.c_str());
     }
 
 	Nodo<Grupo>* nodoActual = this->listaGrupos->getPrimero();
