@@ -47,11 +47,12 @@ ListaEnlazada<Deportista>* GestorDeArchivos::cargarDeportistasYPagos()
 		while (getline(archivoDeportistasYPagos, linea))
 		{
 			stringstream ss(linea);
-			string cedula, nombre, telefono, fechaNacimientoDia, fechaNacimientoMes, fechaNacimientoAnio, horasEntrenamiento, temperaturaPromedio, cantidadParticipacionesIronMan, cantidadTriatlonesGanados, sexo, estatura, masaMuscular, peso, porcentajeGrasaCorporal, fechaUltimaActualizacionDia, fechaUltimaActualizacionMes, fechaUltimaActualizacionAnio, cantidadDePagos;
+			string cedula, nombre, telefono, estado, fechaNacimientoDia, fechaNacimientoMes, fechaNacimientoAnio, horasEntrenamiento, temperaturaPromedio, cantidadParticipacionesIronMan, cantidadTriatlonesGanados, sexo, estatura, masaMuscular, peso, porcentajeGrasaCorporal, fechaUltimaActualizacionDia, fechaUltimaActualizacionMes, fechaUltimaActualizacionAnio, cantidadDePagos;
 			int valorCantidadDePagos;
 			getline(ss, cedula, ';');
 			getline(ss, nombre, ';');
 			getline(ss, telefono, ';');
+			getline(ss, estado, ';');
 			getline(ss, fechaNacimientoDia, ';');
 			getline(ss, fechaNacimientoMes, ';');
 			getline(ss, fechaNacimientoAnio, ';');
@@ -69,7 +70,7 @@ ListaEnlazada<Deportista>* GestorDeArchivos::cargarDeportistasYPagos()
 			getline(ss, fechaUltimaActualizacionAnio, ';');
 			getline(ss, cantidadDePagos, '|');
 			Deportista* deportista = new Triatlonista(cedula, nombre, telefono, new Fecha(stoi(fechaNacimientoDia), stoi(fechaNacimientoMes), stoi(fechaNacimientoAnio)), stoi(horasEntrenamiento), stod(temperaturaPromedio), stoi(cantidadParticipacionesIronMan), stoi(cantidadTriatlonesGanados), sexo[0], stod(estatura), stod(masaMuscular), stod(peso), stod(porcentajeGrasaCorporal), new Fecha(stoi(fechaUltimaActualizacionDia), stoi(fechaUltimaActualizacionMes), stoi(fechaUltimaActualizacionAnio)));
-
+			deportista->setEstado(estado[0]);
 			valorCantidadDePagos = stoi(cantidadDePagos);
 			deportista->setCantidadDePagos(valorCantidadDePagos);
 			// while para cargar los pagos, cada pago esta separado por un |, cuando se encuentre un '\n' es porque es otro deportista
