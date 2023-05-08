@@ -60,6 +60,17 @@ void Interfaz::menuAdministracionGeneralMontoMensual()  // sub menu 2 de menu ad
 //---------------------//
 int Interfaz::menuControlDeportistas()
 {
+	// llamo a este metodo aqui para no tener que escribirlo en cada opcion del menu
+	try
+	{
+		gimnasio->buscarDeportistasNoPagados();
+	}
+	catch (exception& e)
+	{
+		cerr << "error inesperado" << e.what() << endl;
+		Utils::clearScreen();
+	}
+	//
 	int opcion = 0;
 	cout << "\t\t2. Control de Deportistas" << endl;
 	cout << "1. Ingreso nuevo deportista" << endl;
@@ -361,6 +372,17 @@ void Interfaz::menuControlDeportistasMostrarDeportistaEspecifico()
 //---------------------//
 int Interfaz::menuControlCursos()
 {
+	// llamo a este metodo aqui para no tener que escribirlo en cada opcion del menu
+	try
+	{
+		gimnasio->buscarDeportistasNoPagados();
+	}
+	catch (exception& e)
+	{
+		cerr << "error inesperado" << e.what() << endl;
+		Utils::clearScreen();
+	}
+	//
 	int opcion = 0;
 	cout << "\t\t3. Control de Cursos" << endl;
 	cout << "1. Ingreso nuevo curso" << endl;
@@ -484,6 +506,17 @@ void Interfaz::menuControlCursosModificarCurso()
 
 int Interfaz::menuControlGrupos()
 {
+	// llamo a este metodo aqui para no tener que escribirlo en cada opcion del menu
+	try
+	{
+		gimnasio->buscarDeportistasNoPagados();
+	}
+	catch (exception& e)
+	{
+		cerr << "error inesperado" << e.what() << endl;
+		Utils::clearScreen();
+	}
+	//
 	int opcion = 0;
 	cout << "\t\t4. Control de Grupos" << endl;
 	cout << "1. Ingreso nuevo grupo" << endl;
@@ -763,7 +796,7 @@ void Interfaz::menuControlGruposMatricularEnGrupo()
 	}
 	catch (exception& e)
 	{
-		cerr << e.what() << endl;
+		cerr << "Error al intentar matricular: " << e.what() << endl;
 		Utils::pause();
 		return;
 	}
@@ -974,6 +1007,17 @@ void Interfaz::menuControlGruposCancelarMatriculaEnGrupo()
 
 int Interfaz::menuControlPagos()
 {
+	// llamo a este metodo aqui para no tener que escribirlo en cada opcion del menu
+	try
+	{
+		gimnasio->buscarDeportistasNoPagados();
+	}
+	catch (exception& e)
+	{
+		cerr << "error inesperado" << e.what() << endl;
+		Utils::clearScreen();
+	}
+	//
 	int opcion = 0;
 	cout << "\t\t5. Control de Pagos" << endl;
 	cout << "1. Registro de nuevo pago" << endl;
