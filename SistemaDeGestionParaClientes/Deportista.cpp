@@ -92,10 +92,10 @@ void Deportista::setCantidadDePagos(int cantidadDePagos_)
 
 void Deportista::actualizarEstado(char estado_)
 {
-//Nota: el estado solo puede ser cambiando de activo a inactivo, el estado de morosidad debe ser determinado automáticamente por el sistema.
+//Nota: el estado solo puede ser cambiando de activo a inactivo, el estado de morosidad debe ser determinado automï¿½ticamente por el sistema.
     if (this->estado == 'P')
     {
-        throw DeportistaInvalidoException("El estado del deportista no puede ser cambiado a inactivo, ya que se encuentra en morosidad. PAGUE, PAGUE");
+        throw DeportistaInvalidoException("El estado del deportista no puede ser cambiado a inactivo, ya que se encuentra en morosidad.");
     }
 
     if (toupper(estado_) == 'A' || toupper(estado_) == 'I')
