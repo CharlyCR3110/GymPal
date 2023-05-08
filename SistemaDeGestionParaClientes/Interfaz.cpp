@@ -8,6 +8,18 @@ Gimnasio* Interfaz::gimnasio = new Gimnasio();
 // *Nota* El pause, muchas veces suele genera la necesidad de presionar enter 2 veces, debido a que despues de este se lanza un return;
 int Interfaz::menuPrincipal()
 {
+	//
+	try
+	{
+		gimnasio->buscarDeportistasNoPagados();
+	}
+	catch (exception& e)
+	{
+		cerr << "Error inesperado al comprobar los deportistas con pagos pendientes" << e.what() << endl;
+		Utils::pause();
+		Utils::clearScreen();
+	}
+	//
 	int opcion = 0;
 	cout << "\t\tMenu Principal" << endl;
 	cout << "1. Administracion General" << endl;
@@ -67,7 +79,8 @@ int Interfaz::menuControlDeportistas()
 	}
 	catch (exception& e)
 	{
-		cerr << "error inesperado" << e.what() << endl;
+		cerr << "Error inesperado al comprobar los deportistas con pagos pendientes" << e.what() << endl;
+		Utils::pause();
 		Utils::clearScreen();
 	}
 	//
@@ -1513,6 +1526,7 @@ void Interfaz::modificarEstadoDeportista(Deportista* deportista)
 		catch (exception& e)
 		{
 			cerr << e.what() << endl;
+			return;
 		}
 	}
 }
