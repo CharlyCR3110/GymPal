@@ -6,6 +6,7 @@
 #include "DeportistaNoEncontradoException.h"
 #include "PagoInvalidoException.h"
 #include "PagosNoRegistradosException.h"
+#include "ListaVaciaException.h"
 
 class ControlPagos
 {
@@ -19,6 +20,6 @@ public:
 	string generarReportePagos(string cedula_, ListaEnlazada<Deportista>* listaDeportistas);
 	// metodo para pagar x cantidad de meses
 	string pagarMeses(string cedula_, int cantidadMeses_, ListaEnlazada<Deportista>* listaDeportistas, Fecha* fechaActual, double montoMensual);
-	//
-	//Verificar pago: un método que recibe como parámetro el número de identificación del cliente y verifica si tiene pagos pendientes o si se encuentra activo en el gimnasio.
+	// metodo para buscar a los deportistas que no han pagado y cambiar su estado a 'P' de pendiente
+	void buscarDeportistasNoPagados(ListaEnlazada<Deportista>* listaDeportistas, Fecha* fechaActual);
 };

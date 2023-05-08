@@ -4,9 +4,9 @@
 class Pago
 {
 private:
-	Fecha* fecha;
-	string mesCancelado;
-	double monto;
+	Fecha* fecha;	// fecha en la que se realizo el pago
+	string mesCancelado;	// mes que se cancelo
+	double monto;	// monto cancelado
 public:
 	Pago(Fecha* fecha_, string mesCancelado_, double monto_);
 	Pago(const Pago& pago_);

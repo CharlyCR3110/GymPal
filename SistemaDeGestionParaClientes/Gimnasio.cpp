@@ -504,6 +504,18 @@ bool Gimnasio::existeDeportistaConCedula(string cedula_)
 	return listaDeportistas->existeItemConCodigo(cedula_);
 }
 
+void Gimnasio::buscarDeportistasNoPagados()
+{
+	try
+	{
+		controlPagos->buscarDeportistasNoPagados(this->listaDeportistas, this->fechaActual);
+	}
+	catch (exception& e)
+	{
+		throw exception(e.what());
+	}
+}
+
 void Gimnasio::guardarCursosYGrupos()
 {
 	try

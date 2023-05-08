@@ -71,6 +71,8 @@ public:
 	// 5. verificar repetidos
 	bool existeCursoConCodigo(string codigo_);
 	bool existeDeportistaConCedula(string cedula_);
+	// 
+	void buscarDeportistasNoPagados();
 	//archivos
 	void guardarCursosYGrupos();
 	void guardarEnArchivoDeportistasYSusPagos();
