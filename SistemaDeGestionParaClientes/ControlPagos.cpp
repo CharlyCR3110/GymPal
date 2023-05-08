@@ -101,12 +101,12 @@ string ControlPagos::pagarMeses(string cedula_, int cantidadMeses_, ListaEnlazad
 
 	
 	int ultimoMesPagado = 0;
-	int ultiomoAnioPagado = 0;
+	int ultimoAnioPagado  = 0;
 	string ultimoMesEnTexto = "";
 	if (pagosDelDeportista->estaVacia())
 	{
 		ultimoMesPagado = fechaActual->getMes() - 1;
-		ultiomoAnioPagado = fechaActual->getAnio();
+		ultimoAnioPagado  = fechaActual->getAnio();
 	}
 	else
 	{
@@ -125,7 +125,7 @@ string ControlPagos::pagarMeses(string cedula_, int cantidadMeses_, ListaEnlazad
 	// se recorre la lista de pagos para saber el ultimo anio pagado
 	if (pagosDelDeportista->estaVacia())
 	{
-		ultiomoAnioPagado = fechaActual->getAnio();
+		ultimoAnioPagado  = fechaActual->getAnio();
 	}
 	else
 	{
@@ -134,9 +134,9 @@ string ControlPagos::pagarMeses(string cedula_, int cantidadMeses_, ListaEnlazad
 		Nodo<Pago>* nodoActual = pagosDelDeportista->getPrimero();
 		while (nodoActual != nullptr)
 		{
-			if (nodoActual->getDato()->getFecha()->getAnio() > ultiomoAnioPagado)
+			if (nodoActual->getDato()->getFecha()->getAnio() > ultimoAnioPagado )
 			{
-				ultiomoAnioPagado = nodoActual->getDato()->getFecha()->getAnio();
+				ultimoAnioPagado  = nodoActual->getDato()->getFecha()->getAnio();
 			}
 			nodoActual = nodoActual->getSiguiente();
 		}
@@ -153,9 +153,9 @@ string ControlPagos::pagarMeses(string cedula_, int cantidadMeses_, ListaEnlazad
 		string mes = meses[mesQueSeDebePagar];
 		double monto = montoMensual;
 
-		pagosDelDeportista->insertar(new Pago(new Fecha(fechaActual->getDia(), fechaActual->getMes(), ultiomoAnioPagado), mes, monto));
+		pagosDelDeportista->insertar(new Pago(new Fecha(fechaActual->getDia(), fechaActual->getMes(), ultimoAnioPagado ), mes, monto));
 		try {
-			ss << "-" << mes << " " << ultiomoAnioPagado << endl;
+			ss << "-" << mes << " " << ultimoAnioPagado  << endl;
 		}
 		catch (exception& e)
 		{
@@ -166,13 +166,87 @@ string ControlPagos::pagarMeses(string cedula_, int cantidadMeses_, ListaEnlazad
 		if (mesQueSeDebePagar == 12)
 		{
 			mesQueSeDebePagar = 0;
-			ultiomoAnioPagado++;
+			ultimoAnioPagado ++;
 		}
 	}
 
 	ss << "El deportista " << deportista->getNombre() << " ha pagado " << cantidadMeses_ << " meses" << endl;
-	ss << "Debe de pagar haste el mes de: " << meses[mesQueSeDebePagar] << " " << ultiomoAnioPagado << endl;
+	ss << "Debe de pagar haste el mes de: " << meses[mesQueSeDebePagar] << " " << ultimoAnioPagado  << endl;
 
 	deportista->setCantidadDePagos(deportista->getCantidadDePagos() + cantidadMeses_);
 	return ss.str();
+}
+
+void ControlPagos::buscarDeportistasNoPagados(ListaEnlazada<Deportista>* listaDeportistas, Fecha* fechaActual)
+{
+	if (listaDeportistas->estaVacia())
+	{
+		throw ListaVaciaException();
+	}
+	if(fechaActual == nullptr)
+	{
+		throw FechaInvalidaException("La fecha actual fue nullptr");
+	}
+
+	string meses[12] = { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+							 "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" };
+	Nodo<Deportista>* nodoActual = listaDeportistas->getPrimero();
+	while (nodoActual != nullptr)
+	{
+		Deportista* deportistaActual = nodoActual->getDato();
+		
+		// solo se busca a los deportistas activos
+		if (deportistaActual->getEstado() == 'A')
+		{
+			try
+			{
+				ListaEnlazada<Pago>* pagosDelDeportista = deportistaActual->getPagos();
+				if (pagosDelDeportista->estaVacia())
+				{
+					deportistaActual->setEstado('P');
+					
+				}
+				else
+				{
+					Pago* ultimoPago = deportistaActual->getPagos()->getUltimo()->getDato();
+
+					int ultimoMesPagado = 0;
+					int ultimoAnioPagado  = ultimoPago->getFecha()->getAnio();
+					string ultimoMesEnTexto = ultimoPago->getMesCancelado();
+					for (int i = 0; i < 12; i++)
+					{
+						if (ultimoMesEnTexto == meses[i])
+						{
+							ultimoMesPagado = i;
+							break;
+						}
+					}
+					// no se puede usar deportista->getPagos()->getUltimo()->getDato()->getFecha()->getAnio(); porque esto devuelve la fecha en la que se paga, no la fecha que paga
+					// se recorre la lista de pagos para saber el ultimo anio pagado
+					Nodo<Pago>* nodoActual = pagosDelDeportista->getPrimero();
+					while (nodoActual != nullptr)
+					{
+						if (nodoActual->getDato()->getFecha()->getAnio() > ultimoAnioPagado )
+						{
+							ultimoAnioPagado  = nodoActual->getDato()->getFecha()->getAnio();
+						}
+						nodoActual = nodoActual->getSiguiente();
+					}
+
+					// comparamos el ultimo mes pagado con el mes actual
+					int mesActual = fechaActual->getMes() - 1;
+					int anioActual = fechaActual->getAnio();
+					if (ultimoAnioPagado  < anioActual || (ultimoAnioPagado  == anioActual && ultimoMesPagado < mesActual))
+					{
+						deportistaActual->setEstado('P');
+					}
+				}
+			}
+			catch (exception& e)
+			{
+				throw runtime_error("Algo ocurrio al verificar los deportistas pendientes de pago");
+			}
+		}
+		nodoActual = nodoActual->getSiguiente();
+	}
 }
