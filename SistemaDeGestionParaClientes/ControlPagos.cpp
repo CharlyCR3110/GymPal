@@ -247,6 +247,10 @@ void ControlPagos::buscarDeportistasNoPagados(ListaEnlazada<Deportista>* listaDe
 				throw runtime_error("Algo ocurrio al verificar los deportistas pendientes de pago");
 			}
 		}
+		else
+		{
+			deportistaActual->setEstado('A');
+		}
 		nodoActual = nodoActual->getSiguiente();
 	}
 }
