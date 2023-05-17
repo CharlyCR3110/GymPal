@@ -1,14 +1,52 @@
 #include "GestorDeArchivos.h"
-
+using namespace std;
 GestorDeArchivos::GestorDeArchivos()
 {
 }
 
+#include "Gimnasio.h"
+void GestorDeArchivos::guardarDatosDelGimnasio(Gimnasio* gimnasio_)
+{
+	ofstream archivosDatosGimnasio;
+	archivosDatosGimnasio.open("../Archivos/DatosGimnasio.txt");
+	if (!archivosDatosGimnasio.is_open())
+	{
+		throw runtime_error("No se pudo abrir el archivo DatosGimnasio.txt");
+	}
+
+	archivosDatosGimnasio << gimnasio_->toStringParaGuardarDatosDelGimnasio();	//  ss << this->nombreDelGimnasio << ';' << this->montoMensual << ';';
+	archivosDatosGimnasio.close();
+}
+
+void GestorDeArchivos::cargarDatosDelGimnasio(Gimnasio* gimnasio_)
+{
+	ifstream archivosDatosGimnasio;
+	archivosDatosGimnasio.open("../Archivos/DatosGimnasio.txt");
+	if (!archivosDatosGimnasio.is_open())
+	{
+		throw runtime_error("No se pudo abrir el archivo DatosGimnasio.txt");
+	}
+	else
+	{
+		string linea;
+		getline(archivosDatosGimnasio, linea);
+		stringstream ss(linea);
+		string nombreDelGimnasio, montoMensual;
+		getline(ss, nombreDelGimnasio, ';');
+		getline(ss, montoMensual, ';');
+		gimnasio_->setNombreDelGimnasio(nombreDelGimnasio);
+		gimnasio_->setMontoMensual(stod(montoMensual));
+		archivosDatosGimnasio.close();
+	}
+}
+
+// si la ruta de los archivos da problemas cambiarla.
+// En la carpeta 'backup archivos' hay unos archivos de prueba para que se puedan probar los metodos de guardar y cargar
 // deportistas y pagos
 void GestorDeArchivos::guardarDeportistasYPagos(ListaEnlazada<Deportista>* listaDeportistas_)
 {
 	ofstream archivoDeportistasYPagos;
-	archivoDeportistasYPagos.open("../DeportistasConPagos.txt");
+	archivoDeportistasYPagos.open("../Archivos/DeportistasConPagos.txt");
 	if (!archivoDeportistasYPagos.is_open())
 	{
 		throw runtime_error("No se pudo abrir el archivo Deportistas.txt");
@@ -36,7 +74,7 @@ ListaEnlazada<Deportista>* GestorDeArchivos::cargarDeportistasYPagos()
 {
 	ListaEnlazada<Deportista>* listaDeportistas = new ListaEnlazada<Deportista>();
 	ifstream archivoDeportistasYPagos;
-	archivoDeportistasYPagos.open("../DeportistasConPagos.txt");
+	archivoDeportistasYPagos.open("../Archivos/DeportistasConPagos.txt");
 	if (!archivoDeportistasYPagos.is_open())
 	{
 		throw runtime_error("No se pudo abrir el archivo DeportistasConPagos.txt");
@@ -98,7 +136,7 @@ ListaEnlazada<Deportista>* GestorDeArchivos::cargarDeportistasYPagos()
 void GestorDeArchivos::guardarCursosYGrupos(ListaEnlazada<Curso>* listaCursos_)
 {
 	ofstream archivoCursos;
-	archivoCursos.open("../Cursos.txt");
+	archivoCursos.open("../Archivos/Cursos.txt");
 
 	if (!archivoCursos.is_open())
 	{
@@ -136,7 +174,7 @@ ListaEnlazada<Curso>* GestorDeArchivos::cargarCursosYGrupos()
 {
 	ListaEnlazada<Curso>* listaCursos = new ListaEnlazada<Curso>();
 	ifstream archivoCursos;
-	archivoCursos.open("../Cursos.txt");
+	archivoCursos.open("../Archivos/Cursos.txt");
 	if (!archivoCursos.is_open())
 	{ 
 		throw runtime_error("No se pudo abrir el archivo Cursos.txt");
@@ -166,7 +204,7 @@ ListaEnlazada<Curso>* GestorDeArchivos::cargarCursosYGrupos()
 
 
 				string nombreInstructor, apellidoInstructor, idInstructor, cupoMaximo, diaDeInicio, mesDeInicio, anioDeInicio, semanasDeDuracion, numeroGrupo, diaDeLaSemana, horaDeInicio, minutoDeInicio, segundoDeInicio, horaDeFin, minutoDeFin, segundoDeFin;
-				int valorDiaDeInicio, valorMesDeInicio, valorAnioDeInicio, valorHoraDeInicio, valorMinutoDeInicio, valorSegundoDeInicio, valorHoraDeFin, valorMinutoDeFin, valorSegundoDeFin;
+				int valorDiaDeInicio, valorMesDeInicio, valorAnioDeInicio, valorHoraDeInicio, valorMinutoDeInicio, valorSegundoDeInicio, valorHoraDeFin, valorMinutoDeFin, valorSegundoDeFin = 0;
 				getline(ssGrupo, nombreInstructor, ';');
 				getline(ssGrupo, apellidoInstructor, ';');
 				getline(ssGrupo, idInstructor, ';');
@@ -205,7 +243,7 @@ ListaEnlazada<Curso>* GestorDeArchivos::cargarCursosYGrupos()
 
 				try
 				{
-					valorMesDeInicio = stoi(mesDeInicio);
+					valorAnioDeInicio = stoi(anioDeInicio);
 				}
 				catch (const std::exception& e)
 				{
@@ -272,7 +310,7 @@ ListaEnlazada<Curso>* GestorDeArchivos::cargarCursosYGrupos()
 				}
 
 				// Crear un objeto Fecha con los datos obtenidos
-				Fecha* fechaDeInicio = new Fecha(valorDiaDeInicio, valorMesDeInicio, valorMesDeInicio);
+				Fecha* fechaDeInicio = new Fecha(valorDiaDeInicio, valorMesDeInicio, valorAnioDeInicio);
 				// Crear un objeto Hora con los datos obtenidos
 				Hora* horaDeInicioHora = new Hora(valorHoraDeInicio, valorMinutoDeInicio, valorSegundoDeInicio);
 				Hora* horaDeFinHora = new Hora(valorHoraDeFin, valorMinutoDeFin, valorSegundoDeFin);
@@ -295,7 +333,7 @@ ListaEnlazada<Curso>* GestorDeArchivos::cargarCursosYGrupos()
 const void GestorDeArchivos::guardarCursoGrupoYCedulaDeLosDeportistasAsociados(string texto) const
 {
 	ofstream archivoCursosParaMatricula;
-	archivoCursosParaMatricula.open("../ArchivoParaMatricular.txt");
+	archivoCursosParaMatricula.open("../Archivos/ArchivoParaMatricular.txt");
 	if (archivoCursosParaMatricula.fail())
 	{
 		throw runtime_error("No se pudo abrir el archivo para matricular");
@@ -310,7 +348,7 @@ void GestorDeArchivos::cargarCursoGrupoYCedulaDeLosDeportistasAsociados(Gimnasio
 {
 //
 	ifstream archivoCursosParaMatricula;
-	archivoCursosParaMatricula.open("../ArchivoParaMatricular.txt");
+	archivoCursosParaMatricula.open("../Archivos/ArchivoParaMatricular.txt");
 	if (archivoCursosParaMatricula.fail())
 	{
 		throw runtime_error("No se pudo abrir el archivo para matricular");

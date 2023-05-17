@@ -52,20 +52,32 @@ void Interfaz::menuAdministracionGeneralNombreGimnasio()    // sub menu 1 de men
 	cout << endl << endl << "\t<1. Administracion General> <1. Nombre del Gimnasio>" << endl << endl;
 	cout << "-----------------------------------------------------------" << endl;
 	cout << "Digite el nuevo nombre del gimnasio: ";
-	cin >> nombreGimnasio;
+	Utils::clearInputBuffer();
+	getline(cin, nombreGimnasio);
 	gimnasio->setNombreDelGimnasio(nombreGimnasio);
+	cout << "Se actualizo el nombre del gimnasio" << endl;
 	cout << "-----------------------------------------------------------" << endl;
+	Utils::pause();
+	Utils::clearScreen();
 }
 
 void Interfaz::menuAdministracionGeneralMontoMensual()  // sub menu 2 de menu administracion general
 {
+	string entrada;
 	double montoMensual;
 	cout << endl << endl << "\t<1. Administracion General> <2. Monto Mensual>" << endl << endl;
 	cout << "-----------------------------------------------------------" << endl;
-	cout << "Digite el nuevo monto mensual: ";
-	cin >> montoMensual;
+	do
+	{
+		cout << "Digite el nuevo monto mensual: ";
+		getline(cin, entrada);
+	} while (!isdigit(entrada[0])); // verifica si la entrada es un número válido
+	montoMensual = atof(entrada.c_str()); // convierte la entrada a double
 	gimnasio->setMontoMensual(montoMensual);
+	cout << "Se actualizo el monto mensual" << endl;
 	cout << "-----------------------------------------------------------" << endl;
+	Utils::pause();
+	Utils::clearScreen();
 }
 //---------------------//
 
@@ -864,8 +876,8 @@ void Interfaz::menuControlGruposMostrarGrupoEspecifico()
 	}
 	cout << "A continuacion se muestra la informacion del grupo #" << numeroGrupo << " del curso " << codigoCurso << ":" << endl;
 	cout << grupo->toString() << endl;
-	Utils::pause();
 	cout << "-----------------------------------------------------------" << endl;
+	Utils::pause();
 
 }
 
@@ -1084,6 +1096,7 @@ void Interfaz::menuControlPagosIngresoNuevoPago()
 		return;
 	}
 	cout << "-----------------------------------------------------------" << endl;
+	gimnasio->buscarDeportista(idDeportista)->setEstado('A');
 
 }
 
@@ -1128,6 +1141,16 @@ void Interfaz::salir()
 {
 	try
 	{
+		GestorDeArchivos::guardarDatosDelGimnasio(gimnasio);
+		cout << "Datos del gimnasio guardados exitosamente" << endl;
+	}
+	catch (exception& e)
+	{
+		cerr << e.what() << endl;
+	}
+
+	try
+	{
 		gimnasio->guardarParaMatricular();
 		cout << "Archivo para matricular guardado exitosamente" << endl;
 	}
@@ -1167,6 +1190,16 @@ void Interfaz::salir()
 
 void Interfaz::mensajeDeBienvenida()
 {
+	try
+	{
+		GestorDeArchivos::cargarDatosDelGimnasio(gimnasio);
+		cout << "Datos del gimnasio cargados exitosamente" << endl;
+	}
+	catch (exception& e)
+	{
+		cerr << e.what() << endl;
+	}
+
 	try
 	{
 		//gimnasio->setListaDeportistas(GestorDeArchivos().cargarDeportistas());
