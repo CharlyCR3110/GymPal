@@ -78,6 +78,7 @@ public:
 	void guardarEnArchivoDeportistasYSusPagos();
 	const void guardarParaMatricular() const;
 	const string toStringParaGuardarCursoGrupoYCedulaDeLosDeportistasAsociados() const;
+	const string toStringParaGuardarDatosDelGimnasio() const;
 	// de prueba();
 	void prueba();
 };

@@ -580,6 +580,13 @@ const string Gimnasio::toStringParaGuardarCursoGrupoYCedulaDeLosDeportistasAsoci
 	return ss.str();
 }
 
+const string Gimnasio::toStringParaGuardarDatosDelGimnasio() const
+{
+	stringstream ss;
+	ss << this->nombreDelGimnasio << ';' << this->montoMensual << ';';
+	return ss.str();
+}
+
 void Gimnasio::prueba()
 {
 	cout << toStringParaGuardarCursoGrupoYCedulaDeLosDeportistasAsociados();

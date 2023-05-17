@@ -10,6 +10,10 @@ public:
 	GestorDeArchivos();
 	virtual ~GestorDeArchivos() = default;
 
+	// datos del gimnasio
+	static void guardarDatosDelGimnasio(Gimnasio* gimnasio_);
+	static void cargarDatosDelGimnasio(Gimnasio* gimnasio_);
+
 	// deportistas y sus pagos
 	virtual void guardarDeportistasYPagos(ListaEnlazada<Deportista>* listaDeportistas_);
 	virtual ListaEnlazada<Deportista>* cargarDeportistasYPagos();

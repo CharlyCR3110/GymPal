@@ -129,7 +129,7 @@ string ControlPagos::pagarMeses(string cedula_, int cantidadMeses_, ListaEnlazad
 	}
 	else
 	{
-		// no se puede usar deportista->getPagos()->getUltimo()->getDato()->getFecha()->getAnio(); porque esto devuelve la fecha en la que se pagó, no la fecha que paga
+		// no se puede usar deportista->getPagos()->getUltimo()->getDato()->getFecha()->getAnio(); porque esto devuelve la fecha en la que se pagï¿½, no la fecha que paga
 		// se recorre la lista de pagos para saber el ultimo anio pagado
 		Nodo<Pago>* nodoActual = pagosDelDeportista->getPrimero();
 		while (nodoActual != nullptr)
@@ -246,10 +246,6 @@ void ControlPagos::buscarDeportistasNoPagados(ListaEnlazada<Deportista>* listaDe
 			{
 				throw runtime_error("Algo ocurrio al verificar los deportistas pendientes de pago");
 			}
-		}
-		else
-		{
-			deportistaActual->setEstado('A');
 		}
 		nodoActual = nodoActual->getSiguiente();
 	}
